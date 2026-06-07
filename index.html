@@ -657,11 +657,20 @@ function parseIcal(text) {
     if (line === 'BEGIN:VEVENT') { cur = {}; continue; }
     if (line === 'END:VEVENT') {
       if (cur && cur.start) {
-        // 날짜만 추출 (종일: YYYYMMDD, 시간포함: YYYYMMDDTHHMMSSZ)
+        // 날짜 추출: 종일이면 YYYYMMDD 직접 파싱, 시간 포함이면 UTC→로컬 변환
         const toDate = (val) => {
           if (!val) return null;
-          const s = val.replace(/[TZ]/g,'').slice(0,8);
-          return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
+          if (!val.includes('T')) {
+            // 종일 이벤트: YYYYMMDD
+            const s = val.slice(0,8);
+            return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
+          }
+          // 시간 포함 이벤트: UTC로 파싱 후 로컬 날짜 반환
+          const iso = val.endsWith('Z')
+            ? val.replace(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z/, '$1-$2-$3T$4:$5:$6Z')
+            : val.replace(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/, '$1-$2-$3T$4:$5:$6');
+          const d = new Date(iso);
+          return dateStr(d);
         };
         const start = toDate(cur.start);
         let end = toDate(cur.end);
