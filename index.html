@@ -738,6 +738,7 @@ async function autoSaveToGithub() {
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 function today() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function dateStr(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function dDay() {
   const now = new Date(); now.setHours(0,0,0,0);
   return Math.ceil((EXAM_DATE - now) / 86400000);
@@ -858,7 +859,7 @@ async function fetchGcalEvents(calendarId, timeMin, timeMax) {
       let end = item.end.date || item.end.dateTime?.slice(0,10);
       if (item.start.date && end > start) {
         const d = new Date(end); d.setDate(d.getDate()-1);
-        end = d.toISOString().slice(0,10);
+        end = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
       }
       return { date: start, endDate: end || start, summary: item.summary || '(제목 없음)', id: item.id };
     });
@@ -980,7 +981,7 @@ function renderToday() {
   (async () => {
     const cache = await loadIcalData();
     const tmr = new Date(); tmr.setDate(tmr.getDate()+1);
-    const tmrStr = tmr.toISOString().slice(0,10);
+    const tmrStr = `${tmr.getFullYear()}-${String(tmr.getMonth()+1).padStart(2,'0')}-${String(tmr.getDate()).padStart(2,'0')}`;
     const todayEvts = getEventsForDate(td, cache);
     const tmrEvts = getEventsForDate(tmrStr, cache);
     const allToday = [...todayEvts.study, ...todayEvts.personal];
@@ -1295,7 +1296,7 @@ function renderGrass(term) {
   const dates = [];
   const s = new Date(term.start), e = new Date(term.end);
   for (let d = new Date(s); d <= e; d.setDate(d.getDate()+1)) {
-    dates.push(d.toISOString().slice(0,10));
+    dates.push(dateStr(d));
   }
   const td = today();
   const logMap = {};
@@ -1576,14 +1577,14 @@ function getReportLogs() {
     const dow = now.getDay();
     const mon = new Date(now); mon.setDate(now.getDate() - ((dow+6)%7) + reportOffset*7);
     const sun = new Date(mon); sun.setDate(mon.getDate()+6);
-    start = mon.toISOString().slice(0,10);
-    end = sun.toISOString().slice(0,10);
+    start = dateStr(mon);
+    end = dateStr(sun);
     const s = mon.toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
     const e = sun.toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
     document.getElementById('report-period-lbl').textContent = `${s} ~ ${e}`;
     // build all 7 dates
     const dates = [];
-    for (let d=new Date(mon); d<=sun; d.setDate(d.getDate()+1)) dates.push(d.toISOString().slice(0,10));
+    for (let d=new Date(mon); d<=sun; d.setDate(d.getDate()+1)) dates.push(dateStr(d));
     return {dates, logs: state.dailyLogs.filter(l=>l.date>=start&&l.date<=end)};
   } else {
     const base = new Date(now.getFullYear(), now.getMonth()+reportOffset, 1);
