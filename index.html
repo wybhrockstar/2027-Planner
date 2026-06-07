@@ -1747,85 +1747,85 @@ document.getElementById('pstab-weekly').addEventListener('click', () => { planne
 document.getElementById('pstab-calendar').addEventListener('click', () => { plannerTab='calendar'; clearIcalCache(); renderCalendar(); });
 
 // ─── CALENDAR ─────────────────────────────────────────────────────────────────
+let _calRendering = false;
 async function renderCalendar() {
-  const container = document.getElementById('planner-calendar');
-  const now = new Date(); now.setHours(0,0,0,0);
-  const base = new Date(now.getFullYear(), now.getMonth() + calOffset, 1);
-  const yr = base.getFullYear(), mo = base.getMonth();
-  const daysInMonth = new Date(yr, mo+1, 0).getDate();
-  const firstDow = base.getDay(); // 0=일
-  const td = today();
-  const moStr = `${yr}년 ${mo+1}월`;
+  if (_calRendering) return; // 중복 호출 방지
+  _calRendering = true;
+  try {
+    const container = document.getElementById('planner-calendar');
+    const td = today(); // 매번 새로 계산
+    const nowDate = new Date(td);
+    const base = new Date(nowDate.getFullYear(), nowDate.getMonth() + calOffset, 1);
+    const yr = base.getFullYear(), mo = base.getMonth();
+    const daysInMonth = new Date(yr, mo+1, 0).getDate();
+    const firstDow = base.getDay();
+    const moStr = `${yr}년 ${mo+1}월`;
 
-  container.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <button class="btn btn-ghost btn-sm" id="cal-prev">←</button>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600">${moStr}</div>
-      <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
+    container.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <button class="btn btn-ghost btn-sm" id="cal-prev">←</button>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600">${moStr}</div>
+        <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
+      </div>
+      <div id="cal-status" style="font-size:11px;color:var(--text3);margin-bottom:6px">캘린더 로딩 중...</div>
+      <div id="cal-grid"></div>`;
+
+    // 이벤트 리스너 (innerHTML 교체 후 새로 등록)
+    document.getElementById('cal-prev').addEventListener('click', () => { calOffset--; clearIcalCache(); renderCalendar(); });
+    document.getElementById('cal-next').addEventListener('click', () => { calOffset++; renderCalendar(); });
+
+    // 비동기 fetch
+    const cache = await loadIcalData();
+
+    const DOW_NAMES = ['일','월','화','수','목','금','토'];
+    let html = `<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px">
+      ${DOW_NAMES.map((d,i)=>`<div style="text-align:center;font-size:10px;font-weight:600;color:${i===0?'var(--red)':i===6?'var(--blue)':'var(--text3)'};padding:3px 0">${d}</div>`).join('')}
     </div>
-    <div style="font-size:11px;color:var(--text3);margin-bottom:6px">iCal 로딩 중...</div>
-    <div id="cal-grid"></div>`;
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">`;
 
-  document.getElementById('cal-prev').addEventListener('click', () => { calOffset--; renderCalendar(); });
-  document.getElementById('cal-next').addEventListener('click', () => { calOffset++; renderCalendar(); });
+    for (let i=0; i<firstDow; i++) html += `<div></div>`;
 
-  // 비동기 iCal 로드
-  const cache = await loadIcalData();
+    for (let day=1; day<=daysInMonth; day++) {
+      const dateStr = `${yr}-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const isToday = dateStr === td;
+      const dow = new Date(yr, mo, day).getDay();
+      const log = state.dailyLogs.find(l=>l.date===dateStr);
+      const evts = getEventsForDate(dateStr, cache);
+      const isFuture = dateStr > td;
+      const studyEvt = evts.study[0];
+      const personalEvt = evts.personal[0];
+      const memo = log?.memo;
+      const bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
+      const border = isToday ? 'var(--accent)' : 'var(--border)';
+      const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
-  const DOW_NAMES = ['일','월','화','수','목','금','토'];
-  let html = `<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px">
-    ${DOW_NAMES.map((d,i)=>`<div style="text-align:center;font-size:10px;font-weight:600;color:${i===0?'var(--red)':i===6?'var(--blue)':'var(--text3)'};padding:3px 0">${d}</div>`).join('')}
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px" id="cal-cells">`;
-
-  // 앞 빈칸
-  for (let i=0; i<firstDow; i++) html += `<div></div>`;
-
-  for (let day=1; day<=daysInMonth; day++) {
-    const dateStr = `${yr}-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const isToday = dateStr === td;
-    const dow = new Date(yr, mo, day).getDay();
-    const log = state.dailyLogs.find(l=>l.date===dateStr);
-    const evts = getEventsForDate(dateStr, cache);
-    const allEvts = [...evts.study, ...evts.personal];
-    const isFuture = dateStr > td;
-
-    const studyEvt = evts.study[0];
-    const personalEvt = evts.personal[0];
-    const memo = log?.memo;
-
-    let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
-    let border = isToday ? 'var(--accent)' : 'var(--border)';
-    const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
-
-    html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:72px;cursor:${isFuture?'default':'pointer'};position:relative">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
-      ${studyEvt ? `<div style="font-size:9px;color:var(--teal);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3" title="${studyEvt.summary}">📅 ${studyEvt.summary.slice(0,8)}</div>` : ''}
-      ${personalEvt ? `<div style="font-size:9px;color:var(--blue);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3" title="${personalEvt.summary}">🗓 ${personalEvt.summary.slice(0,8)}</div>` : ''}
-      ${memo ? `<div style="font-size:9px;color:var(--text2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3;margin-top:2px;border-top:1px solid var(--border)" title="${memo}">💬 ${memo.slice(0,8)}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
+      html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:72px;cursor:${isFuture?'default':'pointer'}">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
+        ${studyEvt ? `<div style="font-size:9px;color:var(--teal);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3" title="${studyEvt.summary}">📅 ${studyEvt.summary.slice(0,8)}</div>` : ''}
+        ${personalEvt ? `<div style="font-size:9px;color:var(--blue);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3" title="${personalEvt.summary}">🗓 ${personalEvt.summary.slice(0,8)}</div>` : ''}
+        ${memo ? `<div style="font-size:9px;color:var(--text2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3;margin-top:2px;border-top:1px solid var(--border)" title="${memo}">💬 ${memo.slice(0,8)}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
+      </div>`;
+    }
+    html += '</div>';
+    html += `<div style="display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--text3)">
+      <span><span style="color:var(--teal)">📅</span> 스터디</span>
+      <span><span style="color:var(--blue)">🗓</span> 개인</span>
+      <span><span style="color:var(--text2)">💬</span> 한마디</span>
     </div>`;
-  }
-  html += '</div>';
 
-  // 범례
-  html += `<div style="display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--text3)">
-    <span><span style="color:var(--teal)">📅</span> 스터디</span>
-    <span><span style="color:var(--blue)">🗓</span> 개인</span>
-    <span><span style="color:var(--text2)">💬</span> 한마디</span>
-  </div>`;
+    document.getElementById('cal-status').textContent = '';
+    document.getElementById('cal-grid').innerHTML = html;
 
-  const statusEl = container.querySelector('[style*="로딩 중"]');
-  if (statusEl) statusEl.textContent = '';
-  document.getElementById('cal-grid').innerHTML = html;
-
-  // 날짜 클릭 → 기록 수정 모달
-  document.querySelectorAll('.cal-cell[data-date]').forEach(cell => {
-    cell.addEventListener('click', () => {
-      const d = cell.dataset.date;
-      if (d > today()) return;
-      openLogModalForDate(d);
+    document.querySelectorAll('.cal-cell[data-date]').forEach(cell => {
+      cell.addEventListener('click', () => {
+        const d = cell.dataset.date;
+        if (d > today()) return;
+        openLogModalForDate(d);
+      });
     });
-  });
+  } finally {
+    _calRendering = false;
+  }
 }
 
 function renderAnnualPlan() {
