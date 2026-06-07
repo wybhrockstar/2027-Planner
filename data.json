@@ -9,6 +9,15 @@
       "kcal": 322,
       "memo": "123",
       "studyResult": "O"
+    },
+    {
+      "date": "2026-06-06",
+      "wakeTime": "09:02",
+      "sleepTime": "01:34",
+      "studyMin": 202,
+      "kcal": 150,
+      "memo": "1122",
+      "studyResult": null
     }
   ],
   "examScores": [],
