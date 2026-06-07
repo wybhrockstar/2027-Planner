@@ -1,6 +1,16 @@
 {
   "lectures": [],
-  "dailyLogs": [],
+  "dailyLogs": [
+    {
+      "date": "2026-06-08",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "왜 잊ㄹ",
+      "studyResult": null
+    }
+  ],
   "examScores": [],
   "termTodos": {
     "1": [],
