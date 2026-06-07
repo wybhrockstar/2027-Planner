@@ -610,6 +610,7 @@ const GH_PATH           = 'data.json';
 const GCAL_API_KEY      = 'AIzaSyBiVCCGpbUsTBWmj9DSYgghyBJzLfsmlv4';
 const GCAL_STUDY_ID     = '3eac65694951b1627de968aa7a224edef1e384199b06e5f9d7e3aad77680b0d6@group.calendar.google.com';
 const GCAL_PERSONAL_ID  = 'c053ff44a4fcaf9eeda51a49c2e4cb1640846edc1208ad3bdde01d98f1cf5dd0@group.calendar.google.com';
+const GCAL_REFRESH_MS   = 2 * 60 * 1000;
 
 // ─── iCal 설정 ───────────────────────────────────────────────────────────────
 function getIcalSettings() {
@@ -900,18 +901,51 @@ function saveReportSettings() {
 // ─── 캘린더 캐시 ─────────────────────────────────────────────────────────────
 let icalCache = { study: [], personal: [], loaded: false };
 let _icalLastFetch = 0;
-async function loadIcalData() {
+let _icalFetchPromise = null;
+async function loadIcalData({ force = false } = {}) {
   const now = Date.now();
-  if (icalCache.loaded && (now - _icalLastFetch) < 0) return icalCache; // 캐시 비활성화 — 항상 새로 fetch
-  const [study, personal] = await Promise.all([
+  if (!force && icalCache.loaded && (now - _icalLastFetch) < GCAL_REFRESH_MS) return icalCache;
+  if (_icalFetchPromise) return _icalFetchPromise;
+  _icalFetchPromise = Promise.all([
     fetchGcalEvents(GCAL_STUDY_ID),
     fetchGcalEvents(GCAL_PERSONAL_ID)
-  ]);
-  icalCache = { study, personal, loaded: true };
-  _icalLastFetch = Date.now();
-  return icalCache;
+  ]).then(([study, personal]) => {
+    icalCache = { study, personal, loaded: true };
+    _icalLastFetch = Date.now();
+    return icalCache;
+  }).finally(() => {
+    _icalFetchPromise = null;
+  });
+  return _icalFetchPromise;
 }
 function clearIcalCache() { icalCache = { study: [], personal: [], loaded: false }; _icalLastFetch = 0; }
+
+function isIcalViewVisible() {
+  return currentPage === 'today' || (currentPage === 'planner' && plannerTab === 'calendar');
+}
+
+function renderVisibleIcalView() {
+  if (currentPage === 'today') renderToday();
+  else if (currentPage === 'planner' && plannerTab === 'calendar') renderCalendar();
+}
+
+async function refreshIcalDataAndView({ force = true, silent = true } = {}) {
+  if (force) clearIcalCache();
+  if (!isIcalViewVisible()) return;
+  if (!silent) toast('구글 캘린더 새로고침 중...');
+  await loadIcalData({ force });
+  renderVisibleIcalView();
+}
+
+function setupIcalAutoRefresh() {
+  window.addEventListener('focus', () => refreshIcalDataAndView({ force: true }));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) refreshIcalDataAndView({ force: true });
+  });
+  setInterval(() => {
+    if (!document.hidden) refreshIcalDataAndView({ force: true });
+  }, GCAL_REFRESH_MS);
+}
 
 function getEventsForDate(date, cache) {
   return {
@@ -1786,13 +1820,19 @@ async function renderCalendar() {
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
       <button class="btn btn-ghost btn-sm" id="cal-prev">←</button>
       <div style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600">${moStr}</div>
-      <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" id="cal-refresh" title="구글 캘린더 새로고침">↻</button>
+        <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
+      </div>
     </div>
-    <div style="font-size:11px;color:var(--text3);margin-bottom:6px">iCal 로딩 중...</div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:6px">Google Calendar 로딩 중...</div>
     <div id="cal-grid"></div>`;
 
   document.getElementById('cal-prev').addEventListener('click', () => { calOffset--; renderCalendar(); });
   document.getElementById('cal-next').addEventListener('click', () => { calOffset++; renderCalendar(); });
+  document.getElementById('cal-refresh').addEventListener('click', () => {
+    refreshIcalDataAndView({ force: true, silent: false });
+  });
 
   // 비동기 iCal 로드
   const cache = await loadIcalData();
