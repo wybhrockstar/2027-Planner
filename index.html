@@ -612,30 +612,7 @@ const GCAL_STUDY_ID     = '3eac65694951b1627de968aa7a224edef1e384199b06e5f9d7e3a
 const GCAL_PERSONAL_ID  = 'c053ff44a4fcaf9eeda51a49c2e4cb1640846edc1208ad3bdde01d98f1cf5dd0@group.calendar.google.com';
 const GCAL_REFRESH_MS   = 2 * 60 * 1000;
 
-// ─── iCal 설정 ───────────────────────────────────────────────────────────────
-function getIcalSettings() {
-  return {
-    study:    localStorage.getItem('ical_study_url')    || '',
-    personal: localStorage.getItem('ical_personal_url') || ''
-  };
-}
-function saveIcalSettings() {
-  const study    = document.getElementById('input-ical-study').value.trim();
-  const personal = document.getElementById('input-ical-personal').value.trim();
-  if (!study && !personal) { setIcalStatus('❌ URL을 하나 이상 입력하세요', 'err'); return; }
-  if (study)    localStorage.setItem('ical_study_url',    study);
-  if (personal) localStorage.setItem('ical_personal_url', personal);
-  setIcalStatus('✓ 저장됨 — 캘린더를 다시 열면 적용됩니다', 'ok');
-  clearIcalCache();
-}
-function setIcalStatus(msg, type) {
-  const el = document.getElementById('ical-status');
-  if (!el) return;
-  el.textContent = msg;
-  el.style.color = type==='ok' ? 'var(--teal)' : type==='err' ? 'var(--red)' : 'var(--text3)';
-}
-
-// ─── iCal 파싱 ───────────────────────────────────────────────────────────────
+// ─── Google Calendar API ───────────────────────────────────────────────────
 async function fetchGcalEvents(calendarId) {
   try {
     const id = encodeURIComponent(calendarId);
@@ -2324,7 +2301,8 @@ function applyParsedLectures(mode){
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 // 구버전 localStorage 잔재만 제거 (gh_token 등 설정값은 유지)
-['imgo_planner_v1','imgo_gh_settings','imgo_calendar_urls'].forEach(k => localStorage.removeItem(k));
+['imgo_planner_v1','imgo_gh_settings','imgo_calendar_urls','ical_study_url','ical_personal_url'].forEach(k => localStorage.removeItem(k));
+setupIcalAutoRefresh();
 document.getElementById('dday-txt').textContent = `D-${dDay()}`;
 if (localStorage.getItem('imgo_theme')==='light') document.body.classList.add('light');
 // 페이지 로드 시 GitHub에서 데이터 로드 (단일 소스)
