@@ -737,7 +737,7 @@ async function autoSaveToGithub() {
 }
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
-function today() { return new Date().toISOString().slice(0,10); }
+function today() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function dDay() {
   const now = new Date(); now.setHours(0,0,0,0);
   return Math.ceil((EXAM_DATE - now) / 86400000);
@@ -874,7 +874,7 @@ let _icalLastFetch = 0;
 async function loadIcalData() {
   const now = Date.now();
   // 5분 이내면 캐시 사용, 이후엔 재fetch
-  if (icalCache.loaded && (now - _icalLastFetch) < 5 * 60 * 1000) return icalCache;
+  if (icalCache.loaded && (now - _icalLastFetch) < 1 * 60 * 1000) return icalCache;
   const year = new Date().getFullYear();
   const timeMin = `${year}-01-01T00:00:00Z`;
   const timeMax = `${year}-12-31T23:59:59Z`;
