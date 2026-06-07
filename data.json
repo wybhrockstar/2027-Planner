@@ -1,0 +1,33 @@
+{
+  "lectures": [],
+  "dailyLogs": [
+    {
+      "date": "2026-06-07",
+      "wakeTime": "09:12",
+      "sleepTime": "23:59",
+      "studyMin": 152,
+      "kcal": 322,
+      "memo": "123",
+      "studyResult": "O"
+    }
+  ],
+  "examScores": [],
+  "termTodos": {
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": []
+  },
+  "weeklySchedule": {
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": []
+  },
+  "reportSettings": {
+    "studyGoalHour": 7,
+    "sleepMinHour": 6,
+    "bedtimeLimit": "01:00",
+    "wakeTimeLimit": "07:30"
+  }
+}
