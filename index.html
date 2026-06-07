@@ -645,9 +645,12 @@ async function fetchGcalEvents(calendarId) {
       timeMax: `${year}-12-31T23:59:59+09:00`,
       maxResults: 2500,
       singleEvents: true,
-      orderBy: 'startTime'
+      orderBy: 'startTime',
+      _t: Date.now()
     });
-    const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${id}/events?${params}`);
+    const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${id}/events?${params}`, {
+      cache: 'no-store'
+    });
     if (!res.ok) { console.warn(`GCal fetch failed (${calendarId}):`, res.status); return []; }
     const data = await res.json();
     return (data.items || []).map(item => {
@@ -899,7 +902,7 @@ let icalCache = { study: [], personal: [], loaded: false };
 let _icalLastFetch = 0;
 async function loadIcalData() {
   const now = Date.now();
-  if (icalCache.loaded && (now - _icalLastFetch) < 1 * 60 * 1000) return icalCache;
+  if (icalCache.loaded && (now - _icalLastFetch) < 0) return icalCache; // 캐시 비활성화 — 항상 새로 fetch
   const [study, personal] = await Promise.all([
     fetchGcalEvents(GCAL_STUDY_ID),
     fetchGcalEvents(GCAL_PERSONAL_ID)
