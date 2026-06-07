@@ -870,8 +870,11 @@ async function fetchGcalEvents(calendarId, timeMin, timeMax) {
 
 // ─── 캘린더 캐시 ─────────────────────────────────────────────────────────────
 let icalCache = { study: [], personal: [], loaded: false };
+let _icalLastFetch = 0;
 async function loadIcalData() {
-  if (icalCache.loaded) return icalCache;
+  const now = Date.now();
+  // 5분 이내면 캐시 사용, 이후엔 재fetch
+  if (icalCache.loaded && (now - _icalLastFetch) < 5 * 60 * 1000) return icalCache;
   const year = new Date().getFullYear();
   const timeMin = `${year}-01-01T00:00:00Z`;
   const timeMax = `${year}-12-31T23:59:59Z`;
@@ -880,9 +883,10 @@ async function loadIcalData() {
     fetchGcalEvents(GCAL_PERSONAL_ID, timeMin, timeMax)
   ]);
   icalCache = { study, personal, loaded: true };
+  _icalLastFetch = Date.now();
   return icalCache;
 }
-function clearIcalCache() { icalCache = { study: [], personal: [], loaded: false }; }
+function clearIcalCache() { icalCache = { study: [], personal: [], loaded: false }; _icalLastFetch = 0; }
 
 function getEventsForDate(date, cache) {
   return {
@@ -1740,11 +1744,10 @@ function renderPlanner() {
 
 document.getElementById('pstab-annual').addEventListener('click', () => { plannerTab='annual'; renderPlanner(); });
 document.getElementById('pstab-weekly').addEventListener('click', () => { plannerTab='weekly'; renderPlanner(); });
-document.getElementById('pstab-calendar').addEventListener('click', () => { plannerTab='calendar'; renderCalendar(); });
+document.getElementById('pstab-calendar').addEventListener('click', () => { plannerTab='calendar'; clearIcalCache(); renderCalendar(); });
 
 // ─── CALENDAR ─────────────────────────────────────────────────────────────────
 async function renderCalendar() {
-  clearIcalCache(); // 항상 최신 일정 fetch
   const container = document.getElementById('planner-calendar');
   const now = new Date(); now.setHours(0,0,0,0);
   const base = new Date(now.getFullYear(), now.getMonth() + calOffset, 1);
