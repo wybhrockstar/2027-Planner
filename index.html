@@ -640,24 +640,23 @@ function setGhStatus(msg, type) {
 
 async function pushToGithub() {
   const s = getGhSettings();
-  if (!s.token || !s.repo) { setGhStatus('❌ 설정 오류', 'err'); return; }
-  setGhStatus('⬆️ 업로드 중...', '');
+  if (!s.token || !s.repo) { setGhStatus('❌ 토큰을 먼저 저장하세요', 'err'); return; }
+  setGhStatus('⬆️ 저장 중...', '');
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
-    // get current sha
     let sha = null;
-    const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path||'data.json'}?ref=${s.branch||'main'}`, {
+    const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
       headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
     });
     if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
-    const body = {message:`planner update ${today()}`, content, branch: s.branch||'main'};
+    const body = { message: `manual save ${today()}`, content, branch: s.branch };
     if (sha) body.sha = sha;
-    const putRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path||'data.json'}`, {
+    const putRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}`, {
       method: 'PUT',
       headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json'},
       body: JSON.stringify(body)
     });
-    if (putRes.ok) { setGhStatus('✓ GitHub에 저장 완료', 'ok'); toast('✓ GitHub 저장 완료'); }
+    if (putRes.ok) { setGhStatus('✓ 저장 완료', 'ok'); toast('✓ GitHub 저장 완료'); }
     else { const e = await putRes.json(); setGhStatus(`❌ ${e.message}`, 'err'); }
   } catch(e) { setGhStatus(`❌ ${e.message}`, 'err'); }
 }
@@ -700,33 +699,41 @@ function applyImportedState(d) {
   if (d.termTodos) state.termTodos = {...state.termTodos,...d.termTodos};
   if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
   if (d.reportSettings) state.reportSettings = {...state.reportSettings,...d.reportSettings};
-  if (d.lectures) {
-    // data.json이 단일 소스 — 완료 기록 포함하여 그대로 사용
-    state.lectures = d.lectures;
-  }
-  saveState();
+  if (d.lectures) state.lectures = d.lectures;
   renderPage(currentPage);
 }
 
 function loadState() {
-  try {
-    const s = localStorage.getItem('imgo_planner_v1');
-    if (s) {
-      const p = JSON.parse(s);
-      // data.json 단일 소스: 저장된 강의 목록 그대로 사용
-      state.lectures = p.lectures || [];
-      state.dailyLogs = p.dailyLogs || [];
-      state.examScores = p.examScores || [];
-      if (p.termTodos) state.termTodos = {...state.termTodos,...p.termTodos};
-      if (p.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...p.weeklySchedule};
-      if (p.reportSettings) state.reportSettings = {...state.reportSettings,...p.reportSettings};
-    }
-    // localStorage에 강의가 없으면 GitHub에서 로드될 때 채워짐
-  } catch(e) { /* ignore */ }
+  // localStorage 완전 제거 — GitHub이 단일 소스
+  // 초기 state는 기본값으로 시작, autoLoadFromGithub()에서 덮어씀
 }
 
+// saveState → autoSaveToGithub (변경 즉시 GitHub push)
+let _saveTimer = null;
 function saveState() {
-  localStorage.setItem('imgo_planner_v1', JSON.stringify(state));
+  // 연속 저장 방지: 500ms 디바운스
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(() => { autoSaveToGithub(); }, 500);
+}
+
+async function autoSaveToGithub() {
+  const s = getGhSettings();
+  if (!s.token || !s.repo) return; // 토큰 없으면 무시 (설정 전 상태)
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
+    let sha = null;
+    const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
+      headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
+    });
+    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    const body = { message: `auto save ${today()}`, content, branch: s.branch };
+    if (sha) body.sha = sha;
+    await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}`, {
+      method: 'PUT',
+      headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+  } catch(e) { console.warn('Auto save failed:', e); }
 }
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
@@ -2248,18 +2255,24 @@ function applyParsedLectures(mode){
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
-loadState();
+// 구버전 localStorage 잔재만 제거 (gh_token 등 설정값은 유지)
+['imgo_planner_v1','imgo_gh_settings','imgo_calendar_urls'].forEach(k => localStorage.removeItem(k));
 document.getElementById('dday-txt').textContent = `D-${dDay()}`;
 if (localStorage.getItem('imgo_theme')==='light') document.body.classList.add('light');
-renderToday();
-// 페이지 로드 시 GitHub 자동 fetch (data.json = 단일 소스)
+// 페이지 로드 시 GitHub에서 데이터 로드 (단일 소스)
 (async () => {
   const loaded = await autoLoadFromGithub();
   if (loaded) {
     renderPage(currentPage);
-  } else if (state.lectures.length === 0) {
-    // GitHub 연결 실패 + 강의 없음: 안내 표시
-    toast('⚠️ GitHub 연결 실패 — 강의 파서로 강의를 추가하거나 GitHub 연결을 확인하세요');
+  } else {
+    // 토큰 미설정 or 연결 실패 → 빈 상태로 렌더링 + 안내
+    renderToday();
+    const s = getGhSettings();
+    if (!s.token) {
+      toast('⚙️ 설정에서 GitHub 토큰을 먼저 입력하세요');
+    } else {
+      toast('⚠️ GitHub 연결 실패 — 토큰을 확인하세요');
+    }
   }
 })();
 </script>
