@@ -166,12 +166,22 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .term-stab:hover{border-color:var(--accent);color:var(--accent)}
 .term-stab.on{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
 
-/* GRASS GRID */
-.grass-grid{display:grid;gap:3px;margin-top:10px}
-.grass-cell{border-radius:3px;position:relative;aspect-ratio:1;min-width:0;cursor:default;border:1px solid transparent}
-.grass-cell.today-cell{border-color:var(--accent)!important}
-.grass-cell-inner{font-size:7px;line-height:1.2;padding:2px;display:flex;flex-direction:column;gap:1px;height:100%;overflow:hidden}
-.grass-cell-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* PROGRESS TABLE (잔디 대체) */
+.prog-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px}
+.prog-table{border-collapse:collapse;font-size:11px;min-width:100%}
+.prog-table th{padding:5px 6px;text-align:center;font-weight:600;color:var(--text3);font-size:10px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap;position:sticky;left:0;z-index:2}
+.prog-table td{padding:5px 6px;border:1px solid var(--border);text-align:center;white-space:nowrap;min-width:38px;cursor:pointer;transition:.1s;position:relative}
+.prog-table td:hover{filter:brightness(1.15)}
+.prog-table td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
+.prog-table td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
+.prog-table .row-label{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:5px 8px;text-align:left;white-space:nowrap;border:1px solid var(--border);position:sticky;left:0;z-index:2}
+.prog-table .week-sep{border-left:2px solid var(--border2)!important}
+.prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
+.cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
+.cell-d{background:rgba(255,179,71,.2);color:#ffb347}
+.cell-x{background:rgba(255,90,90,.18);color:#ff5a5a}
+.cell-none{background:rgba(255,255,255,.03);color:var(--text4)}
+.cell-skip{background:transparent;color:var(--text4)}
 
 /* SUBJ INLINE PROGRESS (강의탭) */
 .subj-inline-grid{display:flex;flex-direction:column;gap:7px}
@@ -315,7 +325,7 @@ canvas{width:100%!important}
 </div>
 </div>
 
-<!-- MODAL: Settings (Backup + GitHub + iCal + reportSettings) -->
+<!-- MODAL: Settings (Backup + GitHub push/pull + reportSettings) -->
 <div id="modal-backup" class="modal-bg">
 <div class="modal">
   <div class="modal-hd">
@@ -330,48 +340,13 @@ canvas{width:100%!important}
     <button class="btn btn-ghost" onclick="importData()" style="flex:1;justify-content:center">📥 불러오기</button>
   </div>
 
-  <!-- 섹션: GitHub -->
-  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">GitHub 저장소 연동</div>
-  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
-    <div>
-      <label class="form-lbl">Personal Access Token (repo 권한)</label>
-      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-    </div>
-    <div class="form-row">
-      <div>
-        <label class="form-lbl">Owner/Repo</label>
-        <input type="text" id="gh-repo" placeholder="username/repo-name">
-      </div>
-      <div>
-        <label class="form-lbl">Branch</label>
-        <input type="text" id="gh-branch" placeholder="main">
-      </div>
-    </div>
-    <div>
-      <label class="form-lbl">파일 경로 (기본: data.json)</label>
-      <input type="text" id="gh-path" placeholder="data.json">
-    </div>
-  </div>
+  <!-- 섹션: GitHub 동기화 -->
+  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">GitHub 동기화</div>
   <div style="display:flex;gap:8px;margin-bottom:4px">
-    <button class="btn btn-ghost" onclick="saveGhSettings()" style="flex:1;justify-content:center">💾 설정 저장</button>
     <button class="btn btn-ghost" onclick="pushToGithub()" style="flex:1;justify-content:center">⬆️ GitHub에 저장</button>
-    <button class="btn btn-ghost" onclick="pullFromGithub()" style="flex:1;justify-content:center">⬇️ GitHub에서 불러오기</button>
+    <button class="btn btn-ghost" onclick="pullFromGithub()" style="flex:1;justify-content:center">⬇️ 불러오기</button>
   </div>
   <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:16px;min-height:18px"></div>
-
-  <!-- 섹션: iCal -->
-  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">캘린더 iCal URL</div>
-  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
-    <div>
-      <label class="form-lbl">📅 스터디 캘린더 URL</label>
-      <input type="url" id="ical-study-url" placeholder="https://calendar.google.com/calendar/ical/...">
-    </div>
-    <div>
-      <label class="form-lbl">🗓 개인 캘린더 URL</label>
-      <input type="url" id="ical-personal-url" placeholder="https://calendar.google.com/calendar/ical/...">
-    </div>
-    <button class="btn btn-ghost" onclick="saveIcalUrls()" style="justify-content:center">💾 URL 저장</button>
-  </div>
 
   <!-- 섹션: 리포트 기준값 -->
   <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">리포트 경고선 기준값</div>
@@ -399,7 +374,7 @@ canvas{width:100%!important}
     <button class="btn btn-ghost" onclick="saveReportSettings()" style="justify-content:center">💾 저장</button>
   </div>
 
-  <div style="font-size:11px;color:var(--text3)">localStorage 자동 저장 + GitHub 연동 시 GitHub 우선 로드</div>
+  <div style="font-size:11px;color:var(--text3)">localStorage 자동 저장 + GitHub 자동 연동</div>
 </div>
 </div>
 
@@ -579,8 +554,9 @@ canvas{width:100%!important}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-// ─── LECTURES SEED DATA ─────────────────────────────────────────────────────
-const LECTURE_SEED = [{"id":"총창_1","subject":"총창","num":"1강","title":"1강. 2022개정 교육과정 총론 (1) [68분]","minutes":68,"term":1,"done":false,"doneDate":null},{"id":"총창_2","subject":"총창","num":"2강","title":"2강. 2022개정 교육과정 총론 (2) [64분]","minutes":64,"term":1,"done":false,"doneDate":null},{"id":"총창_3","subject":"총창","num":"3강","title":"3강. 2022개정 창의적 체험활동 교육과정 [37분]","minutes":37,"term":1,"done":false,"doneDate":null},{"id":"음악_1","subject":"음악","num":"1강","title":"1강. OT [27분]","minutes":27,"term":1,"done":false,"doneDate":null},{"id":"음악_2","subject":"음악","num":"2강","title":"2강. 전통음악 (장구) [19분]","minutes":19,"term":1,"done":false,"doneDate":null},{"id":"음악_3","subject":"음악","num":"3강","title":"3강. 전통음악 (장단 ~ 정간보) [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"음악_4","subject":"음악","num":"4강","title":"4강. 전통음악 (말붙임새 ~ 토리) [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"음악_5","subject":"음악","num":"5강","title":"5강. 전통음악 (토리 분석) [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"음악_6","subject":"음악","num":"6강","title":"6강. 전통음악 (장단 구분법), 서양음악 (음표와 쉼표 ~ 음이름과 계이름 익히기) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"음악_7","subject":"음악","num":"7강","title":"7강. 서양음악 (이동도법 계이름과 고정도법 계이름의 비교 ~ 조표와 임시표) [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"음악_8","subject":"음악","num":"8강","title":"8강. 서양음악 (악곡의 구조와 형식 ~ 4분의 3박자와 8분의 6박자 구별하기) [64분]","minutes":64,"term":1,"done":false,"doneDate":null},{"id":"음악_9","subject":"음악","num":"9강","title":"9강. 서양음악 (당김음의 여러 형태 ~ 화음) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"음악_10","subject":"음악","num":"10강","title":"10강. 서양음악 (돌림 노래 ~ 바장조와 라단조의 주요 3화음 비교) [64분]","minutes":64,"term":1,"done":false,"doneDate":null},{"id":"음악_11","subject":"음악","num":"11강","title":"11강. 노래 부를 때의 바른 자세 ~ 악기 연주법 (1) [68분]","minutes":68,"term":1,"done":false,"doneDate":null},{"id":"음악_12","subject":"음악","num":"12강","title":"12강. 악기 연주법 (2) ~ 주요 감상곡 (대취타) [66분]","minutes":66,"term":1,"done":false,"doneDate":null},{"id":"음악_13","subject":"음악","num":"13강","title":"13강. 주요 감상곡 (종묘 제례악 ~ 평시조) [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"음악_14","subject":"음악","num":"14강","title":"14강. 주요 감상곡 (영산회상 ~ 판소리) [71분]","minutes":71,"term":1,"done":false,"doneDate":null},{"id":"음악_15","subject":"음악","num":"15강","title":"15강. 주요 감상곡 (산조 ~ 음악극), 교과교육론 (달크로즈 ~ 코다이) [74분]","minutes":74,"term":1,"done":false,"doneDate":null},{"id":"음악_16","subject":"음악","num":"16강","title":"16강. 교과교육론 (오르프 ~ 고든), 2022 개정 음악과 교육과정 (1) (음악 요소) [58분]","minutes":58,"term":1,"done":false,"doneDate":null},{"id":"음악_17","subject":"음악","num":"17강","title":"17강. 2022 개정 음악과 교육과정 (2) [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"음악_18","subject":"음악","num":"18강","title":"18강. 2022 개정 음악과 교육과정 (3) [83분]","minutes":83,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_1","subject":"음악 심화","num":"1강","title":"1강. 3~4학년 제재곡 7개 지도서 (우리나라의 춤과 음악 ~ 동물의 사육제) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_2","subject":"음악 심화","num":"2강","title":"2강. 3~4학년 제재곡 7개 지도서 (아리랑 ~ 어깨동무) [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_3","subject":"음악 심화","num":"3강","title":"3강. 3~4학년 제재곡 6~5개 지도서 [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_4","subject":"음악 심화","num":"4강","title":"4강. 3~4학년 제재곡 4개 지도서 [29분]","minutes":29,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_5","subject":"음악 심화","num":"5강","title":"5강. 3~4학년 제재곡 3~2개 지도서 [53분]","minutes":53,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_6","subject":"음악 심화","num":"6강","title":"6강. 3~4학년 제재곡 1개 지도서, 5~6학년 제재곡 9개 지도서 [25분]","minutes":25,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_7","subject":"음악 심화","num":"7강","title":"7강. 5~6학년 제재곡 8개 지도서 [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_8","subject":"음악 심화","num":"8강","title":"8강. 5~6학년 제재곡 7~6개 지도서 [24분]","minutes":24,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_23","subject":"음악 심화","num":"23강","title":"23강. 5~6학년 제재곡 6~5개 지도서","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_24","subject":"음악 심화","num":"24강","title":"24강. 5~6학년 제재곡 4개 지도서, 3개 지도서 (1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_25","subject":"음악 심화","num":"25강","title":"25강. 5~6학년 제재곡 3개 지도서 (2), 2개 지도서 (1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"음악 심화_26","subject":"음악 심화","num":"26강","title":"26강. 5~6학년 제재곡 2개 지도서 (2), 1개 지도서","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"영어_0","subject":"영어","num":"0강","title":"0강. 영어 OT [14분]","minutes":14,"term":1,"done":false,"doneDate":null},{"id":"영어_1","subject":"영어","num":"1강","title":"1강. 언어 습득 이론 (모국어 습득 이론 ~ Five Hypotheses) [83분]","minutes":83,"term":1,"done":false,"doneDate":null},{"id":"영어_2","subject":"영어","num":"2강","title":"2강. 언어 습득 이론 (Noticing Hypothesis ~ Interaction Hypothesis) [65분]","minutes":65,"term":1,"done":false,"doneDate":null},{"id":"영어_3","subject":"영어","num":"3강","title":"3강. 언어 습득 이론 (Sociocultural Theory) [35분]","minutes":35,"term":1,"done":false,"doneDate":null},{"id":"영어_4","subject":"영어","num":"4강","title":"4강. 영어 교수법 (GTM - ALM) [47분]","minutes":47,"term":1,"done":false,"doneDate":null},{"id":"영어_5","subject":"영어","num":"5강","title":"5강. 영어 교수법 (TPR ~ NA) [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"영어_6","subject":"영어","num":"6강","title":"6강. 영어 교수법 (CLT) [82분]","minutes":82,"term":1,"done":false,"doneDate":null},{"id":"영어_7","subject":"영어","num":"7강","title":"7강. 영어 교수법 (TBLT ~ WLA) [67분]","minutes":67,"term":1,"done":false,"doneDate":null},{"id":"영어_8","subject":"영어","num":"8강","title":"8강. 학습자 변인 (초등 학습자의 특성 ~ 학습 전략) [52분]","minutes":52,"term":1,"done":false,"doneDate":null},{"id":"영어_9","subject":"영어","num":"9강","title":"9강. 학습자 변인 (의사소통 전략 ~ 정의적 요인) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"영어_10","subject":"영어","num":"10강","title":"10강. 기능별 언어지도 (공통) [46분]","minutes":46,"term":1,"done":false,"doneDate":null},{"id":"영어_11","subject":"영어","num":"11강","title":"11강. 기능별 언어지도 (듣기) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"영어_12","subject":"영어","num":"12강","title":"12강. 기능별 언어지도 (읽기의 이해 과정 ~ 읽기의 유형) [72분]","minutes":72,"term":1,"done":false,"doneDate":null},{"id":"영어_13","subject":"영어","num":"13강","title":"13강. 기능별 언어지도 (음철법 ~ 일견 어휘) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"영어_14","subject":"영어","num":"14강","title":"14강. 기능별 언어지도 (말하기의 특성 ~ PPP) [64분]","minutes":64,"term":1,"done":false,"doneDate":null},{"id":"영어_15","subject":"영어","num":"15강","title":"15강. 기능별 언어지도 (중간 언어 ~ 오류 처리 유형) [65분]","minutes":65,"term":1,"done":false,"doneDate":null},{"id":"영어_16","subject":"영어","num":"16강","title":"16강. 기능별 언어지도 (쓰기) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"영어_17","subject":"영어","num":"17강","title":"17강. 요소별 언어지도 (발음 지도 ~ 어휘 지도) [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"영어_18","subject":"영어","num":"18강","title":"18강. 요소별 언어지도 (문법 지도 ~ 문화 지도) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"영어_19","subject":"영어","num":"19강","title":"19강. 활동 중심 수업 ~ 교사 언어 [71분]","minutes":71,"term":1,"done":false,"doneDate":null},{"id":"영어_20","subject":"영어","num":"20강","title":"20강. 평가 [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"영어_21","subject":"영어","num":"21강","title":"21강. 교육과정 (성취기준 전후 ~ 이해영역 성취기준) [67분]","minutes":67,"term":1,"done":false,"doneDate":null},{"id":"영어_22","subject":"영어","num":"22강","title":"22강. 교육과정 (표현영역 성취기준) ~ 기타 기출 [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"도덕_1","subject":"도덕","num":"1강","title":"1강. 도덕과 OT ~ 도덕 교과서 편찬 방향 [79분]","minutes":79,"term":1,"done":false,"doneDate":null},{"id":"도덕_2","subject":"도덕","num":"2강","title":"2강. 도덕과 주요 수업 모형 (1) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"도덕_3","subject":"도덕","num":"3강","title":"3강. 도덕과 주요 수업 모형 (2) [56분]","minutes":56,"term":1,"done":false,"doneDate":null},{"id":"도덕_4","subject":"도덕","num":"4강","title":"4강. 도덕과 주요 수업 모형 (3) [47분]","minutes":47,"term":1,"done":false,"doneDate":null},{"id":"도덕_5","subject":"도덕","num":"5강","title":"5강. 도덕과 주요 수업 모형 (4) [45분]","minutes":45,"term":1,"done":false,"doneDate":null},{"id":"도덕_6","subject":"도덕","num":"6강","title":"6강. 도덕과 주요 수업 모형 (5) [56분]","minutes":56,"term":1,"done":false,"doneDate":null},{"id":"도덕_7","subject":"도덕","num":"7강","title":"7강. 도덕과 주요 수업 모형 (6) [80분]","minutes":80,"term":1,"done":false,"doneDate":null},{"id":"도덕_8","subject":"도덕","num":"8강","title":"8강. 도덕 교육의 관점 [56분]","minutes":56,"term":1,"done":false,"doneDate":null},{"id":"도덕_9","subject":"도덕","num":"9강","title":"9강. 도덕과 교육의 이론적 기초 (1) [63분]","minutes":63,"term":1,"done":false,"doneDate":null},{"id":"도덕_10","subject":"도덕","num":"10강","title":"10강. 도덕과 교육의 이론적 기초 (2) [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"도덕_11","subject":"도덕","num":"11강","title":"11강. 도덕과 교육의 이론적 기초 (3) [60분]","minutes":60,"term":1,"done":false,"doneDate":null},{"id":"도덕_12","subject":"도덕","num":"12강","title":"12강. 도덕과 교육의 이론적 기초 (4) [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"도덕_13","subject":"도덕","num":"13강","title":"13강. 도덕과 기타 이론 (1) [51분]","minutes":51,"term":1,"done":false,"doneDate":null},{"id":"도덕_14","subject":"도덕","num":"14강","title":"14강. 도덕과 기타 이론 (2) ~ 도덕과 교육과정 (1) [74분]","minutes":74,"term":1,"done":false,"doneDate":null},{"id":"도덕_15","subject":"도덕","num":"15강","title":"15강. 도덕과 교육과정 (2) [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"미술_1","subject":"미술","num":"1강","title":"1강. OT ~ 교과교육론 (로웬펠드) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"미술_2","subject":"미술","num":"2강","title":"2강. 교과교육론 (가드너) [13분]","minutes":13,"term":1,"done":false,"doneDate":null},{"id":"미술_3","subject":"미술","num":"3강","title":"3강. 조형요소와 원리 [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"미술_4","subject":"미술","num":"4강","title":"4강. 사진과 애니메이션 [39분]","minutes":39,"term":1,"done":false,"doneDate":null},{"id":"미술_5","subject":"미술","num":"5강","title":"5강. 조소 [31분]","minutes":31,"term":1,"done":false,"doneDate":null},{"id":"미술_6","subject":"미술","num":"6강","title":"6강. 전통 공예 [56분]","minutes":56,"term":1,"done":false,"doneDate":null},{"id":"미술_7","subject":"미술","num":"7강","title":"7강. 색 [65분]","minutes":65,"term":1,"done":false,"doneDate":null},{"id":"미술_8","subject":"미술","num":"8강","title":"8강. 풍경화 ~ 인물화 [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"미술_9","subject":"미술","num":"9강","title":"9강. 정물화 ~ 수채화 [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"미술_10","subject":"미술","num":"10강","title":"10강. 디자인 [35분]","minutes":35,"term":1,"done":false,"doneDate":null},{"id":"미술_11","subject":"미술","num":"11강","title":"11강. 디지털 드로잉 ~ 서예 [26분]","minutes":26,"term":1,"done":false,"doneDate":null},{"id":"미술_12","subject":"미술","num":"12강","title":"12강. 서예 [45분]","minutes":45,"term":1,"done":false,"doneDate":null},{"id":"미술_13","subject":"미술","num":"13강","title":"13강. 다양한 표현기법 ~ 판화 [45분]","minutes":45,"term":1,"done":false,"doneDate":null},{"id":"미술_14","subject":"미술","num":"14강","title":"14강. 판화 [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"미술_15","subject":"미술","num":"15강","title":"15강. 전통회화 [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"미술_16","subject":"미술","num":"16강","title":"16강. 전통회화 [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"미술_17","subject":"미술","num":"17강","title":"17강. 소묘 ~ 미술양식 (근대미술) [51분]","minutes":51,"term":1,"done":false,"doneDate":null},{"id":"미술_18","subject":"미술","num":"18강","title":"18강. 미술양식 (야수주의 ~ 옵아트) [41분]","minutes":41,"term":1,"done":false,"doneDate":null},{"id":"미술_19","subject":"미술","num":"19강","title":"19강. 미술양식 (미디어 아트 ~ 키네틱 아트) [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"미술_20","subject":"미술","num":"20강","title":"20강. 미술양식 (콜라주) ~ 교과교육론 (아이스너) [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"미술_21","subject":"미술","num":"21강","title":"21강. 교과교육론 (학년군별 특징 ~ 미술교육흐름) [60분]","minutes":60,"term":1,"done":false,"doneDate":null},{"id":"미술_22","subject":"미술","num":"22강","title":"22강. 교과교육론 (미술과 교수 · 학습 모형) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"미술_23","subject":"미술","num":"23강","title":"23강. 교육과정1 [46분]","minutes":46,"term":1,"done":false,"doneDate":null},{"id":"미술_24","subject":"미술","num":"24강","title":"24강. 교육과정2 [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"미술_25","subject":"미술","num":"25강","title":"25강. 교육과정3 [76분]","minutes":76,"term":1,"done":false,"doneDate":null},{"id":"실과_1","subject":"실과","num":"1강","title":"1강. OT ~ 성취기준 [01 - 01]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_2","subject":"실과","num":"2강","title":"2강. 성취기준 [01 - 02] ~ [01 - 04]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_3","subject":"실과","num":"3강","title":"3강. 성취기준 [01 - 05] ~ [01 - 07]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_4","subject":"실과","num":"4강","title":"4강. 성취기준 [02 - 01]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_5","subject":"실과","num":"5강","title":"5강. 성취기준 [02 - 02] ~ [02 - 04]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_6","subject":"실과","num":"6강","title":"6강. 성취기준 [02 - 05] ~ [02 - 06]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_7","subject":"실과","num":"7강","title":"7강. 성취기준 [02 - 07], [02 - 09]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_8","subject":"실과","num":"8강","title":"8강. 성취기준 [02 - 08] 1","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_9","subject":"실과","num":"9강","title":"9강. 성취기준 [02 - 08] 2","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_10","subject":"실과","num":"10강","title":"10강. 성취기준 [02 - 08] 3 ~ [02 - 11]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_11","subject":"실과","num":"11강","title":"11강. 성취기준 [03 - 01] ~ [03 - 02] 1","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_12","subject":"실과","num":"12강","title":"12강. 성취기준 [03 - 02] 2","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_13","subject":"실과","num":"13강","title":"13강. 성취기준 [03 - 03] ~ [03 - 05] 1","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_14","subject":"실과","num":"14강","title":"14강. 성취기준 [03 - 05] 2","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_15","subject":"실과","num":"15강","title":"15강. 성취기준 [04 - 01] ~ [04 - 05]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_16","subject":"실과","num":"16강","title":"16강. 성취기준 [04 - 07] ~ [04 - 08] 1","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_17","subject":"실과","num":"17강","title":"17강. 성취기준 [04 - 08] 2 ~ [04 - 11]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_18","subject":"실과","num":"18강","title":"18강. 성취기준 [05 - 01]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_19","subject":"실과","num":"19강","title":"19강. 성취기준 [05 - 02] ~ [05 - 03]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_20","subject":"실과","num":"20강","title":"20강. 성취기준 [05 - 04] ~ [05 - 05], [04 - 06]","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_21","subject":"실과","num":"21강","title":"21강. 실과 교과교육론1","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_22","subject":"실과","num":"22강","title":"22강. 실과 교과교육론2","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"실과_23","subject":"실과","num":"23강","title":"23강. 실과 교육과정","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"통교_1","subject":"통교","num":"1강","title":"1강. OT ~ 교육과정 (1) (바른 생활) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"통교_2","subject":"통교","num":"2강","title":"2강. 교육과정 (2) (바른 생활) [40분]","minutes":40,"term":1,"done":false,"doneDate":null},{"id":"통교_3","subject":"통교","num":"3강","title":"3강. 교육과정 (3) (바른 생활 ~ 슬기로운 생활) [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"통교_4","subject":"통교","num":"4강","title":"4강. 교육과정 (4) (즐거운 생활 ~ 지도서 부록) [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"통교_5","subject":"통교","num":"5강","title":"5강. 교육과정 (5) (지도서 총론) [27분]","minutes":27,"term":1,"done":false,"doneDate":null},{"id":"체육_1","subject":"체육","num":"1강","title":"1강. OT, 학습과제 단계화 [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"체육_2","subject":"체육","num":"2강","title":"2강. 설명 ~ 학습단서 [54분]","minutes":54,"term":1,"done":false,"doneDate":null},{"id":"체육_3","subject":"체육","num":"3강","title":"3강. 관찰 ~ 동기유발 [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"체육_4","subject":"체육","num":"4강","title":"4강. 평가 ~ 예방적 수업 관리 전략 [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"체육_5","subject":"체육","num":"5강","title":"5강. 비과제 행동 최소화 전략 ~ 체육 수업 모형 [37분]","minutes":37,"term":1,"done":false,"doneDate":null},{"id":"체육_6","subject":"체육","num":"6강","title":"6강. 직접 교수 모형 ~ 개별화 수업 모형 [37분]","minutes":37,"term":1,"done":false,"doneDate":null},{"id":"체육_7","subject":"체육","num":"7강","title":"7강. 협동 학습 모형 [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"체육_8","subject":"체육","num":"8강","title":"8강. 스포츠 교육 모형 ~ 탐구 수업 모형 [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"체육_9","subject":"체육","num":"9강","title":"9강. 이해 중심 게임 수업 모형 [52분]","minutes":52,"term":1,"done":false,"doneDate":null},{"id":"체육_10","subject":"체육","num":"10강","title":"10강. TPSR 모형 ~ 체육과 교육과정 모형 [86분]","minutes":86,"term":1,"done":false,"doneDate":null},{"id":"체육_11","subject":"체육","num":"11강","title":"11강. 교육과정 1 [41분]","minutes":41,"term":1,"done":false,"doneDate":null},{"id":"체육_12","subject":"체육","num":"12강","title":"12강. 교육과정 2 [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"체육_13","subject":"체육","num":"13강","title":"13강. 교육과정 3 [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"체육_14","subject":"체육","num":"14강","title":"14강. 교육과정 4 [20분]","minutes":20,"term":1,"done":false,"doneDate":null},{"id":"체육_15","subject":"체육","num":"15강","title":"15강. 교육과정 5 [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"체육_16","subject":"체육","num":"16강","title":"16강. 교육과정 6 [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"체육_17","subject":"체육","num":"17강","title":"17강. 교육과정 7 [51분]","minutes":51,"term":1,"done":false,"doneDate":null},{"id":"체육_18","subject":"체육","num":"18강","title":"18강. 교육과정 8 [35분]","minutes":35,"term":1,"done":false,"doneDate":null},{"id":"체육_19","subject":"체육","num":"19강","title":"19강. 운동 3~4학년 (기본 체력운동 - 체력운동 관련 기본 움직임) [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"체육_20","subject":"체육","num":"20강","title":"20강. 운동 3~4학년 (기본 체력운동 - 체력운동 기능) [68분]","minutes":68,"term":1,"done":false,"doneDate":null},{"id":"체육_21","subject":"체육","num":"21강","title":"21강. 운동 5~6학년 (성장 및 안전 활동)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_22","subject":"체육","num":"22강","title":"22강. 스포츠 3~4학년 (기본 움직임의 기초 기술1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_23","subject":"체육","num":"23강","title":"23강. 스포츠 3~4학년 (기본 움직임의 기초 기술2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_24","subject":"체육","num":"24강","title":"24강. 스포츠 3~4학년 (기본 움직임의 기초 기술3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_25","subject":"체육","num":"25강","title":"25강. 스포츠 3~4학년 (기본 움직임의 기초 기술4)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_26","subject":"체육","num":"26강","title":"26강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_27","subject":"체육","num":"27강","title":"27강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_28","subject":"체육","num":"28강","title":"28강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_29","subject":"체육","num":"29강","title":"29강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_30","subject":"체육","num":"30강","title":"30강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_31","subject":"체육","num":"31강","title":"31강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_32","subject":"체육","num":"32강","title":"32강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_33","subject":"체육","num":"33강","title":"33강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_34","subject":"체육","num":"34강","title":"34강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_35","subject":"체육","num":"35강","title":"35강. 스포츠 5~6학년 (생태형 스포츠 유형별 활동1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_36","subject":"체육","num":"36강","title":"36강. 스포츠 5~6학년 (생태형 스포츠 유형별 활동2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_37","subject":"체육","num":"37강","title":"37강. 표현 3~4학년","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"체육_38","subject":"체육","num":"38강","title":"38강. 표현 5~6학년","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_0","subject":"국어","num":"0강","title":"0강. 2027학년도 국어 OT [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"국어_1","subject":"국어","num":"1강","title":"1강. 기초 문식성 (1) [76분]","minutes":76,"term":1,"done":false,"doneDate":null},{"id":"국어_2","subject":"국어","num":"2강","title":"2강. 기초 문식성 (2) [22분]","minutes":22,"term":1,"done":false,"doneDate":null},{"id":"국어_3","subject":"국어","num":"3강","title":"3강. 기초 문식성 (3) [25분]","minutes":25,"term":1,"done":false,"doneDate":null},{"id":"국어_4","subject":"국어","num":"4강","title":"4강. 기초 문식성 (4) [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"국어_5","subject":"국어","num":"5강","title":"5강. 기초 문식성 (5) [32분]","minutes":32,"term":1,"done":false,"doneDate":null},{"id":"국어_6","subject":"국어","num":"6강","title":"6강. 기초 문식성 (6) [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"국어_7","subject":"국어","num":"7강","title":"7강. 기초 문식성 (7) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"국어_8","subject":"국어","num":"8강","title":"8강. 기초 문식성 (8) [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"국어_9","subject":"국어","num":"9강","title":"9강. 문법 영역 (1) [53분]","minutes":53,"term":1,"done":false,"doneDate":null},{"id":"국어_10","subject":"국어","num":"10강","title":"10강. 문법 영역 (2) [25분]","minutes":25,"term":1,"done":false,"doneDate":null},{"id":"국어_11","subject":"국어","num":"11강","title":"11강. 문법 영역 (3) [52분]","minutes":52,"term":1,"done":false,"doneDate":null},{"id":"국어_12","subject":"국어","num":"12강","title":"12강. 문법 영역 (4) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"국어_13","subject":"국어","num":"13강","title":"13강. 문법 영역 (5) [70분]","minutes":70,"term":1,"done":false,"doneDate":null},{"id":"국어_14","subject":"국어","num":"14강","title":"14강. 문법 영역 (6) [69분]","minutes":69,"term":1,"done":false,"doneDate":null},{"id":"국어_15","subject":"국어","num":"15강","title":"15강. 읽기 영역 (1) [41분]","minutes":41,"term":1,"done":false,"doneDate":null},{"id":"국어_16","subject":"국어","num":"16강","title":"16강. 읽기 영역 (2) [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"국어_17","subject":"국어","num":"17강","title":"17강. 읽기 영역 (3) [31분]","minutes":31,"term":1,"done":false,"doneDate":null},{"id":"국어_18","subject":"국어","num":"18강","title":"18강. 읽기 영역 (4) [26분]","minutes":26,"term":1,"done":false,"doneDate":null},{"id":"국어_19","subject":"국어","num":"19강","title":"19강. 읽기 영역 (5) [80분]","minutes":80,"term":1,"done":false,"doneDate":null},{"id":"국어_20","subject":"국어","num":"20강","title":"20강. 읽기 영역 (6) [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"국어_21","subject":"국어","num":"21강","title":"21강. 읽기 영역 (7) [26분]","minutes":26,"term":1,"done":false,"doneDate":null},{"id":"국어_22","subject":"국어","num":"22강","title":"22강. 읽기 영역 (8) [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"국어_23","subject":"국어","num":"23강","title":"23강. 읽기 영역 (9) [23분]","minutes":23,"term":1,"done":false,"doneDate":null},{"id":"국어_24","subject":"국어","num":"24강","title":"24강. 수업 모형 [12분]","minutes":12,"term":1,"done":false,"doneDate":null},{"id":"국어_25","subject":"국어","num":"25강","title":"25강. 쓰기 영역 (1) [66분]","minutes":66,"term":1,"done":false,"doneDate":null},{"id":"국어_26","subject":"국어","num":"26강","title":"26강. 쓰기 영역 (2) [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"국어_27","subject":"국어","num":"27강","title":"27강. 쓰기 영역 (3) [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"국어_28","subject":"국어","num":"28강","title":"28강. 쓰기 영역 (4) [20분]","minutes":20,"term":1,"done":false,"doneDate":null},{"id":"국어_29","subject":"국어","num":"29강","title":"29강. 쓰기 영역 (5) [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"국어_30","subject":"국어","num":"30강","title":"30강. 쓰기 영역 (6) [34분]","minutes":34,"term":1,"done":false,"doneDate":null},{"id":"국어_31","subject":"국어","num":"31강","title":"31강. 쓰기 영역 (7) [35분]","minutes":35,"term":1,"done":false,"doneDate":null},{"id":"국어_32","subject":"국어","num":"32강","title":"32강. 쓰기 영역 (8) [36분]","minutes":36,"term":1,"done":false,"doneDate":null},{"id":"국어_33","subject":"국어","num":"33강","title":"33강. 듣기·말하기 영역 (1) [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"국어_34","subject":"국어","num":"34강","title":"34강. 듣기·말하기 영역 (2) [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"국어_35","subject":"국어","num":"35강","title":"35강. 듣기·말하기 영역 (3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_36","subject":"국어","num":"36강","title":"36강. 듣기·말하기 영역 (4)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_37","subject":"국어","num":"37강","title":"37강. 듣기·말하기 영역 (5)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_38","subject":"국어","num":"38강","title":"38강. 듣기·말하기 영역 (6)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_39","subject":"국어","num":"39강","title":"39강. 듣기·말하기 영역 (7)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_40","subject":"국어","num":"40강","title":"40강. 교수·학습 모형, 문학 (1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_41","subject":"국어","num":"41강","title":"41강. 문학 (2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_42","subject":"국어","num":"42강","title":"42강. 문학 (3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_43","subject":"국어","num":"43강","title":"43강. 문학 (4)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_44","subject":"국어","num":"44강","title":"44강. 문학 (5)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_45","subject":"국어","num":"45강","title":"45강. 문학 (6)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_46","subject":"국어","num":"46강","title":"46강. 문학 (7)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_47","subject":"국어","num":"47강","title":"47강. 문학 (8), 교수·학습 모형, 그림책 읽기 지도","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"국어_48","subject":"국어","num":"48강","title":"48강. 매체","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"사회_1","subject":"사회","num":"1강","title":"1강. 사회과 OT ~ 사회과 교수·학습 모형 (1) [83분]","minutes":83,"term":1,"done":false,"doneDate":null},{"id":"사회_2","subject":"사회","num":"2강","title":"2강. 사회과 교수·학습 모형 (2) [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"사회_3","subject":"사회","num":"3강","title":"3강. 사회과 교수·학습 모형 (3) [70분]","minutes":70,"term":1,"done":false,"doneDate":null},{"id":"사회_4","subject":"사회","num":"4강","title":"4강. 사회과 교수·학습 모형 (4) [51분]","minutes":51,"term":1,"done":false,"doneDate":null},{"id":"사회_5","subject":"사회","num":"5강","title":"5강. 사회과 교수·학습 모형 (5) [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"사회_6","subject":"사회","num":"6강","title":"6강. 사회과 교수·학습 모형 (6) [51분]","minutes":51,"term":1,"done":false,"doneDate":null},{"id":"사회_7","subject":"사회","num":"7강","title":"7강. 사회과 교수·학습 모형 (7) [56분]","minutes":56,"term":1,"done":false,"doneDate":null},{"id":"사회_8","subject":"사회","num":"8강","title":"8강. 사회과 수업 기법 [87분]","minutes":87,"term":1,"done":false,"doneDate":null},{"id":"사회_9","subject":"사회","num":"9강","title":"9강. 사회과 궁극적 목표 ‘시민성’ [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"사회_10","subject":"사회","num":"10강","title":"10강. 사회과 고급 사고력 [47분]","minutes":47,"term":1,"done":false,"doneDate":null},{"id":"사회_11","subject":"사회","num":"11강","title":"11강. 사회과 교육의 본질에 대한 유형 [87분]","minutes":87,"term":1,"done":false,"doneDate":null},{"id":"사회_12","subject":"사회","num":"12강","title":"12강. 사회과 교육과정의 내용 구성 원리 [72분]","minutes":72,"term":1,"done":false,"doneDate":null},{"id":"사회_13","subject":"사회","num":"13강","title":"13강. 사회과 역사 및 지리 영역의 지도 [80분]","minutes":80,"term":1,"done":false,"doneDate":null},{"id":"사회_14","subject":"사회","num":"14강","title":"14강. 사회과 교육과정 전반부 [47분]","minutes":47,"term":1,"done":false,"doneDate":null},{"id":"사회_15","subject":"사회","num":"15강","title":"15강. 3학년 1학기 각론 (1) [71분]","minutes":71,"term":1,"done":false,"doneDate":null},{"id":"사회_16","subject":"사회","num":"16강","title":"16강. 3학년 1학기 각론 (2) ~ 3학년 2학기 각론 (1) [71분]","minutes":71,"term":1,"done":false,"doneDate":null},{"id":"사회_17","subject":"사회","num":"17강","title":"17강. 3학년 2학기 각론 (2) [52분]","minutes":52,"term":1,"done":false,"doneDate":null},{"id":"사회_18","subject":"사회","num":"18강","title":"18강. 4학년 1학기 각론 (1) [81분]","minutes":81,"term":1,"done":false,"doneDate":null},{"id":"사회_19","subject":"사회","num":"19강","title":"19강. 4학년 1학기 각론 (2) [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"사회_20","subject":"사회","num":"20강","title":"20강. 4학년 1학기 각론 (3) [54분]","minutes":54,"term":1,"done":false,"doneDate":null},{"id":"사회_21","subject":"사회","num":"21강","title":"21강. 4학년 2학기 각론 (1) [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"사회_22","subject":"사회","num":"22강","title":"22강. 4학년 2학기 각론 (2) [51분]","minutes":51,"term":1,"done":false,"doneDate":null},{"id":"사회_23","subject":"사회","num":"23강","title":"23강. 5학년 1학기 각론 (1) [64분]","minutes":64,"term":1,"done":false,"doneDate":null},{"id":"사회_24","subject":"사회","num":"24강","title":"24강. 5학년 1학기 각론 (2) [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"사회_25","subject":"사회","num":"25강","title":"25강. 5학년 1학기 각론 (3) [54분]","minutes":54,"term":1,"done":false,"doneDate":null},{"id":"사회_26","subject":"사회","num":"26강","title":"26강. 5학년 1학기 각론 (4) [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"사회_27","subject":"사회","num":"27강","title":"27강. 5학년 1학기 각론 (5) [93분]","minutes":93,"term":1,"done":false,"doneDate":null},{"id":"사회_28","subject":"사회","num":"28강","title":"28강. 5학년 1학기 각론 (6) ~ 6학년 1학기 각론 (1) [63분]","minutes":63,"term":1,"done":false,"doneDate":null},{"id":"사회_29","subject":"사회","num":"29강","title":"29강. 6학년 1학기 각론 (2) [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"사회_30","subject":"사회","num":"30강","title":"30강. 6학년 1학기 각론 (3) [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"사회_31","subject":"사회","num":"31강","title":"31강. 6학년 1학기 각론 (4) [54분]","minutes":54,"term":1,"done":false,"doneDate":null},{"id":"사회_32","subject":"사회","num":"32강","title":"32강. 6학년 1학기 각론 (5) ~ 6학년 2학기 각론 (1) [69분]","minutes":69,"term":1,"done":false,"doneDate":null},{"id":"사회_33","subject":"사회","num":"33강","title":"33강. 6학년 2학기 각론 (2) [73분]","minutes":73,"term":1,"done":false,"doneDate":null},{"id":"사회_34","subject":"사회","num":"34강","title":"34강. 6학년 2학기 각론 (3) [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"사회_35","subject":"사회","num":"35강","title":"35강. 6학년 2학기 각론 (4) [73분]","minutes":73,"term":1,"done":false,"doneDate":null},{"id":"사회_36","subject":"사회","num":"36강","title":"36강. 6학년 2학기 각론 (5) [75분]","minutes":75,"term":1,"done":false,"doneDate":null},{"id":"사회_37","subject":"사회","num":"37강","title":"37강. 사회과 교육과정 후반부 ~ 5학년 2학기 각론 (1) [84분]","minutes":84,"term":1,"done":false,"doneDate":null},{"id":"사회_38","subject":"사회","num":"38강","title":"38강. 5학년 2학기 각론 (2) [66분]","minutes":66,"term":1,"done":false,"doneDate":null},{"id":"사회_39","subject":"사회","num":"39강","title":"39강. 5학년 2학기 각론 (3) [41분]","minutes":41,"term":1,"done":false,"doneDate":null},{"id":"사회_40","subject":"사회","num":"40강","title":"40강. 5학년 2학기 각론 (4) [45분]","minutes":45,"term":1,"done":false,"doneDate":null},{"id":"수학_0","subject":"수학","num":"0강","title":"0강. 2027학년도 수학 OT [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"수학_1","subject":"수학","num":"1강","title":"1강. 수학의 가치 ~ 수학적 사고 [70분]","minutes":70,"term":1,"done":false,"doneDate":null},{"id":"수학_2","subject":"수학","num":"2강","title":"2강. 수학적 지식의 형태와 특성 [56분]","minutes":56,"term":1,"done":false,"doneDate":null},{"id":"수학_3","subject":"수학","num":"3강","title":"3강. 수학 수업 모형 (1) [66분]","minutes":66,"term":1,"done":false,"doneDate":null},{"id":"수학_4","subject":"수학","num":"4강","title":"4강. 수학 수업 모형 (2) [62분]","minutes":62,"term":1,"done":false,"doneDate":null},{"id":"수학_5","subject":"수학","num":"5강","title":"5강. 수학 수업 모형 (3) [68분]","minutes":68,"term":1,"done":false,"doneDate":null},{"id":"수학_6","subject":"수학","num":"6강","title":"6강. 수학 교육 과정 [71분]","minutes":71,"term":1,"done":false,"doneDate":null},{"id":"수학_7","subject":"수학","num":"7강","title":"7강. 평면도형 (1) [52분]","minutes":52,"term":1,"done":false,"doneDate":null},{"id":"수학_8","subject":"수학","num":"8강","title":"8강. 평면도형 (2) [44분]","minutes":44,"term":1,"done":false,"doneDate":null},{"id":"수학_9","subject":"수학","num":"9강","title":"9강. 평면도형 (3) [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"수학_10","subject":"수학","num":"10강","title":"10강. 평면도형 (4) [39분]","minutes":39,"term":1,"done":false,"doneDate":null},{"id":"수학_11","subject":"수학","num":"11강","title":"11강. 평면도형 (5) [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"수학_12","subject":"수학","num":"12강","title":"12강. 평면도형 (6) [67분]","minutes":67,"term":1,"done":false,"doneDate":null},{"id":"수학_13","subject":"수학","num":"13강","title":"13강. 평면도형 (7) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"수학_14","subject":"수학","num":"14강","title":"14강. 평면도형 (8) [31분]","minutes":31,"term":1,"done":false,"doneDate":null},{"id":"수학_15","subject":"수학","num":"15강","title":"15강. 평면도형 (9) [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"수학_16","subject":"수학","num":"16강","title":"16강. 평면도형 (10) [47분]","minutes":47,"term":1,"done":false,"doneDate":null},{"id":"수학_17","subject":"수학","num":"17강","title":"17강. 입체도형 (1) [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"수학_18","subject":"수학","num":"18강","title":"18강. 입체도형 (2) [60분]","minutes":60,"term":1,"done":false,"doneDate":null},{"id":"수학_19","subject":"수학","num":"19강","title":"19강. 입체도형 (3) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"수학_20","subject":"수학","num":"20강","title":"20강. 입체도형 (4) [31분]","minutes":31,"term":1,"done":false,"doneDate":null},{"id":"수학_21","subject":"수학","num":"21강","title":"21강. 기본 이론 - 디에네스 (개념학습 이론) [72분]","minutes":72,"term":1,"done":false,"doneDate":null},{"id":"수학_22","subject":"수학","num":"22강","title":"22강. 반힐레 (1) [70분]","minutes":70,"term":1,"done":false,"doneDate":null},{"id":"수학_23","subject":"수학","num":"23강","title":"23강. 반힐레 (2) [34분]","minutes":34,"term":1,"done":false,"doneDate":null},{"id":"수학_24","subject":"수학","num":"24강","title":"24강. 측정 (1) [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"수학_25","subject":"수학","num":"25강","title":"25강. 측정 (2) [58분]","minutes":58,"term":1,"done":false,"doneDate":null},{"id":"수학_26","subject":"수학","num":"26강","title":"26강. 측정 (3) [29분]","minutes":29,"term":1,"done":false,"doneDate":null},{"id":"수학_27","subject":"수학","num":"27강","title":"27강. 측정 (4) [40분]","minutes":40,"term":1,"done":false,"doneDate":null},{"id":"수학_28","subject":"수학","num":"28강","title":"28강. 측정 (5) [28분]","minutes":28,"term":1,"done":false,"doneDate":null},{"id":"수학_29","subject":"수학","num":"29강","title":"29강. 측정 (6) [39분]","minutes":39,"term":1,"done":false,"doneDate":null},{"id":"수학_30","subject":"수학","num":"30강","title":"30강. 측정 (7) [40분]","minutes":40,"term":1,"done":false,"doneDate":null},{"id":"수학_31","subject":"수학","num":"31강","title":"31강. 측정 (8) [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"수학_32","subject":"수학","num":"32강","title":"32강. 측정 (9) [25분]","minutes":25,"term":1,"done":false,"doneDate":null},{"id":"수학_33","subject":"수학","num":"33강","title":"33강. 측정 (10) [36분]","minutes":36,"term":1,"done":false,"doneDate":null},{"id":"수학_34","subject":"수학","num":"34강","title":"34강. 측정 (11) [41분]","minutes":41,"term":1,"done":false,"doneDate":null},{"id":"수학_35","subject":"수학","num":"35강","title":"35강. 수와 연산 (1) [60분]","minutes":60,"term":1,"done":false,"doneDate":null},{"id":"수학_36","subject":"수학","num":"36강","title":"36강. 수와 연산 (2) [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"수학_37","subject":"수학","num":"37강","title":"37강. 수와 연산 (3) [47분]","minutes":47,"term":1,"done":false,"doneDate":null},{"id":"수학_38","subject":"수학","num":"38강","title":"38강. 수와 연산 (4) [63분]","minutes":63,"term":1,"done":false,"doneDate":null},{"id":"수학_39","subject":"수학","num":"39강","title":"39강. 수와 연산 (5) [65분]","minutes":65,"term":1,"done":false,"doneDate":null},{"id":"수학_40","subject":"수학","num":"40강","title":"40강. 수와 연산 (6) [21분]","minutes":21,"term":1,"done":false,"doneDate":null},{"id":"수학_41","subject":"수학","num":"41강","title":"41강. 수와 연산 (7) [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"수학_42","subject":"수학","num":"42강","title":"42강. 수와 연산 (8) [46분]","minutes":46,"term":1,"done":false,"doneDate":null},{"id":"수학_43","subject":"수학","num":"43강","title":"43강. 수와 연산 (9) [63분]","minutes":63,"term":1,"done":false,"doneDate":null},{"id":"수학_44","subject":"수학","num":"44강","title":"44강. 수와 연산 (10) [52분]","minutes":52,"term":1,"done":false,"doneDate":null},{"id":"수학_45","subject":"수학","num":"45강","title":"45강. 수와 연산 (11) [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"수학_46","subject":"수학","num":"46강","title":"46강. 수와 연산 (12) [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"수학_47","subject":"수학","num":"47강","title":"47강. 수와 연산 (13) [19분]","minutes":19,"term":1,"done":false,"doneDate":null},{"id":"수학_48","subject":"수학","num":"48강","title":"48강. 수와 연산 (14) [54분]","minutes":54,"term":1,"done":false,"doneDate":null},{"id":"수학_49","subject":"수학","num":"49강","title":"49강. 수와 연산 (16)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_50","subject":"수학","num":"50강","title":"50강. 수와 연산 (17)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_51","subject":"수학","num":"51강","title":"51강. 수와 연산 (18)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_52","subject":"수학","num":"52강","title":"52강. 수와 연산 (19)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_53","subject":"수학","num":"53강","title":"53강. 수와 연산 (20)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_54","subject":"수학","num":"54강","title":"54강. 수와 연산 (21)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_55","subject":"수학","num":"55강","title":"55강. 수와 연산 (22)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_56","subject":"수학","num":"56강","title":"56강. 수와 연산 (23)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_57","subject":"수학","num":"57강","title":"57강. 스켐프 ~ 피아제","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_58","subject":"수학","num":"58강","title":"58강. 변화와 관계 (1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_59","subject":"수학","num":"59강","title":"59강. 변화와 관계 (2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_60","subject":"수학","num":"60강","title":"60강. 변화와 관계 (3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_61","subject":"수학","num":"61강","title":"61강. 변화와 관계 (4)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_62","subject":"수학","num":"62강","title":"62강. 자료와 가능성 (1)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_63","subject":"수학","num":"63강","title":"63강. 자료와 가능성 (2)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_64","subject":"수학","num":"64강","title":"64강. 자료와 가능성 (3)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_65","subject":"수학","num":"65강","title":"65강. 프로이덴탈 ~ 오슈벨","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"수학_66","subject":"수학","num":"66강","title":"66강. 교수학적 변환론 ~ 초등학교 수학 학습에 대한 관점","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_0","subject":"과학","num":"0강","title":"0강. 오리엔테이션 [39분]","minutes":39,"term":1,"done":false,"doneDate":null},{"id":"과학_1","subject":"과학","num":"1강","title":"1강. 과학의 본성 [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"과학_2","subject":"과학","num":"2강","title":"2강. 과학 탐구 과정 - 기초 탐구 과정 기능 [46분]","minutes":46,"term":1,"done":false,"doneDate":null},{"id":"과학_3","subject":"과학","num":"3강","title":"3강. 과학 탐구 과정 - 통합 탐구 과정 기능 [64분]","minutes":64,"term":1,"done":false,"doneDate":null},{"id":"과학_4","subject":"과학","num":"4강","title":"4강. 과학 학습 모형 - 경험 학습, 발견 학습, 탐구학습 [67분]","minutes":67,"term":1,"done":false,"doneDate":null},{"id":"과학_5","subject":"과학","num":"5강","title":"5강. 과학 학습 모형 - 순환학습, 5E, POE [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"과학_6","subject":"과학","num":"6강","title":"6강. 과학 학습 모형 - 개념 변화 학습, STS 학습 [49분]","minutes":49,"term":1,"done":false,"doneDate":null},{"id":"과학_7","subject":"과학","num":"7강","title":"7강. 각론OT, 물질 (1) 3학년 2학기 물체와 물질 [68분]","minutes":68,"term":1,"done":false,"doneDate":null},{"id":"과학_8","subject":"과학","num":"8강","title":"8강. 물질 (2) 4학년 1학기 물의 상태 변화 [69분]","minutes":69,"term":1,"done":false,"doneDate":null},{"id":"과학_9","subject":"과학","num":"9강","title":"9강. 물질 (3) 4학년 2학기 여러 가지 기체 [69분]","minutes":69,"term":1,"done":false,"doneDate":null},{"id":"과학_10","subject":"과학","num":"10강","title":"10강. 물질 (4) 5학년 1학기 용해와 용액 [77분]","minutes":77,"term":1,"done":false,"doneDate":null},{"id":"과학_11","subject":"과학","num":"11강","title":"11강. 물질 (5) 5학년 2학기 혼합물의 분리 [50분]","minutes":50,"term":1,"done":false,"doneDate":null},{"id":"과학_12","subject":"과학","num":"12강","title":"12강. 물질 (6) 6학년 1학기 산과 염기 [84분]","minutes":84,"term":1,"done":false,"doneDate":null},{"id":"과학_13","subject":"과학","num":"13강","title":"13강. 물질 (7) 6학년 2학기 물질의 연소 [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"과학_14","subject":"과학","num":"14강","title":"14강. 생명 (1) 3학년 1학기 동물의 생활 [34분]","minutes":34,"term":1,"done":false,"doneDate":null},{"id":"과학_15","subject":"과학","num":"15강","title":"15강. 생명 (2) 3학년 1학기 식물의 생활 [35분]","minutes":35,"term":1,"done":false,"doneDate":null},{"id":"과학_16","subject":"과학","num":"16강","title":"16강. 생명 (3) 3학년 1학기 생물의 한살이 [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"과학_17","subject":"과학","num":"17강","title":"17강. 생명 (4) 4학년 1학기 다양한 생물과 우리 생활 [65분]","minutes":65,"term":1,"done":false,"doneDate":null},{"id":"과학_18","subject":"과학","num":"18강","title":"18강. 생명 (5) 4학년 2학기 생물과 환경 [38분]","minutes":38,"term":1,"done":false,"doneDate":null},{"id":"과학_19","subject":"과학","num":"19강","title":"19강. 생명 (6) 5학년 1학기 우리 몸의 구조와 기능 [58분]","minutes":58,"term":1,"done":false,"doneDate":null},{"id":"과학_20","subject":"과학","num":"20강","title":"20강. 생명 (7) 6학년 1학기 식물의 구조와 기능 [72분]","minutes":72,"term":1,"done":false,"doneDate":null},{"id":"과학_21","subject":"과학","num":"21강","title":"21강. 운동과 에너지 (1) 3학년 1학기 힘과 우리 생활 [90분]","minutes":90,"term":1,"done":false,"doneDate":null},{"id":"과학_22","subject":"과학","num":"22강","title":"22강. 운동과 에너지 (2) 3학년 2학기 소리의 성질 [42분]","minutes":42,"term":1,"done":false,"doneDate":null},{"id":"과학_23","subject":"과학","num":"23강","title":"23강. 운동과 에너지 (3) 4학년 1학기 자석의 이용 [61분]","minutes":61,"term":1,"done":false,"doneDate":null},{"id":"과학_24","subject":"과학","num":"24강","title":"24강. 운동과 에너지 (4) 5학년 1학기 빛의 성질 [73분]","minutes":73,"term":1,"done":false,"doneDate":null},{"id":"과학_25","subject":"과학","num":"25강","title":"25강. 운동과 에너지 (5) 5학년 2학기 열과 우리 생활 [94분]","minutes":94,"term":1,"done":false,"doneDate":null},{"id":"과학_26","subject":"과학","num":"26강","title":"26강. 운동과 에너지 (6) 6학년 1학기 물체의 운동 [43분]","minutes":43,"term":1,"done":false,"doneDate":null},{"id":"과학_27","subject":"과학","num":"27강","title":"27강. 운동과 에너지 (7) 6학년 2학기 전기의 이용 [72분]","minutes":72,"term":1,"done":false,"doneDate":null},{"id":"과학_28","subject":"과학","num":"28강","title":"28강. 지구와 우주 (1) 3학년 2학기 지구와 바다 [31분]","minutes":31,"term":1,"done":false,"doneDate":null},{"id":"과학_29","subject":"과학","num":"29강","title":"29강. 지구와 우주 (2) 4학년 1학기 땅의 변화 [59분]","minutes":59,"term":1,"done":false,"doneDate":null},{"id":"과학_30","subject":"과학","num":"30강","title":"30강. 지구와 우주 (3) 4학년 2학기 밤하늘 관찰 [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"과학_31","subject":"과학","num":"31강","title":"31강. 지구와 우주 (4) 5학년 1학기 지층과 화석 [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"과학_32","subject":"과학","num":"32강","title":"32강. 지구와 우주 (5) 5학년 2학기 날씨와 우리 생활 [82분]","minutes":82,"term":1,"done":false,"doneDate":null},{"id":"과학_33","subject":"과학","num":"33강","title":"33강. 지구와 우주 (6) 6학년 1학기 지구의 운동 [57분]","minutes":57,"term":1,"done":false,"doneDate":null},{"id":"과학_59","subject":"과학","num":"59강","title":"59강. 지구와 우주 (7) 6학년 2학기 계절의 변화 (개념)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_60","subject":"과학","num":"60강","title":"60강. 지구와 우주 (7) 6학년 2학기 계절의 변화 (탐구)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_61","subject":"과학","num":"61강","title":"61강. 과학과 사회 (1) 3학년 2학기 감염병과 건강한 생활 (개념+탐구)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_62","subject":"과학","num":"62강","title":"62강. 과학과 사회 (2) 4학년 2학기 기후변화와 우리 생활 (개념+탐구)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_63","subject":"과학","num":"63강","title":"63강. 과학과 사회 (3) 5학년 2학기 자원과 에너지, (4) 6학년 2학기 과학과 나의 진로","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_64","subject":"과학","num":"64강","title":"64강. 과학 태도, 과학적 방법, 과학 지식","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_65","subject":"과학","num":"65강","title":"65강. 과학의 진보, 과학 학습 이론 (구성주의, 행동주의)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_66","subject":"과학","num":"66강","title":"66강. 과학 학습 이론 (피아제 ~ 브루너)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_67","subject":"과학","num":"67강","title":"67강. 과학 교수 학습 방법 (실험 수업 ~ 협동 학습)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_68","subject":"과학","num":"68강","title":"68강. 과학 교수 학습 방법 (창의적 사고 촉진 기법 ~ 거꾸로 학습), 과학 학습의 평가","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학_69","subject":"과학","num":"69강","title":"69강. 과학 실험 안전, 2022 개정 과학과 교육과정","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_1","subject":"과학 개념","num":"1강","title":"1강. 물질 (1) 3학년 2학기 물체와 물질 [30분]","minutes":30,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_2","subject":"과학 개념","num":"2강","title":"2강. 물질 (2) 4학년 1학기 물의 상태 변화 [46분]","minutes":46,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_3","subject":"과학 개념","num":"3강","title":"3강. 물질 (3) 4학년 2학기 여러 가지 기체 [31분]","minutes":31,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_4","subject":"과학 개념","num":"4강","title":"4강. 물질 (4) 5학년 1학기 용해와 용액 [39분]","minutes":39,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_5","subject":"과학 개념","num":"5강","title":"5강. 물질 (5) 5학년 2학기 혼합물의 분리 [17분]","minutes":17,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_6","subject":"과학 개념","num":"6강","title":"6강. 물질 (6) 6학년 1학기 산과 염기 [48분]","minutes":48,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_7","subject":"과학 개념","num":"7강","title":"7강. 물질 (7) 6학년 2학기 물질의 연소 [28분]","minutes":28,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_8","subject":"과학 개념","num":"8강","title":"8강. 생명 (1) 3학년 1학기 동물의 생활 [16분]","minutes":16,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_9","subject":"과학 개념","num":"9강","title":"9강. 생명 (2) 3학년 1학기 식물의 생활 [21분]","minutes":21,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_10","subject":"과학 개념","num":"10강","title":"10강. 생명 (3) 3학년 1학기 생물의 한살이 [24분]","minutes":24,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_11","subject":"과학 개념","num":"11강","title":"11강. 생명 (4) 4학년 1학기 다양한 생물과 우리 생활 [25분]","minutes":25,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_12","subject":"과학 개념","num":"12강","title":"12강. 생명 (5) 4학년 2학기 생물과 환경 [25분]","minutes":25,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_13","subject":"과학 개념","num":"13강","title":"13강. 생명 (6) 5학년 1학기 우리 몸의 구조와 기능 [34분]","minutes":34,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_14","subject":"과학 개념","num":"14강","title":"14강. 생명 (7) 6학년 1학기 식물의 구조와 기능 [32분]","minutes":32,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_15","subject":"과학 개념","num":"15강","title":"15강. 운동과 에너지 (1) 3학년 1학기 힘과 우리 생활 [54분]","minutes":54,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_16","subject":"과학 개념","num":"16강","title":"16강. 운동과 에너지 (2) 3학년 2학기 소리의 성질 [28분]","minutes":28,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_17","subject":"과학 개념","num":"17강","title":"17강. 운동과 에너지 (3) 4학년 1학기 자석의 이용 [28분]","minutes":28,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_18","subject":"과학 개념","num":"18강","title":"18강. 운동과 에너지 (4) 5학년 1학기 빛의 성질 [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_19","subject":"과학 개념","num":"19강","title":"19강. 운동과 에너지 (5) 5학년 2학기 열과 우리 생활 [32분]","minutes":32,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_20","subject":"과학 개념","num":"20강","title":"20강. 운동과 에너지 (6) 6학년 1학기 물체의 운동 [22분]","minutes":22,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_21","subject":"과학 개념","num":"21강","title":"21강. 운동과 에너지 (7) 6학년 2학기 전기의 이용 [68분]","minutes":68,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_22","subject":"과학 개념","num":"22강","title":"22강. 지구와 우주 (1) 3학년 2학기 지구와 바다 [29분]","minutes":29,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_23","subject":"과학 개념","num":"23강","title":"23강. 지구와 우주 (2) 4학년 1학기 땅의 변화 [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_24","subject":"과학 개념","num":"24강","title":"24강. 지구와 우주 (3) 4학년 2학기 밤하늘 관찰 [55분]","minutes":55,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_25","subject":"과학 개념","num":"25강","title":"25강. 지구와 우주 (4) 5학년 1학기 지층과 화석 [28분]","minutes":28,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_26","subject":"과학 개념","num":"26강","title":"26강. 지구와 우주 (5) 5학년 2학기 날씨와 우리 생활 [40분]","minutes":40,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_27","subject":"과학 개념","num":"27강","title":"27강. 지구와 우주 (6) 6학년 1학기 지구의 운동 [33분]","minutes":33,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_60","subject":"과학 개념","num":"60강","title":"60강. 지구와 우주 (7) 6학년 2학기 계절의 변화 (탐구)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_61","subject":"과학 개념","num":"61강","title":"61강. 과학과 사회 (1) 3학년 2학기 감염병과 건강한 생활 (개념+탐구)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_62","subject":"과학 개념","num":"62강","title":"62강. 과학과 사회 (2) 4학년 2학기 기후변화와 우리 생활 (개념+탐구)","minutes":0,"term":1,"done":false,"doneDate":null},{"id":"과학 개념_63","subject":"과학 개념","num":"63강","title":"63강. 과학과 사회 (3) 5학년 2학기 자원과 에너지, (4) 6학년 2학기 과학과 나의 진로","minutes":0,"term":1,"done":false,"doneDate":null}];
+// ─── LECTURE_SEED: html에서 제거됨 — data.json이 단일 소스 ──────────────────
+// 강의 목록은 data.json에서만 로드됨 (강의 파서로 추가 → data.json에 반영)
+const LECTURE_SEED = [];
 
 // ─── SUBJECT CONFIG ──────────────────────────────────────────────────────────
 // 확정 순서: 총론·창체, 음악, 음악 심화, 영어, 도덕, 미술, 실과, 통합교과, 체육, 국어, 사회, 수학, 과학, 과학 개념
@@ -610,23 +586,17 @@ let state = {
   reportSettings: {studyGoalHour:7, sleepMinHour:6, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'}
 };
 
-// ─── GITHUB SETTINGS (별도 localStorage 키) ─────────────────────────────────
-function getGhSettings() {
-  try { return JSON.parse(localStorage.getItem('imgo_gh_settings')||'{}'); } catch(e) { return {}; }
-}
-function saveGhSettingsToStorage(s) {
-  localStorage.setItem('imgo_gh_settings', JSON.stringify(s));
-}
+// ─── HARDCODED CONSTANTS ─────────────────────────────────────────────────────
+const GH_TOKEN  = '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';
+const GH_REPO   = 'wybhrockstar/2027-Planner';
+const GH_BRANCH = 'main';
+const GH_PATH   = 'data.json';
+const ICAL_STUDY    = 'https://calendar.google.com/calendar/ical/3eac65694951b1627de968aa7a224edef1e384199b06e5f9d7e3aad77680b0d6%40group.calendar.google.com/public/basic.ics';
+const ICAL_PERSONAL = 'https://calendar.google.com/calendar/ical/unny0705%40gmail.com/public/basic.ics';
 
-function saveGhSettings() {
-  const s = {
-    token: document.getElementById('gh-token').value.trim(),
-    repo: document.getElementById('gh-repo').value.trim(),
-    branch: document.getElementById('gh-branch').value.trim() || 'main',
-    path: document.getElementById('gh-path').value.trim() || 'data.json'
-  };
-  saveGhSettingsToStorage(s);
-  setGhStatus('✓ GitHub 설정 저장됨', 'ok');
+// ─── GITHUB SETTINGS ─────────────────────────────────────────────────────────
+function getGhSettings() {
+  return { token: GH_TOKEN, repo: GH_REPO, branch: GH_BRANCH, path: GH_PATH };
 }
 
 function setGhStatus(msg, type) {
@@ -638,7 +608,7 @@ function setGhStatus(msg, type) {
 
 async function pushToGithub() {
   const s = getGhSettings();
-  if (!s.token || !s.repo) { setGhStatus('❌ token과 repo를 먼저 입력하세요', 'err'); return; }
+  if (!s.token || !s.repo) { setGhStatus('❌ 설정 오류', 'err'); return; }
   setGhStatus('⬆️ 업로드 중...', '');
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
@@ -699,12 +669,8 @@ function applyImportedState(d) {
   if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
   if (d.reportSettings) state.reportSettings = {...state.reportSettings,...d.reportSettings};
   if (d.lectures) {
-    const m = {}; d.lectures.forEach(l=>m[l.id]=l);
-    state.lectures = LECTURE_SEED.map(s=>({...s,...(m[s.id]?{done:m[s.id].done,doneDate:m[s.id].doneDate}:{})}));
-    // 파서로 추가된 강의들 (SEED에 없는 것들) 병합
-    const seedIds = new Set(LECTURE_SEED.map(l=>l.id));
-    const extras = d.lectures.filter(l=>!seedIds.has(l.id));
-    state.lectures = [...state.lectures, ...extras];
+    // data.json이 단일 소스 — 완료 기록 포함하여 그대로 사용
+    state.lectures = d.lectures;
   }
   saveState();
   renderPage(currentPage);
@@ -715,25 +681,16 @@ function loadState() {
     const s = localStorage.getItem('imgo_planner_v1');
     if (s) {
       const p = JSON.parse(s);
-      const savedLecMap = {};
-      (p.lectures||[]).forEach(l => { savedLecMap[l.id] = l; });
-      state.lectures = LECTURE_SEED.map(seed => {
-        const saved = savedLecMap[seed.id];
-        return saved ? {...seed, done:saved.done, doneDate:saved.doneDate} : {...seed};
-      });
-      // extras
-      const seedIds = new Set(LECTURE_SEED.map(l=>l.id));
-      const extras = (p.lectures||[]).filter(l=>!seedIds.has(l.id));
-      state.lectures = [...state.lectures, ...extras];
+      // data.json 단일 소스: 저장된 강의 목록 그대로 사용
+      state.lectures = p.lectures || [];
       state.dailyLogs = p.dailyLogs || [];
       state.examScores = p.examScores || [];
       if (p.termTodos) state.termTodos = {...state.termTodos,...p.termTodos};
       if (p.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...p.weeklySchedule};
       if (p.reportSettings) state.reportSettings = {...state.reportSettings,...p.reportSettings};
-    } else {
-      state.lectures = LECTURE_SEED.map(l => ({...l}));
     }
-  } catch(e) { state.lectures = LECTURE_SEED.map(l => ({...l})); }
+    // localStorage에 강의가 없으면 GitHub에서 로드될 때 채워짐
+  } catch(e) { /* ignore */ }
 }
 
 function saveState() {
@@ -812,17 +769,6 @@ function isStudyDay(dateStr) {
 
 // ─── SETTINGS MODAL ──────────────────────────────────────────────────────────
 function openSettingsModal() {
-  // GitHub
-  const gh = getGhSettings();
-  document.getElementById('gh-token').value = gh.token||'';
-  document.getElementById('gh-repo').value = gh.repo||'';
-  document.getElementById('gh-branch').value = gh.branch||'main';
-  document.getElementById('gh-path').value = gh.path||'data.json';
-  document.getElementById('gh-status').textContent = '';
-  // iCal
-  const ical = getIcalUrls();
-  document.getElementById('ical-study-url').value = ical.study||'';
-  document.getElementById('ical-personal-url').value = ical.personal||'';
   // reportSettings
   const rs = state.reportSettings;
   document.getElementById('rs-study').value = rs.studyGoalHour||7;
@@ -834,17 +780,7 @@ function openSettingsModal() {
 
 // ─── ICAL ────────────────────────────────────────────────────────────────────
 function getIcalUrls() {
-  try { return JSON.parse(localStorage.getItem('imgo_calendar_urls')||'{}'); } catch(e) { return {}; }
-}
-function saveIcalUrls() {
-  const urls = {
-    study: document.getElementById('ical-study-url').value.trim(),
-    personal: document.getElementById('ical-personal-url').value.trim()
-  };
-  localStorage.setItem('imgo_calendar_urls', JSON.stringify(urls));
-  toast('✓ iCal URL 저장됨');
-  // 캘린더 탭이 열려있으면 새로고침
-  if (plannerTab === 'calendar') renderCalendar();
+  return { study: ICAL_STUDY, personal: ICAL_PERSONAL };
 }
 
 function saveReportSettings() {
@@ -1303,7 +1239,7 @@ function inlineBar(name, pct, sub, color) {
 }
 
 function renderGrass(term) {
-  // build all dates in term
+  // 날짜 목록 생성
   const dates = [];
   const s = new Date(term.start), e = new Date(term.end);
   for (let d = new Date(s); d <= e; d.setDate(d.getDate()+1)) {
@@ -1312,90 +1248,149 @@ function renderGrass(term) {
   const td = today();
   const logMap = {};
   state.dailyLogs.forEach(l => { logMap[l.date] = l; });
-  const lecMap = {}; // date -> count done
+  const lecMap = {};
   state.lectures.filter(l=>l.done&&l.doneDate).forEach(l => {
     lecMap[l.doneDate] = (lecMap[l.doneDate]||0)+1;
   });
 
-  // Determine columns (weeks) layout
-  // Use Sunday-based weeks; start of term's week
-  const firstDate = new Date(term.start);
-  const startDow = firstDate.getDay(); // 0=Sun
-  // pad the start
-  const cells = [];
-  for (let i = 0; i < startDow; i++) cells.push(null);
-  dates.forEach(d => cells.push(d));
+  // 7일씩 주차 분리
+  const weeks = [];
+  let week = [];
+  dates.forEach((d, i) => {
+    week.push(d);
+    // 월요일 기준 7일 (또는 마지막 날)
+    if (week.length === 7 || i === dates.length - 1) {
+      weeks.push(week);
+      week = [];
+    }
+  });
 
-  const numCols = Math.ceil(cells.length / 7);
-
-  const cellsHtml = cells.map(d => {
-    if (!d) return `<div></div>`;
+  // 셀 데이터 계산 함수
+  function getCellData(d) {
     const log = logMap[d];
     const lDone = lecMap[d] || 0;
-    const isToday = d === td;
     const isFuture = d > td;
+    const isToday = d === td;
+    const studyDay = isStudyDay(d);
 
-    let score = 0;
+    if (isFuture) return { isFuture, isToday, log, lDone, studyDay };
+
     let srVal = null, studyVal = null, kcalVal = null;
-
     if (log) {
-      srVal = isStudyDay(d) ? (log.studyResult || '×') : null;
+      srVal = studyDay ? (log.studyResult || '×') : null;
       studyVal = studyGrade(log.studyMin||0);
       kcalVal = kcalGrade(log.kcal||0);
-      if (srVal==='O') score++;
-      if (lDone>=1) score++;
-      if (studyVal==='O') score++;
-      if (kcalVal==='O') score++;
     }
+    return { isFuture, isToday, log, lDone, srVal, studyVal, kcalVal, studyDay };
+  }
 
-    const bg = isFuture ? 'var(--bg4)' :
-               !log ? 'rgba(255,255,255,0.04)' :
-               score===4 ? '#1a4a0a' :
-               score===3 ? '#1a3a10' :
-               score===2 ? '#2a3a15' :
-               score===1 ? '#2c2c20' : 'rgba(255,255,255,0.04)';
+  function cellClass(grade) {
+    if (grade === 'O') return 'cell-o';
+    if (grade === '△') return 'cell-d';
+    if (grade === '×') return 'cell-x';
+    return 'cell-none';
+  }
 
-    const srColor = srVal==='O'?'#5ecfb0':srVal==='△'?'#ffb347':srVal==='×'?'#ff5a5a':'';
-    const lecColor = lDone>=1?'#c8f060':'var(--text4)';
-    const studyColor = studyVal==='O'?'#6eb5ff':studyVal==='△'?'#ffb347':'var(--text4)';
-    const kcalColor = kcalVal==='O'?'#ff9f43':kcalVal==='△'?'#ffb347':'var(--text4)';
+  // 날짜 헤더 행 (주차 구분)
+  let dateHeaderHtml = `<tr class="date-row"><th class="row-label"></th>`;
+  let weekSepCols = new Set();
+  let colIdx = 0;
+  weeks.forEach((wk, wi) => {
+    wk.forEach((d, di) => {
+      const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
+      if (sep) weekSepCols.add(colIdx);
+      const dt = new Date(d);
+      const label = `${dt.getMonth()+1}/${dt.getDate()}`;
+      const dow = dt.getDay();
+      const color = dow===0?'var(--red)':dow===6?'var(--blue)':'';
+      dateHeaderHtml += `<th class="${sep}" style="${color?`color:${color}`:''}">${label}</th>`;
+      colIdx++;
+    });
+  });
+  dateHeaderHtml += `</tr>`;
 
-    const srDisplay = srVal ? (srVal==='O'?'○':srVal==='△'?'△':'×') : '';
-    const lecDisplay = lDone > 0 ? String(lDone) : (log?'×':'');
-    const studyDisplay = log ? (log.studyMin ? (log.studyMin/60).toFixed(1) : '×') : '';
-    const kcalDisplay = log ? (log.kcal ? String(log.kcal) : '×') : '';
-    const clickable = !isFuture;
+  // 행 4종
+  const ROWS = [
+    { label: '운동', key: 'kcal',
+      render: (d, cd) => {
+        if (cd.isFuture) return { cls:'future', txt:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'' };
+        const v = cd.log.kcal||0;
+        return { cls: cellClass(cd.kcalVal), txt: v ? `${v}` : '×' };
+      }
+    },
+    { label: '공부',
+      render: (d, cd) => {
+        if (cd.isFuture) return { cls:'future', txt:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'' };
+        const v = cd.log.studyMin||0;
+        const txt = v ? `${(v/60).toFixed(1)}h` : '×';
+        return { cls: cellClass(cd.studyVal), txt };
+      }
+    },
+    { label: '인강',
+      render: (d, cd) => {
+        if (cd.isFuture) return { cls:'future', txt:'' };
+        if (!cd.log && !cd.lDone) return { cls:'cell-none', txt:'' };
+        const txt = cd.lDone > 0 ? `${cd.lDone}` : '×';
+        const cls = cd.lDone > 0 ? 'cell-o' : 'cell-x';
+        return { cls, txt };
+      }
+    },
+    { label: '스터디',
+      render: (d, cd) => {
+        if (!cd.studyDay) return { cls:'cell-skip', txt:'-' };
+        if (cd.isFuture) return { cls:'future', txt:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'' };
+        const sr = cd.srVal;
+        const cls = sr==='O'?'cell-o':sr==='△'?'cell-d':sr==='×'?'cell-x':'cell-none';
+        const txt = sr ? (sr==='O'?'○':sr==='△'?'△':'×') : '';
+        return { cls, txt };
+      }
+    }
+  ];
 
-    return `<div class="grass-cell ${isToday?'today-cell':''}" style="background:${bg};border-color:${isToday?'var(--accent)':'transparent'};${clickable?'cursor:pointer':''}" data-date="${d}">
-      <div class="grass-cell-inner">
-        ${isStudyDay(d) ? `<div class="grass-cell-line" style="color:${srColor}">${srDisplay}</div>` : `<div class="grass-cell-line"></div>`}
-        <div class="grass-cell-line" style="color:${lecColor}">${lecDisplay}</div>
-        <div class="grass-cell-line" style="color:${studyColor}">${studyDisplay}</div>
-        <div class="grass-cell-line" style="color:${kcalColor}">${kcalDisplay}</div>
-      </div>
-    </div>`;
-  }).join('');
+  let rowsHtml = '';
+  ROWS.forEach(row => {
+    rowsHtml += `<tr><th class="row-label">${row.label}</th>`;
+    colIdx = 0;
+    weeks.forEach((wk, wi) => {
+      wk.forEach((d, di) => {
+        const cd = getCellData(d);
+        const { cls, txt } = row.render(d, cd);
+        const todayCls = cd.isToday ? ' today-col' : '';
+        const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
+        const clickable = !cd.isFuture && cls !== 'cell-skip';
+        rowsHtml += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
+        colIdx++;
+      });
+    });
+    rowsHtml += `</tr>`;
+  });
 
-  return `<div class="card">
-    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">일일 체크리스트 현황</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:6px;display:flex;gap:12px">
-      <span style="color:var(--teal)">① 스터디</span>
-      <span style="color:var(--accent)">② 인강</span>
-      <span style="color:var(--blue)">③ 공부(h)</span>
-      <span style="color:var(--orange)">④ 운동</span>
+  return `<div class="card" style="padding:12px 10px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:10px">일일 체크리스트</div>
+    <div class="prog-table-wrap">
+      <table class="prog-table" id="prog-table-${term.id}">
+        ${dateHeaderHtml}
+        ${rowsHtml}
+      </table>
     </div>
-    <div class="grass-grid" id="grass-grid-${term.id}" style="grid-template-columns:repeat(${numCols},1fr)">
-      ${cellsHtml}
+    <div style="display:flex;gap:12px;margin-top:8px;font-size:10px">
+      <span class="cell-o" style="padding:1px 6px;border-radius:4px">○ 달성</span>
+      <span class="cell-d" style="padding:1px 6px;border-radius:4px">△ 부분</span>
+      <span class="cell-x" style="padding:1px 6px;border-radius:4px">× 미달</span>
+      <span style="color:var(--text4);font-size:10px">- 해당없음</span>
     </div>
   </div>`;
 }
 
-// 잔디 클릭 이벤트 바인딩
+// 표 클릭 이벤트 바인딩
 function bindGrassClicks() {
-  document.querySelectorAll('[id^="grass-grid-"] .grass-cell[data-date]').forEach(cell => {
+  document.querySelectorAll('[id^="prog-table-"] td[data-date]').forEach(cell => {
     cell.addEventListener('click', () => {
       const d = cell.dataset.date;
-      if (d > today()) return;
+      if (!d || d > today()) return;
       openLogModalForDate(d);
     });
   });
@@ -1960,8 +1955,8 @@ function importData() {
         if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
         if (d.reportSettings) state.reportSettings = {...state.reportSettings,...d.reportSettings};
         if (d.lectures) {
-          const m = {}; d.lectures.forEach(l=>m[l.id]=l);
-          state.lectures = LECTURE_SEED.map(s=>({...s,...(m[s.id]?{done:m[s.id].done,doneDate:m[s.id].doneDate}:{})}));
+          // data.json 단일 소스: 그대로 사용
+          state.lectures = d.lectures;
         }
         saveState(); renderPage(currentPage);
         closeModal('modal-backup');
@@ -2215,10 +2210,15 @@ loadState();
 document.getElementById('dday-txt').textContent = `D-${dDay()}`;
 if (localStorage.getItem('imgo_theme')==='light') document.body.classList.add('light');
 renderToday();
-// 페이지 로드 시 GitHub 자동 fetch (GitHub 우선 → localStorage 폴백)
+// 페이지 로드 시 GitHub 자동 fetch (data.json = 단일 소스)
 (async () => {
   const loaded = await autoLoadFromGithub();
-  if (loaded) renderPage(currentPage);
+  if (loaded) {
+    renderPage(currentPage);
+  } else if (state.lectures.length === 0) {
+    // GitHub 연결 실패 + 강의 없음: 안내 표시
+    toast('⚠️ GitHub 연결 실패 — 강의 파서로 강의를 추가하거나 GitHub 연결을 확인하세요');
+  }
 })();
 </script>
 </body>
