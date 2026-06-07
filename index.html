@@ -607,9 +607,86 @@ let state = {
 const GH_REPO_DEFAULT   = 'wybhrockstar/2027-Planner';
 const GH_BRANCH_DEFAULT = 'main';
 const GH_PATH           = 'data.json';
-const GCAL_API_KEY      = 'AIzaSyCeMPqYLrtGHFNdS5_0jMWmOGJH-LFcBOY';
-const GCAL_STUDY_ID     = '3eac65694951b1627de968aa7a224edef1e384199b06e5f9d7e3aad77680b0d6@group.calendar.google.com';
-const GCAL_PERSONAL_ID  = 'wybhrockstar@gmail.com';
+const ICAL_STUDY_URL    = 'https://calendar.google.com/calendar/ical/3eac65694951b1627de968aa7a224edef1e384199b06e5f9d7e3aad77680b0d6%40group.calendar.google.com/private-523ed69d5025926c683e1ca977bc1bc2/basic.ics';
+const ICAL_PERSONAL_URL = 'https://calendar.google.com/calendar/ical/wybhrockstar%40gmail.com/private-96197324b42f352cd3dcc31e5350994c/basic.ics';
+
+// ─── iCal 설정 ───────────────────────────────────────────────────────────────
+function getIcalSettings() {
+  return {
+    study:    localStorage.getItem('ical_study_url')    || '',
+    personal: localStorage.getItem('ical_personal_url') || ''
+  };
+}
+function saveIcalSettings() {
+  const study    = document.getElementById('input-ical-study').value.trim();
+  const personal = document.getElementById('input-ical-personal').value.trim();
+  if (!study && !personal) { setIcalStatus('❌ URL을 하나 이상 입력하세요', 'err'); return; }
+  if (study)    localStorage.setItem('ical_study_url',    study);
+  if (personal) localStorage.setItem('ical_personal_url', personal);
+  setIcalStatus('✓ 저장됨 — 캘린더를 다시 열면 적용됩니다', 'ok');
+  clearIcalCache();
+}
+function setIcalStatus(msg, type) {
+  const el = document.getElementById('ical-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.color = type==='ok' ? 'var(--teal)' : type==='err' ? 'var(--red)' : 'var(--text3)';
+}
+
+// ─── iCal 파싱 ───────────────────────────────────────────────────────────────
+async function fetchIcalEvents(url) {
+  if (!url) return [];
+  try {
+    // CORS 우회: allorigins 프록시 사용
+    const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+    const res = await fetch(proxy);
+    if (!res.ok) return [];
+    const text = await res.text();
+    return parseIcal(text);
+  } catch(e) {
+    console.warn('iCal fetch error:', e);
+    return [];
+  }
+}
+
+function parseIcal(text) {
+  const events = [];
+  const lines = text.replace(/\r\n /g, '').replace(/\r\n\t/g, '').split(/\r\n|\r|\n/);
+  let cur = null;
+  for (const line of lines) {
+    if (line === 'BEGIN:VEVENT') { cur = {}; continue; }
+    if (line === 'END:VEVENT') {
+      if (cur && cur.start) {
+        // 날짜만 추출 (종일: YYYYMMDD, 시간포함: YYYYMMDDTHHMMSSZ)
+        const toDate = (val) => {
+          if (!val) return null;
+          const s = val.replace(/[TZ]/g,'').slice(0,8);
+          return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
+        };
+        const start = toDate(cur.start);
+        let end = toDate(cur.end);
+        // 종일 이벤트는 DTEND가 다음날 → 하루 빼기
+        if (cur.startIsDate && end && end > start) {
+          const d = new Date(end + 'T00:00:00');
+          d.setDate(d.getDate() - 1);
+          end = dateStr(d);
+        }
+        events.push({ date: start, endDate: end || start, summary: cur.summary || '(제목 없음)' });
+      }
+      cur = null; continue;
+    }
+    if (!cur) continue;
+    if (line.startsWith('DTSTART;VALUE=DATE:') || line.startsWith('DTSTART:')) {
+      cur.start = line.split(':').slice(1).join(':');
+      cur.startIsDate = line.includes('VALUE=DATE');
+    } else if (line.startsWith('DTEND;VALUE=DATE:') || line.startsWith('DTEND:')) {
+      cur.end = line.split(':').slice(1).join(':');
+    } else if (line.startsWith('SUMMARY:')) {
+      cur.summary = line.slice(8).replace(/\\,/g,',').replace(/\\n/g,' ').replace(/\\;/g,';');
+    }
+  }
+  return events;
+}
 
 // ─── GITHUB SETTINGS (토큰은 localStorage, 나머지는 하드코딩) ─────────────────
 function getGhSettings() {
@@ -809,13 +886,11 @@ function isStudyDay(dateStr) {
 
 // ─── SETTINGS MODAL ──────────────────────────────────────────────────────────
 function openSettingsModal() {
-  // reportSettings
   const rs = state.reportSettings;
   document.getElementById('rs-study').value = rs.studyGoalHour||7;
   document.getElementById('rs-sleep').value = rs.sleepMinHour||6;
   document.getElementById('rs-bedtime').value = rs.bedtimeLimit||'01:00';
   document.getElementById('rs-waketime').value = rs.wakeTimeLimit||'07:30';
-  // GitHub 설정 (저장된 값 자동 채우기)
   const gh = getGhSettings();
   document.getElementById('input-gh-token').value = gh.token || '';
   document.getElementById('input-gh-repo').value = gh.repo || GH_REPO_DEFAULT;
@@ -824,7 +899,6 @@ function openSettingsModal() {
   openModal('modal-backup');
 }
 
-// ─── GOOGLE CALENDAR API ─────────────────────────────────────────────────────
 function saveReportSettings() {
   state.reportSettings = {
     studyGoalHour: parseFloat(document.getElementById('rs-study').value)||7,
@@ -836,52 +910,15 @@ function saveReportSettings() {
   toast('✓ 리포트 기준값 저장됨');
 }
 
-async function fetchGcalEvents(calendarId, timeMin, timeMax) {
-  try {
-    const id = encodeURIComponent(calendarId);
-    const params = new URLSearchParams({
-      key: GCAL_API_KEY,
-      timeMin: timeMin || new Date(new Date().getFullYear(), 0, 1).toISOString(),
-      timeMax: timeMax || new Date(new Date().getFullYear(), 11, 31).toISOString(),
-      maxResults: 500,
-      singleEvents: true,
-      orderBy: 'startTime'
-    });
-    const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${id}/events?${params}`);
-    if (!res.ok) {
-      console.warn(`GCal fetch failed (${calendarId}):`, res.status, await res.text());
-      return [];
-    }
-    const data = await res.json();
-    return (data.items || []).map(item => {
-      const start = item.start.date || item.start.dateTime?.slice(0,10);
-      // 종료일: 종일 이벤트는 DTEND가 다음날이라 하루 빼줌
-      let end = item.end.date || item.end.dateTime?.slice(0,10);
-      if (item.start.date && end > start) {
-        const d = new Date(end); d.setDate(d.getDate()-1);
-        end = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-      }
-      return { date: start, endDate: end || start, summary: item.summary || '(제목 없음)', id: item.id };
-    });
-  } catch(e) {
-    console.warn('GCal fetch error:', e);
-    return [];
-  }
-}
-
 // ─── 캘린더 캐시 ─────────────────────────────────────────────────────────────
 let icalCache = { study: [], personal: [], loaded: false };
 let _icalLastFetch = 0;
 async function loadIcalData() {
   const now = Date.now();
-  // 5분 이내면 캐시 사용, 이후엔 재fetch
   if (icalCache.loaded && (now - _icalLastFetch) < 1 * 60 * 1000) return icalCache;
-  const year = new Date().getFullYear();
-  const timeMin = `${year}-01-01T00:00:00Z`;
-  const timeMax = `${year}-12-31T23:59:59Z`;
   const [study, personal] = await Promise.all([
-    fetchGcalEvents(GCAL_STUDY_ID, timeMin, timeMax),
-    fetchGcalEvents(GCAL_PERSONAL_ID, timeMin, timeMax)
+    fetchIcalEvents(ICAL_STUDY_URL),
+    fetchIcalEvents(ICAL_PERSONAL_URL)
   ]);
   icalCache = { study, personal, loaded: true };
   _icalLastFetch = Date.now();
