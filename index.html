@@ -1000,12 +1000,12 @@ function renderToday() {
       <div class="sc-val">${studyVal}</div>
       <div class="sc-sub">오늘</div>
     </div>
-    <div class="sc" id="sc-today-events">
+    <div class="sc" id="sc-today-events" style="align-self:start">
       <div class="sc-lbl">오늘 일정</div>
       <div class="sc-val" style="font-size:13px;color:var(--text3)">...</div>
       <div class="sc-sub">로딩 중</div>
     </div>
-    <div class="sc" id="sc-tmr-events">
+    <div class="sc" id="sc-tmr-events" style="align-self:start">
       <div class="sc-lbl">내일 일정</div>
       <div class="sc-val" style="font-size:13px;color:var(--text3)">...</div>
       <div class="sc-sub">로딩 중</div>
@@ -1023,15 +1023,16 @@ function renderToday() {
     const allTmr = [...tmrEvts.study, ...tmrEvts.personal];
     const scToday = document.getElementById('sc-today-events');
     const scTmr = document.getElementById('sc-tmr-events');
+    function evtListHtml(evts) {
+      if (!evts.length) return '<div class="sc-val" style="font-size:18px;color:var(--text)">-</div><div class="sc-sub">일정 없음</div>';
+      return `<div class="sc-val" style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px">${evts.length}개</div>`
+        + evts.map(e => `<div style="font-size:11px;color:var(--text2);line-height:1.5;word-break:keep-all;white-space:normal">${e.summary}</div>`).join('');
+    }
     if (scToday) {
-      scToday.innerHTML = `<div class="sc-lbl">오늘 일정</div>
-        <div class="sc-val" style="font-size:${allToday.length?'14px':'18px'};color:var(--text)">${allToday.length || '-'}</div>
-        <div class="sc-sub" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%">${allToday.length ? allToday[0].summary.slice(0,10) : '일정 없음'}</div>`;
+      scToday.innerHTML = `<div class="sc-lbl">오늘 일정</div>${evtListHtml(allToday)}`;
     }
     if (scTmr) {
-      scTmr.innerHTML = `<div class="sc-lbl">내일 일정</div>
-        <div class="sc-val" style="font-size:${allTmr.length?'14px':'18px'};color:var(--text)">${allTmr.length || '-'}</div>
-        <div class="sc-sub" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%">${allTmr.length ? allTmr[0].summary.slice(0,10) : '일정 없음'}</div>`;
+      scTmr.innerHTML = `<div class="sc-lbl">내일 일정</div>${evtListHtml(allTmr)}`;
     }
   })();
 
@@ -1832,19 +1833,23 @@ async function renderCalendar() {
     const allEvts = [...evts.study, ...evts.personal];
     const isFuture = dateStr > td;
 
-    const studyEvt = evts.study[0];
-    const personalEvt = evts.personal[0];
     const memo = log?.memo;
 
     let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
     let border = isToday ? 'var(--accent)' : 'var(--border)';
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
-    html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:72px;cursor:${isFuture?'default':'pointer'};position:relative">
+    const studyEvtsHtml = evts.study.map(e =>
+      `<div style="font-size:9px;color:var(--teal);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:1px">📅 ${e.summary}</div>`
+    ).join('');
+    const personalEvtsHtml = evts.personal.map(e =>
+      `<div style="font-size:9px;color:var(--blue);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:1px">🗓 ${e.summary}</div>`
+    ).join('');
+    html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
-      ${studyEvt ? `<div style="font-size:9px;color:var(--teal);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3" title="${studyEvt.summary}">📅 ${studyEvt.summary.slice(0,8)}</div>` : ''}
-      ${personalEvt ? `<div style="font-size:9px;color:var(--blue);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3" title="${personalEvt.summary}">🗓 ${personalEvt.summary.slice(0,8)}</div>` : ''}
-      ${memo ? `<div style="font-size:9px;color:var(--text2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3;margin-top:2px;border-top:1px solid var(--border)" title="${memo}">💬 ${memo.slice(0,8)}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
+      ${studyEvtsHtml}
+      ${personalEvtsHtml}
+      ${memo ? `<div style="font-size:9px;color:var(--text2);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:2px;border-top:1px solid var(--border)">💬 ${memo}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
     </div>`;
   }
   html += '</div>';
