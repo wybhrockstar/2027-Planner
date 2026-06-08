@@ -8,17 +8,7 @@
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
-      "studyResult": null,
-      "studyChecklist": [
-        {
-          "text": "ㅇㅇㅇㅇ",
-          "done": false
-        },
-        {
-          "text": "ㅇㅇㅇㅇ",
-          "done": false
-        }
-      ]
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -26,7 +16,7 @@
       {
         "id": "mq53jroy",
         "text": "ㅇㅇㅇㅇ",
-        "done": false
+        "done": true
       },
       {
         "id": "mq53ka41",
