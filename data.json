@@ -3145,10 +3145,10 @@
       "date": "2026-06-07",
       "wakeTime": "11:24",
       "sleepTime": "00:18",
-      "studyMin": 180,
+      "studyMin": 150,
       "kcal": 100,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-06-09",
@@ -3215,8 +3215,8 @@
     "4": []
   },
   "reportSettings": {
-    "studyGoalHour": 2,
-    "studyGoalMin": 120,
+    "studyGoalHour": 3,
+    "studyGoalMin": 180,
     "sleepMinHour": 8,
     "sleepMinMin": 480,
     "kcalGoal": 200,
