@@ -9,6 +9,15 @@
       "kcal": 200,
       "memo": "거의 끝",
       "studyResult": "O"
+    },
+    {
+      "date": "2026-06-07",
+      "wakeTime": "",
+      "sleepTime": "22:18",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -40,7 +49,10 @@
   },
   "reportSettings": {
     "studyGoalHour": 7,
+    "studyGoalMin": 420,
     "sleepMinHour": 6,
+    "sleepMinMin": 360,
+    "kcalGoal": 200,
     "bedtimeLimit": "01:00",
     "wakeTimeLimit": "07:30"
   }
