@@ -760,10 +760,10 @@ async function shiftGcalEvents(eventList, days) {
     const isAllDay = !!event.start.date;
     let newStart, newEnd;
     if (isAllDay) {
-      const s = new Date(event.start.date); s.setDate(s.getDate() + days);
-      const e = new Date(event.end.date);   e.setDate(e.getDate() + days);
-      newStart = { date: s.toISOString().slice(0,10) };
-      newEnd   = { date: e.toISOString().slice(0,10) };
+      const s = new Date(event.start.date + 'T00:00:00'); s.setDate(s.getDate() + days);
+      const e = new Date(event.end.date   + 'T00:00:00'); e.setDate(e.getDate() + days);
+      newStart = { date: `${s.getFullYear()}-${String(s.getMonth()+1).padStart(2,'0')}-${String(s.getDate()).padStart(2,'0')}` };
+      newEnd   = { date: `${e.getFullYear()}-${String(e.getMonth()+1).padStart(2,'0')}-${String(e.getDate()).padStart(2,'0')}` };
     } else {
       const s = new Date(event.start.dateTime); s.setDate(s.getDate() + days);
       const e = new Date(event.end.dateTime);   e.setDate(e.getDate() + days);
