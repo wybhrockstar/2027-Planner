@@ -1,13 +1,3 @@
-<div id="modal-dynamic" class="modal-bg">
-<div class="modal">
-  <div class="modal-hd">
-    <div class="modal-title" id="modal-dynamic-title"></div>
-    <button class="modal-close" onclick="closeModal('modal-dynamic')">✕</button>
-  </div>
-  <div id="modal-dynamic-body" style="padding:16px"></div>
-</div>
-</div>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -573,6 +563,17 @@ canvas{width:100%!important}
 </div>
 
 </main>
+
+<!-- MODAL: Dynamic (showModal용) -->
+<div id="modal-dynamic" class="modal-bg">
+<div class="modal">
+  <div class="modal-hd">
+    <div class="modal-title" id="modal-dynamic-title"></div>
+    <button class="modal-close" onclick="closeModal('modal-dynamic')">✕</button>
+  </div>
+  <div id="modal-dynamic-body" style="padding:16px"></div>
+</div>
+</div>
 
 <!-- BOTTOM NAV -->
 <nav class="bnav">
@@ -2220,6 +2221,7 @@ function saveCalMemo(dateStr) {
 }
 
 
+function openAddEventModal(dateStr, calendarId) {
   const isStudy = calendarId === GCAL_STUDY_ID;
   closeModal();
   setTimeout(() => showModal(`
