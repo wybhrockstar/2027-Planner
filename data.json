@@ -1,5 +1,276 @@
 {
-  "lectures": [],
+  "lectures": [
+    {
+      "id": "과학 개념_1",
+      "subject": "과학 개념",
+      "num": "1강",
+      "title": "1강. 물질 (1) 3학년 2학기 물체와 물질 [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_2",
+      "subject": "과학 개념",
+      "num": "2강",
+      "title": "2강. 물질 (2) 4학년 1학기 물의 상태 변화 [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_3",
+      "subject": "과학 개념",
+      "num": "3강",
+      "title": "3강. 물질 (3) 4학년 2학기 여러 가지 기체 [31분]",
+      "minutes": 31,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_4",
+      "subject": "과학 개념",
+      "num": "4강",
+      "title": "4강. 물질 (4) 5학년 1학기 용해와 용액 [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_5",
+      "subject": "과학 개념",
+      "num": "5강",
+      "title": "5강. 물질 (5) 5학년 2학기 혼합물의 분리 [17분]",
+      "minutes": 17,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_6",
+      "subject": "과학 개념",
+      "num": "6강",
+      "title": "6강. 물질 (6) 6학년 1학기 산과 염기 [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_7",
+      "subject": "과학 개념",
+      "num": "7강",
+      "title": "7강. 물질 (7) 6학년 2학기 물질의 연소 [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_8",
+      "subject": "과학 개념",
+      "num": "8강",
+      "title": "8강. 생명 (1) 3학년 1학기 동물의 생활 [16분]",
+      "minutes": 16,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_9",
+      "subject": "과학 개념",
+      "num": "9강",
+      "title": "9강. 생명 (2) 3학년 1학기 식물의 생활 [21분]",
+      "minutes": 21,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_10",
+      "subject": "과학 개념",
+      "num": "10강",
+      "title": "10강. 생명 (3) 3학년 1학기 생물의 한살이 [24분]",
+      "minutes": 24,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_11",
+      "subject": "과학 개념",
+      "num": "11강",
+      "title": "11강. 생명 (4) 4학년 1학기 다양한 생물과 우리 생활 [25분]",
+      "minutes": 25,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_12",
+      "subject": "과학 개념",
+      "num": "12강",
+      "title": "12강. 생명 (5) 4학년 2학기 생물과 환경 [25분]",
+      "minutes": 25,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_13",
+      "subject": "과학 개념",
+      "num": "13강",
+      "title": "13강. 생명 (6) 5학년 1학기 우리 몸의 구조와 기능 [34분]",
+      "minutes": 34,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_14",
+      "subject": "과학 개념",
+      "num": "14강",
+      "title": "14강. 생명 (7) 6학년 1학기 식물의 구조와 기능 [32분]",
+      "minutes": 32,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_15",
+      "subject": "과학 개념",
+      "num": "15강",
+      "title": "15강. 운동과 에너지 (1) 3학년 1학기 힘과 우리 생활 [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_16",
+      "subject": "과학 개념",
+      "num": "16강",
+      "title": "16강. 운동과 에너지 (2) 3학년 2학기 소리의 성질 [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_17",
+      "subject": "과학 개념",
+      "num": "17강",
+      "title": "17강. 운동과 에너지 (3) 4학년 1학기 자석의 이용 [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_18",
+      "subject": "과학 개념",
+      "num": "18강",
+      "title": "18강. 운동과 에너지 (4) 5학년 1학기 빛의 성질 [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_19",
+      "subject": "과학 개념",
+      "num": "19강",
+      "title": "19강. 운동과 에너지 (5) 5학년 2학기 열과 우리 생활 [32분]",
+      "minutes": 32,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_20",
+      "subject": "과학 개념",
+      "num": "20강",
+      "title": "20강. 운동과 에너지 (6) 6학년 1학기 물체의 운동 [22분]",
+      "minutes": 22,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_21",
+      "subject": "과학 개념",
+      "num": "21강",
+      "title": "21강. 운동과 에너지 (7) 6학년 2학기 전기의 이용 [68분]",
+      "minutes": 68,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_22",
+      "subject": "과학 개념",
+      "num": "22강",
+      "title": "22강. 지구와 우주 (1) 3학년 2학기 지구와 바다 [29분]",
+      "minutes": 29,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_23",
+      "subject": "과학 개념",
+      "num": "23강",
+      "title": "23강. 지구와 우주 (2) 4학년 1학기 땅의 변화 [33분]",
+      "minutes": 33,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_24",
+      "subject": "과학 개념",
+      "num": "24강",
+      "title": "24강. 지구와 우주 (3) 4학년 2학기 밤하늘 관찰 [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_25",
+      "subject": "과학 개념",
+      "num": "25강",
+      "title": "25강. 지구와 우주 (4) 5학년 1학기 지층과 화석 [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_26",
+      "subject": "과학 개념",
+      "num": "26강",
+      "title": "26강. 지구와 우주 (5) 5학년 2학기 날씨와 우리 생활 [40분]",
+      "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_27",
+      "subject": "과학 개념",
+      "num": "27강",
+      "title": "27강. 지구와 우주 (6) 6학년 1학기 지구의 운동 [33분]",
+      "minutes": 33,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    }
+  ],
   "dailyLogs": [
     {
       "date": "2026-06-08",
