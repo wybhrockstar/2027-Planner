@@ -3176,6 +3176,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-05",
+      "wakeTime": "07:06",
+      "sleepTime": "03:06",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -3208,8 +3217,8 @@
   "reportSettings": {
     "studyGoalHour": 2,
     "studyGoalMin": 120,
-    "sleepMinHour": 4,
-    "sleepMinMin": 240,
+    "sleepMinHour": 8,
+    "sleepMinMin": 480,
     "kcalGoal": 200,
     "bedtimeLimit": "01:00",
     "wakeTimeLimit": "07:30"
