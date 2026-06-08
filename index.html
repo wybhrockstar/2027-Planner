@@ -404,7 +404,7 @@ canvas{width:100%!important}
   <div style="font-size:11px;color:var(--text4)">토큰은 브라우저에만 저장됩니다 (코드에 포함되지 않음)</div>
   <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
     <span style="font-size:11px;color:var(--text4)">IMGO 플래너</span>
-    <span style="font-size:11px;color:var(--text4);font-family:'JetBrains Mono',monospace">v1.1.0</span>
+    <span style="font-size:11px;color:var(--text4);font-family:'JetBrains Mono',monospace">v1.2.0</span>
   </div>
 </div>
 </div>
@@ -540,9 +540,9 @@ canvas{width:100%!important}
 <!-- ④ 플래너 -->
 <div id="page-planner" class="page">
   <div class="planner-subtabs" id="planner-subtabs">
-    <button class="planner-stab on" id="pstab-annual">연간 플랜</button>
+    <button class="planner-stab on" id="pstab-calendar">캘린더</button>
     <button class="planner-stab" id="pstab-weekly">주간 시간표</button>
-    <button class="planner-stab" id="pstab-calendar">📅 캘린더</button>
+    <button class="planner-stab" id="pstab-annual">연간 플랜</button>
   </div>
   <div id="planner-annual"></div>
   <div id="planner-weekly" style="display:none"></div>
@@ -1936,26 +1936,26 @@ function buildSleepLine(id, dates, logMap, rs) {
 }
 
 // ─── PLANNER ─────────────────────────────────────────────────────────────────
-let plannerTab = 'annual';
+let plannerTab = 'calendar';
 let schEditTerm = getCurrentTerm();
 let schEditKey = null;
 let calOffset = 0; // 월 오프셋
 
 function renderPlanner() {
-  document.getElementById('pstab-annual').classList.toggle('on', plannerTab==='annual');
-  document.getElementById('pstab-weekly').classList.toggle('on', plannerTab==='weekly');
   document.getElementById('pstab-calendar').classList.toggle('on', plannerTab==='calendar');
-  document.getElementById('planner-annual').style.display = plannerTab==='annual'?'':'none';
-  document.getElementById('planner-weekly').style.display = plannerTab==='weekly'?'':'none';
+  document.getElementById('pstab-weekly').classList.toggle('on', plannerTab==='weekly');
+  document.getElementById('pstab-annual').classList.toggle('on', plannerTab==='annual');
   document.getElementById('planner-calendar').style.display = plannerTab==='calendar'?'':'none';
+  document.getElementById('planner-weekly').style.display = plannerTab==='weekly'?'':'none';
+  document.getElementById('planner-annual').style.display = plannerTab==='annual'?'':'none';
   if (plannerTab==='annual') renderAnnualPlan();
   else if (plannerTab==='weekly') renderWeeklySchedule();
   else { clearIcalCache(); renderCalendar(); }
 }
 
-document.getElementById('pstab-annual').addEventListener('click', () => { plannerTab='annual'; renderPlanner(); });
-document.getElementById('pstab-weekly').addEventListener('click', () => { plannerTab='weekly'; renderPlanner(); });
 document.getElementById('pstab-calendar').addEventListener('click', () => { plannerTab='calendar'; calOffset=0; renderPlanner(); });
+document.getElementById('pstab-weekly').addEventListener('click', () => { plannerTab='weekly'; renderPlanner(); });
+document.getElementById('pstab-annual').addEventListener('click', () => { plannerTab='annual'; renderPlanner(); });
 
 // ─── CALENDAR ─────────────────────────────────────────────────────────────────
 async function renderCalendar() {
@@ -1980,7 +1980,7 @@ async function renderCalendar() {
     <div style="font-size:11px;color:var(--text3);margin-bottom:6px">Google Calendar 로딩 중...</div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
       <button class="btn btn-ghost btn-sm" id="btn-google-auth" onclick="updateAuthUI()">🔗 Google 로그인</button>
-      <button class="btn btn-ghost btn-sm" id="btn-cal-multiselect" onclick="toggleCalMultiSelect()">⬜ 일정 선택</button>
+      <button class="btn btn-ghost btn-sm" id="btn-cal-multiselect" onclick="toggleCalMultiSelect()">☑️ 일정 선택</button>
       <span id="cal-select-count" style="font-size:11px;color:var(--text3)"></span>
       <button class="btn btn-ghost btn-sm" id="btn-cal-shift" onclick="shiftSelectedEvents()" style="display:none;color:var(--amber)">📅 선택 이동</button>
     </div>
@@ -2020,10 +2020,10 @@ async function renderCalendar() {
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
-      `<div style="font-size:9px;color:var(--teal);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">📅 ${e.summary}</div>`
+      `<div style="font-size:9px;color:var(--teal);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">✍🏻 ${e.summary}</div>`
     ).join('');
     const personalEvtsHtml = evts.personal.map(e =>
-      `<div style="font-size:9px;color:var(--blue);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">🗓 ${e.summary}</div>`
+      `<div style="font-size:9px;color:var(--blue);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">📅 ${e.summary}</div>`
     ).join('');
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
@@ -2036,8 +2036,8 @@ async function renderCalendar() {
 
   // 범례
   html += `<div style="display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--text3)">
-    <span><span style="color:var(--teal)">📅</span> 스터디</span>
-    <span><span style="color:var(--blue)">🗓</span> 개인</span>
+    <span><span style="color:var(--teal)">✍🏻</span> 스터디</span>
+    <span><span style="color:var(--blue)">📅</span> 개인</span>
     <span><span style="color:var(--text2)">💬</span> 한마디</span>
   </div>`;
 
@@ -2067,9 +2067,9 @@ function toggleCalMultiSelect() {
   calSelectedEvents = [];
   const btn = document.getElementById('btn-cal-multiselect');
   if (btn) {
-    btn.textContent = calMultiSelect ? '✕ 선택 취소' : '⬜ 일정 선택';
-    btn.style.color = calMultiSelect ? 'var(--accent)' : 'var(--text2)';
-    btn.style.border = calMultiSelect ? '1px solid var(--accent)' : '';
+    btn.textContent = calMultiSelect ? '✕ 선택 취소' : '☑️ 일정 선택';
+    btn.style.color = calMultiSelect ? 'var(--accent)' : '';
+    btn.style.borderColor = calMultiSelect ? 'var(--accent)' : '';
   }
   const countEl = document.getElementById('cal-select-count');
   if (countEl) countEl.textContent = '';
@@ -2097,7 +2097,7 @@ function toggleCalCellSelect(cell, dateStr, cache) {
         <div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isChecked?'var(--accent)':'var(--border2)'};background:${isChecked?'var(--accent)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center">
           ${isChecked?'<span style="color:#000;font-size:11px;font-weight:700">✓</span>':''}
         </div>
-        <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.summary}</span>
+        <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'✍🏻':'📅'} ${item.summary}</span>
       </div>`;
     }).join('');
   }
@@ -2134,7 +2134,7 @@ function toggleSingleEventSelect(idx, dateStr) {
         <div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isChecked?'var(--accent)':'var(--border2)'};background:${isChecked?'var(--accent)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center">
           ${isChecked?'<span style="color:#000;font-size:11px;font-weight:700">✓</span>':''}
         </div>
-        <span style="font-size:13px;flex:1;color:${it.type==='study'?'var(--teal)':'var(--blue)'}">${it.type==='study'?'📅':'🗓'} ${it.summary}</span>
+        <span style="font-size:13px;flex:1;color:${it.type==='study'?'var(--teal)':'var(--blue)'}">${it.type==='study'?'✍🏻':'📅'} ${it.summary}</span>
       </div>`;
     }).join('');
   }
@@ -2175,10 +2175,19 @@ function openCalDayModal(dateStr, cache) {
 
   let evtListHtml = allEvts.length ? allEvts.map((item, i) => `
     <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg4);border-radius:var(--rs);margin-bottom:6px">
-      <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.summary || item.event.summary}</span>
+      <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'✍🏻':'📅'} ${item.summary || item.event.summary}</span>
       <button onclick="openEditEventModal('${dateStr}',${i},calDayCache)" style="font-size:11px;color:var(--accent);background:none;border:none;padding:2px 6px;cursor:pointer">수정</button>
       <button onclick="deleteEvent('${item.calendarId}','${item.event.id}')" style="font-size:11px;color:var(--red);background:none;border:none;padding:2px 6px;cursor:pointer">삭제</button>
     </div>`).join('') : '<div style="color:var(--text3);font-size:13px;text-align:center;padding:16px">일정 없음</div>';
+
+  const existingLog = state.dailyLogs.find(l => l.date === dateStr);
+  const existingMemo = existingLog?.memo || '';
+  const memoHtml = `
+    <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:6px">💬 오늘의 한마디</div>
+      <textarea id="cal-memo-input" rows="2" style="width:100%;resize:none;font-size:13px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--rs);padding:8px 10px;color:var(--text);outline:none" placeholder="한 줄 메모...">${existingMemo}</textarea>
+      <button onclick="saveCalMemo('${dateStr}')" class="btn btn-primary btn-sm" style="margin-top:6px;width:100%">💬 메모 저장</button>
+    </div>`;
 
   window.calDayCache = { allEvts };
 
@@ -2186,18 +2195,35 @@ function openCalDayModal(dateStr, cache) {
     <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title} 일정</div>
     <div id="cal-day-evt-list">${evtListHtml}</div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">📅 스터디 추가</button>
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">🗓 개인 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">✍🏻 스터디 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">📅 개인 추가</button>
       <button class="btn btn-sm btn-ghost" onclick="closeModal()">닫기</button>
     </div>
+    ${memoHtml}
   `);
 }
 
-function openAddEventModal(dateStr, calendarId) {
+function saveCalMemo(dateStr) {
+  const input = document.getElementById('cal-memo-input');
+  if (!input) return;
+  const memo = input.value.trim();
+  const existing = state.dailyLogs.findIndex(l => l.date === dateStr);
+  if (existing >= 0) {
+    state.dailyLogs[existing].memo = memo;
+  } else {
+    state.dailyLogs.push({ date: dateStr, memo, wakeTime:'', sleepTime:'', studyMin:0, kcal:0, studyResult:'' });
+  }
+  saveState();
+  toast('💬 메모 저장됨');
+  closeModal();
+  renderCalendar();
+}
+
+
   const isStudy = calendarId === GCAL_STUDY_ID;
   closeModal();
   setTimeout(() => showModal(`
-    <div style="font-weight:700;font-size:16px;margin-bottom:14px">${isStudy?'📅 스터디':'🗓 개인'} 일정 추가</div>
+    <div style="font-weight:700;font-size:16px;margin-bottom:14px">${isStudy?'✍🏻 스터디':'📅 개인'} 일정 추가</div>
     <div style="margin-bottom:10px">
       <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">일정 이름</label>
       <input id="modal-evt-name" type="text" placeholder="일정 이름" style="width:100%">
