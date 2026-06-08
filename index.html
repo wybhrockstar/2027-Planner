@@ -2220,8 +2220,8 @@ function openCalDayModal(dateStr, cache) {
     <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title} 일정</div>
     <div id="cal-day-evt-list">${evtListHtml}</div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">✍🏻 스터디 일정 추가</button>
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">📅 개인 일정 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">✍🏻 스터디 일정 추가&nbsp;</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">📅 개인 일정 추가&nbsp;</button>
       <button class="btn btn-sm btn-ghost" onclick="closeModal()">닫기</button>
     </div>
     ${memoHtml}
