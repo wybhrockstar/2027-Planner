@@ -1852,60 +1852,84 @@ function renderGrass(term) {
   ];
 
   // PC(≥1200px) 3주/그룹, 모바일 2주/그룹으로 슬라이싱 후 세로로 반복
-  function buildTableGroup(groupWeeks) {
-    // 각 주를 7칸으로 패딩 (마지막 주가 7일 미만이어도 고정폭 유지)
-    const paddedWeeks = groupWeeks.map(wk => {
-      const padded = [...wk];
-      while (padded.length < 7) padded.push(null); // null = 빈 칸
-      return padded;
-    });
+  // 날짜를 요일 기준으로 정렬: 텀 시작 전 월요일부터 시작, 텀 끝 다음 일요일까지
+  function buildAlignedGrid(numWeeks) {
+    // 텀 전체를 요일 정렬된 그리드로 펼침
+    // 첫날의 요일(월=0, 일=6)을 구해 그 전 월요일부터 시작
+    const firstDate = new Date(term.start + 'T00:00:00');
+    const firstDow = (firstDate.getDay() + 6) % 7; // 월=0, 일=6
+    const gridStart = new Date(firstDate);
+    gridStart.setDate(gridStart.getDate() - firstDow);
 
-    let hdr = `<tr class="date-row"><th class="row-label"></th>`;
-    paddedWeeks.forEach((wk, wi) => {
-      wk.forEach((d, di) => {
-        const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
-        if (!d) { hdr += `<th class="cell-blank${sep}"></th>`; return; }
-        const dt = new Date(d);
-        const label = `${dt.getMonth()+1}/${dt.getDate()}`;
-        const dow = dt.getDay();
-        const color = dow===0?'var(--red)':dow===6?'var(--blue)':'';
-        hdr += `<th class="${sep}" style="${color?`color:${color}`:''}">${label}</th>`;
-      });
-    });
-    hdr += `</tr>`;
+    const lastDate = new Date(term.end + 'T00:00:00');
+    const lastDow = (lastDate.getDay() + 6) % 7;
+    const gridEnd = new Date(lastDate);
+    gridEnd.setDate(gridEnd.getDate() + (6 - lastDow));
 
-    let rows = '';
-    ROWS.forEach(row => {
-      rows += `<tr><th class="row-label">${row.label}</th>`;
-      paddedWeeks.forEach((wk, wi) => {
-        wk.forEach((d, di) => {
-          const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
-          if (!d) { rows += `<td class="cell-blank${sep}"></td>`; return; }
-          const cd = getCellData(d);
-          const { cls, txt } = row.render(d, cd);
-          const todayCls = cd.isToday ? ' today-col' : '';
-          const clickable = !cd.isFuture && cls !== 'cell-skip';
-          rows += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
-        });
-      });
-      rows += `</tr>`;
-    });
-    return `<table class="prog-table grass-subtable">${hdr}${rows}</table>`;
-  }
+    // 전체 그리드 날짜 목록 (null = 텀 외부 빈칸)
+    const allCells = [];
+    for (let d = new Date(gridStart); d <= gridEnd; d.setDate(d.getDate()+1)) {
+      const ds = dateStr(d);
+      allCells.push(ds >= term.start && ds <= term.end ? ds : null);
+    }
 
-  // 주차 청크로 분할 (PC=3주, 모바일=2주 — CSS로 제어)
-  // 두 가지 그룹핑을 모두 빌드하고 CSS로 visibility 전환
-  function chunkWeeks(n) {
+    // numWeeks개씩 묶어 그룹 배열 생성 (각 그룹 = numWeeks*7 cells)
+    const totalCols = numWeeks * 7;
     const groups = [];
-    for (let i = 0; i < weeks.length; i += n) groups.push(weeks.slice(i, i+n));
-    return groups;
+    for (let i = 0; i < allCells.length; i += totalCols) {
+      groups.push(allCells.slice(i, i + totalCols));
+    }
+
+    const DOW_LABELS = ['월','화','수','목','금','토','일'];
+
+    return groups.map(cells => {
+      // cells.length가 totalCols 미만이면 null로 패딩
+      while (cells.length < totalCols) cells.push(null);
+
+      // 헤더: 날짜행 (주 구분선 포함)
+      let hdr = `<tr class="date-row"><th class="row-label" style="min-width:3em"></th>`;
+      for (let col = 0; col < totalCols; col++) {
+        const d = cells[col];
+        const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
+        if (!d) {
+          // 빈칸이지만 요일 헤더는 표시
+          const dowLabel = DOW_LABELS[col % 7];
+          const dowIdx = col % 7;
+          const color = dowIdx===6?'var(--red)':dowIdx===5?'var(--blue)':'';
+          hdr += `<th class="${sep}" style="${color?`color:${color}`:''}">${dowLabel}</th>`;
+        } else {
+          const dt = new Date(d + 'T00:00:00');
+          const label = `${dt.getMonth()+1}/${dt.getDate()}`;
+          const dow = (dt.getDay() + 6) % 7;
+          const color = dow===6?'var(--red)':dow===5?'var(--blue)':'';
+          hdr += `<th class="${sep}" style="${color?`color:${color}`:''}">${label}</th>`;
+        }
+      }
+      hdr += `</tr>`;
+
+      // 데이터 행
+      let rows = '';
+      ROWS.forEach(row => {
+        rows += `<tr><th class="row-label" style="min-width:3em">${row.label}</th>`;
+        for (let col = 0; col < totalCols; col++) {
+          const d = cells[col];
+          const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
+          if (!d) {
+            rows += `<td class="cell-blank${sep}" style="background:transparent!important;border-color:var(--border)!important;cursor:default!important;pointer-events:none"></td>`;
+          } else {
+            const cd = getCellData(d);
+            const { cls, txt } = row.render(d, cd);
+            const todayCls = cd.isToday ? ' today-col' : '';
+            const clickable = !cd.isFuture && cls !== 'cell-skip';
+            rows += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
+          }
+        }
+        rows += `</tr>`;
+      });
+
+      return `<div class="grass-block" style="overflow:hidden"><table class="prog-table grass-subtable" style="table-layout:fixed;width:100%">${hdr}${rows}</table></div>`;
+    }).join('');
   }
-
-  const groups3 = chunkWeeks(3); // PC용
-  const groups2 = chunkWeeks(2); // 모바일용
-
-  const pc4Html = groups3.map(g => `<div class="grass-block">${buildTableGroup(g)}</div>`).join('');
-  const mo2Html = groups2.map(g => `<div class="grass-block">${buildTableGroup(g)}</div>`).join('');
 
   return `<div class="card" style="padding:12px 10px">
     <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text);margin-bottom:10px">일일 체크리스트</div>
@@ -2118,8 +2142,8 @@ function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresho
   if (chartsRef[id]) { chartsRef[id].destroy(); }
   const isDark = !document.body.classList.contains('light');
   const gridColor = isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
-  const textColor = isDark?'#999':'#888';
-  const xLabelColor = isDark?'#cccccc':'#444444';
+  const textColor = isDark?'#cccccc':'#555555';
+  const xLabelColor = isDark?'#eeeeee':'#222222';
 
   // 1-2/1-3: 3단계 색상 분기
   // study: threshold=목표시간, badColor used for 1h boundary
@@ -2153,6 +2177,28 @@ function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresho
       responsive:true,maintainAspectRatio:false,
       plugins:{
         legend:{display:false},
+        tooltip:{
+          titleFont:{weight:'bold',size:12},
+          bodyFont:{size:12},
+          usePointStyle:true,
+          callbacks:{
+            title:(items) => items[0].label,
+            label:(ctx) => {
+              const v = ctx.parsed.y;
+              if (isStudy) {
+                const h = Math.floor(v);
+                const m = Math.round((v - h) * 60);
+                return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+              }
+              return `${v} kcal`;
+            },
+            labelColor:(ctx) => {
+              const v = ctx.parsed.y;
+              const col = barColor(v, false);
+              return {borderColor:col,backgroundColor:col};
+            }
+          }
+        },
         annotation:{annotations:{
           goalLine:{type:'line',yMin:threshold,yMax:threshold,
             borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]}
@@ -2172,7 +2218,8 @@ function buildSleepBubble(id, dates, logMap, rs) {
   if (chartsRef[id]) { chartsRef[id].destroy(); }
   const isDark = !document.body.classList.contains('light');
   const gridColor = isDark?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.12)';
-  const textColor = isDark?'#999':'#888';
+  const textColor = isDark?'#cccccc':'#555555';
+  const xLabelColor = isDark?'#eeeeee':'#222222';
 
   // 시간 문자열 → 숫자(시간 단위). 자정 이후면 24+ 로 반환
   const timeToNum = (t) => { if (!t) return null; const [h,m] = t.split(':').map(Number); return h+m/60; };
@@ -2218,18 +2265,39 @@ function buildSleepBubble(id, dates, logMap, rs) {
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{
-        legend:{display:true,labels:{color:textColor,font:{size:10}}},
-        tooltip:{callbacks:{
-          label:(ctx) => {
-            const dsIdx = ctx.datasetIndex;
-            const ptIdx = ctx.dataIndex;
-            const pts = dsIdx===0 ? wakePoints : bedPoints;
-            const pt = pts[ptIdx];
-            if (!pt) return '';
-            const label = dsIdx===0 ? '기상' : '취침';
-            return `${pt.dateLabel} / ${pt.timeStr} ${label}`;
+        legend:{display:false},
+        tooltip:{
+          titleFont:{weight:'bold',size:12},
+          bodyFont:{size:12},
+          usePointStyle:true,
+          callbacks:{
+            title:(items) => {
+              const ctx = items[0];
+              const dsIdx = ctx.datasetIndex;
+              const ptIdx = ctx.dataIndex;
+              const pts = dsIdx===0 ? wakePoints : bedPoints;
+              const pt = pts[ptIdx];
+              return pt ? pt.dateLabel : '';
+            },
+            label:(ctx) => {
+              const dsIdx = ctx.datasetIndex;
+              const ptIdx = ctx.dataIndex;
+              const pts = dsIdx===0 ? wakePoints : bedPoints;
+              const pt = pts[ptIdx];
+              if (!pt) return '';
+              const label = dsIdx===0 ? '기상' : '취침';
+              return `${pt.timeStr} ${label}`;
+            },
+            labelColor:(ctx) => {
+              const dsIdx = ctx.datasetIndex;
+              const ptIdx = ctx.dataIndex;
+              const pts = dsIdx===0 ? wakePoints : bedPoints;
+              const pt = pts[ptIdx];
+              const col = pt ? pt.color : '#5ecfb0';
+              return {borderColor:col,backgroundColor:col};
+            }
           }
-        }},
+        },
         annotation:{annotations:{
           wakeLine:{type:'line',yMin:wakeLimit,yMax:wakeLimit,
             borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]},
@@ -2238,7 +2306,7 @@ function buildSleepBubble(id, dates, logMap, rs) {
         }}
       },
       scales:{
-        x:{grid:{color:gridColor},ticks:{color:isDark?'#cccccc':'#444444',font:{size:10},
+        x:{grid:{color:gridColor},ticks:{color:xLabelColor,font:{size:10},
            callback:(v)=>dates[v]?dates[v].slice(5):''},min:0,max:dates.length-1},
         y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10},
            callback:(v)=>yTickLabel(v)},
@@ -2254,7 +2322,8 @@ function buildSleepLine(id, dates, logMap, rs) {
   if (chartsRef[id]) { chartsRef[id].destroy(); }
   const isDark = !document.body.classList.contains('light');
   const gridColor = isDark?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.12)';
-  const textColor = isDark?'#999':'#888';
+  const textColor = isDark?'#cccccc':'#555555';
+  const xLabelColor = isDark?'#eeeeee':'#222222';
   const minGoalH = rs.sleepMinMin ? rs.sleepMinMin/60 : (rs.sleepMinHour||6);
 
   const labels = dates.map(d=>d.slice(5));
@@ -2279,7 +2348,10 @@ function buildSleepLine(id, dates, logMap, rs) {
       backgroundColor:'rgba(94,207,176,.1)',
       fill:true,tension:.35,
       pointBackgroundColor:colors,
-      pointRadius:4,
+      pointBorderColor:colors,
+      pointRadius:data.map(v => v===null ? 0 : 4),
+      pointHoverRadius:data.map(v => v===null ? 0 : 6),
+      spanGaps:false,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
         return v < minGoalH ? '#ff5a5a' : '#5ecfb0';
@@ -2288,13 +2360,33 @@ function buildSleepLine(id, dates, logMap, rs) {
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{
         legend:{display:false},
+        tooltip:{
+          titleFont:{weight:'bold',size:12},
+          bodyFont:{size:12},
+          usePointStyle:true,
+          callbacks:{
+            title:(items) => items[0].label,
+            label:(ctx) => {
+              const v = ctx.parsed.y;
+              if (v === null || v === undefined) return '';
+              const h = Math.floor(v);
+              const m = Math.round((v - h) * 60);
+              return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+            },
+            labelColor:(ctx) => {
+              const v = ctx.parsed.y;
+              const col = v < minGoalH ? '#ff5a5a' : '#5ecfb0';
+              return {borderColor:col,backgroundColor:col};
+            }
+          }
+        },
         annotation:{annotations:{
           minSleepLine:{type:'line',yMin:minGoalH,yMax:minGoalH,
             borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]}
         }}
       },
       scales:{
-        x:{grid:{color:gridColor},ticks:{color:isDark?'#cccccc':'#444444',font:{size:10}}},
+        x:{grid:{color:gridColor},ticks:{color:xLabelColor,font:{size:10}}},
         y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true,max:12}
       }
     }
