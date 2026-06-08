@@ -189,15 +189,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .prog-table .week-sep{border-left:2px solid var(--border2)!important}
 .prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
 /* GRASS SUBTABLE (새 레이아웃) */
-.grass-subtable{border-collapse:collapse;font-size:11px;width:100%;table-layout:fixed}
-.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text3);font-size:9px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
+.grass-subtable{border-collapse:collapse;font-size:11px;width:100%;table-layout:fixed;font-family:'Noto Sans KR',sans-serif}
+.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text);font-size:9px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
 .grass-subtable td{padding:4px 2px;border:1px solid var(--border);text-align:center;white-space:nowrap;cursor:pointer;transition:.1s;position:relative;overflow:hidden;font-size:10px}
 .grass-subtable td:hover{filter:brightness(1.15)}
 .grass-subtable td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
 .grass-subtable td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
-.grass-subtable .row-label{font-size:9px;font-weight:600;color:var(--text3);background:var(--bg4);padding:4px 4px;text-align:left;white-space:nowrap;border:1px solid var(--border);width:2em}
+.grass-subtable .row-label{font-size:9px;font-weight:600;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:left;white-space:nowrap;border:1px solid var(--border);width:4em;min-width:4em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
-.grass-subtable .date-row th{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;color:var(--text3);background:var(--bg4);padding:2px 2px}
+.grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:8px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
 .grass-block{margin-bottom:10px;overflow:hidden}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
@@ -396,7 +396,7 @@ canvas{width:100%!important}
     <div class="form-row">
       <div>
         <label class="form-lbl">목표 공부시간 (H:MM)</label>
-        <input type="text" id="rs-study" placeholder="7:00" maxlength="5" style="font-family:'JetBrains Mono',monospace">
+        <input type="text" id="rs-study" placeholder="7:00" maxlength="5" style="font-family:'Noto Sans KR',sans-serif">
       </div>
       <div>
         <label class="form-lbl">목표 운동량 (kcal)</label>
@@ -414,7 +414,7 @@ canvas{width:100%!important}
       </div>
       <div>
         <label class="form-lbl">최소 수면시간 (H:MM)</label>
-        <input type="text" id="rs-sleep" placeholder="6:00" maxlength="5" style="font-family:'JetBrains Mono',monospace">
+        <input type="text" id="rs-sleep" placeholder="6:00" maxlength="5" style="font-family:'Noto Sans KR',sans-serif">
       </div>
     </div>
     <button class="btn btn-ghost" onclick="saveReportSettings()" style="justify-content:center">💾 저장</button>
@@ -1085,12 +1085,16 @@ function lecGrade(doneCnt) {
   return '×';
 }
 function studyGrade(min) {
-  if (min >= 420) return 'O';
+  const rs = state.reportSettings;
+  const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour || 7) * 60;
+  if (min >= goalMin) return 'O';
   if (min >= 60) return '△';
   return '×';
 }
 function kcalGrade(kcal) {
-  if (kcal >= 200) return 'O';
+  const rs = state.reportSettings;
+  const goalKcal = rs.kcalGoal || 200;
+  if (kcal >= goalKcal) return 'O';
   if (kcal > 0) return '△';
   return '×';
 }
@@ -1814,39 +1818,47 @@ function renderGrass(term) {
   const ROWS = [
     { label: '운동',
       render: (d, cd) => {
-        if (cd.isFuture) return { cls:'future', txt:'' };
-        if (!cd.log) return { cls:'cell-none', txt:'' };
+        if (cd.isFuture) return { cls:'future', txt:'', style:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'', style:'' };
         const v = cd.log.kcal||0;
-        return { cls: cellClass(cd.kcalVal), txt: v ? `${v}` : '×' };
+        const rs = state.reportSettings;
+        const goalKcal = rs.kcalGoal || 200;
+        if (v >= goalKcal) return { cls:'cell-o', txt:`${v}`, style:'background:rgba(94,207,176,.25);color:#5ecfb0' };
+        if (v > 0) return { cls:'cell-d', txt:`${v}`, style:'background:rgba(255,159,67,.2);color:#ff9f43' };
+        return { cls:'cell-x', txt:'×', style:'background:rgba(255,90,90,.18);color:#ff5a5a' };
       }
     },
     { label: '공부',
       render: (d, cd) => {
-        if (cd.isFuture) return { cls:'future', txt:'' };
-        if (!cd.log) return { cls:'cell-none', txt:'' };
+        if (cd.isFuture) return { cls:'future', txt:'', style:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'', style:'' };
         const v = cd.log.studyMin||0;
         const txt = v ? `${(v/60).toFixed(1)}h` : '×';
-        return { cls: cellClass(cd.studyVal), txt };
+        const rs = state.reportSettings;
+        const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour || 7) * 60;
+        if (v >= goalMin) return { cls:'cell-o', txt, style:'background:rgba(94,207,176,.25);color:#5ecfb0' };
+        if (v >= 60) return { cls:'cell-d', txt, style:'background:rgba(255,159,67,.2);color:#ff9f43' };
+        return { cls:'cell-x', txt, style:'background:rgba(255,90,90,.18);color:#ff5a5a' };
       }
     },
     { label: '인강',
       render: (d, cd) => {
-        if (cd.isFuture) return { cls:'future', txt:'' };
-        if (!cd.log && !cd.lDone) return { cls:'cell-none', txt:'' };
+        if (cd.isFuture) return { cls:'future', txt:'', style:'' };
+        if (!cd.log && !cd.lDone) return { cls:'cell-none', txt:'', style:'' };
         const txt = cd.lDone > 0 ? `${cd.lDone}` : '×';
         const cls = cd.lDone > 0 ? 'cell-o' : 'cell-x';
-        return { cls, txt };
+        return { cls, txt, style:'' };
       }
     },
     { label: '스터디',
       render: (d, cd) => {
-        if (!cd.studyDay) return { cls:'cell-skip', txt:'-' };
-        if (cd.isFuture) return { cls:'future', txt:'' };
-        if (!cd.log) return { cls:'cell-none', txt:'' };
+        if (!cd.studyDay) return { cls:'cell-skip', txt:'-', style:'' };
+        if (cd.isFuture) return { cls:'future', txt:'', style:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'', style:'' };
         const sr = cd.srVal;
         const cls = sr==='O'?'cell-o':sr==='△'?'cell-d':sr==='×'?'cell-x':'cell-none';
         const txt = sr ? (sr==='O'?'○':sr==='△'?'△':'×') : '';
-        return { cls, txt };
+        return { cls, txt, style:'' };
       }
     }
   ];
@@ -1887,7 +1899,7 @@ function renderGrass(term) {
       while (cells.length < totalCols) cells.push(null);
 
       // 헤더: 날짜행 (주 구분선 포함)
-      let hdr = `<tr class="date-row"><th class="row-label" style="min-width:3em"></th>`;
+      let hdr = `<tr class="date-row"><th class="row-label" style="min-width:4em"></th>`;
       for (let col = 0; col < totalCols; col++) {
         const d = cells[col];
         const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
@@ -1910,7 +1922,7 @@ function renderGrass(term) {
       // 데이터 행
       let rows = '';
       ROWS.forEach(row => {
-        rows += `<tr><th class="row-label" style="min-width:3em">${row.label}</th>`;
+        rows += `<tr><th class="row-label" style="min-width:4em">${row.label}</th>`;
         for (let col = 0; col < totalCols; col++) {
           const d = cells[col];
           const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
@@ -1918,10 +1930,11 @@ function renderGrass(term) {
             rows += `<td class="cell-blank${sep}" style="background:transparent!important;border-color:var(--border)!important;cursor:default!important;pointer-events:none"></td>`;
           } else {
             const cd = getCellData(d);
-            const { cls, txt } = row.render(d, cd);
+            const { cls, txt, style } = row.render(d, cd);
             const todayCls = cd.isToday ? ' today-col' : '';
             const clickable = !cd.isFuture && cls !== 'cell-skip';
-            rows += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
+            const styleAttr = style ? ` style="${style}"` : '';
+            rows += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}${styleAttr}>${txt}</td>`;
           }
         }
         rows += `</tr>`;
