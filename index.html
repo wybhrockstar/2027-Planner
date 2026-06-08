@@ -98,7 +98,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* SUBJ TABS */
 .subj-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}
-.stab{padding:5px 12px;font-size:12px;border-radius:20px;border:1px solid var(--border2);color:var(--text3);background:none;transition:.12s;white-space:nowrap}
+.stab{padding:5px 12px;font-size:12px;border-radius:20px;border:1px solid var(--border2);color:var(--text2);background:none;transition:.12s;white-space:nowrap}
 .stab:hover{border-color:var(--blue);color:var(--blue)}
 .stab.on{background:rgba(110,181,255,.12);border-color:var(--blue);color:var(--blue)}
 
@@ -162,7 +162,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* TERM SUBTABS */
 .term-subtabs{display:flex;gap:4px;margin-bottom:16px}
-.term-stab{flex:1;padding:7px 4px;font-size:12px;font-weight:500;border-radius:var(--rs);border:1px solid var(--border2);color:var(--text3);background:none;transition:.12s;text-align:center;cursor:pointer}
+.term-stab{flex:1;padding:7px 4px;font-size:12px;font-weight:500;border-radius:var(--rs);border:1px solid var(--border2);color:var(--text2);background:none;transition:.12s;text-align:center;cursor:pointer}
 .term-stab:hover{border-color:var(--accent);color:var(--accent)}
 .term-stab.on{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
 
@@ -203,7 +203,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* PLANNER SUBTABS */
 .planner-subtabs{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border)}
-.planner-stab{padding:10px 18px;font-size:13px;font-weight:500;color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;transition:.15s;cursor:pointer}
+.planner-stab{padding:10px 18px;font-size:13px;font-weight:500;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;transition:.15s;cursor:pointer}
+.planner-stab:hover{color:var(--text)}
 .planner-stab.on{color:var(--accent);border-bottom-color:var(--accent)}
 
 /* PLAN TERM BLOCK */
@@ -333,7 +334,7 @@ canvas{width:100%!important}
   </div>
 
   <!-- 섹션: GitHub 동기화 -->
-  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">GitHub 동기화</div>
+  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text2);margin-bottom:8px">GitHub 동기화</div>
   <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
     <div>
       <label class="form-lbl">Personal Access Token</label>
@@ -358,14 +359,16 @@ canvas{width:100%!important}
   <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:16px;min-height:18px"></div>
 
   <!-- 섹션: 백업·복원 -->
-  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">데이터 백업 · 복원</div>
+  <div style="height:1px;background:var(--border);margin-bottom:16px"></div>
+  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text2);margin-bottom:8px">데이터 백업 · 복원</div>
   <div style="display:flex;gap:8px;margin-bottom:16px">
     <button class="btn btn-ghost" onclick="exportData()" style="flex:1;justify-content:center">📤 내보내기</button>
     <button class="btn btn-ghost" onclick="importData()" style="flex:1;justify-content:center">📥 불러오기</button>
   </div>
 
   <!-- 섹션: 리포트 기준값 -->
-  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">리포트 경고선 기준값</div>
+  <div style="height:1px;background:var(--border);margin-bottom:16px"></div>
+  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text2);margin-bottom:8px">리포트 경고선 기준값</div>
   <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
     <div class="form-row">
       <div>
@@ -992,8 +995,9 @@ function parseStudyMin(str) {
   return isNaN(n) ? 0 : n;
 }
 function fmtMin(m) {
-  if (!m) return '0h 0m';
-  return `${Math.floor(m/60)}h ${m%60}m`;
+  if (!m) return '0h';
+  const h = Math.floor(m/60), mn = m%60;
+  return mn > 0 ? `${h}h ${mn}min` : `${h}h`;
 }
 function sleepHours(wake, bed) {
   if (!wake || !bed) return null;
@@ -1838,6 +1842,7 @@ function openLogModalForDate(dateStr) {
     document.getElementById('btn-del-log').style.display='none';
   }
   renderStudyChecklist();
+  renderModalTodos();
   openModal('modal-log');
 }
 
@@ -2975,6 +2980,8 @@ function applyParsedLectures(mode){
   saveState();
   closeModal('modal-lec-parser');
   renderLectures();
+  // 오늘 탭 강의 체크 반영
+  if (currentPage === 'today') { renderTodayLecs(); renderTodayTabs(); }
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
