@@ -2407,8 +2407,8 @@
       "title": "2강. 2022개정 교육과정 총론 (2) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-09"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "총창_3",
@@ -3145,7 +3145,7 @@
       "date": "2026-06-07",
       "wakeTime": "11:24",
       "sleepTime": "00:18",
-      "studyMin": 150,
+      "studyMin": 180,
       "kcal": 100,
       "memo": "",
       "studyResult": "△"
@@ -3215,8 +3215,8 @@
     "4": []
   },
   "reportSettings": {
-    "studyGoalHour": 3,
-    "studyGoalMin": 180,
+    "studyGoalHour": 4,
+    "studyGoalMin": 240,
     "sleepMinHour": 8,
     "sleepMinMin": 480,
     "kcalGoal": 200,
