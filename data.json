@@ -3,12 +3,22 @@
   "dailyLogs": [
     {
       "date": "2026-06-08",
-      "wakeTime": "08:20",
-      "sleepTime": "23:41",
+      "wakeTime": "",
+      "sleepTime": "",
       "studyMin": 0,
       "kcal": 0,
-      "memo": "왜 잊ㄹㅣ 모르겠다. 재언왈 나는 될 놈이다. 과연될지는 지켜봐야지.. 후후",
-      "studyResult": null
+      "memo": "",
+      "studyResult": null,
+      "studyChecklist": [
+        {
+          "text": "ㅇㅇㅇㅇ",
+          "done": false
+        },
+        {
+          "text": "ㅇㅇㅇㅇ",
+          "done": false
+        }
+      ]
     }
   ],
   "examScores": [],
