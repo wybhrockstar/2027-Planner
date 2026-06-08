@@ -815,7 +815,7 @@ async function fetchGcalEvents(calendarId) {
         d.setDate(d.getDate() - 1);
         end = dateStr(d);
       }
-      return { date: start, endDate: end || start, summary: item.summary || '(제목 없음)' };
+      return { date: start, endDate: end || start, summary: item.summary || '(제목 없음)', id: item.id, _raw: item };
     });
   } catch(e) { console.warn('GCal fetch error:', e); return []; }
 }
@@ -2020,10 +2020,10 @@ async function renderCalendar() {
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
-      `<div style="font-size:9px;color:var(--teal);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:1px">📅 ${e.summary}</div>`
+      `<div style="font-size:9px;color:var(--teal);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">📅 ${e.summary}</div>`
     ).join('');
     const personalEvtsHtml = evts.personal.map(e =>
-      `<div style="font-size:9px;color:var(--blue);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:1px">🗓 ${e.summary}</div>`
+      `<div style="font-size:9px;color:var(--blue);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">🗓 ${e.summary}</div>`
     ).join('');
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
@@ -2068,8 +2068,13 @@ function toggleCalMultiSelect() {
   const btn = document.getElementById('btn-cal-multiselect');
   if (btn) {
     btn.textContent = calMultiSelect ? '✕ 선택 취소' : '⬜ 일정 선택';
-    btn.style.color = calMultiSelect ? 'var(--red)' : 'var(--text2)';
+    btn.style.color = calMultiSelect ? 'var(--accent)' : 'var(--text2)';
+    btn.style.border = calMultiSelect ? '1px solid var(--accent)' : '';
   }
+  const countEl = document.getElementById('cal-select-count');
+  if (countEl) countEl.textContent = '';
+  const shiftBtn = document.getElementById('btn-cal-shift');
+  if (shiftBtn) shiftBtn.style.display = 'none';
   renderCalendar();
 }
 
@@ -2077,8 +2082,8 @@ function toggleCalCellSelect(cell, dateStr, cache) {
   // 선택 모드에서 날짜 탭 → 해당 날짜 일정 목록에서 개별 체크박스로 선택
   const evts = getEventsForDate(dateStr, cache);
   const allEvts = [
-    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e, type: 'study' })),
-    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e, type: 'personal' }))
+    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e._raw || e, type: 'study', summary: e.summary })),
+    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e._raw || e, type: 'personal', summary: e.summary }))
   ];
   if (!allEvts.length) { toast('이 날짜에 일정이 없어요'); return; }
 
@@ -2092,7 +2097,7 @@ function toggleCalCellSelect(cell, dateStr, cache) {
         <div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isChecked?'var(--accent)':'var(--border2)'};background:${isChecked?'var(--accent)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center">
           ${isChecked?'<span style="color:#000;font-size:11px;font-weight:700">✓</span>':''}
         </div>
-        <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.event.summary}</span>
+        <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.summary}</span>
       </div>`;
     }).join('');
   }
@@ -2129,7 +2134,7 @@ function toggleSingleEventSelect(idx, dateStr) {
         <div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isChecked?'var(--accent)':'var(--border2)'};background:${isChecked?'var(--accent)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center">
           ${isChecked?'<span style="color:#000;font-size:11px;font-weight:700">✓</span>':''}
         </div>
-        <span style="font-size:13px;flex:1;color:${it.type==='study'?'var(--teal)':'var(--blue)'}">${it.type==='study'?'📅':'🗓'} ${it.event.summary}</span>
+        <span style="font-size:13px;flex:1;color:${it.type==='study'?'var(--teal)':'var(--blue)'}">${it.type==='study'?'📅':'🗓'} ${it.summary}</span>
       </div>`;
     }).join('');
   }
@@ -2160,8 +2165,8 @@ async function shiftSelectedEvents() {
 function openCalDayModal(dateStr, cache) {
   const evts = getEventsForDate(dateStr, cache);
   const allEvts = [
-    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e, type: 'study' })),
-    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e, type: 'personal' }))
+    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e._raw || e, type: 'study', summary: e.summary })),
+    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e._raw || e, type: 'personal', summary: e.summary }))
   ];
 
   const [yr, mo, dy] = dateStr.split('-');
@@ -2170,10 +2175,10 @@ function openCalDayModal(dateStr, cache) {
 
   let evtListHtml = allEvts.length ? allEvts.map((item, i) => `
     <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg4);border-radius:var(--rs);margin-bottom:6px">
-      <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.event.summary}</span>
+      <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.summary || item.event.summary}</span>
       <button onclick="openEditEventModal('${dateStr}',${i},calDayCache)" style="font-size:11px;color:var(--accent);background:none;border:none;padding:2px 6px;cursor:pointer">수정</button>
       <button onclick="deleteEvent('${item.calendarId}','${item.event.id}')" style="font-size:11px;color:var(--red);background:none;border:none;padding:2px 6px;cursor:pointer">삭제</button>
-    </div>`) .join('') : '<div style="color:var(--text3);font-size:13px;text-align:center;padding:16px">일정 없음</div>';
+    </div>`).join('') : '<div style="color:var(--text3);font-size:13px;text-align:center;padding:16px">일정 없음</div>';
 
   window.calDayCache = { allEvts };
 
