@@ -997,7 +997,7 @@ function parseStudyMin(str) {
 function fmtMin(m) {
   if (!m) return '0h';
   const h = Math.floor(m/60), mn = m%60;
-  return mn > 0 ? `${h}h ${mn}min` : `${h}h`;
+  return mn > 0 ? `${h}h ${mn}m` : `${h}h`;
 }
 function sleepHours(wake, bed) {
   if (!wake || !bed) return null;
@@ -1011,12 +1011,12 @@ function sleepHours(wake, bed) {
 }
 function fmtSleep(sh) {
   if (!sh) return '';
-  return sh.m > 0 ? `${sh.h}h ${sh.m}min` : `${sh.h}h`;
+  return sh.m > 0 ? `${sh.h}h ${sh.m}m` : `${sh.h}h`;
 }
 function fmtMinLong(m) {
-  if (!m) return '0h 0min';
+  if (!m) return '0h';
   const h = Math.floor(m/60), mn = m%60;
-  return mn > 0 ? `${h}h ${mn}min` : `${h}h`;
+  return mn > 0 ? `${h}h ${mn}m` : `${h}h`;
 }
 function getCurrentTerm() {
   const td = today();
@@ -1247,7 +1247,7 @@ function renderToday() {
     const scTmr = document.getElementById('sc-tmr-events');
     function evtListHtml(evts) {
       if (!evts.length) return '<div class="sc-val" style="font-size:18px;color:var(--text)">-</div><div class="sc-sub">일정 없음</div>';
-      return `<div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px;font-family:\'Noto Sans KR\',sans-serif">${evts.length}개</div>`
+      return `<div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px;font-family:'Noto Sans KR',sans-serif">${evts.length}개</div>`
         + evts.map(e => {
           const isStudy = todayEvts.study.includes(e) || tmrEvts.study.includes(e);
           const emoji = isStudy ? '✍🏻' : '📅';
