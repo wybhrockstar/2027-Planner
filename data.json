@@ -3143,8 +3143,8 @@
     },
     {
       "date": "2026-06-07",
-      "wakeTime": "23:24",
-      "sleepTime": "23:18",
+      "wakeTime": "11:24",
+      "sleepTime": "20:18",
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
@@ -3171,7 +3171,7 @@
     {
       "date": "2026-06-06",
       "wakeTime": "10:54",
-      "sleepTime": "22:52",
+      "sleepTime": "19:52",
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
