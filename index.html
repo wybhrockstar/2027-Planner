@@ -177,22 +177,34 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .prog-table .row-label{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:5px 8px;text-align:left;white-space:nowrap;border:1px solid var(--border);position:sticky;left:0;z-index:2}
 .prog-table .week-sep{border-left:2px solid var(--border2)!important}
 .prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
+/* PROGRESS TABLE (잔디 대체) */
+.prog-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px}
+.prog-table{border-collapse:collapse;font-size:11px;min-width:100%}
+.prog-table th{padding:5px 6px;text-align:center;font-weight:600;color:var(--text3);font-size:10px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap;position:sticky;left:0;z-index:2}
+.prog-table td{padding:5px 6px;border:1px solid var(--border);text-align:center;white-space:nowrap;min-width:38px;cursor:pointer;transition:.1s;position:relative}
+.prog-table td:hover{filter:brightness(1.15)}
+.prog-table td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
+.prog-table td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
+.prog-table .row-label{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:5px 8px;text-align:left;white-space:nowrap;border:1px solid var(--border);position:sticky;left:0;z-index:2}
+.prog-table .week-sep{border-left:2px solid var(--border2)!important}
+.prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
 /* GRASS SUBTABLE (새 레이아웃) */
-.grass-subtable{border-collapse:collapse;font-size:11px;width:100%}
-.grass-subtable th{padding:5px 6px;text-align:center;font-weight:600;color:var(--text3);font-size:10px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap;position:sticky;left:0;z-index:2}
-.grass-subtable td{padding:5px 6px;border:1px solid var(--border);text-align:center;white-space:nowrap;min-width:38px;cursor:pointer;transition:.1s;position:relative}
+.grass-subtable{border-collapse:collapse;font-size:11px;width:100%;table-layout:fixed}
+.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text3);font-size:9px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
+.grass-subtable td{padding:4px 2px;border:1px solid var(--border);text-align:center;white-space:nowrap;cursor:pointer;transition:.1s;position:relative;overflow:hidden;font-size:10px}
 .grass-subtable td:hover{filter:brightness(1.15)}
 .grass-subtable td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
 .grass-subtable td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
-.grass-subtable .row-label{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:5px 8px;text-align:left;white-space:nowrap;border:1px solid var(--border);position:sticky;left:0;z-index:2}
+.grass-subtable .row-label{font-size:9px;font-weight:600;color:var(--text3);background:var(--bg4);padding:4px 4px;text-align:left;white-space:nowrap;border:1px solid var(--border);width:2em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
-.grass-subtable .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
-.grass-block{margin-bottom:10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.grass-subtable .date-row th{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;color:var(--text3);background:var(--bg4);padding:2px 2px}
+.grass-block{margin-bottom:10px;overflow:hidden}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
 .cell-x{background:rgba(255,90,90,.18);color:#ff5a5a}
 .cell-none{background:rgba(255,255,255,.03);color:var(--text4)}
 .cell-skip{background:transparent;color:var(--text4)}
+.cell-blank{background:transparent!important;border-color:transparent!important;cursor:default!important;pointer-events:none}
 
 /* SUBJ INLINE PROGRESS (강의탭) */
 .subj-inline-grid{display:flex;flex-direction:column;gap:7px}
@@ -203,8 +215,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .subj-inline-info{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap;flex-shrink:0;width:90px;text-align:right}
 
 /* LOG TAG */
-.log-data{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
-.log-tag{font-size:10px;padding:3px 4px;border-radius:8px;background:var(--bg4);border:1px solid var(--border);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.log-data{display:flex;flex-wrap:wrap;gap:5px}
+.log-tag{font-size:10px;padding:3px 5px;border-radius:8px;background:var(--bg4);border:1px solid var(--border);text-align:center;white-space:nowrap}
 .log-tag.study{color:var(--accent);border-color:rgba(200,240,96,.3)}
 .log-tag.sleep{color:var(--blue);border-color:rgba(110,181,255,.3)}
 .log-tag.kcal{color:var(--orange);border-color:rgba(255,159,67,.3)}
@@ -1330,12 +1342,38 @@ function renderToday() {
           <button class="btn btn-ghost btn-sm" id="btn-edit-log">수정</button>
         </div>
         <div class="log-data">
-          ${log.wakeTime ? `<span class="log-tag sleep">기상 ${log.wakeTime}</span>` : ''}
-          ${log.sleepTime ? `<span class="log-tag sleep">취침 ${log.sleepTime}</span>` : ''}
-          ${sh ? `<span class="log-tag sleep">수면 ${fmtSleep(sh)}</span>` : ''}
-          ${log.kcal ? `<span class="log-tag kcal">${log.kcal}kcal</span>` : ''}
-          ${log.studyMin ? `<span class="log-tag study">공부 ${fmtMinLong(log.studyMin)}</span>` : ''}
-          ${log.studyResult ? `<span class="log-tag ${srClass}" style="color:${srColor}">${srLabel}</span>` : ''}
+          ${(()=>{
+            const rs2 = state.reportSettings;
+            // 기상 색상
+            let wakeColor = '';
+            if (log.wakeTime && rs2.wakeTimeLimit) {
+              wakeColor = log.wakeTime <= rs2.wakeTimeLimit ? '#5ecfb0' : '#ff5a5a';
+            }
+            // 취침 색상
+            let bedColor = '';
+            if (log.sleepTime && rs2.bedtimeLimit) {
+              bedColor = log.sleepTime <= rs2.bedtimeLimit ? '#5ecfb0' : '#ff5a5a';
+            }
+            // 운동 색상
+            const kcalGoal2 = rs2.kcalGoal || 200;
+            const kcalVal2 = log.kcal || 0;
+            let kcalColor = '#ff5a5a';
+            if (kcalVal2 > 0 && kcalVal2 < kcalGoal2) kcalColor = '#ff9f43';
+            else if (kcalVal2 >= kcalGoal2) kcalColor = '#5ecfb0';
+            // 공부 색상
+            const studyGoalMin2 = rs2.studyGoalMin || (rs2.studyGoalHour||7)*60;
+            const studyMin2 = log.studyMin || 0;
+            let studyColor = '#ff5a5a';
+            if (studyMin2 >= 60 && studyMin2 < studyGoalMin2) studyColor = '#ff9f43';
+            else if (studyMin2 >= studyGoalMin2) studyColor = '#5ecfb0';
+            return `
+              ${log.wakeTime ? `<span class="log-tag" style="color:${wakeColor};border-color:${wakeColor}40;background:var(--bg4)">기상 ${log.wakeTime}</span>` : ''}
+              ${log.sleepTime ? `<span class="log-tag" style="color:${bedColor};border-color:${bedColor}40;background:var(--bg4)">취침 ${log.sleepTime}</span>` : ''}
+              ${log.kcal != null ? `<span class="log-tag" style="color:${kcalColor};border-color:${kcalColor}40;background:var(--bg4)">${log.kcal}kcal</span>` : ''}
+              ${log.studyMin != null ? `<span class="log-tag" style="color:${studyColor};border-color:${studyColor}40;background:var(--bg4)">공부 ${fmtMinLong(log.studyMin)}</span>` : ''}
+              ${log.studyResult ? `<span class="log-tag ${srClass}" style="color:${srColor}">${srLabel}</span>` : ''}
+            `;
+          })()}
         </div>
         ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--bg4);border-radius:var(--rs)">${log.memo}</div>` : ''}
       </div>`;
@@ -1665,9 +1703,9 @@ function renderProgressContent() {
   // study days: Mon/Wed/Fri/Sun within term
   const studyDayLogs = termLogs.filter(l => isStudyDay(l.date));
   const studyO = studyDayLogs.filter(l => l.studyResult==='O').length;
-  // count all study days (Mon/Wed/Fri/Sun) in term period
+  // count all study days in FULL TERM (분모: 텀 전체 스터디 총횟수)
   let totalStudyDays = 0;
-  const tStart = new Date(t.start), tEnd = new Date(Math.min(new Date(t.end), new Date()));
+  const tStart = new Date(t.start), tEnd = new Date(t.end);
   for (let d = new Date(tStart); d <= tEnd; d.setDate(d.getDate()+1)) {
     if (isStudyDay(dateStr(d))) totalStudyDays++;
   }
@@ -1799,12 +1837,20 @@ function renderGrass(term) {
     }
   ];
 
-  // PC(≥1024px) 4주/그룹, 모바일 2주/그룹으로 슬라이싱 후 세로로 반복
+  // PC(≥1200px) 3주/그룹, 모바일 2주/그룹으로 슬라이싱 후 세로로 반복
   function buildTableGroup(groupWeeks) {
+    // 각 주를 7칸으로 패딩 (마지막 주가 7일 미만이어도 고정폭 유지)
+    const paddedWeeks = groupWeeks.map(wk => {
+      const padded = [...wk];
+      while (padded.length < 7) padded.push(null); // null = 빈 칸
+      return padded;
+    });
+
     let hdr = `<tr class="date-row"><th class="row-label"></th>`;
-    groupWeeks.forEach((wk, wi) => {
+    paddedWeeks.forEach((wk, wi) => {
       wk.forEach((d, di) => {
         const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
+        if (!d) { hdr += `<th class="cell-blank${sep}"></th>`; return; }
         const dt = new Date(d);
         const label = `${dt.getMonth()+1}/${dt.getDate()}`;
         const dow = dt.getDay();
@@ -1817,12 +1863,13 @@ function renderGrass(term) {
     let rows = '';
     ROWS.forEach(row => {
       rows += `<tr><th class="row-label">${row.label}</th>`;
-      groupWeeks.forEach((wk, wi) => {
+      paddedWeeks.forEach((wk, wi) => {
         wk.forEach((d, di) => {
+          const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
+          if (!d) { rows += `<td class="cell-blank${sep}"></td>`; return; }
           const cd = getCellData(d);
           const { cls, txt } = row.render(d, cd);
           const todayCls = cd.isToday ? ' today-col' : '';
-          const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
           const clickable = !cd.isFuture && cls !== 'cell-skip';
           rows += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
         });
@@ -1873,7 +1920,7 @@ function bindGrassClicks() {
 }
 
 function applyGrassLayout() {
-  const isMobile = window.innerWidth < 1024;
+  const isMobile = window.innerWidth < 1200;
   document.querySelectorAll('.grass-pc').forEach(el => el.style.display = isMobile ? 'none' : 'block');
   document.querySelectorAll('.grass-mo').forEach(el => el.style.display = isMobile ? 'block' : 'none');
 }
