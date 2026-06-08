@@ -177,6 +177,17 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .prog-table .row-label{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:5px 8px;text-align:left;white-space:nowrap;border:1px solid var(--border);position:sticky;left:0;z-index:2}
 .prog-table .week-sep{border-left:2px solid var(--border2)!important}
 .prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
+/* GRASS SUBTABLE (새 레이아웃) */
+.grass-subtable{border-collapse:collapse;font-size:11px;width:100%}
+.grass-subtable th{padding:5px 6px;text-align:center;font-weight:600;color:var(--text3);font-size:10px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap;position:sticky;left:0;z-index:2}
+.grass-subtable td{padding:5px 6px;border:1px solid var(--border);text-align:center;white-space:nowrap;min-width:38px;cursor:pointer;transition:.1s;position:relative}
+.grass-subtable td:hover{filter:brightness(1.15)}
+.grass-subtable td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
+.grass-subtable td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
+.grass-subtable .row-label{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:5px 8px;text-align:left;white-space:nowrap;border:1px solid var(--border);position:sticky;left:0;z-index:2}
+.grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
+.grass-subtable .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
+.grass-block{margin-bottom:10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
 .cell-x{background:rgba(255,90,90,.18);color:#ff5a5a}
@@ -231,7 +242,7 @@ canvas{width:100%!important}
 .report-nav{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .report-nav-btn{background:none;border:1px solid var(--border2);color:var(--text2);border-radius:var(--rs);padding:4px 10px;font-size:14px;cursor:pointer}
 .report-nav-btn:hover{border-color:var(--accent);color:var(--accent)}
-.report-nav-lbl{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);flex:1;text-align:center}
+.report-nav-lbl{font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--text2);flex:1;text-align:center}
 
 /* EMPTY STATE */
 .empty{text-align:center;padding:36px 16px;color:var(--text3)}
@@ -356,10 +367,10 @@ canvas{width:100%!important}
     <button class="btn btn-ghost" onclick="pushToGithub()" style="flex:1;justify-content:center">⬆️ GitHub에 저장</button>
     <button class="btn btn-ghost" onclick="pullFromGithub()" style="flex:1;justify-content:center">⬇️ 불러오기</button>
   </div>
-  <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:16px;min-height:18px"></div>
+  <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:8px;min-height:18px"></div>
 
   <!-- 섹션: 백업·복원 -->
-  <div style="height:1px;background:var(--border);margin-bottom:16px"></div>
+  <div style="height:1px;background:var(--border);margin-bottom:8px"></div>
   <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text2);margin-bottom:8px">데이터 백업 · 복원</div>
   <div style="display:flex;gap:8px;margin-bottom:16px">
     <button class="btn btn-ghost" onclick="exportData()" style="flex:1;justify-content:center">📤 내보내기</button>
@@ -372,22 +383,26 @@ canvas{width:100%!important}
   <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
     <div class="form-row">
       <div>
-        <label class="form-lbl">목표 공부시간 (h)</label>
-        <input type="number" id="rs-study" placeholder="7" min="1" max="16">
+        <label class="form-lbl">목표 공부시간 (분)</label>
+        <input type="number" id="rs-study" placeholder="420" min="60" max="960">
       </div>
       <div>
-        <label class="form-lbl">최소 수면시간 (h)</label>
-        <input type="number" id="rs-sleep" placeholder="6" min="3" max="12">
+        <label class="form-lbl">목표 운동량 (kcal)</label>
+        <input type="number" id="rs-kcal" placeholder="200" min="0" max="2000">
       </div>
     </div>
-    <div class="form-row">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div>
+        <label class="form-lbl">기상 제한 시각</label>
+        <input type="time" id="rs-waketime" placeholder="07:30">
+      </div>
       <div>
         <label class="form-lbl">취침 제한 시각</label>
         <input type="time" id="rs-bedtime" placeholder="01:00">
       </div>
       <div>
-        <label class="form-lbl">기상 제한 시각</label>
-        <input type="time" id="rs-waketime" placeholder="07:30">
+        <label class="form-lbl">최소 수면시간 (분)</label>
+        <input type="number" id="rs-sleep" placeholder="360" min="60" max="720">
       </div>
     </div>
     <button class="btn btn-ghost" onclick="saveReportSettings()" style="justify-content:center">💾 저장</button>
@@ -455,7 +470,7 @@ canvas{width:100%!important}
 </div>
 
 <header class="hdr">
-  <div class="logo">📒2027 IMGO Planner</div>
+  <div class="logo">📒 2027 IMGO Planner</div>
   <div class="hdr-r">
     <div class="dday-badge" id="dday-txt">D-???</div>
     <button class="backup-btn" id="btn-open-backup" title="백업·복원">⚙️</button>
@@ -533,7 +548,7 @@ canvas{width:100%!important}
     <div class="card"><div class="chart-wrap" style="height:180px"><canvas id="chart-sleep-bubble"></canvas></div></div>
   </div>
   <div class="sec">
-    <div class="sec-hd">수면 시간 추이</div>
+    <div class="sec-hd">수면시간 추이</div>
     <div class="card"><div class="chart-wrap"><canvas id="chart-sleep-line"></canvas></div></div>
   </div>
 </div>
@@ -629,7 +644,7 @@ let state = {
   examScores: [],
   termTodos: {1:[],2:[],3:[],4:[]},
   weeklySchedule: {1:[],2:[],3:[],4:[]},
-  reportSettings: {studyGoalHour:7, sleepMinHour:6, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'}
+  reportSettings: {studyGoalHour:7, studyGoalMin:420, sleepMinHour:6, sleepMinMin:360, kcalGoal:200, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'}
 };
 
 // ─── HARDCODED CONSTANTS ─────────────────────────────────────────────────────
@@ -997,7 +1012,7 @@ function parseStudyMin(str) {
 function fmtMin(m) {
   if (!m) return '0h';
   const h = Math.floor(m/60), mn = m%60;
-  return mn > 0 ? `${h}h ${mn}m` : `${h}h`;
+  return mn > 0 ? `${h}h ${mn}m` : `${h}h`;
 }
 function sleepHours(wake, bed) {
   if (!wake || !bed) return null;
@@ -1011,12 +1026,12 @@ function sleepHours(wake, bed) {
 }
 function fmtSleep(sh) {
   if (!sh) return '';
-  return sh.m > 0 ? `${sh.h}h ${sh.m}m` : `${sh.h}h`;
+  return sh.m > 0 ? `${sh.h}h ${sh.m}m` : `${sh.h}h`;
 }
 function fmtMinLong(m) {
   if (!m) return '0h';
   const h = Math.floor(m/60), mn = m%60;
-  return mn > 0 ? `${h}h ${mn}m` : `${h}h`;
+  return mn > 0 ? `${h}h ${mn}m` : `${h}h`;
 }
 function getCurrentTerm() {
   const td = today();
@@ -1070,10 +1085,18 @@ function isStudyDay(dateStr) {
 // ─── SETTINGS MODAL ──────────────────────────────────────────────────────────
 function openSettingsModal() {
   const rs = state.reportSettings;
-  document.getElementById('rs-study').value = rs.studyGoalHour||7;
-  document.getElementById('rs-sleep').value = rs.sleepMinHour||6;
+  // 공부시간: 기존값이 시간단위(≤16)면 분으로 변환, 이미 분이면 그대로
+  const studyMin = (rs.studyGoalHour && rs.studyGoalHour <= 16)
+    ? Math.round((rs.studyGoalHour || 7) * 60)
+    : (rs.studyGoalMin || 420);
+  document.getElementById('rs-study').value = studyMin;
+  const sleepMin = (rs.sleepMinHour && rs.sleepMinHour <= 12)
+    ? Math.round((rs.sleepMinHour || 6) * 60)
+    : (rs.sleepMinMin || 360);
+  document.getElementById('rs-sleep').value = sleepMin;
   document.getElementById('rs-bedtime').value = rs.bedtimeLimit||'01:00';
   document.getElementById('rs-waketime').value = rs.wakeTimeLimit||'07:30';
+  document.getElementById('rs-kcal').value = rs.kcalGoal || 200;
   const gh = getGhSettings();
   document.getElementById('input-gh-token').value = gh.token || '';
   document.getElementById('input-gh-repo').value = gh.repo || GH_REPO_DEFAULT;
@@ -1083,9 +1106,14 @@ function openSettingsModal() {
 }
 
 function saveReportSettings() {
+  const studyMin = parseFloat(document.getElementById('rs-study').value) || 420;
+  const sleepMin = parseFloat(document.getElementById('rs-sleep').value) || 360;
   state.reportSettings = {
-    studyGoalHour: parseFloat(document.getElementById('rs-study').value)||7,
-    sleepMinHour: parseFloat(document.getElementById('rs-sleep').value)||6,
+    studyGoalHour: studyMin / 60,   // 호환성 유지
+    studyGoalMin: studyMin,
+    sleepMinHour: sleepMin / 60,    // 호환성 유지
+    sleepMinMin: sleepMin,
+    kcalGoal: parseFloat(document.getElementById('rs-kcal').value) || 200,
     bedtimeLimit: document.getElementById('rs-bedtime').value||'01:00',
     wakeTimeLimit: document.getElementById('rs-waketime').value||'07:30'
   };
@@ -1621,18 +1649,21 @@ function renderProgressContent() {
   const studyPct = totalStudyDays ? Math.min(100, Math.round(studyO/totalStudyDays*100)) : 0;
 
   const totalStudyMin = termLogs.reduce((s,l)=>s+l.studyMin,0);
-  const goalMin = t.days * (state.reportSettings.studyGoalHour * 60);
+  const rs = state.reportSettings;
+  const studyGoalMinPerDay = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
+  const goalMin = t.days * studyGoalMinPerDay;
   const studyHourPct = goalMin ? Math.min(100, Math.round(totalStudyMin/goalMin*100)) : 0;
 
-  const exerciseDays = termLogs.filter(l=>l.kcal>0).length;
-  const exPct = elapsed ? Math.min(100, Math.round(exerciseDays/elapsed*100)) : 0;
+  const totalKcal = termLogs.reduce((s,l)=>s+(l.kcal||0),0);
+  const goalKcal = t.days * (rs.kcalGoal || 200);
+  const exPct = goalKcal ? Math.min(100, Math.round(totalKcal/goalKcal*100)) : 0;
 
   html += `<div class="card" style="margin-bottom:16px">
     <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text);margin-bottom:12px">텀 달성률</div>
-    ${inlineBar('인강', lecPct, `${termDoneLecs}/${totalLecs}강`, 'var(--accent)')}
+    ${inlineBar('운동', exPct, `${totalKcal}/${goalKcal}kcal`, 'var(--orange)')}
+    ${inlineBar('공부', studyHourPct, fmtMin(totalStudyMin)+`/${fmtMin(goalMin)}`, 'var(--blue)')}
+    ${inlineBar('인강', lecPct, `${termDoneLecs}/${totalLecs}강`, 'var(--purple)')}
     ${inlineBar('스터디', studyPct, `${studyO}/${totalStudyDays}회`, 'var(--teal)')}
-    ${inlineBar('복습(공부)', studyHourPct, fmtMin(totalStudyMin), 'var(--blue)')}
-    ${inlineBar('운동', exPct, `${exerciseDays}/${elapsed}일`, 'var(--orange)')}
   </div>`;
 
   // 잔디
@@ -1672,7 +1703,6 @@ function renderGrass(term) {
   let week = [];
   dates.forEach((d, i) => {
     week.push(d);
-    // 월요일 기준 7일 (또는 마지막 날)
     if (week.length === 7 || i === dates.length - 1) {
       weeks.push(week);
       week = [];
@@ -1686,9 +1716,7 @@ function renderGrass(term) {
     const isFuture = d > td;
     const isToday = d === td;
     const studyDay = isStudyDay(d);
-
     if (isFuture) return { isFuture, isToday, log, lDone, studyDay };
-
     let srVal = null, studyVal = null, kcalVal = null;
     if (log) {
       srVal = studyDay ? (log.studyResult || '×') : null;
@@ -1705,27 +1733,9 @@ function renderGrass(term) {
     return 'cell-none';
   }
 
-  // 날짜 헤더 행 (주차 구분)
-  let dateHeaderHtml = `<tr class="date-row"><th class="row-label"></th>`;
-  let weekSepCols = new Set();
-  let colIdx = 0;
-  weeks.forEach((wk, wi) => {
-    wk.forEach((d, di) => {
-      const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
-      if (sep) weekSepCols.add(colIdx);
-      const dt = new Date(d);
-      const label = `${dt.getMonth()+1}/${dt.getDate()}`;
-      const dow = dt.getDay();
-      const color = dow===0?'var(--red)':dow===6?'var(--blue)':'';
-      dateHeaderHtml += `<th class="${sep}" style="${color?`color:${color}`:''}">${label}</th>`;
-      colIdx++;
-    });
-  });
-  dateHeaderHtml += `</tr>`;
-
-  // 행 4종
+  // 행 4종 정의
   const ROWS = [
-    { label: '운동', key: 'kcal',
+    { label: '운동',
       render: (d, cd) => {
         if (cd.isFuture) return { cls:'future', txt:'' };
         if (!cd.log) return { cls:'cell-none', txt:'' };
@@ -1764,32 +1774,57 @@ function renderGrass(term) {
     }
   ];
 
-  let rowsHtml = '';
-  ROWS.forEach(row => {
-    rowsHtml += `<tr><th class="row-label">${row.label}</th>`;
-    colIdx = 0;
-    weeks.forEach((wk, wi) => {
+  // PC(≥1024px) 4주/그룹, 모바일 2주/그룹으로 슬라이싱 후 세로로 반복
+  function buildTableGroup(groupWeeks) {
+    let hdr = `<tr class="date-row"><th class="row-label"></th>`;
+    groupWeeks.forEach((wk, wi) => {
       wk.forEach((d, di) => {
-        const cd = getCellData(d);
-        const { cls, txt } = row.render(d, cd);
-        const todayCls = cd.isToday ? ' today-col' : '';
         const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
-        const clickable = !cd.isFuture && cls !== 'cell-skip';
-        rowsHtml += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
-        colIdx++;
+        const dt = new Date(d);
+        const label = `${dt.getMonth()+1}/${dt.getDate()}`;
+        const dow = dt.getDay();
+        const color = dow===0?'var(--red)':dow===6?'var(--blue)':'';
+        hdr += `<th class="${sep}" style="${color?`color:${color}`:''}">${label}</th>`;
       });
     });
-    rowsHtml += `</tr>`;
-  });
+    hdr += `</tr>`;
+
+    let rows = '';
+    ROWS.forEach(row => {
+      rows += `<tr><th class="row-label">${row.label}</th>`;
+      groupWeeks.forEach((wk, wi) => {
+        wk.forEach((d, di) => {
+          const cd = getCellData(d);
+          const { cls, txt } = row.render(d, cd);
+          const todayCls = cd.isToday ? ' today-col' : '';
+          const sep = (wi > 0 && di === 0) ? ' week-sep' : '';
+          const clickable = !cd.isFuture && cls !== 'cell-skip';
+          rows += `<td class="${cls}${todayCls}${sep}" ${clickable?`data-date="${d}"`:''}>${txt}</td>`;
+        });
+      });
+      rows += `</tr>`;
+    });
+    return `<table class="prog-table grass-subtable">${hdr}${rows}</table>`;
+  }
+
+  // 주차 청크로 분할 (PC=4주, 모바일=2주 — CSS로 제어)
+  // 두 가지 그룹핑을 모두 빌드하고 CSS로 visibility 전환
+  function chunkWeeks(n) {
+    const groups = [];
+    for (let i = 0; i < weeks.length; i += n) groups.push(weeks.slice(i, i+n));
+    return groups;
+  }
+
+  const groups4 = chunkWeeks(4); // PC용
+  const groups2 = chunkWeeks(2); // 모바일용
+
+  const pc4Html = groups4.map(g => `<div class="grass-block">${buildTableGroup(g)}</div>`).join('');
+  const mo2Html = groups2.map(g => `<div class="grass-block">${buildTableGroup(g)}</div>`).join('');
 
   return `<div class="card" style="padding:12px 10px">
     <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text);margin-bottom:10px">일일 체크리스트</div>
-    <div class="prog-table-wrap">
-      <table class="prog-table" id="prog-table-${term.id}">
-        ${dateHeaderHtml}
-        ${rowsHtml}
-      </table>
-    </div>
+    <div class="grass-pc" id="grass-pc-${term.id}">${pc4Html}</div>
+    <div class="grass-mo" id="grass-mo-${term.id}" style="display:none">${mo2Html}</div>
     <div style="display:flex;gap:12px;margin-top:8px;font-size:10px">
       <span class="cell-o" style="padding:1px 6px;border-radius:4px">○ 달성</span>
       <span class="cell-d" style="padding:1px 6px;border-radius:4px">△ 부분</span>
@@ -1801,14 +1836,26 @@ function renderGrass(term) {
 
 // 표 클릭 이벤트 바인딩
 function bindGrassClicks() {
-  document.querySelectorAll('[id^="prog-table-"] td[data-date]').forEach(cell => {
+  document.querySelectorAll('.grass-subtable td[data-date]').forEach(cell => {
     cell.addEventListener('click', () => {
       const d = cell.dataset.date;
       if (!d || d > today()) return;
       openLogModalForDate(d);
     });
   });
+  // PC/모바일 가시성 적용
+  applyGrassLayout();
 }
+
+function applyGrassLayout() {
+  const isMobile = window.innerWidth < 1024;
+  document.querySelectorAll('.grass-pc').forEach(el => el.style.display = isMobile ? 'none' : 'block');
+  document.querySelectorAll('.grass-mo').forEach(el => el.style.display = isMobile ? 'block' : 'none');
+}
+
+window.addEventListener('resize', () => {
+  if (currentPage === 'progress') applyGrassLayout();
+});
 
 // ─── LOG MODAL (날짜 지정) ────────────────────────────────────────────────────
 let logModalDate = null;
@@ -1971,8 +2018,10 @@ function renderReport() {
   const kcalData = dates.map(d => logMap[d] ? (logMap[d].kcal||0) : 0);
 
   // Study chart - color by goal
-  buildBarChart('chart-study', labels, studyData, rs.studyGoalHour, 'var(--accent)', 'var(--red)', `${rs.studyGoalHour}h 목표`);
-  buildBarChart('chart-kcal', labels, kcalData, 200, 'var(--orange)', 'var(--text3)', '200kcal');
+  const studyGoalH = (rs.studyGoalMin ? rs.studyGoalMin/60 : rs.studyGoalHour) || 7;
+  const kcalGoal = rs.kcalGoal || 200;
+  buildBarChart('chart-study', labels, studyData, studyGoalH, 'var(--accent)', 'var(--red)', `${studyGoalH}h 목표`);
+  buildBarChart('chart-kcal', labels, kcalData, kcalGoal, 'var(--orange)', 'var(--text3)', `${kcalGoal}kcal`);
   buildSleepBubble('chart-sleep-bubble', dates, logMap, rs);
   buildSleepLine('chart-sleep-line', dates, logMap, rs);
 }
@@ -2057,7 +2106,7 @@ function buildSleepLine(id, dates, logMap, rs) {
   const isDark = !document.body.classList.contains('light');
   const gridColor = isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
   const textColor = isDark?'#777':'#999';
-  const minGoal = rs.sleepMinHour||6;
+  const minGoalH = rs.sleepMinMin ? rs.sleepMinMin/60 : (rs.sleepMinHour||6);
 
   const labels = dates.map(d=>d.slice(5));
   const data = dates.map(d => {
@@ -2065,7 +2114,7 @@ function buildSleepLine(id, dates, logMap, rs) {
     if (!l || !l.wakeTime || !l.sleepTime) return null;
     return sleepHours(l.wakeTime, l.sleepTime);
   });
-  const colors = data.map(v => v===null ? 'transparent' : v < minGoal ? '#ff5a5a' : '#6eb5ff');
+  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a' : '#6eb5ff');
 
   chartsRef[id] = new Chart(canvas, {
     type:'line',
@@ -2073,12 +2122,12 @@ function buildSleepLine(id, dates, logMap, rs) {
       fill:true,tension:.35,pointBackgroundColor:colors,pointRadius:4,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
-        return v < minGoal ? '#ff5a5a' : '#6eb5ff';
+        return v < minGoalH ? '#ff5a5a' : '#6eb5ff';
       }}
     }]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},
-        annotation:{annotations:{line:{type:'line',yMin:minGoal,yMax:minGoal,
+        annotation:{annotations:{line:{type:'line',yMin:minGoalH,yMax:minGoalH,
           borderColor:'rgba(255,90,90,.4)',borderWidth:1,borderDash:[4,4]}}}},
       scales:{x:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}}},
               y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true,max:12}}
