@@ -712,11 +712,30 @@ async function gcalRequest(method, path, body) {
   return res;
 }
 
+// 날짜 문자열에 n일 더하는 헬퍼
+function addDays(dateStr, n) {
+  const d = new Date(dateStr + 'T00:00:00');
+  d.setDate(d.getDate() + n);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
 // 일정 생성
-async function createGcalEvent(calendarId, { summary, date, startTime, endTime, allDay = true, reminder = null }) {
+async function createGcalEvent(calendarId, { summary, date, startTime, endTime, allDay = true, reminder = null, overflowHour = null }) {
   const isStudy = calendarId === GCAL_STUDY_ID;
   const start = allDay ? { date } : { dateTime: `${date}T${startTime}:00+09:00`, timeZone: 'Asia/Seoul' };
-  const end   = allDay ? { date } : { dateTime: `${date}T${endTime}:00+09:00`,   timeZone: 'Asia/Seoul' };
+  let end;
+  if (allDay) {
+    end = { date };
+  } else if (overflowHour !== null && overflowHour >= 24) {
+    // 27시 개념: 종료가 다음날
+    const nextDate = addDays(date, 1);
+    const pad = n => String(n).padStart(2,'0');
+    const realHour = overflowHour % 24;
+    const [, mm] = endTime.split(':');
+    end = { dateTime: `${nextDate}T${pad(realHour)}:${mm}:00+09:00`, timeZone: 'Asia/Seoul' };
+  } else {
+    end = { dateTime: `${date}T${endTime}:00+09:00`, timeZone: 'Asia/Seoul' };
+  }
   const reminders = isStudy
     ? { useDefault: false, overrides: [] }
     : reminder !== null
@@ -2030,7 +2049,7 @@ async function renderCalendar() {
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
       ${studyEvtsHtml}
       ${personalEvtsHtml}
-      ${memo ? `<div style="font-size:9px;color:var(--text2);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:2px">💬 ${memo}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
+      ${memo ? `<div style="font-size:9px;color:var(--text2);line-height:1.2;word-break:keep-all;white-space:normal;margin-top:2px">💬 ${memo}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
     </div>`;
   }
   html += '</div>';
@@ -2201,8 +2220,8 @@ function openCalDayModal(dateStr, cache) {
     <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title} 일정</div>
     <div id="cal-day-evt-list">${evtListHtml}</div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">✍🏻 스터디 추가</button>
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">📅 개인 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">✍🏻 스터디 일정 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">📅 개인 일정 추가</button>
       <button class="btn btn-sm btn-ghost" onclick="closeModal()">닫기</button>
     </div>
     ${memoHtml}
@@ -2228,8 +2247,13 @@ function saveCalMemo(dateStr) {
 
 function openAddEventModal(dateStr, calendarId) {
   const isStudy = calendarId === GCAL_STUDY_ID;
+  // 기본값: 스터디=종일, 개인=특정시간 08:30~09:30
+  const defaultAllDay = isStudy ? '1' : '0';
+  const defaultStart = '08:30';
+  const defaultEnd   = '09:30';
   closeModal();
-  setTimeout(() => showModal(`
+  setTimeout(() => {
+    showModal(`
     <div style="font-weight:700;font-size:16px;margin-bottom:14px">${isStudy?'✍🏻 스터디':'📅 개인'} 일정 추가</div>
     <div style="margin-bottom:10px">
       <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">일정 이름</label>
@@ -2238,13 +2262,13 @@ function openAddEventModal(dateStr, calendarId) {
     <div style="margin-bottom:10px">
       <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">유형</label>
       <select id="modal-evt-allday" style="width:100%" onchange="toggleTimeInputs()">
-        <option value="1">종일</option>
-        <option value="0">특정 시간</option>
+        <option value="1" ${defaultAllDay==='1'?'selected':''}>종일</option>
+        <option value="0" ${defaultAllDay==='0'?'selected':''}>특정 시간</option>
       </select>
     </div>
-    <div id="modal-time-wrap" style="display:none;margin-bottom:10px;display:flex;gap:8px;display:none">
-      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">시작</label><input id="modal-start-time" type="time" value="09:00"></div>
-      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">종료</label><input id="modal-end-time" type="time" value="10:00"></div>
+    <div id="modal-time-wrap" style="display:${defaultAllDay==='0'?'flex':'none'};gap:8px;margin-bottom:10px">
+      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">시작</label><input id="modal-start-time" type="time" value="${defaultStart}" oninput="autoFillEndTime()"></div>
+      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">종료</label><input id="modal-end-time" type="time" value="${defaultEnd}"></div>
     </div>
     ${!isStudy ? `<div style="margin-bottom:10px">
       <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">알림 (분 전, 0=없음)</label>
@@ -2254,7 +2278,24 @@ function openAddEventModal(dateStr, calendarId) {
       <button class="btn btn-sm" style="background:var(--accent);color:#000" onclick="submitAddEvent('${dateStr}','${calendarId}')">추가</button>
       <button class="btn btn-sm btn-ghost" onclick="closeModal()">취소</button>
     </div>
-  `), 50);
+  `);
+  }, 50);
+}
+
+function autoFillEndTime() {
+  const startEl = document.getElementById('modal-start-time');
+  const endEl   = document.getElementById('modal-end-time');
+  if (!startEl || !endEl) return;
+  const [h, m] = startEl.value.split(':').map(Number);
+  if (isNaN(h) || isNaN(m)) return;
+  const totalMins = h * 60 + m + 60;
+  const eh = Math.floor(totalMins / 60);
+  const em = totalMins % 60;
+  // 24시 이상이면 HH:MM 형식 그대로 표현 (input type=time은 00:xx로 wrapping하므로 직접 set)
+  const pad = n => String(n).padStart(2,'0');
+  endEl.value = `${pad(eh % 24)}:${pad(em)}`;
+  // 27:xx 개념 저장용 data attribute
+  endEl.dataset.overflowHour = eh >= 24 ? String(eh) : '';
 }
 
 function toggleTimeInputs() {
@@ -2267,14 +2308,16 @@ async function submitAddEvent(dateStr, calendarId) {
   const name = document.getElementById('modal-evt-name')?.value.trim();
   if (!name) { toast('이름을 입력하세요'); return; }
   const allDay = document.getElementById('modal-evt-allday')?.value === '1';
-  const startTime = document.getElementById('modal-start-time')?.value || '09:00';
-  const endTime = document.getElementById('modal-end-time')?.value || '10:00';
+  const startTime = document.getElementById('modal-start-time')?.value || '08:30';
+  const endEl = document.getElementById('modal-end-time');
+  const endTime = endEl?.value || '09:30';
+  const overflowHour = endEl?.dataset.overflowHour ? parseInt(endEl.dataset.overflowHour) : null;
   const reminderEl = document.getElementById('modal-reminder');
   const reminder = reminderEl ? parseInt(reminderEl.value) : null;
   try {
     closeModal();
     toast('추가 중...');
-    await createGcalEvent(calendarId, { summary: name, date: dateStr, startTime, endTime, allDay, reminder });
+    await createGcalEvent(calendarId, { summary: name, date: dateStr, startTime, endTime, allDay, reminder, overflowHour });
     toast('✓ 일정 추가됨');
     setTimeout(() => renderCalendar(), 1500);
   } catch(e) {
