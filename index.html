@@ -315,7 +315,7 @@ canvas{width:100%!important}
     </div>
   </div>
   <div class="form-group">
-    <label class="form-lbl">메모</label>
+    <label class="form-lbl">오늘의 한마디</label>
     <textarea id="inp-memo" rows="2" style="resize:none" placeholder="오늘 하루 한 줄..."></textarea>
   </div>
   <div style="display:flex;gap:8px">
@@ -1972,13 +1972,13 @@ async function renderCalendar() {
   container.innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
       <button class="btn btn-ghost btn-sm" id="cal-prev">←</button>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600">${moStr}</div>
+      <div style="font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700">${moStr}</div>
       <div style="display:flex;gap:6px">
         <button class="btn btn-ghost btn-sm" id="cal-refresh" title="구글 캘린더 새로고침">↻</button>
         <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
       </div>
     </div>
-    <div style="font-size:11px;color:var(--text3);margin-bottom:6px">Google Calendar 로딩 중...</div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:6px"></div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
       <button class="btn btn-ghost btn-sm" id="btn-google-auth" onclick="updateAuthUI()">🔗 Google 로그인</button>
       <button class="btn btn-ghost btn-sm" id="btn-cal-multiselect" onclick="toggleCalMultiSelect()">☑️ 일정 선택</button>
@@ -1998,7 +1998,7 @@ async function renderCalendar() {
 
   const DOW_NAMES = ['월','화','수','목','금','토','일'];
   let html = `<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px">
-    ${DOW_NAMES.map((d,i)=>`<div style="text-align:center;font-size:10px;font-weight:600;color:${i===5?'var(--blue)':i===6?'var(--red)':'var(--text3)'};padding:3px 0">${d}</div>`).join('')}
+    ${DOW_NAMES.map((d,i)=>`<div style="text-align:center;font-size:10px;font-weight:600;color:${i===5?'var(--blue)':i===6?'var(--red)':'var(--text)'};padding:3px 0">${d}</div>`).join('')}
   </div>
   <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px" id="cal-cells">`;
 
@@ -2030,7 +2030,7 @@ async function renderCalendar() {
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
       ${studyEvtsHtml}
       ${personalEvtsHtml}
-      ${memo ? `<div style="font-size:9px;color:var(--text2);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:2px;border-top:1px solid var(--border)">💬 ${memo}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
+      ${memo ? `<div style="font-size:9px;color:var(--text2);line-height:1.4;word-break:keep-all;white-space:normal;margin-top:2px">💬 ${memo}</div>` : (log ? `<div style="font-size:8px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
     </div>`;
   }
   html += '</div>';
@@ -2057,6 +2057,9 @@ async function renderCalendar() {
       }
     });
   });
+
+  // 다중선택 활성 상태 버튼 스타일 복원
+  applyMultiSelectBtnStyle();
 }
 
 // ─── 캘린더 다중선택 ──────────────────────────────────────────────────────────
@@ -2066,17 +2069,19 @@ let calSelectedEvents = []; // [{calendarId, event}]
 function toggleCalMultiSelect() {
   calMultiSelect = !calMultiSelect;
   calSelectedEvents = [];
-  const btn = document.getElementById('btn-cal-multiselect');
-  if (btn) {
-    btn.textContent = calMultiSelect ? '✕ 선택 취소' : '☑️ 일정 선택';
-    btn.style.color = calMultiSelect ? 'var(--accent)' : '';
-    btn.style.borderColor = calMultiSelect ? 'var(--accent)' : '';
-  }
   const countEl = document.getElementById('cal-select-count');
   if (countEl) countEl.textContent = '';
   const shiftBtn = document.getElementById('btn-cal-shift');
   if (shiftBtn) shiftBtn.style.display = 'none';
   renderCalendar();
+}
+
+function applyMultiSelectBtnStyle() {
+  const btn = document.getElementById('btn-cal-multiselect');
+  if (!btn) return;
+  btn.textContent = calMultiSelect ? '✕ 선택 취소' : '☑️ 일정 선택';
+  btn.style.color = calMultiSelect ? 'var(--accent)' : '';
+  btn.style.borderColor = calMultiSelect ? 'var(--accent)' : '';
 }
 
 function toggleCalCellSelect(cell, dateStr, cache) {
@@ -2186,8 +2191,8 @@ function openCalDayModal(dateStr, cache) {
   const memoHtml = `
     <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
       <div style="font-size:11px;color:var(--text3);margin-bottom:6px">💬 오늘의 한마디</div>
-      <textarea id="cal-memo-input" rows="2" style="width:100%;resize:none;font-size:13px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--rs);padding:8px 10px;color:var(--text);outline:none" placeholder="한 줄 메모...">${existingMemo}</textarea>
-      <button onclick="saveCalMemo('${dateStr}')" class="btn btn-primary btn-sm" style="margin-top:6px;width:100%">💬 메모 저장</button>
+      <textarea id="cal-memo-input" rows="2" style="width:100%;resize:none;font-size:13px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--rs);padding:8px 10px;color:var(--text);outline:none">${existingMemo}</textarea>
+      <button onclick="saveCalMemo('${dateStr}')" class="btn btn-primary btn-sm" style="margin-top:6px;width:100%">💬 오늘의 한마디 저장</button>
     </div>`;
 
   window.calDayCache = { allEvts };
