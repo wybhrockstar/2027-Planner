@@ -3,12 +3,12 @@
   "dailyLogs": [
     {
       "date": "2026-06-08",
-      "wakeTime": "",
+      "wakeTime": "09:02",
       "sleepTime": "",
-      "studyMin": 0,
+      "studyMin": 150,
       "kcal": 0,
-      "memo": "",
-      "studyResult": null
+      "memo": "거의 끝",
+      "studyResult": "O"
     }
   ],
   "dailyTodos": {
@@ -21,7 +21,7 @@
       {
         "id": "mq53ka41",
         "text": "ff",
-        "done": false
+        "done": true
       }
     ]
   },
