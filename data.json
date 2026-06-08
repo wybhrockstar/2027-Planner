@@ -2418,7 +2418,7 @@
       "minutes": 37,
       "term": 1,
       "done": true,
-      "doneDate": "2026-06-08"
+      "doneDate": "2026-06-09"
     },
     {
       "id": "과학_0",
@@ -3135,7 +3135,7 @@
     {
       "date": "2026-06-08",
       "wakeTime": "11:19",
-      "sleepTime": "23:22",
+      "sleepTime": "02:22",
       "studyMin": 383,
       "kcal": 300,
       "memo": "sdf",
