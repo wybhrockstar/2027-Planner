@@ -2397,8 +2397,8 @@
       "title": "1강. 2022개정 교육과정 총론 (1) [68분]",
       "minutes": 68,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-08"
     },
     {
       "id": "총창_2",
@@ -3145,6 +3145,15 @@
       "date": "2026-06-07",
       "wakeTime": "05:24",
       "sleepTime": "22:18",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
+    },
+    {
+      "date": "2026-06-09",
+      "wakeTime": "06:51",
+      "sleepTime": "02:47",
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
