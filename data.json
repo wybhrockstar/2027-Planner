@@ -3134,12 +3134,12 @@
   "dailyLogs": [
     {
       "date": "2026-06-08",
-      "wakeTime": "09:02",
-      "sleepTime": "02:13",
-      "studyMin": 150,
-      "kcal": 200,
-      "memo": "거의 끝",
-      "studyResult": "O"
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     },
     {
       "date": "2026-06-07",
