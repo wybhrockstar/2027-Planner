@@ -402,6 +402,10 @@ canvas{width:100%!important}
   <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:8px;min-height:18px"></div>
 
   <div style="font-size:11px;color:var(--text4)">토큰은 브라우저에만 저장됩니다 (코드에 포함되지 않음)</div>
+  <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:11px;color:var(--text4)">IMGO 플래너</span>
+    <span style="font-size:11px;color:var(--text4);font-family:'JetBrains Mono',monospace">v1.1.0</span>
+  </div>
 </div>
 </div>
 
@@ -1960,7 +1964,7 @@ async function renderCalendar() {
   const base = new Date(now.getFullYear(), now.getMonth() + calOffset, 1);
   const yr = base.getFullYear(), mo = base.getMonth();
   const daysInMonth = new Date(yr, mo+1, 0).getDate();
-  const firstDow = base.getDay(); // 0=일
+  const firstDow = (base.getDay() + 6) % 7; // 월=0, 일=6
   const td = today();
   const moStr = `${yr}년 ${mo+1}월`;
 
@@ -1991,9 +1995,9 @@ async function renderCalendar() {
   // 비동기 iCal 로드
   const cache = await loadIcalData();
 
-  const DOW_NAMES = ['일','월','화','수','목','금','토'];
+  const DOW_NAMES = ['월','화','수','목','금','토','일'];
   let html = `<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px">
-    ${DOW_NAMES.map((d,i)=>`<div style="text-align:center;font-size:10px;font-weight:600;color:${i===0?'var(--red)':i===6?'var(--blue)':'var(--text3)'};padding:3px 0">${d}</div>`).join('')}
+    ${DOW_NAMES.map((d,i)=>`<div style="text-align:center;font-size:10px;font-weight:600;color:${i===5?'var(--blue)':i===6?'var(--red)':'var(--text3)'};padding:3px 0">${d}</div>`).join('')}
   </div>
   <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px" id="cal-cells">`;
 
@@ -2070,22 +2074,68 @@ function toggleCalMultiSelect() {
 }
 
 function toggleCalCellSelect(cell, dateStr, cache) {
+  // 선택 모드에서 날짜 탭 → 해당 날짜 일정 목록에서 개별 체크박스로 선택
   const evts = getEventsForDate(dateStr, cache);
-  const all = [
-    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e })),
-    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e }))
+  const allEvts = [
+    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e, type: 'study' })),
+    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e, type: 'personal' }))
   ];
-  if (!all.length) return;
-  const alreadySelected = calSelectedEvents.some(s => all.some(a => a.event.id === s.event.id));
-  if (alreadySelected) {
-    calSelectedEvents = calSelectedEvents.filter(s => !all.some(a => a.event.id === s.event.id));
-    cell.style.outline = '';
-  } else {
-    calSelectedEvents.push(...all);
-    cell.style.outline = '2px solid var(--accent)';
+  if (!allEvts.length) { toast('이 날짜에 일정이 없어요'); return; }
+
+  const [yr, mo, dy] = dateStr.split('-');
+  const dow = ['일','월','화','수','목','금','토'][new Date(dateStr).getDay()];
+
+  function renderSelectList() {
+    return allEvts.map((item, i) => {
+      const isChecked = calSelectedEvents.some(s => s.event.id === item.event.id);
+      return `<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg4);border-radius:var(--rs);margin-bottom:6px;cursor:pointer" onclick="toggleSingleEventSelect(${i},'${dateStr}')">
+        <div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isChecked?'var(--accent)':'var(--border2)'};background:${isChecked?'var(--accent)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center">
+          ${isChecked?'<span style="color:#000;font-size:11px;font-weight:700">✓</span>':''}
+        </div>
+        <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.event.summary}</span>
+      </div>`;
+    }).join('');
   }
+
+  window._selectModalEvts = allEvts;
+  window._selectModalDateStr = dateStr;
+
+  showModal(`
+    <div style="font-weight:700;font-size:16px;margin-bottom:6px">${parseInt(mo)}/${parseInt(dy)}(${dow}) 일정 선택</div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:12px">이동할 일정을 선택하세요</div>
+    <div id="select-evt-list">${renderSelectList()}</div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn btn-sm btn-ghost" onclick="closeModal()">완료</button>
+    </div>
+  `);
+}
+
+function toggleSingleEventSelect(idx, dateStr) {
+  const item = window._selectModalEvts[idx];
+  if (!item) return;
+  const existIdx = calSelectedEvents.findIndex(s => s.event.id === item.event.id);
+  if (existIdx >= 0) {
+    calSelectedEvents.splice(existIdx, 1);
+  } else {
+    calSelectedEvents.push({ calendarId: item.calendarId, event: item.event });
+  }
+  // 모달 리스트 갱신
+  const list = document.getElementById('select-evt-list');
+  if (list) {
+    const allEvts = window._selectModalEvts;
+    list.innerHTML = allEvts.map((it, i) => {
+      const isChecked = calSelectedEvents.some(s => s.event.id === it.event.id);
+      return `<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg4);border-radius:var(--rs);margin-bottom:6px;cursor:pointer" onclick="toggleSingleEventSelect(${i},'${dateStr}')">
+        <div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isChecked?'var(--accent)':'var(--border2)'};background:${isChecked?'var(--accent)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center">
+          ${isChecked?'<span style="color:#000;font-size:11px;font-weight:700">✓</span>':''}
+        </div>
+        <span style="font-size:13px;flex:1;color:${it.type==='study'?'var(--teal)':'var(--blue)'}">${it.type==='study'?'📅':'🗓'} ${it.event.summary}</span>
+      </div>`;
+    }).join('');
+  }
+  // 툴바 카운트/버튼 갱신
   const countEl = document.getElementById('cal-select-count');
-  if (countEl) countEl.textContent = `${calSelectedEvents.length}개 선택됨`;
+  if (countEl) countEl.textContent = calSelectedEvents.length ? `${calSelectedEvents.length}개 선택됨` : '';
   const shiftBtn = document.getElementById('btn-cal-shift');
   if (shiftBtn) shiftBtn.style.display = calSelectedEvents.length ? '' : 'none';
 }
