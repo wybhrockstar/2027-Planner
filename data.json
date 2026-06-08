@@ -4,9 +4,9 @@
     {
       "date": "2026-06-08",
       "wakeTime": "09:02",
-      "sleepTime": "",
+      "sleepTime": "21:12",
       "studyMin": 150,
-      "kcal": 0,
+      "kcal": 200,
       "memo": "거의 끝",
       "studyResult": "O"
     }
