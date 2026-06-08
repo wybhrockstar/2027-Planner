@@ -3134,11 +3134,11 @@
   "dailyLogs": [
     {
       "date": "2026-06-08",
-      "wakeTime": "",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
+      "wakeTime": "11:19",
+      "sleepTime": "23:22",
+      "studyMin": 360,
+      "kcal": 300,
+      "memo": "sdf",
       "studyResult": "O"
     },
     {
