@@ -21,6 +21,15 @@
       ]
     }
   ],
+  "dailyTodos": {
+    "2026-06-08": [
+      {
+        "id": "mq53jroy",
+        "text": "ㅇㅇㅇㅇ",
+        "done": false
+      }
+    ]
+  },
   "examScores": [],
   "termTodos": {
     "1": [],
