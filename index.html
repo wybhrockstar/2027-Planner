@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>IMGO 플래너 2026</title>
+<title>2027 IMGO Planner</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -50,7 +50,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* SECTION */
 .sec{margin-bottom:24px}
-.sec-hd{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;margin-bottom:12px}
+.sec-hd{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text);text-transform:uppercase;margin-bottom:12px}
 .card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:16px}
 .card+.card{margin-top:10px}
 
@@ -58,9 +58,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:20px;align-items:stretch}
 @media(min-width:480px){.stats{grid-template-columns:repeat(4,1fr)}}
 .sc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 12px;display:flex;flex-direction:column}
-.sc-lbl{font-size:10px;color:var(--text3);margin-bottom:4px;letter-spacing:.04em}
+.sc-lbl{font-size:10px;color:var(--text);margin-bottom:4px;letter-spacing:.04em;font-weight:600}
 .sc-val{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;line-height:1}
-.sc-sub{font-size:10px;color:var(--text3);margin-top:3px}
+.sc-sub{font-size:10px;color:var(--text2);margin-top:3px}
 
 /* FORM */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
@@ -304,15 +304,6 @@ canvas{width:100%!important}
         <svg viewBox="0 0 100 100" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" stroke-width="12" stroke-linecap="round"/><line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" stroke-width="12" stroke-linecap="round"/></svg>
       </button>
     </div>
-    <!-- 구글 캘린더 스터디 일정 체크리스트 -->
-    <div id="study-event-area" style="margin-top:10px;display:none">
-      <div style="font-size:11px;color:var(--text3);margin-bottom:6px">스터디 체크리스트</div>
-      <div class="study-checklist" id="study-checklist"></div>
-      <div style="display:flex;gap:6px;margin-top:6px">
-        <input type="text" id="study-check-input" placeholder="항목 추가..." style="font-size:12px">
-        <button class="btn btn-ghost btn-sm" onclick="addStudyCheckItem()" style="white-space:nowrap">추가</button>
-      </div>
-    </div>
   </div>
   <div class="form-group">
     <label class="form-lbl">오늘의 한마디</label>
@@ -332,6 +323,31 @@ canvas{width:100%!important}
     <div class="modal-title">⚙️ 설정</div>
     <button class="modal-close" id="btn-close-backup">✕</button>
   </div>
+
+  <!-- 섹션: GitHub 동기화 -->
+  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">GitHub 동기화</div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
+    <div>
+      <label class="form-lbl">Personal Access Token</label>
+      <input type="password" id="input-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+    </div>
+    <div class="form-row">
+      <div style="flex:2">
+        <label class="form-lbl">Owner/Repo</label>
+        <input type="text" id="input-gh-repo" placeholder="wybhrockstar/2027-Planner">
+      </div>
+      <div style="flex:1">
+        <label class="form-lbl">Branch</label>
+        <input type="text" id="input-gh-branch" placeholder="main">
+      </div>
+    </div>
+    <button class="btn btn-ghost" onclick="saveGhSettings()" style="justify-content:center">💾 토큰 저장</button>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:16px">
+    <button class="btn btn-ghost" onclick="pushToGithub()" style="flex:1;justify-content:center">⬆️ GitHub에 저장</button>
+    <button class="btn btn-ghost" onclick="pullFromGithub()" style="flex:1;justify-content:center">⬇️ 불러오기</button>
+  </div>
+  <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:16px;min-height:18px"></div>
 
   <!-- 섹션: 백업·복원 -->
   <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">데이터 백업 · 복원</div>
@@ -366,35 +382,9 @@ canvas{width:100%!important}
     <button class="btn btn-ghost" onclick="saveReportSettings()" style="justify-content:center">💾 저장</button>
   </div>
 
-  <!-- 섹션: GitHub 동기화 -->
-  <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:8px">GitHub 동기화</div>
-  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
-    <div>
-      <label class="form-lbl">Personal Access Token</label>
-      <input type="password" id="input-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-    </div>
-    <div class="form-row">
-      <div style="flex:2">
-        <label class="form-lbl">Owner/Repo</label>
-        <input type="text" id="input-gh-repo" placeholder="wybhrockstar/2027-Planner">
-      </div>
-      <div style="flex:1">
-        <label class="form-lbl">Branch</label>
-        <input type="text" id="input-gh-branch" placeholder="main">
-      </div>
-    </div>
-    <button class="btn btn-ghost" onclick="saveGhSettings()" style="justify-content:center">💾 토큰 저장</button>
-  </div>
-  <div style="display:flex;gap:8px;margin-bottom:4px">
-    <button class="btn btn-ghost" onclick="pushToGithub()" style="flex:1;justify-content:center">⬆️ GitHub에 저장</button>
-    <button class="btn btn-ghost" onclick="pullFromGithub()" style="flex:1;justify-content:center">⬇️ 불러오기</button>
-  </div>
-  <div id="gh-status" style="font-size:11px;color:var(--text3);margin-bottom:8px;min-height:18px"></div>
-
-  <div style="font-size:11px;color:var(--text4)">토큰은 브라우저에만 저장됩니다 (코드에 포함되지 않음)</div>
   <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-    <span style="font-size:11px;color:var(--text4)">IMGO 플래너</span>
-    <span style="font-size:11px;color:var(--text4);font-family:'JetBrains Mono',monospace">v1.3.0</span>
+    <span style="font-size:11px;color:var(--text4)">2027 IMGO Planner</span>
+    <span style="font-size:11px;color:var(--text4);font-family:'JetBrains Mono',monospace">v1.4.0</span>
   </div>
 </div>
 </div>
@@ -454,7 +444,7 @@ canvas{width:100%!important}
 </div>
 
 <header class="hdr">
-  <div class="logo">IMGO-2026</div>
+  <div class="logo">📒2027 IMGO Planner</div>
   <div class="hdr-r">
     <div class="dday-badge" id="dday-txt">D-???</div>
     <button class="backup-btn" id="btn-open-backup" title="백업·복원">⚙️</button>
@@ -477,6 +467,16 @@ canvas{width:100%!important}
 <div id="page-today" class="page on">
   <div class="sec">
     <div class="stats" id="today-stats"></div>
+  </div>
+  <div class="sec">
+    <div class="sec-hd">To-Do List</div>
+    <div id="today-todo-area">
+      <div class="todo-list" id="todo-list-items"></div>
+      <div class="todo-add-row">
+        <input type="text" id="todo-inp" placeholder="할 일 추가...">
+        <button class="btn btn-ghost btn-sm" onclick="addTodo()" style="white-space:nowrap">추가</button>
+      </div>
+    </div>
   </div>
   <div class="sec">
     <div class="sec-hd">오늘 기록</div>
@@ -514,7 +514,7 @@ canvas{width:100%!important}
     <div class="card"><div class="chart-wrap"><canvas id="chart-study"></canvas></div></div>
   </div>
   <div class="sec">
-    <div class="sec-hd">운동 (칼로리)</div>
+    <div class="sec-hd">운동량 (칼로리)</div>
     <div class="card"><div class="chart-wrap"><canvas id="chart-kcal"></canvas></div></div>
   </div>
   <div class="sec">
@@ -522,7 +522,7 @@ canvas{width:100%!important}
     <div class="card"><div class="chart-wrap" style="height:180px"><canvas id="chart-sleep-bubble"></canvas></div></div>
   </div>
   <div class="sec">
-    <div class="sec-hd">수면시간 추이</div>
+    <div class="sec-hd">수면 시간 추이</div>
     <div class="card"><div class="chart-wrap"><canvas id="chart-sleep-line"></canvas></div></div>
   </div>
 </div>
@@ -992,7 +992,16 @@ function sleepHours(wake, bed) {
   if (bedMin > wakeMin) bedMin -= 1440;
   let diff = wakeMin + 1440 - bedMin;
   if (diff > 1440) diff -= 1440;
-  return +(diff/60).toFixed(1);
+  return { h: Math.floor(diff/60), m: diff%60, total: diff };
+}
+function fmtSleep(sh) {
+  if (!sh) return '';
+  return sh.m > 0 ? `${sh.h}h ${sh.m}min` : `${sh.h}h`;
+}
+function fmtMinLong(m) {
+  if (!m) return '0h 0min';
+  const h = Math.floor(m/60), mn = m%60;
+  return mn > 0 ? `${h}h ${mn}min` : `${h}h`;
 }
 function getCurrentTerm() {
   const td = today();
@@ -1223,7 +1232,7 @@ function renderToday() {
     const scTmr = document.getElementById('sc-tmr-events');
     function evtListHtml(evts) {
       if (!evts.length) return '<div class="sc-val" style="font-size:18px;color:var(--text)">-</div><div class="sc-sub">일정 없음</div>';
-      return `<div class="sc-val" style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px">${evts.length}개</div>`
+      return `<div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px;font-family:\'Noto Sans KR\',sans-serif">${evts.length}개</div>`
         + evts.map(e => {
           const isStudy = todayEvts.study.includes(e) || tmrEvts.study.includes(e);
           const emoji = isStudy ? '✍🏻' : '📅';
@@ -1245,6 +1254,7 @@ function renderToday() {
     const sh = sleepHours(log.wakeTime, log.sleepTime);
     const srClass = log.studyResult==='O'?'sr-o':log.studyResult==='△'?'sr-d':log.studyResult==='×'?'sr-x':'';
     const srColor = log.studyResult==='O'?'var(--teal)':log.studyResult==='△'?'var(--amber)':log.studyResult==='×'?'var(--red)':'';
+    const srLabel = log.studyResult==='O'?'스터디 O':log.studyResult==='△'?'스터디 △':log.studyResult==='×'?'스터디 ×':'';
     logArea.innerHTML = `
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
@@ -1254,10 +1264,10 @@ function renderToday() {
         <div class="log-data">
           ${log.wakeTime ? `<span class="log-tag sleep">기상 ${log.wakeTime}</span>` : ''}
           ${log.sleepTime ? `<span class="log-tag sleep">취침 ${log.sleepTime}</span>` : ''}
-          ${sh ? `<span class="log-tag sleep">수면 ${sh}h</span>` : ''}
-          ${log.studyMin ? `<span class="log-tag study">공부 ${fmtMin(log.studyMin)}</span>` : ''}
+          ${sh ? `<span class="log-tag sleep">수면 ${fmtSleep(sh)}</span>` : ''}
           ${log.kcal ? `<span class="log-tag kcal">${log.kcal}kcal</span>` : ''}
-          ${log.studyResult ? `<span class="log-tag ${srClass}" style="color:${srColor}">${srSvg(log.studyResult)} 스터디</span>` : ''}
+          ${log.studyMin ? `<span class="log-tag study">공부 ${fmtMinLong(log.studyMin)}</span>` : ''}
+          ${log.studyResult ? `<span class="log-tag ${srClass}" style="color:${srColor}">${srLabel}</span>` : ''}
         </div>
         ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--bg4);border-radius:var(--rs)">${log.memo}</div>` : ''}
       </div>`;
@@ -1331,7 +1341,6 @@ function openLogModal(edit=false) {
   const srGroup = document.getElementById('sr-group');
   if (isStudyDay(td)) {
     srGroup.style.display = '';
-    document.getElementById('study-event-area').style.display = '';
   } else {
     srGroup.style.display = 'none';
   }
@@ -1506,7 +1515,7 @@ function renderProgressContent() {
   const exPct = elapsed ? Math.min(100, Math.round(exerciseDays/elapsed*100)) : 0;
 
   html += `<div class="card" style="margin-bottom:16px">
-    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:12px">텀 달성률</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text);margin-bottom:12px">텀 달성률</div>
     ${inlineBar('인강', lecPct, `${termDoneLecs}/${totalLecs}강`, 'var(--accent)')}
     ${inlineBar('스터디', studyPct, `${studyO}/${totalStudyDays}회`, 'var(--teal)')}
     ${inlineBar('복습(공부)', studyHourPct, fmtMin(totalStudyMin), 'var(--blue)')}
@@ -1661,7 +1670,7 @@ function renderGrass(term) {
   });
 
   return `<div class="card" style="padding:12px 10px">
-    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);margin-bottom:10px">일일 체크리스트</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text);margin-bottom:10px">일일 체크리스트</div>
     <div class="prog-table-wrap">
       <table class="prog-table" id="prog-table-${term.id}">
         ${dateHeaderHtml}
@@ -1698,7 +1707,6 @@ function openLogModalForDate(dateStr) {
   const srGroup = document.getElementById('sr-group');
   if (isStudyDay(dateStr)) {
     srGroup.style.display = '';
-    document.getElementById('study-event-area').style.display = '';
   } else {
     srGroup.style.display = 'none';
   }
