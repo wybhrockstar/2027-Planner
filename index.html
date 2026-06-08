@@ -1332,7 +1332,12 @@ function renderToday() {
   // log area
   const logArea = document.getElementById('today-log-area');
   if (log) {
-    const sh = sleepHours(log.wakeTime, log.sleepTime);
+    // 수면시간: 전날 취침 → 오늘 기상
+    const prevDt = new Date(); prevDt.setDate(prevDt.getDate()-1);
+    const prevDateStr = `${prevDt.getFullYear()}-${String(prevDt.getMonth()+1).padStart(2,'0')}-${String(prevDt.getDate()).padStart(2,'0')}`;
+    const prevLog = state.dailyLogs.find(l=>l.date===prevDateStr);
+    const shVal = (prevLog && prevLog.sleepTime && log.wakeTime) ? sleepHoursFromPrev(prevLog.sleepTime, log.wakeTime) : null;
+    const sh = shVal !== null ? { h: Math.floor(shVal), m: Math.round((shVal % 1)*60), total: Math.round(shVal*60) } : null;
     const srClass = log.studyResult==='O'?'sr-o':log.studyResult==='△'?'sr-d':log.studyResult==='×'?'sr-x':'';
     const srColor = log.studyResult==='O'?'var(--teal)':log.studyResult==='△'?'var(--amber)':log.studyResult==='×'?'var(--red)':'';
     const srLabel = log.studyResult==='O'?'스터디 O':log.studyResult==='△'?'스터디 △':log.studyResult==='×'?'스터디 ×':'';
@@ -1350,10 +1355,14 @@ function renderToday() {
             if (log.wakeTime && rs2.wakeTimeLimit) {
               wakeColor = log.wakeTime <= rs2.wakeTimeLimit ? '#5ecfb0' : '#ff5a5a';
             }
-            // 취침 색상
+            // 취침 색상: 자정 이후면 24+ 로 비교
             let bedColor = '';
             if (log.sleepTime && rs2.bedtimeLimit) {
-              bedColor = log.sleepTime <= rs2.bedtimeLimit ? '#5ecfb0' : '#ff5a5a';
+              const [sh2,sm2] = log.sleepTime.split(':').map(Number);
+              const [bh2,bm2] = rs2.bedtimeLimit.split(':').map(Number);
+              let sleepNum = sh2+sm2/60; if(sleepNum<12) sleepNum+=24;
+              let limitNum = bh2+bm2/60; if(limitNum<12) limitNum+=24;
+              bedColor = sleepNum <= limitNum ? '#5ecfb0' : '#ff5a5a';
             }
             // 수면 색상
             const sleepGoalMin2 = rs2.sleepMinMin || (rs2.sleepMinHour||6)*60;
@@ -2109,8 +2118,8 @@ function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresho
   if (chartsRef[id]) { chartsRef[id].destroy(); }
   const isDark = !document.body.classList.contains('light');
   const gridColor = isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
-  const textColor = isDark?'#777':'#999';
-  const xLabelColor = isDark?'#ffffff':'#333333';
+  const textColor = isDark?'#999':'#888';
+  const xLabelColor = isDark?'#cccccc':'#444444';
 
   // 1-2/1-3: 3단계 색상 분기
   // study: threshold=목표시간, badColor used for 1h boundary
@@ -2146,7 +2155,7 @@ function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresho
         legend:{display:false},
         annotation:{annotations:{
           goalLine:{type:'line',yMin:threshold,yMax:threshold,
-            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]}
+            borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]}
         }}
       },
       scales:{
@@ -2162,12 +2171,18 @@ function buildSleepBubble(id, dates, logMap, rs) {
   if (!canvas) return;
   if (chartsRef[id]) { chartsRef[id].destroy(); }
   const isDark = !document.body.classList.contains('light');
-  const gridColor = isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
-  const textColor = isDark?'#777':'#999';
+  const gridColor = isDark?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.12)';
+  const textColor = isDark?'#999':'#888';
 
+  // 시간 문자열 → 숫자(시간 단위). 자정 이후면 24+ 로 반환
   const timeToNum = (t) => { if (!t) return null; const [h,m] = t.split(':').map(Number); return h+m/60; };
-  const bedLimit = timeToNum(rs.bedtimeLimit)||1;
+  // 취침 경고선: 자정 이후면 24+ 로 처리
+  const rawBedLimit = timeToNum(rs.bedtimeLimit)||1;
+  const bedLimit = rawBedLimit < 12 ? rawBedLimit + 24 : rawBedLimit; // ex. 01:00 → 25
   const wakeLimit = timeToNum(rs.wakeTimeLimit)||7.5;
+
+  // y축 범위: 기상은 0~12, 취침은 18~30 정도 커버
+  const Y_MIN = 0, Y_MAX = 30;
 
   const wakePoints = [], bedPoints = [];
   dates.forEach((d,i) => {
@@ -2176,19 +2191,23 @@ function buildSleepBubble(id, dates, logMap, rs) {
     if (log.wakeTime) {
       const v = timeToNum(log.wakeTime);
       const over = v > wakeLimit;
-      // 1-4: 경고선 이내 → 초록, 경고선 초과 → 빨강
-      wakePoints.push({x:i, y:v, r:5, color: over?'#ff5a5a':'#5ecfb0'});
+      wakePoints.push({x:i, y:v, dateLabel:d.slice(5), timeStr:log.wakeTime, color: over?'#ff5a5a':'#5ecfb0'});
     }
     if (log.sleepTime) {
       let v = timeToNum(log.sleepTime);
-      if (v < 12) v += 24; // normalize midnight+ times
-      const over = v > bedLimit + 24;
-      // 1-4: 경고선 이내 → 초록, 경고선 초과 → 빨강
-      bedPoints.push({x:i, y:v % 24, r:5, color: over?'#ff5a5a':'#5ecfb0'});
+      // 자정 이후(0~11시)면 24+ 로 올림 → 기상보다 항상 위에 표시
+      if (v < 12) v += 24;
+      const over = v > bedLimit;
+      bedPoints.push({x:i, y:v, dateLabel:d.slice(5), timeStr:log.sleepTime, color: over?'#ff5a5a':'#5ecfb0'});
     }
   });
 
-  // Simple scatter using scatter chart
+  // y축 레이블: 0~11은 그대로, 12~23도 그대로, 24~29는 실제시간(0~5)으로 표시
+  function yTickLabel(v) {
+    const realH = v >= 24 ? v - 24 : v;
+    return `${String(Math.floor(realH)).padStart(2,'0')}:00`;
+  }
+
   chartsRef[id] = new Chart(canvas, {
     type:'scatter',
     data:{datasets:[
@@ -2200,19 +2219,30 @@ function buildSleepBubble(id, dates, logMap, rs) {
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{
         legend:{display:true,labels:{color:textColor,font:{size:10}}},
+        tooltip:{callbacks:{
+          label:(ctx) => {
+            const dsIdx = ctx.datasetIndex;
+            const ptIdx = ctx.dataIndex;
+            const pts = dsIdx===0 ? wakePoints : bedPoints;
+            const pt = pts[ptIdx];
+            if (!pt) return '';
+            const label = dsIdx===0 ? '기상' : '취침';
+            return `${pt.dateLabel} / ${pt.timeStr} ${label}`;
+          }
+        }},
         annotation:{annotations:{
           wakeLine:{type:'line',yMin:wakeLimit,yMax:wakeLimit,
-            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]},
+            borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]},
           bedLine:{type:'line',yMin:bedLimit,yMax:bedLimit,
-            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]}
+            borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]}
         }}
       },
       scales:{
-        x:{grid:{color:gridColor},ticks:{color:'#ffffff',font:{size:10},
+        x:{grid:{color:gridColor},ticks:{color:isDark?'#cccccc':'#444444',font:{size:10},
            callback:(v)=>dates[v]?dates[v].slice(5):''},min:0,max:dates.length-1},
         y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10},
-           callback:(v)=>`${String(Math.floor(v)).padStart(2,'0')}:00`},
-           min:0,max:24}
+           callback:(v)=>yTickLabel(v)},
+           min:Y_MIN,max:Y_MAX}
       }
     }
   });
@@ -2223,30 +2253,36 @@ function buildSleepLine(id, dates, logMap, rs) {
   if (!canvas) return;
   if (chartsRef[id]) { chartsRef[id].destroy(); }
   const isDark = !document.body.classList.contains('light');
-  const gridColor = isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
-  const textColor = isDark?'#777':'#999';
+  const gridColor = isDark?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.12)';
+  const textColor = isDark?'#999':'#888';
   const minGoalH = rs.sleepMinMin ? rs.sleepMinMin/60 : (rs.sleepMinHour||6);
 
   const labels = dates.map(d=>d.slice(5));
+
+  // 올바른 수면시간: 전날 취침 → 해당날 기상
   const data = dates.map(d => {
-    const l = logMap[d];
-    if (!l || !l.wakeTime || !l.sleepTime) return null;
-    return sleepHours(l.wakeTime, l.sleepTime);
+    const curLog = logMap[d];
+    if (!curLog || !curLog.wakeTime) return null;
+    // 전날 날짜 계산
+    const prevDate = (()=>{ const dt = new Date(d+'T00:00:00'); dt.setDate(dt.getDate()-1); return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`; })();
+    const prevLog = logMap[prevDate];
+    if (!prevLog || !prevLog.sleepTime) return null;
+    return sleepHoursFromPrev(prevLog.sleepTime, curLog.wakeTime);
   });
-  // 1-5: 최소수면시간 이상 → 초록, 미만 → 빨강
+
   const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a' : '#5ecfb0');
 
   chartsRef[id] = new Chart(canvas, {
     type:'line',
     data:{labels,datasets:[{data,
-      borderColor:'#5ecfb0',          // 1-5: 연결선 초록
+      borderColor:'#5ecfb0',
       backgroundColor:'rgba(94,207,176,.1)',
       fill:true,tension:.35,
       pointBackgroundColor:colors,
       pointRadius:4,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
-        return v < minGoalH ? '#ff5a5a' : '#5ecfb0'; // 1-5: 선분 색도 초록/빨강
+        return v < minGoalH ? '#ff5a5a' : '#5ecfb0';
       }}
     }]},
     options:{responsive:true,maintainAspectRatio:false,
@@ -2254,15 +2290,32 @@ function buildSleepLine(id, dates, logMap, rs) {
         legend:{display:false},
         annotation:{annotations:{
           minSleepLine:{type:'line',yMin:minGoalH,yMax:minGoalH,
-            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]}  // 1-5: 흰색 경고선
+            borderColor:'rgba(200,200,200,0.55)',borderWidth:1.5,borderDash:[4,4]}
         }}
       },
       scales:{
-        x:{grid:{color:gridColor},ticks:{color:'#ffffff',font:{size:10}}}, // 1-1: 날짜 흰색
+        x:{grid:{color:gridColor},ticks:{color:isDark?'#cccccc':'#444444',font:{size:10}}},
         y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true,max:12}
       }
     }
   });
+}
+
+// 전날 취침 → 해당날 기상으로 수면시간 계산 (시간 단위 float)
+function sleepHoursFromPrev(prevSleepTime, wakeTime) {
+  if (!prevSleepTime || !wakeTime) return null;
+  const [sh, sm] = prevSleepTime.split(':').map(Number);
+  const [wh, wm] = wakeTime.split(':').map(Number);
+  let sleepMin = sh*60+sm;
+  let wakeMin = wh*60+wm;
+  // 취침이 자정 이전(18~23시)이면 같은날, 자정 이후(0~11시)면 +1440
+  // 기상은 항상 다음날이므로 기상분에 1440 더함
+  wakeMin += 1440;
+  // 취침이 0~11시면 그것도 이미 다음날이니 +1440
+  if (sleepMin < 720) sleepMin += 1440;
+  const diff = wakeMin - sleepMin;
+  if (diff <= 0 || diff > 1440) return null;
+  return diff / 60;
 }
 
 // ─── PLANNER ─────────────────────────────────────────────────────────────────
