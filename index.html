@@ -1,3 +1,13 @@
+<div id="modal-dynamic" class="modal-bg">
+<div class="modal">
+  <div class="modal-hd">
+    <div class="modal-title" id="modal-dynamic-title"></div>
+    <button class="modal-close" onclick="closeModal('modal-dynamic')">✕</button>
+  </div>
+  <div id="modal-dynamic-body" style="padding:16px"></div>
+</div>
+</div>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -569,6 +579,7 @@ canvas{width:100%!important}
   <button class="btab" id="btab-lectures"><span class="btab-icon">📚</span>강의</button>
 </nav>
 
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 // ─── LECTURE_SEED: html에서 제거됨 — data.json이 단일 소스 ──────────────────
@@ -611,6 +622,158 @@ const GCAL_API_KEY      = 'AIzaSyBiVCCGpbUsTBWmj9DSYgghyBJzLfsmlv4';
 const GCAL_STUDY_ID     = '3eac65694951b1627de968aa7a224edef1e384199b06e5f9d7e3aad77680b0d6@group.calendar.google.com';
 const GCAL_PERSONAL_ID  = 'c053ff44a4fcaf9eeda51a49c2e4cb1640846edc1208ad3bdde01d98f1cf5dd0@group.calendar.google.com';
 const GCAL_REFRESH_MS   = 2 * 60 * 1000;
+const GCAL_CLIENT_ID    = '1061339203763-qid0e6bf8n5ta0t51sjid2il9rb797nm.apps.googleusercontent.com';
+const GCAL_SCOPES       = 'https://www.googleapis.com/auth/calendar';
+
+// ─── OAuth 상태 ───────────────────────────────────────────────────────────────
+let _oauthToken = null;
+
+function getOAuthToken() { return _oauthToken; }
+
+function initOAuth() {
+  return new Promise(resolve => {
+    const saved = sessionStorage.getItem('gcal_token');
+    if (saved) { _oauthToken = saved; resolve(true); return; }
+    resolve(false);
+  });
+}
+
+function signInWithGoogle() {
+  return new Promise((resolve, reject) => {
+    const client = google.accounts.oauth2.initTokenClient({
+      client_id: GCAL_CLIENT_ID,
+      scope: GCAL_SCOPES,
+      callback: (resp) => {
+        if (resp.error) { reject(resp.error); return; }
+        _oauthToken = resp.access_token;
+        sessionStorage.setItem('gcal_token', _oauthToken);
+        updateAuthUI();
+        resolve(_oauthToken);
+      }
+    });
+    client.requestAccessToken();
+  });
+}
+
+function signOut() {
+  _oauthToken = null;
+  sessionStorage.removeItem('gcal_token');
+  updateAuthUI();
+  toast('Google 계정 로그아웃됨');
+}
+
+function updateAuthUI() {
+  const btn = document.getElementById('btn-google-auth');
+  if (!btn) return;
+  if (_oauthToken) {
+    btn.textContent = '✓ Google 연결됨';
+    btn.style.color = 'var(--accent)';
+    btn.onclick = signOut;
+  } else {
+    btn.textContent = '🔗 Google 로그인';
+    btn.style.color = 'var(--text2)';
+    btn.onclick = async () => {
+      try {
+        await signInWithGoogle();
+        toast('✓ Google 계정 연결됨 — 일정 편집 가능');
+      } catch(e) {
+        toast('⚠️ Google 로그인 실패');
+      }
+    };
+  }
+}
+
+// ─── Google Calendar 쓰기 API ─────────────────────────────────────────────────
+async function gcalRequest(method, path, body) {
+  const token = getOAuthToken();
+  if (!token) {
+    await signInWithGoogle();
+    return gcalRequest(method, path, body);
+  }
+  const res = await fetch(`https://www.googleapis.com/calendar/v3${path}`, {
+    method,
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (res.status === 401) {
+    _oauthToken = null;
+    sessionStorage.removeItem('gcal_token');
+    await signInWithGoogle();
+    return gcalRequest(method, path, body);
+  }
+  return res;
+}
+
+// 일정 생성
+async function createGcalEvent(calendarId, { summary, date, startTime, endTime, allDay = true, reminder = null }) {
+  const isStudy = calendarId === GCAL_STUDY_ID;
+  const start = allDay ? { date } : { dateTime: `${date}T${startTime}:00+09:00`, timeZone: 'Asia/Seoul' };
+  const end   = allDay ? { date } : { dateTime: `${date}T${endTime}:00+09:00`,   timeZone: 'Asia/Seoul' };
+  const reminders = isStudy
+    ? { useDefault: false, overrides: [] }
+    : reminder !== null
+      ? { useDefault: false, overrides: [{ method: 'popup', minutes: reminder }] }
+      : { useDefault: true };
+  const res = await gcalRequest('POST', `/calendars/${encodeURIComponent(calendarId)}/events`, {
+    summary, start, end, reminders
+  });
+  if (!res.ok) throw new Error(await res.text());
+  clearIcalCache();
+  return await res.json();
+}
+
+// 일정 수정
+async function updateGcalEvent(calendarId, eventId, { summary, date, startTime, endTime, allDay = true, reminder = null }) {
+  const isStudy = calendarId === GCAL_STUDY_ID;
+  const start = allDay ? { date } : { dateTime: `${date}T${startTime}:00+09:00`, timeZone: 'Asia/Seoul' };
+  const end   = allDay ? { date } : { dateTime: `${date}T${endTime}:00+09:00`,   timeZone: 'Asia/Seoul' };
+  const reminders = isStudy
+    ? { useDefault: false, overrides: [] }
+    : reminder !== null
+      ? { useDefault: false, overrides: [{ method: 'popup', minutes: reminder }] }
+      : { useDefault: true };
+  const res = await gcalRequest('PATCH', `/calendars/${encodeURIComponent(calendarId)}/events/${eventId}`, {
+    summary, start, end, reminders
+  });
+  if (!res.ok) throw new Error(await res.text());
+  clearIcalCache();
+  return await res.json();
+}
+
+// 일정 삭제
+async function deleteGcalEvent(calendarId, eventId) {
+  const res = await gcalRequest('DELETE', `/calendars/${encodeURIComponent(calendarId)}/events/${eventId}`);
+  if (!res.ok && res.status !== 204) throw new Error(await res.text());
+  clearIcalCache();
+}
+
+// 일정 n일 이동
+async function shiftGcalEvents(eventList, days) {
+  const promises = eventList.map(async ({ calendarId, event }) => {
+    const isAllDay = !!event.start.date;
+    let newStart, newEnd;
+    if (isAllDay) {
+      const s = new Date(event.start.date); s.setDate(s.getDate() + days);
+      const e = new Date(event.end.date);   e.setDate(e.getDate() + days);
+      newStart = { date: s.toISOString().slice(0,10) };
+      newEnd   = { date: e.toISOString().slice(0,10) };
+    } else {
+      const s = new Date(event.start.dateTime); s.setDate(s.getDate() + days);
+      const e = new Date(event.end.dateTime);   e.setDate(e.getDate() + days);
+      newStart = { dateTime: s.toISOString(), timeZone: 'Asia/Seoul' };
+      newEnd   = { dateTime: e.toISOString(), timeZone: 'Asia/Seoul' };
+    }
+    const res = await gcalRequest('PATCH', `/calendars/${encodeURIComponent(calendarId)}/events/${event.id}`, {
+      start: newStart, end: newEnd
+    });
+    if (!res.ok) throw new Error(await res.text());
+  });
+  await Promise.all(promises);
+  clearIcalCache();
+}
 
 // ─── Google Calendar API ───────────────────────────────────────────────────
 async function fetchGcalEvents(calendarId) {
@@ -819,7 +982,14 @@ function toast(msg) {
   setTimeout(() => el.classList.remove('show'), 2200);
 }
 function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function closeModal(id) {
+  if (id) { document.getElementById(id).classList.remove('open'); }
+  else { document.getElementById('modal-dynamic').classList.remove('open'); }
+}
+function showModal(html) {
+  document.getElementById('modal-dynamic-body').innerHTML = html;
+  document.getElementById('modal-dynamic').classList.add('open');
+}
 
 // Study result SVG helpers
 function srSvg(val) {
@@ -1804,6 +1974,12 @@ async function renderCalendar() {
       </div>
     </div>
     <div style="font-size:11px;color:var(--text3);margin-bottom:6px">Google Calendar 로딩 중...</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
+      <button class="btn btn-ghost btn-sm" id="btn-google-auth" onclick="updateAuthUI()">🔗 Google 로그인</button>
+      <button class="btn btn-ghost btn-sm" id="btn-cal-multiselect" onclick="toggleCalMultiSelect()">⬜ 일정 선택</button>
+      <span id="cal-select-count" style="font-size:11px;color:var(--text3)"></span>
+      <button class="btn btn-ghost btn-sm" id="btn-cal-shift" onclick="shiftSelectedEvents()" style="display:none;color:var(--amber)">📅 선택 이동</button>
+    </div>
     <div id="cal-grid"></div>`;
 
   document.getElementById('cal-prev').addEventListener('click', () => { calOffset--; renderCalendar(); });
@@ -1865,14 +2041,232 @@ async function renderCalendar() {
   if (statusEl) statusEl.textContent = '';
   document.getElementById('cal-grid').innerHTML = html;
 
-  // 날짜 클릭 → 기록 수정 모달
+  // 날짜 클릭 → 일정 편집 모달 or 다중선택
   document.querySelectorAll('.cal-cell[data-date]').forEach(cell => {
-    cell.addEventListener('click', () => {
+    cell.addEventListener('click', (e) => {
       const d = cell.dataset.date;
-      if (d > today()) return;
-      openLogModalForDate(d);
+      if (calMultiSelect) {
+        toggleCalCellSelect(cell, d, cache);
+      } else {
+        openCalDayModal(d, cache);
+      }
     });
   });
+}
+
+// ─── 캘린더 다중선택 ──────────────────────────────────────────────────────────
+let calMultiSelect = false;
+let calSelectedEvents = []; // [{calendarId, event}]
+
+function toggleCalMultiSelect() {
+  calMultiSelect = !calMultiSelect;
+  calSelectedEvents = [];
+  const btn = document.getElementById('btn-cal-multiselect');
+  if (btn) {
+    btn.textContent = calMultiSelect ? '✕ 선택 취소' : '⬜ 일정 선택';
+    btn.style.color = calMultiSelect ? 'var(--red)' : 'var(--text2)';
+  }
+  renderCalendar();
+}
+
+function toggleCalCellSelect(cell, dateStr, cache) {
+  const evts = getEventsForDate(dateStr, cache);
+  const all = [
+    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e })),
+    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e }))
+  ];
+  if (!all.length) return;
+  const alreadySelected = calSelectedEvents.some(s => all.some(a => a.event.id === s.event.id));
+  if (alreadySelected) {
+    calSelectedEvents = calSelectedEvents.filter(s => !all.some(a => a.event.id === s.event.id));
+    cell.style.outline = '';
+  } else {
+    calSelectedEvents.push(...all);
+    cell.style.outline = '2px solid var(--accent)';
+  }
+  const countEl = document.getElementById('cal-select-count');
+  if (countEl) countEl.textContent = `${calSelectedEvents.length}개 선택됨`;
+  const shiftBtn = document.getElementById('btn-cal-shift');
+  if (shiftBtn) shiftBtn.style.display = calSelectedEvents.length ? '' : 'none';
+}
+
+async function shiftSelectedEvents() {
+  if (!calSelectedEvents.length) { toast('선택된 일정이 없어요'); return; }
+  const days = parseInt(prompt('몇 일 이동? (음수 = 당기기)', '1'));
+  if (isNaN(days)) return;
+  try {
+    toast('이동 중...');
+    await shiftGcalEvents(calSelectedEvents, days);
+    calSelectedEvents = [];
+    calMultiSelect = false;
+    toast(`✓ ${Math.abs(days)}일 ${days > 0 ? '미룸' : '당김'} 완료`);
+    setTimeout(() => { clearIcalCache(); renderCalendar(); }, 1500);
+  } catch(e) {
+    toast('⚠️ 이동 실패: ' + e.message);
+  }
+}
+
+// ─── 날짜 클릭 → 일정 목록 모달 ─────────────────────────────────────────────
+function openCalDayModal(dateStr, cache) {
+  const evts = getEventsForDate(dateStr, cache);
+  const allEvts = [
+    ...evts.study.map(e => ({ calendarId: GCAL_STUDY_ID, event: e, type: 'study' })),
+    ...evts.personal.map(e => ({ calendarId: GCAL_PERSONAL_ID, event: e, type: 'personal' }))
+  ];
+
+  const [yr, mo, dy] = dateStr.split('-');
+  const dow = ['일','월','화','수','목','금','토'][new Date(dateStr).getDay()];
+  const title = `${parseInt(mo)}/${parseInt(dy)}(${dow})`;
+
+  let evtListHtml = allEvts.length ? allEvts.map((item, i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg4);border-radius:var(--rs);margin-bottom:6px">
+      <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--teal)':'var(--blue)'}">${item.type==='study'?'📅':'🗓'} ${item.event.summary}</span>
+      <button onclick="openEditEventModal('${dateStr}',${i},calDayCache)" style="font-size:11px;color:var(--accent);background:none;border:none;padding:2px 6px;cursor:pointer">수정</button>
+      <button onclick="deleteEvent('${item.calendarId}','${item.event.id}')" style="font-size:11px;color:var(--red);background:none;border:none;padding:2px 6px;cursor:pointer">삭제</button>
+    </div>`) .join('') : '<div style="color:var(--text3);font-size:13px;text-align:center;padding:16px">일정 없음</div>';
+
+  window.calDayCache = { allEvts };
+
+  showModal(`
+    <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title} 일정</div>
+    <div id="cal-day-evt-list">${evtListHtml}</div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">📅 스터디 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">🗓 개인 추가</button>
+      <button class="btn btn-sm btn-ghost" onclick="closeModal()">닫기</button>
+    </div>
+  `);
+}
+
+function openAddEventModal(dateStr, calendarId) {
+  const isStudy = calendarId === GCAL_STUDY_ID;
+  closeModal();
+  setTimeout(() => showModal(`
+    <div style="font-weight:700;font-size:16px;margin-bottom:14px">${isStudy?'📅 스터디':'🗓 개인'} 일정 추가</div>
+    <div style="margin-bottom:10px">
+      <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">일정 이름</label>
+      <input id="modal-evt-name" type="text" placeholder="일정 이름" style="width:100%">
+    </div>
+    <div style="margin-bottom:10px">
+      <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">유형</label>
+      <select id="modal-evt-allday" style="width:100%" onchange="toggleTimeInputs()">
+        <option value="1">종일</option>
+        <option value="0">특정 시간</option>
+      </select>
+    </div>
+    <div id="modal-time-wrap" style="display:none;margin-bottom:10px;display:flex;gap:8px;display:none">
+      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">시작</label><input id="modal-start-time" type="time" value="09:00"></div>
+      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">종료</label><input id="modal-end-time" type="time" value="10:00"></div>
+    </div>
+    ${!isStudy ? `<div style="margin-bottom:10px">
+      <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">알림 (분 전, 0=없음)</label>
+      <input id="modal-reminder" type="number" value="30" min="0" max="1440" style="width:100%">
+    </div>` : ''}
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-sm" style="background:var(--accent);color:#000" onclick="submitAddEvent('${dateStr}','${calendarId}')">추가</button>
+      <button class="btn btn-sm btn-ghost" onclick="closeModal()">취소</button>
+    </div>
+  `), 50);
+}
+
+function toggleTimeInputs() {
+  const allDay = document.getElementById('modal-evt-allday')?.value === '1';
+  const wrap = document.getElementById('modal-time-wrap');
+  if (wrap) wrap.style.display = allDay ? 'none' : 'flex';
+}
+
+async function submitAddEvent(dateStr, calendarId) {
+  const name = document.getElementById('modal-evt-name')?.value.trim();
+  if (!name) { toast('이름을 입력하세요'); return; }
+  const allDay = document.getElementById('modal-evt-allday')?.value === '1';
+  const startTime = document.getElementById('modal-start-time')?.value || '09:00';
+  const endTime = document.getElementById('modal-end-time')?.value || '10:00';
+  const reminderEl = document.getElementById('modal-reminder');
+  const reminder = reminderEl ? parseInt(reminderEl.value) : null;
+  try {
+    closeModal();
+    toast('추가 중...');
+    await createGcalEvent(calendarId, { summary: name, date: dateStr, startTime, endTime, allDay, reminder });
+    toast('✓ 일정 추가됨');
+    setTimeout(() => renderCalendar(), 1500);
+  } catch(e) {
+    toast('⚠️ 추가 실패: ' + e.message);
+  }
+}
+
+function openEditEventModal(dateStr, idx, cache) {
+  const item = cache.allEvts[idx];
+  if (!item) return;
+  const { event, calendarId } = item;
+  const isStudy = calendarId === GCAL_STUDY_ID;
+  const isAllDay = !!event.start.date;
+  const startTime = isAllDay ? '09:00' : event.start.dateTime.slice(11,16);
+  const endTime   = isAllDay ? '10:00' : event.end.dateTime.slice(11,16);
+  closeModal();
+  setTimeout(() => showModal(`
+    <div style="font-weight:700;font-size:16px;margin-bottom:14px">일정 수정</div>
+    <div style="margin-bottom:10px">
+      <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">일정 이름</label>
+      <input id="modal-edit-name" type="text" value="${event.summary}" style="width:100%">
+    </div>
+    <div style="margin-bottom:10px">
+      <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">유형</label>
+      <select id="modal-edit-allday" style="width:100%" onchange="toggleEditTimeInputs()">
+        <option value="1" ${isAllDay?'selected':''}>종일</option>
+        <option value="0" ${!isAllDay?'selected':''}>특정 시간</option>
+      </select>
+    </div>
+    <div id="modal-edit-time-wrap" style="display:${isAllDay?'none':'flex'};gap:8px;margin-bottom:10px">
+      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">시작</label><input id="modal-edit-start" type="time" value="${startTime}"></div>
+      <div style="flex:1"><label style="font-size:11px;color:var(--text3)">종료</label><input id="modal-edit-end" type="time" value="${endTime}"></div>
+    </div>
+    ${!isStudy ? `<div style="margin-bottom:10px">
+      <label style="font-size:11px;color:var(--text3);display:block;margin-bottom:4px">알림 (분 전, 0=없음)</label>
+      <input id="modal-edit-reminder" type="number" value="30" min="0" max="1440" style="width:100%">
+    </div>` : ''}
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-sm" style="background:var(--accent);color:#000" onclick="submitEditEvent('${dateStr}','${calendarId}','${event.id}',${idx})">저장</button>
+      <button class="btn btn-sm btn-ghost" onclick="closeModal()">취소</button>
+    </div>
+  `), 50);
+}
+
+function toggleEditTimeInputs() {
+  const allDay = document.getElementById('modal-edit-allday')?.value === '1';
+  const wrap = document.getElementById('modal-edit-time-wrap');
+  if (wrap) wrap.style.display = allDay ? 'none' : 'flex';
+}
+
+async function submitEditEvent(dateStr, calendarId, eventId, idx) {
+  const name = document.getElementById('modal-edit-name')?.value.trim();
+  if (!name) { toast('이름을 입력하세요'); return; }
+  const allDay = document.getElementById('modal-edit-allday')?.value === '1';
+  const startTime = document.getElementById('modal-edit-start')?.value || '09:00';
+  const endTime = document.getElementById('modal-edit-end')?.value || '10:00';
+  const reminderEl = document.getElementById('modal-edit-reminder');
+  const reminder = reminderEl ? parseInt(reminderEl.value) : null;
+  try {
+    closeModal();
+    toast('수정 중...');
+    await updateGcalEvent(calendarId, eventId, { summary: name, date: dateStr, startTime, endTime, allDay, reminder });
+    toast('✓ 수정 완료');
+    setTimeout(() => renderCalendar(), 1500);
+  } catch(e) {
+    toast('⚠️ 수정 실패: ' + e.message);
+  }
+}
+
+async function deleteEvent(calendarId, eventId) {
+  if (!confirm('삭제할까요?')) return;
+  try {
+    closeModal();
+    toast('삭제 중...');
+    await deleteGcalEvent(calendarId, eventId);
+    toast('✓ 삭제됨');
+    setTimeout(() => renderCalendar(), 1500);
+  } catch(e) {
+    toast('⚠️ 삭제 실패: ' + e.message);
+  }
 }
 
 function renderAnnualPlan() {
@@ -2308,6 +2702,10 @@ function applyParsedLectures(mode){
 // 구버전 localStorage 잔재만 제거 (gh_token 등 설정값은 유지)
 ['imgo_planner_v1','imgo_gh_settings','imgo_calendar_urls','ical_study_url','ical_personal_url'].forEach(k => localStorage.removeItem(k));
 setupIcalAutoRefresh();
+initOAuth().then(loggedIn => {
+  updateAuthUI();
+  if (loggedIn) console.log('✓ Google OAuth 세션 복원됨');
+});
 document.getElementById('dday-txt').textContent = `D-${dDay()}`;
 if (localStorage.getItem('imgo_theme')==='light') document.body.classList.add('light');
 // 페이지 로드 시 GitHub에서 데이터 로드 (단일 소스)
