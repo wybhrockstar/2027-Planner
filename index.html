@@ -195,7 +195,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .grass-subtable td:hover{filter:brightness(1.15)}
 .grass-subtable td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
 .grass-subtable td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
-.grass-subtable .row-label{font-size:9px;font-weight:600;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:left;white-space:nowrap;border:1px solid var(--border);width:4em;min-width:4em}
+.grass-subtable .row-label{font-size:9px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border);width:4.8em;min-width:4.8em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
 .grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:8px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
 .grass-block{margin-bottom:10px;overflow:hidden}
@@ -579,16 +579,24 @@ canvas{width:100%!important}
 
 <!-- ⑤ 강의 -->
 <div id="page-lectures" class="page">
+  <!-- 전체 진행률 + 강의 파서 버튼 -->
   <div class="sec">
     <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
-      <span>과목별 진행률</span>
+      <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
     </div>
+    <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
+    <div class="card" id="lec-total-progress" style="padding:14px 16px"></div>
+  </div>
+  <!-- 과목별 진행률 -->
+  <div class="sec">
+    <div class="sec-hd">과목별 진행률</div>
     <div class="card" id="subj-inline-progress"></div>
   </div>
+  <!-- 강의 목록 -->
   <div class="sec">
+    <div class="sec-hd">강의 목록</div>
     <div class="subj-tabs" id="lec-subj-tabs"></div>
-    <div class="sec-hd" style="margin-top:4px">전체 진행률</div>
     <div class="card" id="lec-list" style="padding:8px 14px"></div>
   </div>
 </div>
@@ -1816,18 +1824,6 @@ function renderGrass(term) {
 
   // 행 4종 정의
   const ROWS = [
-    { label: '운동',
-      render: (d, cd) => {
-        if (cd.isFuture) return { cls:'future', txt:'', style:'' };
-        if (!cd.log) return { cls:'cell-none', txt:'', style:'' };
-        const v = cd.log.kcal||0;
-        const rs = state.reportSettings;
-        const goalKcal = rs.kcalGoal || 200;
-        if (v >= goalKcal) return { cls:'cell-o', txt:`${v}`, style:'background:rgba(94,207,176,.25);color:#5ecfb0' };
-        if (v > 0) return { cls:'cell-d', txt:`${v}`, style:'background:rgba(255,159,67,.2);color:#ff9f43' };
-        return { cls:'cell-x', txt:'×', style:'background:rgba(255,90,90,.18);color:#ff5a5a' };
-      }
-    },
     { label: '공부',
       render: (d, cd) => {
         if (cd.isFuture) return { cls:'future', txt:'', style:'' };
@@ -1839,6 +1835,18 @@ function renderGrass(term) {
         if (v >= goalMin) return { cls:'cell-o', txt, style:'background:rgba(94,207,176,.25);color:#5ecfb0' };
         if (v >= 60) return { cls:'cell-d', txt, style:'background:rgba(255,159,67,.2);color:#ff9f43' };
         return { cls:'cell-x', txt, style:'background:rgba(255,90,90,.18);color:#ff5a5a' };
+      }
+    },
+    { label: '운동',
+      render: (d, cd) => {
+        if (cd.isFuture) return { cls:'future', txt:'', style:'' };
+        if (!cd.log) return { cls:'cell-none', txt:'', style:'' };
+        const v = cd.log.kcal||0;
+        const rs = state.reportSettings;
+        const goalKcal = rs.kcalGoal || 200;
+        if (v >= goalKcal) return { cls:'cell-o', txt:`${v}`, style:'background:rgba(94,207,176,.25);color:#5ecfb0' };
+        if (v > 0) return { cls:'cell-d', txt:`${v}`, style:'background:rgba(255,159,67,.2);color:#ff9f43' };
+        return { cls:'cell-x', txt:'×', style:'background:rgba(255,90,90,.18);color:#ff5a5a' };
       }
     },
     { label: '인강',
@@ -1899,7 +1907,7 @@ function renderGrass(term) {
       while (cells.length < totalCols) cells.push(null);
 
       // 헤더: 날짜행 (주 구분선 포함)
-      let hdr = `<tr class="date-row"><th class="row-label" style="min-width:4em"></th>`;
+      let hdr = `<tr class="date-row"><th class="row-label" style="min-width:4.8em"></th>`;
       for (let col = 0; col < totalCols; col++) {
         const d = cells[col];
         const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
@@ -1922,7 +1930,7 @@ function renderGrass(term) {
       // 데이터 행
       let rows = '';
       ROWS.forEach(row => {
-        rows += `<tr><th class="row-label" style="min-width:4em">${row.label}</th>`;
+        rows += `<tr><th class="row-label" style="min-width:4.8em">${row.label}</th>`;
         for (let col = 0; col < totalCols; col++) {
           const d = cells[col];
           const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
@@ -2023,7 +2031,21 @@ function openLogModalForDate(dateStr) {
 let lecSubjFilter = SUBJ_ORDER[0];
 
 function renderLectures() {
-  // Inline subject progress grid
+  // ── 전체 진행률 프로그레스바 (모든 강의 합산) ──
+  const totalAll = state.lectures.length;
+  const doneAll = state.lectures.filter(l=>l.done).length;
+  const pctAll = totalAll ? Math.round(doneAll/totalAll*100) : 0;
+  const totalBar = document.getElementById('lec-total-progress');
+  if (totalBar) {
+    totalBar.innerHTML = `
+      <div class="pbar-hd" style="margin-bottom:6px">
+        <div style="font-size:13px;font-weight:500;color:var(--text2)">전체 강의</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent)">${pctAll}% <span style="color:var(--text3);font-size:11px">(${doneAll}/${totalAll}강)</span></div>
+      </div>
+      <div class="pbar" style="height:8px"><div class="pbar-fill" style="width:${pctAll}%;background:var(--accent)"></div></div>`;
+  }
+
+  // ── 과목별 진행률 그리드 ──
   const grid = document.getElementById('subj-inline-progress');
   grid.innerHTML = `<div class="subj-inline-grid">${SUBJ_ORDER.map(s => {
     const sLecs = state.lectures.filter(l=>l.subject===s);
@@ -2038,7 +2060,7 @@ function renderLectures() {
     </div>`;
   }).join('')}</div>`;
 
-  // Subject tabs
+  // ── 강의 목록 과목 탭 ──
   const subjects = SUBJ_ORDER.filter(s=>state.lectures.some(l=>l.subject===s));
   if (!lecSubjFilter || !subjects.includes(lecSubjFilter)) lecSubjFilter = subjects[0];
   const tabs = document.getElementById('lec-subj-tabs');
@@ -2064,12 +2086,21 @@ function renderLecList() {
   const done = lecs.filter(l=>l.done).length;
   const pct = lecs.length ? Math.round(done/lecs.length*100) : 0;
   const color = SUBJ_COLOR[lecSubjFilter]||'var(--accent)';
+
+  // 총 강의시간 계산
+  const totalMins = lecs.reduce((s,l)=>s+(l.minutes||0),0);
+  const totalTimeStr = totalMins > 0
+    ? `${Math.floor(totalMins/60)}시간 ${totalMins%60}분`
+    : '';
+
   const list = document.getElementById('lec-list');
   list.innerHTML = `
     <div style="margin-bottom:12px">
       <div class="pbar-hd">
-        <div style="font-size:13px;font-weight:600">${subjectName(lecSubjFilter)}</div>
-        <div class="pbar-pct" style="color:${color}">${pct}% (${done}/${lecs.length}강)</div>
+        <div style="font-size:13px">
+          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `<span style="font-weight:400;color:var(--text3);font-size:12px"> (${totalTimeStr})</span>` : ''}
+        </div>
+        <div class="pbar-pct" style="color:${color}">${pct}% <span style="font-weight:400;color:var(--text3);font-size:11px">(${done}/${lecs.length}강)</span></div>
       </div>
       <div class="pbar"><div class="pbar-fill" style="width:${pct}%;background:${color}"></div></div>
     </div>
