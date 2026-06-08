@@ -29,7 +29,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* HEADER */
 .hdr{border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;background:var(--bg);position:sticky;top:0;z-index:200}
-.logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:var(--accent);letter-spacing:.06em}
+.logo{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:14px;color:var(--accent);letter-spacing:.02em}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .dday-badge{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--accent2);border:1px solid var(--accent);color:var(--accent);padding:3px 10px;border-radius:20px}
 .theme-btn{font-size:15px;padding:4px 7px;border-radius:20px;border:1px solid var(--border2);background:none;color:var(--text3);transition:.15s;line-height:1}
@@ -60,7 +60,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .sc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 12px;display:flex;flex-direction:column}
 .sc-lbl{font-size:10px;color:var(--text);margin-bottom:4px;letter-spacing:.04em;font-weight:600}
 .sc-val{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;line-height:1}
-.sc-sub{font-size:10px;color:var(--text2);margin-top:3px}
+.sc-sub{font-size:10px;color:var(--text);margin-top:3px;opacity:.7}
 
 /* FORM */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
@@ -282,12 +282,12 @@ canvas{width:100%!important}
   </div>
   <div class="form-row">
     <div>
-      <label class="form-lbl">공부시간 (H:MM)</label>
-      <input type="text" id="inp-study" placeholder="6:30">
+      <label class="form-lbl">운동 (칼로리, kcal)</label>
+      <input type="number" id="inp-kcal" placeholder="300">
     </div>
     <div>
-      <label class="form-lbl">칼로리 소모 (kcal)</label>
-      <input type="number" id="inp-kcal" placeholder="300">
+      <label class="form-lbl">공부시간 (H:MM)</label>
+      <input type="text" id="inp-study" placeholder="6:30">
     </div>
   </div>
   <!-- 스터디 결과 (월수금일만 표시) -->
@@ -303,6 +303,14 @@ canvas{width:100%!important}
       <button class="sr-btn" id="sr-x" onclick="setSR('×')">
         <svg viewBox="0 0 100 100" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" stroke-width="12" stroke-linecap="round"/><line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" stroke-width="12" stroke-linecap="round"/></svg>
       </button>
+    </div>
+  </div>
+  <div class="form-group" id="modal-todo-area">
+    <label class="form-lbl">To-Do List (오늘 할 일)</label>
+    <div class="todo-list" id="modal-todo-list" style="margin-top:4px"></div>
+    <div class="todo-add-row" style="margin-top:6px">
+      <input type="text" id="modal-todo-inp" placeholder="할 일 추가...">
+      <button class="btn btn-ghost btn-sm" onclick="addModalTodo()" style="white-space:nowrap">추가</button>
     </div>
   </div>
   <div class="form-group">
@@ -550,6 +558,7 @@ canvas{width:100%!important}
   </div>
   <div class="sec">
     <div class="subj-tabs" id="lec-subj-tabs"></div>
+    <div class="sec-hd" style="margin-top:4px">전체 진행률</div>
     <div class="card" id="lec-list" style="padding:8px 14px"></div>
   </div>
 </div>
@@ -613,6 +622,7 @@ const EXAM_DATE = new Date('2026-11-14');
 let state = {
   lectures: [],
   dailyLogs: [],
+  dailyTodos: {},
   examScores: [],
   termTodos: {1:[],2:[],3:[],4:[]},
   weeklySchedule: {1:[],2:[],3:[],4:[]},
@@ -924,6 +934,7 @@ async function autoLoadFromGithub() {
 
 function applyImportedState(d) {
   if (d.dailyLogs) state.dailyLogs = d.dailyLogs;
+  if (d.dailyTodos) state.dailyTodos = d.dailyTodos;
   if (d.examScores) state.examScores = d.examScores;
   if (d.termTodos) state.termTodos = {...state.termTodos,...d.termTodos};
   if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
@@ -1287,6 +1298,7 @@ function renderToday() {
     btn.addEventListener('click', () => { todaySubjFilter = btn.dataset.subj; renderTodayLecs(); renderTodayTabs(); });
   });
   renderTodayLecs();
+  renderTodayTodos();
 }
 
 function renderTodayTabs() {
@@ -1366,6 +1378,7 @@ function openLogModal(edit=false) {
     document.getElementById('btn-del-log').style.display='none';
   }
   renderStudyChecklist();
+  renderModalTodos();
   openModal('modal-log');
 }
 
@@ -1379,6 +1392,7 @@ function setSR(val, noToggle=false) {
 
 function renderStudyChecklist() {
   const list = document.getElementById('study-checklist');
+  if (!list) return; // 요소가 없을 경우 (스터디 체크리스트 모달 UI 제거됨) 조기 반환
   list.innerHTML = studyCheckItems.map((item, i) => `
     <div class="study-check-item">
       <input type="checkbox" ${item.done?'checked':''} data-idx="${i}" class="study-cb">
@@ -1445,7 +1459,102 @@ document.querySelectorAll('.modal-bg').forEach(bg => {
   bg.addEventListener('click', e => { if (e.target===bg) bg.classList.remove('open'); });
 });
 
-// ─── PROGRESS ────────────────────────────────────────────────────────────────
+function renderModalTodos() {
+  const dateKey = logModalDate || today();
+  const todos = state.dailyTodos[dateKey] || [];
+  const list = document.getElementById('modal-todo-list');
+  if (!list) return;
+  list.innerHTML = todos.map((item, i) => `
+    <div class="todo-item ${item.done?'done-item':''}">
+      <input type="checkbox" ${item.done?'checked':''} data-idx="${i}" class="modal-todo-cb" style="width:14px;height:14px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)">
+      <div class="todo-item-text ${item.done?'done-text':''}">${item.text}</div>
+      <button class="todo-del" data-idx="${i}" data-mtype="modal">✕</button>
+    </div>
+  `).join('');
+  list.querySelectorAll('.modal-todo-cb').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (!state.dailyTodos[dateKey]) state.dailyTodos[dateKey] = [];
+      state.dailyTodos[dateKey][Number(cb.dataset.idx)].done = cb.checked;
+      saveState();
+      renderModalTodos();
+      if (dateKey === today()) renderTodayTodos();
+    });
+  });
+  list.querySelectorAll('.todo-del[data-mtype="modal"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!state.dailyTodos[dateKey]) return;
+      state.dailyTodos[dateKey].splice(Number(btn.dataset.idx), 1);
+      saveState();
+      renderModalTodos();
+      if (dateKey === today()) renderTodayTodos();
+    });
+  });
+}
+
+function addModalTodo() {
+  const dateKey = logModalDate || today();
+  const inp = document.getElementById('modal-todo-inp');
+  const text = inp.value.trim();
+  if (!text) return;
+  if (!state.dailyTodos[dateKey]) state.dailyTodos[dateKey] = [];
+  state.dailyTodos[dateKey].push({ id: Date.now().toString(36), text, done: false });
+  inp.value = '';
+  saveState();
+  renderModalTodos();
+  if (dateKey === today()) renderTodayTodos();
+}
+
+
+function renderTodayTodos() {
+  const td = today();
+  const todos = state.dailyTodos[td] || [];
+  const list = document.getElementById('todo-list-items');
+  if (!list) return;
+  list.innerHTML = todos.map((item, i) => `
+    <div class="todo-item ${item.done?'done-item':''}" data-idx="${i}">
+      <input type="checkbox" ${item.done?'checked':''} data-idx="${i}" class="todo-item-cb" style="width:14px;height:14px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)">
+      <div class="todo-item-text ${item.done?'done-text':''}" data-idx="${i}">${item.text}</div>
+      <button class="todo-del" data-idx="${i}">✕</button>
+    </div>
+  `).join('');
+  list.querySelectorAll('.todo-item-cb').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const idx = Number(cb.dataset.idx);
+      if (!state.dailyTodos[td]) state.dailyTodos[td] = [];
+      state.dailyTodos[td][idx].done = cb.checked;
+      saveState();
+      renderTodayTodos();
+    });
+  });
+  list.querySelectorAll('.todo-del').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.idx);
+      if (!state.dailyTodos[td]) return;
+      state.dailyTodos[td].splice(idx, 1);
+      saveState();
+      renderTodayTodos();
+    });
+  });
+}
+
+function addTodo() {
+  const td = today();
+  const inp = document.getElementById('todo-inp');
+  const text = inp.value.trim();
+  if (!text) return;
+  if (!state.dailyTodos[td]) state.dailyTodos[td] = [];
+  state.dailyTodos[td].push({ id: Date.now().toString(36), text, done: false });
+  inp.value = '';
+  saveState();
+  renderTodayTodos();
+}
+
+// Enter key for todo input
+document.getElementById('todo-inp').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTodo();
+});
+
+
 let progressTerm = getCurrentTerm();
 
 function renderProgress() {
@@ -2612,6 +2721,7 @@ function importData() {
       try {
         const d = JSON.parse(ev.target.result);
         if (d.dailyLogs) state.dailyLogs = d.dailyLogs;
+        if (d.dailyTodos) state.dailyTodos = d.dailyTodos;
         if (d.examScores) state.examScores = d.examScores;
         if (d.termTodos) state.termTodos = {...state.termTodos,...d.termTodos};
         if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
