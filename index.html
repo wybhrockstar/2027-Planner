@@ -625,6 +625,7 @@ canvas{width:100%!important}
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 // ─── LECTURE_SEED: html에서 제거됨 — data.json이 단일 소스 ──────────────────
 // 강의 목록은 data.json에서만 로드됨 (강의 파서로 추가 → data.json에 반영)
@@ -1354,6 +1355,9 @@ function renderToday() {
             if (log.sleepTime && rs2.bedtimeLimit) {
               bedColor = log.sleepTime <= rs2.bedtimeLimit ? '#5ecfb0' : '#ff5a5a';
             }
+            // 수면 색상
+            const sleepGoalMin2 = rs2.sleepMinMin || (rs2.sleepMinHour||6)*60;
+            const sleepColor = sh && sh.total >= sleepGoalMin2 ? '#5ecfb0' : '#ff5a5a';
             // 운동 색상
             const kcalGoal2 = rs2.kcalGoal || 200;
             const kcalVal2 = log.kcal || 0;
@@ -1369,6 +1373,7 @@ function renderToday() {
             return `
               ${log.wakeTime ? `<span class="log-tag" style="color:${wakeColor};border-color:${wakeColor}40;background:var(--bg4)">기상 ${log.wakeTime}</span>` : ''}
               ${log.sleepTime ? `<span class="log-tag" style="color:${bedColor};border-color:${bedColor}40;background:var(--bg4)">취침 ${log.sleepTime}</span>` : ''}
+              ${sh ? `<span class="log-tag" style="color:${sleepColor};border-color:${sleepColor}40;background:var(--bg4)">수면 ${fmtSleep(sh)}</span>` : ''}
               ${log.kcal != null ? `<span class="log-tag" style="color:${kcalColor};border-color:${kcalColor}40;background:var(--bg4)">${log.kcal}kcal</span>` : ''}
               ${log.studyMin != null ? `<span class="log-tag" style="color:${studyColor};border-color:${studyColor}40;background:var(--bg4)">공부 ${fmtMinLong(log.studyMin)}</span>` : ''}
               ${log.studyResult ? `<span class="log-tag ${srClass}" style="color:${srColor}">${srLabel}</span>` : ''}
@@ -2105,18 +2110,50 @@ function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresho
   const isDark = !document.body.classList.contains('light');
   const gridColor = isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
   const textColor = isDark?'#777':'#999';
-  const resolved = (v) => ({
-    'var(--accent)':'#c8f060','var(--blue)':'#6eb5ff','var(--orange)':'#ff9f43',
-    'var(--teal)':'#5ecfb0','var(--red)':'#ff5a5a','var(--text3)':'#777'
-  }[v]||v);
-  const bgs = data.map(v => v >= threshold ? resolved(goodColor)+'88' : resolved(badColor)+'88');
-  const borders = data.map(v => v >= threshold ? resolved(goodColor) : resolved(badColor));
+  const xLabelColor = isDark?'#ffffff':'#333333';
+
+  // 1-2/1-3: 3단계 색상 분기
+  // study: threshold=목표시간, badColor used for 1h boundary
+  // kcal: threshold=목표kcal, 0 boundary for red
+  const isStudy = id === 'chart-study';
+  const isKcal  = id === 'chart-kcal';
+
+  function barColor(v, alpha) {
+    if (isStudy) {
+      if (v >= threshold) return '#5ecfb0' + (alpha?'88':'');
+      if (v >= 1)         return '#ff9f43' + (alpha?'88':'');
+      return                     '#ff5a5a' + (alpha?'88':'');
+    } else if (isKcal) {
+      if (v >= threshold) return '#5ecfb0' + (alpha?'88':'');
+      if (v > 0)          return '#ff9f43' + (alpha?'88':'');
+      return                     '#ff5a5a' + (alpha?'88':'');
+    } else {
+      // fallback
+      const resolved = (c) => ({'var(--accent)':'#c8f060','var(--blue)':'#6eb5ff','var(--orange)':'#ff9f43','var(--teal)':'#5ecfb0','var(--red)':'#ff5a5a','var(--text3)':'#777'}[c]||c);
+      return v >= threshold ? resolved(goodColor)+(alpha?'88':'') : resolved(badColor)+(alpha?'88':'');
+    }
+  }
+
+  const bgs     = data.map(v => barColor(v, true));
+  const borders = data.map(v => barColor(v, false));
+
   chartsRef[id] = new Chart(canvas, {
     type:'bar',
     data:{labels,datasets:[{data,backgroundColor:bgs,borderColor:borders,borderWidth:0,borderRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-      scales:{x:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}}},
-              y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true}}}
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        annotation:{annotations:{
+          goalLine:{type:'line',yMin:threshold,yMax:threshold,
+            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]}
+        }}
+      },
+      scales:{
+        x:{grid:{color:gridColor},ticks:{color:xLabelColor,font:{size:10}}},
+        y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true}
+      }
+    }
   });
 }
 
@@ -2139,13 +2176,15 @@ function buildSleepBubble(id, dates, logMap, rs) {
     if (log.wakeTime) {
       const v = timeToNum(log.wakeTime);
       const over = v > wakeLimit;
-      wakePoints.push({x:i, y:v, r:5, color: over?'#ff5a5a':'#6eb5ff'});
+      // 1-4: 경고선 이내 → 초록, 경고선 초과 → 빨강
+      wakePoints.push({x:i, y:v, r:5, color: over?'#ff5a5a':'#5ecfb0'});
     }
     if (log.sleepTime) {
       let v = timeToNum(log.sleepTime);
       if (v < 12) v += 24; // normalize midnight+ times
       const over = v > bedLimit + 24;
-      bedPoints.push({x:i, y:v % 24, r:5, color: over?'#ff5a5a':'#b8a5ff'});
+      // 1-4: 경고선 이내 → 초록, 경고선 초과 → 빨강
+      bedPoints.push({x:i, y:v % 24, r:5, color: over?'#ff5a5a':'#5ecfb0'});
     }
   });
 
@@ -2159,9 +2198,17 @@ function buildSleepBubble(id, dates, logMap, rs) {
        backgroundColor:bedPoints.map(p=>p.color+'bb'),pointRadius:6,pointStyle:'circle'}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:true,labels:{color:textColor,font:{size:10}}}},
+      plugins:{
+        legend:{display:true,labels:{color:textColor,font:{size:10}}},
+        annotation:{annotations:{
+          wakeLine:{type:'line',yMin:wakeLimit,yMax:wakeLimit,
+            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]},
+          bedLine:{type:'line',yMin:bedLimit,yMax:bedLimit,
+            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]}
+        }}
+      },
       scales:{
-        x:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10},
+        x:{grid:{color:gridColor},ticks:{color:'#ffffff',font:{size:10},
            callback:(v)=>dates[v]?dates[v].slice(5):''},min:0,max:dates.length-1},
         y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10},
            callback:(v)=>`${String(Math.floor(v)).padStart(2,'0')}:00`},
@@ -2186,23 +2233,34 @@ function buildSleepLine(id, dates, logMap, rs) {
     if (!l || !l.wakeTime || !l.sleepTime) return null;
     return sleepHours(l.wakeTime, l.sleepTime);
   });
-  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a' : '#6eb5ff');
+  // 1-5: 최소수면시간 이상 → 초록, 미만 → 빨강
+  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a' : '#5ecfb0');
 
   chartsRef[id] = new Chart(canvas, {
     type:'line',
-    data:{labels,datasets:[{data,borderColor:'#6eb5ff',backgroundColor:'rgba(110,181,255,.1)',
-      fill:true,tension:.35,pointBackgroundColor:colors,pointRadius:4,
+    data:{labels,datasets:[{data,
+      borderColor:'#5ecfb0',          // 1-5: 연결선 초록
+      backgroundColor:'rgba(94,207,176,.1)',
+      fill:true,tension:.35,
+      pointBackgroundColor:colors,
+      pointRadius:4,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
-        return v < minGoalH ? '#ff5a5a' : '#6eb5ff';
+        return v < minGoalH ? '#ff5a5a' : '#5ecfb0'; // 1-5: 선분 색도 초록/빨강
       }}
     }]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},
-        annotation:{annotations:{line:{type:'line',yMin:minGoalH,yMax:minGoalH,
-          borderColor:'rgba(255,90,90,.4)',borderWidth:1,borderDash:[4,4]}}}},
-      scales:{x:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}}},
-              y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true,max:12}}
+      plugins:{
+        legend:{display:false},
+        annotation:{annotations:{
+          minSleepLine:{type:'line',yMin:minGoalH,yMax:minGoalH,
+            borderColor:'rgba(255,255,255,0.85)',borderWidth:1.5,borderDash:[4,4]}  // 1-5: 흰색 경고선
+        }}
+      },
+      scales:{
+        x:{grid:{color:gridColor},ticks:{color:'#ffffff',font:{size:10}}}, // 1-1: 날짜 흰색
+        y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:10}},beginAtZero:true,max:12}
+      }
     }
   });
 }
