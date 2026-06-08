@@ -2040,10 +2040,10 @@ async function renderCalendar() {
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
-      `<div style="font-size:9px;color:var(--teal);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">✍🏻 ${e.summary}</div>`
+      `<div style="font-size:9px;color:var(--teal);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:2px"><span style="flex-shrink:0">✍🏻</span><span style="word-break:break-all;overflow-wrap:break-word">${e.summary}</span></div>`
     ).join('');
     const personalEvtsHtml = evts.personal.map(e =>
-      `<div style="font-size:9px;color:var(--blue);line-height:1.4;word-break:break-all;white-space:normal;overflow-wrap:break-word;margin-top:1px">📅 ${e.summary}</div>`
+      `<div style="font-size:9px;color:var(--blue);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:2px"><span style="flex-shrink:0">📅</span><span style="word-break:break-all;overflow-wrap:break-word">${e.summary}</span></div>`
     ).join('');
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
@@ -2220,8 +2220,8 @@ function openCalDayModal(dateStr, cache) {
     <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title} 일정</div>
     <div id="cal-day-evt-list">${evtListHtml}</div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000">✍🏻 스터디 일정 추가&nbsp;</button>
-      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000">📅 개인 일정 추가&nbsp;</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--teal);color:#000;flex:1;justify-content:center">✍🏻 스터디 일정 추가</button>
+      <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--blue);color:#000;flex:1;justify-content:center">📅 개인 일정 추가</button>
       <button class="btn btn-sm btn-ghost" onclick="closeModal()">닫기</button>
     </div>
     ${memoHtml}
