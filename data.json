@@ -3222,13 +3222,13 @@
     "4": []
   },
   "reportSettings": {
-    "studyGoalHour": 4,
-    "studyGoalMin": 240,
-    "sleepMinHour": 8,
-    "sleepMinMin": 480,
+    "studyGoalHour": 7,
+    "studyGoalMin": 420,
+    "sleepMinHour": 6,
+    "sleepMinMin": 360,
     "kcalGoal": 200,
     "bedtimeLimit": "01:00",
-    "wakeTimeLimit": "07:30"
+    "wakeTimeLimit": "09:00"
   },
   "timetable": {
     "activeTerm": 1,
