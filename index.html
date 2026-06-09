@@ -8,7 +8,7 @@
 <style>
 :root{
   --bg:#141414;--bg2:#1c1c1c;--bg3:#242424;--bg4:#2c2c2c;--bg5:#353535;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--border3:rgba(255,255,255,0.24);--border-cal:rgba(255,255,255,0.36);
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--border3:rgba(255,255,255,0.24);--border-cal:rgba(255,255,255,0.60);
   --text:#efefef;--text2:#b8b8b8;--text3:#777;--text4:#444;
   --accent:#c8f060;--accent2:rgba(200,240,96,0.12);--accent3:rgba(200,240,96,0.06);
   --red:#ff5a5a;--amber:#ffb347;--blue:#6eb5ff;--purple:#b8a5ff;--teal:#5ecfb0;--pink:#ff8fa3;--orange:#ff9f43;
@@ -16,7 +16,7 @@
 }
 body.light{
   --bg:#f5f5f0;--bg2:#ebebeb;--bg3:#ffffff;--bg4:#f0f0eb;--bg5:#e6e6e1;
-  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.2);--border-cal:rgba(0,0,0,0.30);
+  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.2);--border-cal:rgba(0,0,0,0.54);
   --text:#1a1a1a;--text2:#444;--text3:#888;--text4:#bbb;
   --accent:#5a8a10;--accent2:rgba(90,138,16,0.1);--accent3:rgba(90,138,16,0.05);
   --red:#d93025;--amber:#c87800;--blue:#1a6fc4;--purple:#6b4fc4;--teal:#1a8a6a;--pink:#c4204a;--orange:#c86000;
@@ -609,12 +609,12 @@ canvas{width:100%!important}
   </div>
   <!-- 과목별 진행률 -->
   <div class="sec">
-    <div class="sec-hd">과목별 진행률</div>
+    <div class="sec-hd" style="margin-bottom:11px">과목별 진행률</div>
     <div class="card" id="subj-inline-progress"></div>
   </div>
   <!-- 강의 목록 -->
   <div class="sec">
-    <div class="sec-hd">강의 목록</div>
+    <div class="sec-hd" style="margin-bottom:11px">강의 목록</div>
     <div class="subj-tabs" id="lec-subj-tabs"></div>
     <div class="card" id="lec-list" style="padding:8px 14px"></div>
   </div>
@@ -2687,10 +2687,10 @@ async function renderCalendar() {
   const moStr = `${yr}년 ${mo+1}월`;
 
   container.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <button class="btn btn-ghost btn-sm" id="cal-prev">←</button>
-      <div style="font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700">${moStr}</div>
-      <div style="display:flex;gap:6px">
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;align-items:center;margin-bottom:6px">
+      <div style="grid-column:1;display:flex;justify-content:flex-start"><button class="btn btn-ghost btn-sm" id="cal-prev">←</button></div>
+      <div style="grid-column:4;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700">${moStr}</div>
+      <div style="grid-column:7;display:flex;justify-content:flex-end;gap:6px">
         <button class="btn btn-ghost btn-sm" id="cal-refresh" title="구글 캘린더 새로고침">↻</button>
         <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
       </div>
