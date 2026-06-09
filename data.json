@@ -3183,7 +3183,7 @@
       "sleepTime": "01:51",
       "studyMin": 0,
       "kcal": 100,
-      "memo": "",
+      "memo": "hi",
       "studyResult": null
     }
   ],
@@ -3227,7 +3227,7 @@
     "sleepMinHour": 6,
     "sleepMinMin": 360,
     "kcalGoal": 200,
-    "bedtimeLimit": "01:00",
+    "bedtimeLimit": "02:00",
     "wakeTimeLimit": "09:00"
   },
   "timetable": null
