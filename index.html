@@ -156,8 +156,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .term-prog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .term-prog-name{font-size:13px;font-weight:600}
 .term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700}
-.term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:2px}
-.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:4px;text-align:right}
+.term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px}
+.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:4px;text-align:right}
 
 /* TERM SUBTABS */
 .term-subtabs{display:flex;gap:4px;margin-bottom:16px}
@@ -270,7 +270,7 @@ canvas{width:100%!important}
 .todo-item-text.done-text{text-decoration:line-through;color:var(--text3)}
 .todo-del{background:none;border:none;color:var(--text4);font-size:13px;padding:0 4px;cursor:pointer;transition:.12s}
 .todo-del:hover{color:var(--red)}
-.todo-add-row{display:flex;gap:6px;margin-top:8px}
+.todo-add-row{display:flex;gap:6px;margin-top:6px}
 .todo-add-row input{font-size:12px}
 
 /* SCORE TABLE */
@@ -547,19 +547,39 @@ canvas{width:100%!important}
     </div>
   </div>
   <div class="sec">
-    <div class="sec-hd">공부시간</div>
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+      <span>공부시간</span>
+      <label style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none">
+        <input type="checkbox" id="tooltip-study" style="width:12px;height:12px;accent-color:var(--accent)" onchange="setChartTooltip('chart-study',this.checked)">툴팁 표시
+      </label>
+    </div>
     <div class="card"><div class="chart-wrap"><canvas id="chart-study"></canvas></div></div>
   </div>
   <div class="sec">
-    <div class="sec-hd">운동량 (칼로리)</div>
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+      <span>운동량 (칼로리)</span>
+      <label style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none">
+        <input type="checkbox" id="tooltip-kcal" style="width:12px;height:12px;accent-color:var(--accent)" onchange="setChartTooltip('chart-kcal',this.checked)">툴팁 표시
+      </label>
+    </div>
     <div class="card"><div class="chart-wrap"><canvas id="chart-kcal"></canvas></div></div>
   </div>
   <div class="sec">
-    <div class="sec-hd">수면 루틴</div>
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+      <span>수면 루틴</span>
+      <label style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none">
+        <input type="checkbox" id="tooltip-sleep-bubble" style="width:12px;height:12px;accent-color:var(--accent)" onchange="setChartTooltip('chart-sleep-bubble',this.checked)">툴팁 표시
+      </label>
+    </div>
     <div class="card"><div class="chart-wrap" style="height:180px"><canvas id="chart-sleep-bubble"></canvas></div></div>
   </div>
   <div class="sec">
-    <div class="sec-hd">수면시간 추이</div>
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+      <span>수면시간 추이</span>
+      <label style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none">
+        <input type="checkbox" id="tooltip-sleep-line" style="width:12px;height:12px;accent-color:var(--accent)" onchange="setChartTooltip('chart-sleep-line',this.checked)">툴팁 표시
+      </label>
+    </div>
     <div class="card"><div class="chart-wrap"><canvas id="chart-sleep-line"></canvas></div></div>
   </div>
 </div>
@@ -578,12 +598,13 @@ canvas{width:100%!important}
 
 <!-- ⑤ 강의 -->
 <div id="page-lectures" class="page">
-  <!-- 전체 진행률 + 강의 파서 버튼 -->
-  <div class="sec" style="margin-bottom:12px">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <span>전체 진행률</span>
-      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
-    </div>
+  <!-- 강의 파서 버튼 (독립) -->
+  <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+    <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
+  </div>
+  <!-- 전체 진행률 -->
+  <div class="sec">
+    <div class="sec-hd">전체 진행률</div>
     <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
     <div class="card" id="lec-total-progress" style="padding:10px 16px"></div>
   </div>
@@ -660,7 +681,7 @@ const SUBJ_COLOR = {
 };
 const TERMS = [
   {id:1,name:'1텀',start:'2026-06-01',end:'2026-08-09',days:70},
-  {id:2,name:'2텀',start:'2026-08-10',end:'2026-09-21',days:43},
+  {id:2,name:'2텀',start:'2026-08-10',end:'2026-09-22',days:44},
   {id:3,name:'3텀',start:'2026-09-23',end:'2026-10-18',days:26},
   {id:4,name:'4텀',start:'2026-10-19',end:'2026-11-07',days:20}
 ];
@@ -1284,7 +1305,7 @@ document.getElementById('btn-open-backup').addEventListener('click', () => openS
 document.getElementById('btn-close-backup').addEventListener('click', () => closeModal('modal-backup'));
 
 // ─── TODAY ───────────────────────────────────────────────────────────────────
-let todaySubjFilter = null; // null = first subject in list
+let todaySubjFilter = null; // null = no subject selected (show only tabs, no list)
 
 function renderToday() {
   const td = today();
@@ -1364,10 +1385,6 @@ function renderToday() {
     const srLabel = log.studyResult==='O'?'스터디 O':log.studyResult==='△'?'스터디 △':log.studyResult==='×'?'스터디 ×':'';
     logArea.innerHTML = `
       <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <div style="font-size:11px;color:var(--text3)">오늘의 기록 ✓</div>
-          <button class="btn btn-ghost btn-sm" id="btn-edit-log">수정</button>
-        </div>
         <div class="log-data">
           ${(()=>{
             const rs2 = state.reportSettings;
@@ -1412,35 +1429,58 @@ function renderToday() {
         </div>
         ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--bg4);border-radius:var(--rs)">${log.memo}</div>` : ''}
       </div>`;
-    document.getElementById('btn-edit-log').addEventListener('click', () => openLogModal(true));
   } else {
     logArea.innerHTML = `<div class="empty"><div class="empty-icon">📝</div><div class="empty-txt">아직 오늘 기록이 없어요</div></div>`;
   }
 
-  // subject filter tabs - no '전체', start from first subject
+  // subject filter tabs - no '전체', no default selection on first load
   const subjects = SUBJ_ORDER.filter(s => state.lectures.some(l => l.subject === s));
-  if (!todaySubjFilter || !subjects.includes(todaySubjFilter)) todaySubjFilter = subjects[0];
+  // todaySubjFilter stays null unless user picks one (or it was already set this session)
+  if (todaySubjFilter && !subjects.includes(todaySubjFilter)) todaySubjFilter = null;
   const tabs = document.getElementById('today-subj-tabs');
-  tabs.innerHTML = subjects.map(s =>
-    `<button class="stab ${s===todaySubjFilter?'on':''}" data-subj="${s}">${subjectName(s)}</button>`
-  ).join('');
+  tabs.innerHTML = subjects.map(s => {
+    const color = SUBJ_COLOR[s] || 'var(--blue)';
+    const isOn = s === todaySubjFilter;
+    const onStyle = isOn ? `style="border-color:${color};color:${color};background:${color}1a"` : '';
+    return `<button class="stab${isOn?' on':''}" data-subj="${s}" ${onStyle}>${subjectName(s)}</button>`;
+  }).join('');
   tabs.querySelectorAll('.stab').forEach(btn => {
     btn.addEventListener('click', () => { todaySubjFilter = btn.dataset.subj; renderTodayLecs(); renderTodayTabs(); });
   });
   renderTodayLecs();
   renderTodayTodos();
+  // 기록 버튼 라벨 동적 업데이트
+  const btnLog = document.getElementById('btn-open-log');
+  if (btnLog) {
+    const hasLog = !!state.dailyLogs.find(l => l.date === td);
+    btnLog.textContent = hasLog ? '✏️ 오늘 기록 수정' : '+ 오늘 기록 입력';
+  }
 }
 
 function renderTodayTabs() {
-  const subjects = SUBJ_ORDER.filter(s => state.lectures.some(l => l.subject === s));
   const tabs = document.getElementById('today-subj-tabs');
   tabs.querySelectorAll('.stab').forEach(btn => {
-    btn.classList.toggle('on', btn.dataset.subj === todaySubjFilter);
+    const isOn = btn.dataset.subj === todaySubjFilter;
+    const color = SUBJ_COLOR[btn.dataset.subj] || 'var(--blue)';
+    btn.classList.toggle('on', isOn);
+    if (isOn) {
+      btn.style.borderColor = color;
+      btn.style.color = color;
+      btn.style.background = color + '1a';
+    } else {
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      btn.style.background = '';
+    }
   });
 }
 
 function renderTodayLecs() {
-  const lecs = todaySubjFilter ? state.lectures.filter(l=>l.subject===todaySubjFilter) : state.lectures;
+  if (!todaySubjFilter) {
+    document.getElementById('today-lec-list').innerHTML = '';
+    return;
+  }
+  const lecs = state.lectures.filter(l=>l.subject===todaySubjFilter);
   const undone = lecs.filter(l=>!l.done);
   const done = lecs.filter(l=>l.done);
   const show = [...undone, ...done];
@@ -1595,6 +1635,7 @@ function saveLog() {
 }
 
 function deleteLog() {
+  if (!confirm('삭제하시겠습니까?')) return;
   const td = logModalDate || today();
   state.dailyLogs = state.dailyLogs.filter(l=>l.date!==td);
   saveState();
@@ -1605,7 +1646,11 @@ function deleteLog() {
 }
 
 // Modal button bindings
-document.getElementById('btn-open-log').addEventListener('click', () => openLogModal(false));
+document.getElementById('btn-open-log').addEventListener('click', () => {
+  const td = today();
+  const log = state.dailyLogs.find(l => l.date === td);
+  openLogModal(!!log);
+});
 document.getElementById('btn-close-log').addEventListener('click', () => closeModal('modal-log'));
 document.getElementById('btn-save-log').addEventListener('click', saveLog);
 document.querySelectorAll('.modal-bg').forEach(bg => {
@@ -1733,7 +1778,7 @@ function renderProgressContent() {
     elapsed = Math.round((cur - new Date(t.start)) / 86400000);
   }
   const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
-  const status = !started?'예정':ended?'완료':'진행중';
+  const status = !started?'예정':ended?'완료':'진행 중';
   const statusColor = !started?'var(--text3)':ended?'var(--teal)':'var(--accent)';
 
   // term period card (이미지 스타일)
@@ -1798,7 +1843,7 @@ function inlineBar(name, pct, sub, color) {
   return `<div class="pbar-wrap" style="margin-bottom:10px">
     <div class="pbar-hd">
       <div class="pbar-name">${name}</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:${color}">${pct}% <span style="color:var(--text3);font-size:10px">${sub}</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:${color}">${pct}% <span style="color:var(--text);font-size:10px">${sub}</span></div>
     </div>
     <div class="pbar"><div class="pbar-fill" style="width:${pct}%;background:${color}"></div></div>
   </div>`;
@@ -2148,7 +2193,7 @@ function renderLecList() {
     <div style="margin-bottom:12px">
       <div class="pbar-hd">
         <div style="font-size:13px">
-          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&nbsp;&nbsp;<span style="font-weight:400;color:#aaa;font-size:12px">(${totalTimeStr})</span>` : ''}
+          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&#8239;<span style="font-weight:400;color:#aaa;font-size:12px">(${totalTimeStr})</span>` : ''}
         </div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:${color}">${pct}% <span style="color:#999;font-size:11px">(${done}/${lecs.length}강)</span></div>
       </div>
@@ -2234,6 +2279,30 @@ function renderReport() {
   buildBarChart('chart-kcal', labels, kcalData, kcalGoal, 'var(--orange)', 'var(--text3)', `${kcalGoal}kcal`);
   buildSleepBubble('chart-sleep-bubble', dates, logMap, rs);
   buildSleepLine('chart-sleep-line', dates, logMap, rs);
+}
+
+function setChartTooltip(chartId, alwaysShow) {
+  const chart = chartsRef[chartId];
+  if (!chart) return;
+  chart.options.plugins.tooltip.mode = alwaysShow ? 'index' : 'nearest';
+  chart.options.plugins.tooltip.intersect = !alwaysShow;
+  // When alwaysShow: display all tooltips at once by triggering for each point
+  if (alwaysShow) {
+    // Show all tooltips simultaneously using external tooltip or setDatasetVisibility trick
+    // Simplest approach: set the chart to show tooltip for all items
+    chart.options.plugins.tooltip.callbacks = chart.options.plugins.tooltip.callbacks || {};
+    // Force all points to show tooltip
+    const meta = chart.getDatasetMeta(0);
+    if (meta && meta.data) {
+      chart.tooltip.setActiveElements(
+        meta.data.map((el, i) => ({ datasetIndex: 0, index: i })),
+        { x: 0, y: 0 }
+      );
+    }
+  } else {
+    chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+  }
+  chart.update();
 }
 
 function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresholdLabel) {
@@ -2610,7 +2679,7 @@ async function renderCalendar() {
     const memo = log?.memo;
 
     let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
-    let border = isToday ? 'var(--accent)' : 'var(--border)';
+    let border = isToday ? 'var(--accent)' : 'var(--border2)';
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
@@ -2993,7 +3062,7 @@ function renderAnnualPlan() {
       elapsed = Math.round((cur - new Date(t.start)) / 86400000);
     }
     const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
-    const status = !started?'예정':ended?'완료':'진행중';
+    const status = !started?'예정':ended?'완료':'진행 중';
     const statusColor = !started?'var(--text4)':ended?'var(--teal)':'var(--accent)';
     const todos = state.termTodos[t.id] || [];
 
