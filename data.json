@@ -3210,9 +3210,25 @@
         "id": "mq66fvic",
         "text": "강의 모두 듣기. (무조건)",
         "done": false
+      },
+      {
+        "id": "mq66g27i",
+        "text": "-10KG",
+        "done": false
+      },
+      {
+        "id": "mq66h3ut",
+        "text": "ddd",
+        "done": false
       }
     ],
-    "2": [],
+    "2": [
+      {
+        "id": "mq66h7mf",
+        "text": "dd",
+        "done": false
+      }
+    ],
     "3": [],
     "4": []
   },
