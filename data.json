@@ -3201,7 +3201,13 @@
         "done": true
       }
     ],
-    "2026-06-09": []
+    "2026-06-09": [
+      {
+        "id": "mq68mb8t",
+        "text": "1",
+        "done": false
+      }
+    ]
   },
   "examScores": [],
   "termTodos": {
