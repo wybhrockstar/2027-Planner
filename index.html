@@ -600,7 +600,7 @@ canvas{width:100%!important}
 <div id="page-lectures" class="page">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
   <div class="sec">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px">
       <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
     </div>
@@ -2733,7 +2733,7 @@ async function renderCalendar() {
 
     const memo = log?.memo;
 
-    let bg = isToday ? 'var(--accent2)' : 'var(--bg2)';
+    let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
     let border = isToday ? 'var(--accent)' : 'var(--border3)';
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
