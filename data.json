@@ -7,8 +7,8 @@
       "title": "1강. 물질 (1) 3학년 2학기 물체와 물질 [30분]",
       "minutes": 30,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-09"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "과학 개념_2",
@@ -2397,8 +2397,8 @@
       "title": "1강. 2022개정 교육과정 총론 (1) [68분]",
       "minutes": 68,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-09"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "총창_2",
@@ -2417,8 +2417,8 @@
       "title": "3강. 2022개정 창의적 체험활동 교육과정 [37분]",
       "minutes": 37,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-09"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "과학_0",
@@ -3170,8 +3170,8 @@
     },
     {
       "date": "2026-06-09",
-      "wakeTime": "",
-      "sleepTime": "",
+      "wakeTime": "06:40",
+      "sleepTime": "21:45",
       "studyMin": 0,
       "kcal": 0,
       "memo": "ㅇㅇㅇㅇㅇ",
