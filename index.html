@@ -209,7 +209,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 /* SUBJ INLINE PROGRESS (강의탭) */
 .subj-inline-grid{display:flex;flex-direction:column;gap:7px}
 .subj-inline-row{display:flex;align-items:center;gap:8px}
-.subj-inline-name{font-size:12px;font-weight:500;width:72px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.subj-inline-name{font-size:12px;font-weight:500;width:76px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .subj-inline-bar{flex:1;height:8px;background:var(--bg4);border-radius:4px;overflow:hidden}
 .subj-inline-fill{height:100%;border-radius:4px;transition:width .5s}
 .subj-inline-info{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap;flex-shrink:0;width:90px;text-align:right}
@@ -580,13 +580,13 @@ canvas{width:100%!important}
 <!-- ⑤ 강의 -->
 <div id="page-lectures" class="page">
   <!-- 전체 진행률 + 강의 파서 버튼 -->
-  <div class="sec">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+  <div class="sec" style="margin-bottom:12px">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
       <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
     </div>
     <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
-    <div class="card" id="lec-total-progress" style="padding:14px 16px"></div>
+    <div class="card" id="lec-total-progress" style="padding:10px 16px"></div>
   </div>
   <!-- 과목별 진행률 -->
   <div class="sec">
@@ -640,14 +640,24 @@ canvas{width:100%!important}
 const LECTURE_SEED = [];
 
 // ─── SUBJECT CONFIG ──────────────────────────────────────────────────────────
-// 확정 순서: 총론·창체, 음악, 음악 심화, 영어, 도덕, 미술, 실과, 통합교과, 체육, 국어, 사회, 수학, 과학, 과학 개념
-const SUBJ_ORDER = ['총창','음악','음악 심화','영어','도덕','미술','실과','통교','체육','국어','사회','수학','과학','과학 개념'];
+// 확정 순서: 총론·창체, 음악, 음악 심화, 영어, 도덕, 미술, 체육, 사회, 국어, 실과, 통합교과, 수학, 과학, 과학 개념
+const SUBJ_ORDER = ['총창','음악','음악 심화','영어','도덕','미술','체육','사회','국어','실과','통교','수학','과학','과학 개념'];
 const SUBJ_DISPLAY = {'총창':'총론·창체','통교':'통합교과','음악 심화':'음악 심화','과학 개념':'과학 개념'};
 const SUBJ_COLOR = {
-  '총창':'#74b9ff','음악':'#ff6b9d','음악 심화':'#c0392b','영어':'#ffb347',
-  '도덕':'#ff9f43','미술':'#a29bfe','실과':'#e17055','통교':'#fd79a8',
-  '체육':'#00b894','국어':'#c8f060','사회':'#5ecfb0','수학':'#6eb5ff',
-  '과학':'#ff8fa3','과학 개념':'#b8a5ff'
+  '총창':'#74b9ff',      // 파랑
+  '음악':'#ff6b9d',      // 핑크
+  '음악 심화':'#e55a8a', // 진한 핑크
+  '영어':'#ffb347',      // 주황
+  '도덕':'#fd79a8',      // 연핑크
+  '미술':'#a29bfe',      // 라벤더
+  '체육':'#00cec9',      // 시안
+  '사회':'#5ecfb0',      // 민트
+  '국어':'#55efc4',      // 연민트
+  '실과':'#e17055',      // 테라코타
+  '통교':'#fab1d0',      // 연분홍
+  '수학':'#6eb5ff',      // 하늘
+  '과학':'#ff8fa3',      // 연빨강
+  '과학 개념':'#b8a5ff'  // 퍼플
 };
 const TERMS = [
   {id:1,name:'1텀',start:'2026-06-01',end:'2026-08-09',days:70},
@@ -2032,18 +2042,19 @@ function openLogModalForDate(dateStr) {
 let lecSubjFilter = SUBJ_ORDER[0];
 
 function renderLectures() {
-  // ── 전체 진행률 프로그레스바 (모든 강의 합산) ──
+  // ── 전체 진행률 — 과목별 인라인 바와 동일한 형태 ──
   const totalAll = state.lectures.length;
   const doneAll = state.lectures.filter(l=>l.done).length;
   const pctAll = totalAll ? Math.round(doneAll/totalAll*100) : 0;
   const totalBar = document.getElementById('lec-total-progress');
   if (totalBar) {
-    totalBar.innerHTML = `
-      <div class="pbar-hd" style="margin-bottom:6px">
-        <div style="font-size:13px;font-weight:500;color:var(--text2)">전체 강의</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent)">${pctAll}% <span style="color:var(--text3);font-size:11px">(${doneAll}/${totalAll}강)</span></div>
+    totalBar.innerHTML = `<div class="subj-inline-grid">
+      <div class="subj-inline-row">
+        <div class="subj-inline-name" style="color:var(--accent)">전체 강의</div>
+        <div class="subj-inline-bar"><div class="subj-inline-fill" style="width:${pctAll}%;background:var(--accent)"></div></div>
+        <div class="subj-inline-info">${pctAll}% <span style="color:var(--text4)">(${doneAll}/${totalAll}강)</span></div>
       </div>
-      <div class="pbar" style="height:8px"><div class="pbar-fill" style="width:${pctAll}%;background:var(--accent)"></div></div>`;
+    </div>`;
   }
 
   // ── 과목별 진행률 그리드 ──
@@ -2053,11 +2064,11 @@ function renderLectures() {
     if (!sLecs.length) return '';
     const sDone = sLecs.filter(l=>l.done).length;
     const sPct = Math.round(sDone/sLecs.length*100);
-    const color = SUBJ_COLOR[s]||'var(--accent)';
+    const color = SUBJ_COLOR[s]||'var(--blue)';
     return `<div class="subj-inline-row">
       <div class="subj-inline-name" style="color:${color}">${subjectName(s)}</div>
       <div class="subj-inline-bar"><div class="subj-inline-fill" style="width:${sPct}%;background:${color}"></div></div>
-      <div class="subj-inline-info">${sPct}% <span style="color:var(--text4)">(${sDone}/${sLecs.length})</span></div>
+      <div class="subj-inline-info">${sPct}% <span style="color:var(--text4)">(${sDone}/${sLecs.length}강)</span></div>
     </div>`;
   }).join('')}</div>`;
 
@@ -2068,7 +2079,7 @@ function renderLectures() {
   tabs.innerHTML = subjects.map(s => {
     const sLecs = state.lectures.filter(l=>l.subject===s);
     const sDone = sLecs.filter(l=>l.done).length;
-    return `<button class="stab ${s===lecSubjFilter?'on':''}" data-subj="${s}">${subjectName(s)} <span style="font-family:'JetBrains Mono',monospace;font-size:10px">(${sDone}/${sLecs.length})</span></button>`;
+    return `<button class="stab ${s===lecSubjFilter?'on':''}" data-subj="${s}">${subjectName(s)} <span style="font-family:'JetBrains Mono',monospace;font-size:10px">(${sDone}/${sLecs.length}강)</span></button>`;
   }).join('');
   tabs.querySelectorAll('.stab').forEach(btn => {
     btn.addEventListener('click', () => { lecSubjFilter = btn.dataset.subj; renderLecList(); renderLecTabs(); });
@@ -2099,7 +2110,7 @@ function renderLecList() {
     <div style="margin-bottom:12px">
       <div class="pbar-hd">
         <div style="font-size:13px">
-          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `<span style="font-weight:400;color:var(--text3);font-size:12px"> (${totalTimeStr})</span>` : ''}
+          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&nbsp;<span style="font-weight:400;color:#999;font-size:12px">(${totalTimeStr})</span>` : ''}
         </div>
         <div class="pbar-pct" style="color:${color}">${pct}% <span style="font-weight:400;color:var(--text3);font-size:11px">(${done}/${lecs.length}강)</span></div>
       </div>
@@ -3345,13 +3356,38 @@ function applyParsedLectures(mode){
     const doneMap = {};
     state.lectures.forEach(l=>{ if(l.done) doneMap[l.id] = {done:l.done, doneDate:l.doneDate}; });
     state.lectures = newLecs.map(l=>({...l, ...(doneMap[l.id]||{})}));
+    // 과목별 강의번호 순 정렬
+    state.lectures.sort((a,b)=>{
+      const si = SUBJ_ORDER.indexOf(a.subject), sj = SUBJ_ORDER.indexOf(b.subject);
+      if(si !== sj) return si - sj;
+      const ni = parseInt(a.num)||0, nj = parseInt(b.num)||0;
+      return ni - nj;
+    });
     toast(`✓ ${newLecs.length}개 강의로 교체 완료`);
   } else {
-    // 병합: 새 강의만 추가
-    const existIds = new Set(state.lectures.map(l=>l.id));
-    const added = newLecs.filter(l=>!existIds.has(l.id));
-    state.lectures = [...state.lectures, ...added];
-    toast(`✓ ${added.length}개 강의 추가됨`);
+    // 병합: 같은 과목+번호(id)는 최신 데이터로 덮어쓰기, 없으면 추가
+    const existMap = {};
+    state.lectures.forEach((l,i)=>{ existMap[l.id] = i; });
+    let added = 0, updated = 0;
+    newLecs.forEach(l=>{
+      if(l.id in existMap){
+        // 덮어쓰기 (완료 기록은 유지)
+        const old = state.lectures[existMap[l.id]];
+        state.lectures[existMap[l.id]] = { ...l, done: old.done, doneDate: old.doneDate };
+        updated++;
+      } else {
+        state.lectures.push(l);
+        added++;
+      }
+    });
+    // 과목별 강의번호 순 정렬
+    state.lectures.sort((a,b)=>{
+      const si = SUBJ_ORDER.indexOf(a.subject), sj = SUBJ_ORDER.indexOf(b.subject);
+      if(si !== sj) return si - sj;
+      const ni = parseInt(a.num)||0, nj = parseInt(b.num)||0;
+      return ni - nj;
+    });
+    toast(`✓ ${added}개 추가, ${updated}개 업데이트됨`);
   }
 
   saveState();
