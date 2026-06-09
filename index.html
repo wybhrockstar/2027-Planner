@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="color-scheme" content="only light">
 <title>2027 IMGO Planner</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -566,7 +567,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
   <div class="hdr-r">
     <div class="dday-badge" id="dday-txt">D-???</div>
     <button class="backup-btn" id="btn-open-backup" title="백업·복원">⚙️</button>
-    <button class="theme-btn" id="btn-theme" title="테마 전환">☾</button>
+    <button class="theme-btn" id="btn-theme" title="테마 전환">🌙</button>
   </div>
 </header>
 
@@ -1534,7 +1535,9 @@ document.querySelectorAll('#top-nav .ntab').forEach(btn => {
 // ─── THEME ───────────────────────────────────────────────────────────────────
 document.getElementById('btn-theme').addEventListener('click', () => {
   document.body.classList.toggle('light');
-  localStorage.setItem('imgo_theme', document.body.classList.contains('light')?'light':'dark');
+  const isLight = document.body.classList.contains('light');
+  localStorage.setItem('imgo_theme', isLight ? 'light' : 'dark');
+  document.getElementById('btn-theme').textContent = isLight ? '☀️' : '🌙';
 });
 
 // ─── BACKUP MODAL ────────────────────────────────────────────────────────────
@@ -4282,7 +4285,7 @@ initOAuth().then(loggedIn => {
   if (loggedIn) console.log('✓ Google OAuth 세션 복원됨');
 });
 document.getElementById('dday-txt').textContent = `D-${dDay()}`;
-if (localStorage.getItem('imgo_theme')==='light') document.body.classList.add('light');
+if (localStorage.getItem('imgo_theme')==='light') { document.body.classList.add('light'); document.getElementById('btn-theme').textContent = '☀️'; }
 // 페이지 로드 시 GitHub에서 데이터 로드 (단일 소스)
 (async () => {
   const loaded = await autoLoadFromGithub();
