@@ -8,7 +8,7 @@
 <style>
 :root{
   --bg:#141414;--bg2:#1c1c1c;--bg3:#242424;--bg4:#2c2c2c;--bg5:#353535;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--border3:rgba(255,255,255,0.24);
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--border3:rgba(255,255,255,0.24);--border-cal:rgba(255,255,255,0.36);
   --text:#efefef;--text2:#b8b8b8;--text3:#777;--text4:#444;
   --accent:#c8f060;--accent2:rgba(200,240,96,0.12);--accent3:rgba(200,240,96,0.06);
   --red:#ff5a5a;--amber:#ffb347;--blue:#6eb5ff;--purple:#b8a5ff;--teal:#5ecfb0;--pink:#ff8fa3;--orange:#ff9f43;
@@ -16,7 +16,7 @@
 }
 body.light{
   --bg:#f5f5f0;--bg2:#ebebeb;--bg3:#ffffff;--bg4:#f0f0eb;--bg5:#e6e6e1;
-  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.2);
+  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.2);--border-cal:rgba(0,0,0,0.30);
   --text:#1a1a1a;--text2:#444;--text3:#888;--text4:#bbb;
   --accent:#5a8a10;--accent2:rgba(90,138,16,0.1);--accent3:rgba(90,138,16,0.05);
   --red:#d93025;--amber:#c87800;--blue:#1a6fc4;--purple:#6b4fc4;--teal:#1a8a6a;--pink:#c4204a;--orange:#c86000;
@@ -155,7 +155,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .term-prog-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:8px}
 .term-prog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .term-prog-name{font-size:13px;font-weight:600}
-.term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;line-height:1;margin-bottom:1px}
+.term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;line-height:1;margin-bottom:2px}
 .term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-top:2px}
 .term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;margin-bottom:2px;text-align:right}
 
@@ -600,9 +600,9 @@ canvas{width:100%!important}
 <div id="page-lectures" class="page">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
   <div class="sec">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px">
       <span>전체 진행률</span>
-      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
+      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="position:relative;top:3px">📋 강의 파서</button>
     </div>
     <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
     <div class="card" id="lec-total-progress" style="padding:10px 16px"></div>
@@ -2123,7 +2123,7 @@ function renderLectures() {
       <div class="subj-inline-row">
         <div class="subj-inline-name" style="color:var(--text)">전체 강의</div>
         <div class="subj-inline-bar"><div class="subj-inline-fill" style="width:${pctAll}%;background:var(--text)"></div></div>
-        <div class="subj-inline-info" style="color:var(--text2)">${pctAll}% <span style="color:#999">(${doneAll}/${totalAll}강)</span></div>
+        <div class="subj-inline-info" style="color:var(--text)">${pctAll}% <span style="color:#999">(${doneAll}/${totalAll}강)</span></div>
       </div>
     </div>`;
   }
@@ -2734,7 +2734,7 @@ async function renderCalendar() {
     const memo = log?.memo;
 
     let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
-    let border = isToday ? 'var(--accent)' : 'var(--border3)';
+    let border = isToday ? 'var(--accent)' : 'var(--border-cal)';
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
