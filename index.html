@@ -291,7 +291,7 @@ canvas{width:100%!important}
   --line-30m:1px dashed rgba(255,255,255,0.11);
   --time-shadow:0 1px 3px rgba(0,0,0,0.9),0 0 6px rgba(0,0,0,0.6);
   --ev-label-size:8px;
-  --ev-time-size:7px;
+  --ev-time-size:6px;
 }
 body.light{
   --line-6h:rgba(0,0,0,0.35);
@@ -930,7 +930,8 @@ let state = {
   examScores: [],
   termTodos: {1:[],2:[],3:[],4:[]},
   weeklySchedule: {1:[],2:[],3:[],4:[]},
-  reportSettings: {studyGoalHour:7, studyGoalMin:420, sleepMinHour:6, sleepMinMin:360, kcalGoal:200, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'}
+  reportSettings: {studyGoalHour:7, studyGoalMin:420, sleepMinHour:6, sleepMinMin:360, kcalGoal:200, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'},
+  timetable: null  // ttState 전체를 저장 (플래너 주간시간표)
 };
 
 // ─── HARDCODED CONSTANTS ─────────────────────────────────────────────────────
@@ -1244,6 +1245,7 @@ function applyImportedState(d) {
   if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
   if (d.reportSettings) state.reportSettings = {...state.reportSettings,...d.reportSettings};
   if (d.lectures) state.lectures = d.lectures;
+  if (d.timetable) state.timetable = d.timetable;
   renderPage(currentPage);
 }
 
@@ -3489,20 +3491,23 @@ let ttState = {
   highlightAll: true,
 };
 
-function ttSaveState() { localStorage.setItem('tt_state', JSON.stringify(ttState)); }
+function ttSaveState() {
+  state.timetable = JSON.parse(JSON.stringify(ttState));
+  saveState(); // GitHub data.json에 자동 저장
+}
 function ttLoadState() {
-  try {
-    const raw = localStorage.getItem('tt_state');
-    if (!raw) return;
-    const d = JSON.parse(raw);
-    if (d.activeTerm)  ttState.activeTerm  = d.activeTerm;
-    if (d.categories)  ttState.categories  = d.categories;
-    if (d.termEvents)  ttState.termEvents  = {...ttState.termEvents, ...d.termEvents};
-    if (d.selectedCat !== undefined) ttState.selectedCat = d.selectedCat;
-    if (d.displayMode) ttState.displayMode = d.displayMode;
-    if (d.textAlign)   ttState.textAlign   = d.textAlign;
-    if (d.highlightAll !== undefined) ttState.highlightAll = d.highlightAll;
-  } catch(e) {}
+  // state.timetable(GitHub 로드 데이터) 우선, 없으면 localStorage 레거시 데이터 확인
+  const src = state.timetable || (() => {
+    try { const r = localStorage.getItem('tt_state'); return r ? JSON.parse(r) : null; } catch(e) { return null; }
+  })();
+  if (!src) return;
+  if (src.activeTerm)  ttState.activeTerm  = src.activeTerm;
+  if (src.categories)  ttState.categories  = src.categories;
+  if (src.termEvents)  ttState.termEvents  = {...ttState.termEvents, ...src.termEvents};
+  if (src.selectedCat !== undefined) ttState.selectedCat = src.selectedCat;
+  if (src.displayMode) ttState.displayMode = src.displayMode;
+  if (src.textAlign)   ttState.textAlign   = src.textAlign;
+  if (src.highlightAll !== undefined) ttState.highlightAll = src.highlightAll;
 }
 
 function ttTodayDayIdx() { const d = new Date().getDay(); return d === 0 ? 6 : d - 1; }
