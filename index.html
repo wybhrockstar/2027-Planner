@@ -153,11 +153,11 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* TERM PROGRESS BLOCK */
 .term-prog-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:8px}
-.term-prog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.term-prog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .term-prog-name{font-size:13px;font-weight:600}
 .term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700}
-.term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px}
-.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:4px;text-align:right}
+.term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-top:2px}
+.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;text-align:right}
 
 /* TERM SUBTABS */
 .term-subtabs{display:flex;gap:4px;margin-bottom:16px}
@@ -270,7 +270,7 @@ canvas{width:100%!important}
 .todo-item-text.done-text{text-decoration:line-through;color:var(--text3)}
 .todo-del{background:none;border:none;color:var(--text4);font-size:13px;padding:0 4px;cursor:pointer;transition:.12s}
 .todo-del:hover{color:var(--red)}
-.todo-add-row{display:flex;gap:6px;margin-top:6px}
+.todo-add-row{display:flex;gap:6px;margin-top:3px}
 .todo-add-row input{font-size:12px}
 
 /* SCORE TABLE */
@@ -598,13 +598,12 @@ canvas{width:100%!important}
 
 <!-- ⑤ 강의 -->
 <div id="page-lectures" class="page">
-  <!-- 강의 파서 버튼 (독립) -->
-  <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
-    <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
-  </div>
-  <!-- 전체 진행률 -->
+  <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
   <div class="sec">
-    <div class="sec-hd">전체 진행률</div>
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+      <span>전체 진행률</span>
+      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
+    </div>
     <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
     <div class="card" id="lec-total-progress" style="padding:10px 16px"></div>
   </div>
@@ -1442,10 +1441,15 @@ function renderToday() {
     const color = SUBJ_COLOR[s] || 'var(--blue)';
     const isOn = s === todaySubjFilter;
     const onStyle = isOn ? `style="border-color:${color};color:${color};background:${color}1a"` : '';
-    return `<button class="stab${isOn?' on':''}" data-subj="${s}" ${onStyle}>${subjectName(s)}</button>`;
+    const sLecs = state.lectures.filter(l => l.subject === s);
+    const sDone = sLecs.filter(l => l.done).length;
+    return `<button class="stab${isOn?' on':''}" data-subj="${s}" ${onStyle}>${subjectName(s)} <span style="font-family:'JetBrains Mono',monospace;font-size:10px">(${sDone}/${sLecs.length}강)</span></button>`;
   }).join('');
   tabs.querySelectorAll('.stab').forEach(btn => {
-    btn.addEventListener('click', () => { todaySubjFilter = btn.dataset.subj; renderTodayLecs(); renderTodayTabs(); });
+    btn.addEventListener('click', () => {
+      todaySubjFilter = (todaySubjFilter === btn.dataset.subj) ? null : btn.dataset.subj;
+      renderTodayLecs(); renderTodayTabs();
+    });
   });
   renderTodayLecs();
   renderTodayTodos();
@@ -1778,7 +1782,7 @@ function renderProgressContent() {
     elapsed = Math.round((cur - new Date(t.start)) / 86400000);
   }
   const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
-  const status = !started?'예정':ended?'완료':'진행 중';
+  const status = !started?'예정':ended?'완료':'진행 중';
   const statusColor = !started?'var(--text3)':ended?'var(--teal)':'var(--accent)';
 
   // term period card (이미지 스타일)
@@ -1786,7 +1790,7 @@ function renderProgressContent() {
   <div class="term-prog-block" style="margin-bottom:16px">
     <div class="term-prog-hd">
       <div>
-        <div class="term-prog-name">${t.name} <span style="font-size:11px;color:${statusColor};font-weight:600">${status}</span></div>
+        <div class="term-prog-name">${t.name}&#8239;&#8239;<span style="font-size:11px;color:${statusColor};font-weight:600">${status}</span></div>
         <div class="term-prog-dates">${t.start} ~ ${t.end}</div>
       </div>
       <div style="text-align:right">
@@ -2193,7 +2197,7 @@ function renderLecList() {
     <div style="margin-bottom:12px">
       <div class="pbar-hd">
         <div style="font-size:13px">
-          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&#8239;<span style="font-weight:400;color:#aaa;font-size:12px">(${totalTimeStr})</span>` : ''}
+          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&#8239;&#8239;<span style="font-weight:400;color:#aaa;font-size:12px">(${totalTimeStr})</span>` : ''}
         </div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:${color}">${pct}% <span style="color:#999;font-size:11px">(${done}/${lecs.length}강)</span></div>
       </div>
@@ -2281,28 +2285,79 @@ function renderReport() {
   buildSleepLine('chart-sleep-line', dates, logMap, rs);
 }
 
+// 툴팁 오버레이: alwaysShow 시 각 데이터 포인트 위치에 개별 라벨 렌더
 function setChartTooltip(chartId, alwaysShow) {
   const chart = chartsRef[chartId];
   if (!chart) return;
-  chart.options.plugins.tooltip.mode = alwaysShow ? 'index' : 'nearest';
-  chart.options.plugins.tooltip.intersect = !alwaysShow;
-  // When alwaysShow: display all tooltips at once by triggering for each point
-  if (alwaysShow) {
-    // Show all tooltips simultaneously using external tooltip or setDatasetVisibility trick
-    // Simplest approach: set the chart to show tooltip for all items
-    chart.options.plugins.tooltip.callbacks = chart.options.plugins.tooltip.callbacks || {};
-    // Force all points to show tooltip
-    const meta = chart.getDatasetMeta(0);
-    if (meta && meta.data) {
-      chart.tooltip.setActiveElements(
-        meta.data.map((el, i) => ({ datasetIndex: 0, index: i })),
-        { x: 0, y: 0 }
-      );
-    }
-  } else {
-    chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+
+  const OVERLAY_ID = 'tooltip-overlay-' + chartId;
+  // 기존 오버레이 제거
+  const old = document.getElementById(OVERLAY_ID);
+  if (old) old.remove();
+
+  if (!alwaysShow) {
+    // 원래 Chart.js 툴팁 복원
+    chart.options.plugins.tooltip.enabled = true;
+    chart.update('none');
+    return;
   }
-  chart.update();
+
+  // Chart.js 기본 툴팁 끄고 커스텀 오버레이 사용
+  chart.options.plugins.tooltip.enabled = false;
+  chart.update('none');
+
+  // 캔버스 위에 절대 포지션 div 오버레이 생성
+  const canvas = chart.canvas;
+  const parent = canvas.parentElement;
+  parent.style.position = 'relative';
+
+  const overlay = document.createElement('div');
+  overlay.id = OVERLAY_ID;
+  overlay.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
+  parent.appendChild(overlay);
+
+  // 각 데이터셋의 각 포인트 위치에 라벨 배치
+  const isDark = !document.body.classList.contains('light');
+  const bgColor = isDark ? 'rgba(40,40,40,0.92)' : 'rgba(255,255,255,0.92)';
+  const textColor = isDark ? '#eee' : '#222';
+  const borderColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.12)';
+
+  chart.data.datasets.forEach((ds, dsIdx) => {
+    const meta = chart.getDatasetMeta(dsIdx);
+    meta.data.forEach((el, ptIdx) => {
+      const v = ds.data[ptIdx];
+      if (v === null || v === undefined || v === 0) return;
+
+      // 툴팁 텍스트 생성 (기존 callbacks 활용)
+      const tc = chart.options.plugins.tooltip.callbacks;
+      let labelTxt = '';
+      const fakeCtx = { datasetIndex: dsIdx, dataIndex: ptIdx, parsed: { y: typeof v === 'object' ? v.y : v }, dataset: ds, chart };
+      try {
+        if (tc && tc.label) {
+          const r = tc.label(fakeCtx);
+          labelTxt = Array.isArray(r) ? r.join(' ') : (r || '');
+        } else {
+          labelTxt = typeof v === 'object' ? (v.y != null ? String(v.y) : '') : String(v);
+        }
+      } catch(e) { labelTxt = String(typeof v === 'object' ? (v.y ?? '') : v); }
+      if (!labelTxt) return;
+
+      // 포인트 픽셀 좌표
+      let px, py;
+      try { px = el.x; py = el.y; } catch(e) { return; }
+      if (isNaN(px) || isNaN(py)) return;
+
+      // 라벨 div 생성
+      const tip = document.createElement('div');
+      tip.style.cssText = `position:absolute;left:${px}px;top:${py}px;transform:translate(-50%,-110%);` +
+        `background:${bgColor};color:${textColor};border:1px solid ${borderColor};` +
+        `border-radius:5px;padding:3px 7px;font-size:10px;white-space:nowrap;` +
+        `font-family:'JetBrains Mono',monospace;line-height:1.4;z-index:10;` +
+        `box-shadow:0 2px 6px rgba(0,0,0,0.25);`;
+      tip.textContent = labelTxt;
+      overlay.appendChild(tip);
+    });
+  });
 }
 
 function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresholdLabel) {
@@ -2679,7 +2734,7 @@ async function renderCalendar() {
     const memo = log?.memo;
 
     let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
-    let border = isToday ? 'var(--accent)' : 'var(--border2)';
+    let border = isToday ? 'var(--accent)' : (document.body.classList.contains('light') ? 'rgba(0,0,0,0.28)' : 'rgba(255,255,255,0.32)');
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
@@ -3062,7 +3117,7 @@ function renderAnnualPlan() {
       elapsed = Math.round((cur - new Date(t.start)) / 86400000);
     }
     const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
-    const status = !started?'예정':ended?'완료':'진행 중';
+    const status = !started?'예정':ended?'완료':'진행 중';
     const statusColor = !started?'var(--text4)':ended?'var(--teal)':'var(--accent)';
     const todos = state.termTodos[t.id] || [];
 
