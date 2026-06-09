@@ -155,9 +155,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .term-prog-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:8px}
 .term-prog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .term-prog-name{font-size:13px;font-weight:600}
-.term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700}
+.term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;margin-bottom:1px}
 .term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-top:2px}
-.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;text-align:right}
+.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;margin-bottom:2px;text-align:right}
 
 /* TERM SUBTABS */
 .term-subtabs{display:flex;gap:4px;margin-bottom:16px}
@@ -270,7 +270,7 @@ canvas{width:100%!important}
 .todo-item-text.done-text{text-decoration:line-through;color:var(--text3)}
 .todo-del{background:none;border:none;color:var(--text4);font-size:13px;padding:0 4px;cursor:pointer;transition:.12s}
 .todo-del:hover{color:var(--red)}
-.todo-add-row{display:flex;gap:6px;margin-top:3px}
+.todo-add-row{display:flex;gap:6px;margin-top:0}
 .todo-add-row input{font-size:12px}
 
 /* SCORE TABLE */
@@ -600,9 +600,9 @@ canvas{width:100%!important}
 <div id="page-lectures" class="page">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
   <div class="sec">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px">
       <span>전체 진행률</span>
-      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
+      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="margin-bottom:-1px">📋 강의 파서</button>
     </div>
     <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
     <div class="card" id="lec-total-progress" style="padding:10px 16px"></div>
@@ -1782,7 +1782,7 @@ function renderProgressContent() {
     elapsed = Math.round((cur - new Date(t.start)) / 86400000);
   }
   const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
-  const status = !started?'예정':ended?'완료':'진행 중';
+  const status = !started?'예정':ended?'완료':'진행  중';
   const statusColor = !started?'var(--text3)':ended?'var(--teal)':'var(--accent)';
 
   // term period card (이미지 스타일)
@@ -1790,7 +1790,7 @@ function renderProgressContent() {
   <div class="term-prog-block" style="margin-bottom:16px">
     <div class="term-prog-hd">
       <div>
-        <div class="term-prog-name">${t.name}&#8239;&#8239;<span style="font-size:11px;color:${statusColor};font-weight:600">${status}</span></div>
+        <div class="term-prog-name">${t.name}&#8239;&#8239;&#8239;<span style="font-size:11px;color:${statusColor};font-weight:600">${status}</span></div>
         <div class="term-prog-dates">${t.start} ~ ${t.end}</div>
       </div>
       <div style="text-align:right">
@@ -2197,7 +2197,7 @@ function renderLecList() {
     <div style="margin-bottom:12px">
       <div class="pbar-hd">
         <div style="font-size:13px">
-          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&#8239;&#8239;<span style="font-weight:400;color:#aaa;font-size:12px">(${totalTimeStr})</span>` : ''}
+          <span style="font-weight:700">${subjectName(lecSubjFilter)}</span>${totalTimeStr ? `&#8239;&#8239;&#8239;<span style="font-weight:400;color:#aaa;font-size:12px">(${totalTimeStr})</span>` : ''}
         </div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:${color}">${pct}% <span style="color:#999;font-size:11px">(${done}/${lecs.length}강)</span></div>
       </div>
@@ -2318,7 +2318,7 @@ function setChartTooltip(chartId, alwaysShow) {
 
   // 각 데이터셋의 각 포인트 위치에 라벨 배치
   const isDark = !document.body.classList.contains('light');
-  const bgColor = isDark ? 'rgba(40,40,40,0.92)' : 'rgba(255,255,255,0.92)';
+  const bgColor = isDark ? 'rgba(72,72,72,0.95)' : 'rgba(250,250,252,0.97)';
   const textColor = isDark ? '#eee' : '#222';
   const borderColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.12)';
 
@@ -2352,7 +2352,7 @@ function setChartTooltip(chartId, alwaysShow) {
       tip.style.cssText = `position:absolute;left:${px}px;top:${py}px;transform:translate(-50%,-110%);` +
         `background:${bgColor};color:${textColor};border:1px solid ${borderColor};` +
         `border-radius:5px;padding:3px 7px;font-size:10px;white-space:nowrap;` +
-        `font-family:'JetBrains Mono',monospace;line-height:1.4;z-index:10;` +
+        `font-family:'Noto Sans KR',sans-serif;line-height:1.5;z-index:10;` +
         `box-shadow:0 2px 6px rgba(0,0,0,0.25);`;
       tip.textContent = labelTxt;
       overlay.appendChild(tip);
@@ -2734,7 +2734,7 @@ async function renderCalendar() {
     const memo = log?.memo;
 
     let bg = isToday ? 'var(--accent2)' : 'var(--bg3)';
-    let border = isToday ? 'var(--accent)' : (document.body.classList.contains('light') ? 'rgba(0,0,0,0.28)' : 'rgba(255,255,255,0.32)');
+    let border = isToday ? 'var(--accent)' : 'var(--border3)';
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
@@ -3117,7 +3117,7 @@ function renderAnnualPlan() {
       elapsed = Math.round((cur - new Date(t.start)) / 86400000);
     }
     const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
-    const status = !started?'예정':ended?'완료':'진행 중';
+    const status = !started?'예정':ended?'완료':'진행  중';
     const statusColor = !started?'var(--text4)':ended?'var(--teal)':'var(--accent)';
     const todos = state.termTodos[t.id] || [];
 
