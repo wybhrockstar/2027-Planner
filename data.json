@@ -3176,6 +3176,15 @@
       "kcal": 0,
       "memo": "ㅇㅇㅇㅇㅇ",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-10",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 100,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -3220,5 +3229,6 @@
     "kcalGoal": 200,
     "bedtimeLimit": "01:00",
     "wakeTimeLimit": "07:30"
-  }
+  },
+  "timetable": null
 }
