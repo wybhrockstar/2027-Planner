@@ -2447,8 +2447,8 @@
       "title": "2강. 과학 탐구 과정 - 기초 탐구 과정 기능 [46분]",
       "minutes": 46,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-09"
     },
     {
       "id": "과학_3",
@@ -2457,8 +2457,8 @@
       "title": "3강. 과학 탐구 과정 - 통합 탐구 과정 기능 [64분]",
       "minutes": 64,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-09"
     },
     {
       "id": "과학_4",
