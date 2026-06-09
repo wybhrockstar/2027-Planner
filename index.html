@@ -582,7 +582,7 @@ canvas{width:100%!important}
   <div class="sec" style="margin-bottom:12px">
     <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
       <span>전체 진행률</span>
-      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="margin-top:4px">📋 강의 파서</button>
+      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')">📋 강의 파서</button>
     </div>
     <!-- 전체 진행률 프로그레스바 (모든 강의 합산) -->
     <div class="card" id="lec-total-progress" style="padding:10px 16px"></div>
@@ -2087,7 +2087,7 @@ function renderLectures() {
     const sDone = sLecs.filter(l=>l.done).length;
     const sPct = Math.round(sDone/sLecs.length*100);
     const color = SUBJ_COLOR[s]||'var(--blue)';
-    const opacity = s==='음악 심화'||s==='과학 개념' ? 'opacity:.7' : '';
+    const opacity = '';
     return `<div class="subj-inline-row">
       <div class="subj-inline-name" style="color:${color};${opacity}">${subjectName(s)}</div>
       <div class="subj-inline-bar"><div class="subj-inline-fill" style="width:${sPct}%;background:${color};${opacity}"></div></div>
