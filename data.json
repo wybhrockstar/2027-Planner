@@ -3151,15 +3151,6 @@
       "studyResult": "△"
     },
     {
-      "date": "2026-06-09",
-      "wakeTime": "",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "ㅎㅇ",
-      "studyResult": null
-    },
-    {
       "date": "2026-06-01",
       "wakeTime": "",
       "sleepTime": "",
@@ -3176,6 +3167,15 @@
       "kcal": 0,
       "memo": "dd",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-09",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "ㅇㅇㅇㅇㅇ",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -3191,18 +3191,7 @@
         "done": true
       }
     ],
-    "2026-06-09": [
-      {
-        "id": "mq62tpnm",
-        "text": "2:30",
-        "done": true
-      },
-      {
-        "id": "mq62twy4",
-        "text": "ㅇㅇ",
-        "done": false
-      }
-    ]
+    "2026-06-09": []
   },
   "examScores": [],
   "termTodos": {
