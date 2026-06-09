@@ -3179,11 +3179,11 @@
     },
     {
       "date": "2026-06-10",
-      "wakeTime": "01:51",
-      "sleepTime": "01:51",
+      "wakeTime": "",
+      "sleepTime": "",
       "studyMin": 0,
       "kcal": 100,
-      "memo": "hi",
+      "memo": "",
       "studyResult": null
     }
   ],
@@ -3222,13 +3222,66 @@
     "4": []
   },
   "reportSettings": {
-    "studyGoalHour": 7,
-    "studyGoalMin": 420,
-    "sleepMinHour": 6,
-    "sleepMinMin": 360,
+    "studyGoalHour": 4,
+    "studyGoalMin": 240,
+    "sleepMinHour": 8,
+    "sleepMinMin": 480,
     "kcalGoal": 200,
-    "bedtimeLimit": "02:00",
-    "wakeTimeLimit": "09:00"
+    "bedtimeLimit": "01:00",
+    "wakeTimeLimit": "07:30"
   },
-  "timetable": null
+  "timetable": {
+    "activeTerm": 1,
+    "selectedCat": "self",
+    "categories": [
+      {
+        "id": "blocked",
+        "name": "공부불가",
+        "color": "#ff5a5a"
+      },
+      {
+        "id": "self",
+        "name": "자습",
+        "color": "#ffb347"
+      },
+      {
+        "id": "lecture",
+        "name": "인강",
+        "color": "#6eb5ff"
+      },
+      {
+        "id": "rest",
+        "name": "휴식",
+        "color": "#5ecfb0"
+      }
+    ],
+    "termEvents": {
+      "1": [
+        {
+          "id": "mq6qv4v3c75b",
+          "day": "tue",
+          "startMin": 900,
+          "endMin": 1035,
+          "categoryId": "blocked",
+          "label": "ㄱㄴㄱ",
+          "showTime": true
+        },
+        {
+          "id": "mq6r45ormj13",
+          "day": "thu",
+          "startMin": 990,
+          "endMin": 1050,
+          "categoryId": "self",
+          "label": "",
+          "showTime": true
+        }
+      ],
+      "2": [],
+      "3": [],
+      "4": []
+    },
+    "displayMode": "range",
+    "textAlign": "center",
+    "highlightAll": true
+  }
 }
