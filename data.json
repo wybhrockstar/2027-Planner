@@ -3232,7 +3232,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "self",
+    "selectedCat": "lecture",
     "categories": [
       {
         "id": "blocked",
@@ -3282,6 +3282,24 @@
           "endMin": 1355,
           "categoryId": "self",
           "label": "",
+          "showTime": true
+        },
+        {
+          "id": "mq6y0d19122n",
+          "day": "fri",
+          "startMin": 600,
+          "endMin": 1225,
+          "categoryId": "lecture",
+          "label": "gf",
+          "showTime": true
+        },
+        {
+          "id": "mq6y105n153w",
+          "day": "sun",
+          "startMin": 570,
+          "endMin": 1414,
+          "categoryId": "rest",
+          "label": "ghj",
           "showTime": true
         }
       ],
