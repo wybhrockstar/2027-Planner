@@ -3227,7 +3227,7 @@
     "sleepMinHour": 6,
     "sleepMinMin": 360,
     "kcalGoal": 200,
-    "bedtimeLimit": "02:00",
+    "bedtimeLimit": "01:00",
     "wakeTimeLimit": "09:00"
   },
   "timetable": null
