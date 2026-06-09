@@ -1866,7 +1866,8 @@ function renderGrass(term) {
         const sr = cd.srVal;
         const cls = sr==='O'?'cell-o':sr==='△'?'cell-d':sr==='×'?'cell-x':'cell-none';
         const txt = sr ? (sr==='O'?'○':sr==='△'?'△':'×') : '';
-        return { cls, txt, style:'' };
+        const style = sr==='△' ? 'background:rgba(255,159,67,.2);color:#ff9f43' : '';
+        return { cls, txt, style };
       }
     }
   ];
