@@ -658,6 +658,71 @@ canvas{width:100%!important}
 // 강의 목록은 data.json에서만 로드됨 (강의 파서로 추가 → data.json에 반영)
 const LECTURE_SEED = [];
 
+// ─── DRAG SORT ────────────────────────────────────────────────────────────────
+function bindDragSort(listEl, arr, onDone) {
+  let dragIdx = null, dragEl = null, placeholder = null;
+
+  listEl.querySelectorAll('.drag-handle').forEach(handle => {
+    handle.addEventListener('mousedown', startDrag);
+    handle.addEventListener('touchstart', startDrag, { passive: false });
+  });
+
+  function startDrag(e) {
+    e.preventDefault();
+    const item = e.currentTarget.closest('.todo-item');
+    dragIdx = Number(e.currentTarget.dataset.idx);
+    dragEl = item;
+    dragEl.style.opacity = '0.4';
+    dragEl.style.cursor = 'grabbing';
+
+    placeholder = document.createElement('div');
+    placeholder.style.cssText = `height:${dragEl.offsetHeight}px;border:1px dashed var(--border2);border-radius:var(--rs);margin-bottom:5px;background:var(--bg4)`;
+
+    const onMove = ev => {
+      const clientY = ev.touches ? ev.touches[0].clientY : ev.clientY;
+      const items = [...listEl.querySelectorAll('.todo-item:not([style*="opacity: 0.4"])')];
+      let inserted = false;
+      for (const el of items) {
+        const rect = el.getBoundingClientRect();
+        if (clientY < rect.top + rect.height / 2) {
+          listEl.insertBefore(placeholder, el);
+          inserted = true;
+          break;
+        }
+      }
+      if (!inserted) listEl.appendChild(placeholder);
+    };
+
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+
+      const newIdx = [...listEl.children].indexOf(placeholder);
+      placeholder.remove();
+      dragEl.style.opacity = '';
+      dragEl.style.cursor = '';
+
+      if (newIdx !== -1 && newIdx !== dragIdx) {
+        const [moved] = arr.splice(dragIdx, 1);
+        const insertAt = newIdx > dragIdx ? newIdx - 1 : newIdx;
+        arr.splice(insertAt, 0, moved);
+        onDone();
+      } else {
+        onDone();
+      }
+      dragIdx = null; dragEl = null; placeholder = null;
+    };
+
+    listEl.insertBefore(placeholder, dragEl);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+  }
+}
+
 // ─── SUBJECT CONFIG ──────────────────────────────────────────────────────────
 // 확정 순서: 총론·창체, 음악, 음악 심화, 영어, 도덕, 미술, 체육, 사회, 국어, 실과, 통합교과, 수학, 과학, 과학 개념
 const SUBJ_ORDER = ['총창','음악','음악 심화','영어','도덕','미술','체육','사회','국어','실과','통교','수학','과학','과학 개념'];
@@ -1713,30 +1778,45 @@ function renderTodayTodos() {
   const list = document.getElementById('todo-list-items');
   if (!list) return;
   list.innerHTML = todos.map((item, i) => `
-    <div class="todo-item ${item.done?'done-item':''}" data-idx="${i}">
+    <div class="todo-item ${item.done?'done-item':''}" data-idx="${i}" style="gap:4px">
+      <span class="drag-handle" data-idx="${i}" style="cursor:grab;color:var(--text4);font-size:14px;padding:0 1px 0 0;flex-shrink:0;user-select:none">⠿</span>
       <input type="checkbox" ${item.done?'checked':''} data-idx="${i}" class="todo-item-cb" style="width:14px;height:14px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)">
-      <div class="todo-item-text ${item.done?'done-text':''}" data-idx="${i}">${item.text}</div>
-      <button class="todo-del" data-idx="${i}">✕</button>
+      <div class="todo-item-text ${item.done?'done-text':''}" data-idx="${i}" style="flex:1">${item.text}</div>
+      <button class="todo-edit" data-idx="${i}" style="font-size:11px;color:var(--text3);background:none;border:none;padding:0 3px;cursor:pointer">✎</button>
+      <button class="todo-del" data-idx="${i}" style="font-size:11px;padding:0 3px">✕</button>
     </div>
   `).join('');
   list.querySelectorAll('.todo-item-cb').forEach(cb => {
     cb.addEventListener('change', () => {
-      const idx = Number(cb.dataset.idx);
       if (!state.dailyTodos[td]) state.dailyTodos[td] = [];
-      state.dailyTodos[td][idx].done = cb.checked;
-      saveState();
-      renderTodayTodos();
+      state.dailyTodos[td][Number(cb.dataset.idx)].done = cb.checked;
+      saveState(); renderTodayTodos();
     });
   });
   list.querySelectorAll('.todo-del').forEach(btn => {
     btn.addEventListener('click', () => {
-      const idx = Number(btn.dataset.idx);
+      if (!confirm('삭제하시겠습니까?')) return;
       if (!state.dailyTodos[td]) return;
-      state.dailyTodos[td].splice(idx, 1);
-      saveState();
-      renderTodayTodos();
+      state.dailyTodos[td].splice(Number(btn.dataset.idx), 1);
+      saveState(); renderTodayTodos();
     });
   });
+  list.querySelectorAll('.todo-edit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = Number(btn.dataset.idx);
+      const textEl = btn.closest('.todo-item').querySelector('.todo-item-text');
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = state.dailyTodos[td][i].text;
+      inp.style.cssText = 'flex:1;font-size:12px;background:var(--bg3);border:1px solid var(--accent);border-radius:4px;padding:2px 6px;color:var(--text);outline:none';
+      textEl.replaceWith(inp);
+      inp.focus(); inp.select();
+      const save = () => { const v=inp.value.trim(); if(v){state.dailyTodos[td][i].text=v;saveState();} renderTodayTodos(); };
+      inp.addEventListener('blur', save);
+      inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.blur(); if(e.key==='Escape') renderTodayTodos(); });
+    });
+  });
+  bindDragSort(list, state.dailyTodos[td], () => { saveState(); renderTodayTodos(); });
 }
 
 function addTodo() {
@@ -3136,10 +3216,12 @@ function renderAnnualPlan() {
         <div class="pbar" style="margin-bottom:12px"><div class="pbar-fill" style="width:${dayPct}%;background:${statusColor}"></div></div>
         <div style="font-size:11px;color:var(--text3);margin-bottom:6px">할 일 목록</div>
         <div class="todo-list" id="todo-list-${t.id}">${todos.map((td2,i)=>`
-          <div class="todo-item ${td2.done?'done-item':''}">
+          <div class="todo-item ${td2.done?'done-item':''}" style="gap:4px">
+            <span class="drag-handle" data-idx="${i}" style="cursor:grab;color:var(--text4);font-size:14px;padding:0 1px 0 0;flex-shrink:0;user-select:none">⠿</span>
             <input type="checkbox" ${td2.done?'checked':''} data-tid="${t.id}" data-idx="${i}" class="todo-cb">
-            <div class="todo-item-text ${td2.done?'done-text':''}" data-tid="${t.id}" data-idx="${i}">${td2.text}</div>
-            <button class="todo-del" data-tid="${t.id}" data-idx="${i}">✕</button>
+            <div class="todo-item-text ${td2.done?'done-text':''}" data-tid="${t.id}" data-idx="${i}" style="flex:1">${td2.text}</div>
+            <button class="todo-del todo-edit" data-tid="${t.id}" data-idx="${i}" title="수정" style="font-size:11px;color:var(--text3);background:none;border:none;padding:0 3px;cursor:pointer">✎</button>
+            <button class="todo-del todo-confirm-del" data-tid="${t.id}" data-idx="${i}" style="font-size:11px;padding:0 3px">✕</button>
           </div>`).join('')}</div>
         <div class="todo-add-row">
           <input type="text" id="todo-inp-${t.id}" placeholder="할 일 추가...">
@@ -3156,11 +3238,32 @@ function renderAnnualPlan() {
       saveState(); renderAnnualPlan();
     });
   });
-  container.querySelectorAll('.todo-del').forEach(btn => {
+  container.querySelectorAll('.todo-confirm-del').forEach(btn => {
     btn.addEventListener('click', () => {
-      state.termTodos[btn.dataset.tid].splice(Number(btn.dataset.idx),1);
+      if (!confirm('삭제하시겠습니까?')) return;
+      state.termTodos[btn.dataset.tid].splice(Number(btn.dataset.idx), 1);
       saveState(); renderAnnualPlan();
     });
+  });
+  container.querySelectorAll('.todo-edit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tid = btn.dataset.tid, i = Number(btn.dataset.idx);
+      const item = state.termTodos[tid][i];
+      const textEl = btn.closest('.todo-item').querySelector('.todo-item-text');
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = item.text;
+      inp.style.cssText = 'flex:1;font-size:12px;background:var(--bg3);border:1px solid var(--accent);border-radius:4px;padding:2px 6px;color:var(--text);outline:none';
+      textEl.replaceWith(inp);
+      inp.focus(); inp.select();
+      const save = () => { const v=inp.value.trim(); if(v){state.termTodos[tid][i].text=v;saveState();} renderAnnualPlan(); };
+      inp.addEventListener('blur', save);
+      inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.blur(); if(e.key==='Escape') renderAnnualPlan(); });
+    });
+  });
+  TERMS.forEach(t => {
+    const listEl = document.getElementById(`todo-list-${t.id}`);
+    if (listEl) bindDragSort(listEl, state.termTodos[t.id], () => { saveState(); renderAnnualPlan(); });
   });
   container.querySelectorAll('[class="btn btn-ghost btn-sm"]').forEach(btn => {
     btn.addEventListener('click', () => {
