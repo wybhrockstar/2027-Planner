@@ -3233,7 +3233,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "lecture",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
