@@ -2777,6 +2777,9 @@ function buildSleepBubble(id, dates, logMap, rs, mode) {
   // y축 범위: 기상은 0~12, 취침은 18~30 정도 커버
   const Y_MIN = 0, Y_MAX = 30;
 
+  const dotRed   = isDark ? '#C64D4D' : '#FF8686';
+  const dotGreen = isDark ? '#50A38C' : '#89DCC5';
+
   const wakePoints = [], bedPoints = [];
   dates.forEach((d,i) => {
     const log = logMap[d];
@@ -2784,14 +2787,14 @@ function buildSleepBubble(id, dates, logMap, rs, mode) {
     if (log.wakeTime) {
       const v = timeToNum(log.wakeTime);
       const over = v > wakeLimit;
-      wakePoints.push({x:i, y:v, dateLabel:d.slice(5), timeStr:log.wakeTime, color: over?'#ff5a5a':'#5ecfb0'});
+      wakePoints.push({x:i, y:v, dateLabel:d.slice(5), timeStr:log.wakeTime, color: over?dotRed:dotGreen});
     }
     if (log.sleepTime) {
       let v = timeToNum(log.sleepTime);
       // 자정 이후(0~11시)면 24+ 로 올림 → 기상보다 항상 위에 표시
       if (v < 12) v += 24;
       const over = v > bedLimit;
-      bedPoints.push({x:i, y:v, dateLabel:d.slice(5), timeStr:log.sleepTime, color: over?'#ff5a5a':'#5ecfb0'});
+      bedPoints.push({x:i, y:v, dateLabel:d.slice(5), timeStr:log.sleepTime, color: over?dotRed:dotGreen});
     }
   });
 
@@ -2806,9 +2809,9 @@ function buildSleepBubble(id, dates, logMap, rs, mode) {
     type:'scatter',
     data:{datasets:[
       {label:'기상',data:wakePoints.map(p=>({x:p.x,y:p.y})),
-       backgroundColor:wakePoints.map(p=>p.color+'bb'),pointRadius:bubblePR,pointStyle:'circle'},
+       backgroundColor:wakePoints.map(p=>p.color),pointRadius:bubblePR,pointStyle:'circle'},
       {label:'취침',data:bedPoints.map(p=>({x:p.x,y:p.y})),
-       backgroundColor:bedPoints.map(p=>p.color+'bb'),pointRadius:bubblePR,pointStyle:'circle'}
+       backgroundColor:bedPoints.map(p=>p.color),pointRadius:bubblePR,pointStyle:'circle'}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{
@@ -2903,7 +2906,7 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
     data:{labels,datasets:[{data,
       borderColor:lineColor,
       borderWidth:lineBW,
-      backgroundColor:'rgba(94,207,176,.04)',
+      backgroundColor:'rgba(94,207,176,.08)',
       fill:true,tension:.35,
       pointBackgroundColor:colors,
       pointBorderColor:colors,
