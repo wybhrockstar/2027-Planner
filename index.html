@@ -85,7 +85,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 /* PROGRESS BAR */
 .pbar-wrap{margin-bottom:14px}
 .pbar-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
-.pbar-name{font-size:12px;font-weight:500}
+.pbar-name{font-size:13px;font-weight:500}
 .pbar-pct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
 .pbar{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden}
 .pbar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .5s cubic-bezier(.4,0,.2,1)}
@@ -196,14 +196,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
 /* GRASS SUBTABLE (새 레이아웃) */
 .grass-subtable{border-collapse:collapse;font-size:11px;width:100%;table-layout:fixed;font-family:'Noto Sans KR',sans-serif}
-.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text);font-size:8px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
-.grass-subtable td{padding:4px 2px;border:1px solid var(--border);text-align:center;white-space:nowrap;cursor:pointer;transition:.1s;position:relative;overflow:hidden;font-size:9px}
+.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text);font-size:9px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
+.grass-subtable td{padding:4px 2px;border:1px solid var(--border);text-align:center;white-space:nowrap;cursor:pointer;transition:.1s;position:relative;overflow:hidden;font-size:8px}
 .grass-subtable td:hover{filter:brightness(1.15)}
 .grass-subtable td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
 .grass-subtable td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
-.grass-subtable .row-label{font-size:8px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border);width:4.8em;min-width:4.8em}
+.grass-subtable .row-label{font-size:9px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border);width:4.8em;min-width:4.8em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
-.grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:7px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
+.grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:8px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
 .grass-block{margin-bottom:10px;overflow:hidden}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
@@ -297,8 +297,8 @@ canvas{width:100%!important}
   --line-1h:1px solid rgba(255,255,255,0.30);
   --line-30m:1px dashed rgba(255,255,255,0.11);
   --time-shadow:0 1px 3px rgba(0,0,0,0.9),0 0 6px rgba(0,0,0,0.6);
-  --ev-label-size:7px;
-  --ev-time-size:5px;
+  --ev-label-size:8px;
+  --ev-time-size:6px;
 }
 body.light{
   --line-6h:rgba(0,0,0,0.35);
@@ -316,9 +316,9 @@ body.light{
 .tt-view-setting-btn{background:none;border:1px solid var(--border2);color:var(--text3);border-radius:20px;padding:3px 8px;font-size:11px;font-weight:500;transition:.15s;flex-shrink:0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif}
 .tt-view-setting-btn:hover{border-color:var(--accent);color:var(--accent)}
 .tt-summary{padding:4px 0 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.tt-sum-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)}
+.tt-sum-item{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text2)}
 .tt-sum-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.tt-sum-val{font-family:'JetBrains Mono',monospace;font-size:10px}
+.tt-sum-val{font-family:'JetBrains Mono',monospace;font-size:9px}
 .tt-wrap{padding:6px 0 20px;overflow-x:hidden}
 .tt-inner{width:100%}
 .tt-grid{display:flex;position:relative}
@@ -332,7 +332,7 @@ body.light .tt-hour-label.tt-on-hour{color:var(--accent)!important}
 .tt-day-col{flex:1;position:relative;min-width:0}
 .tt-day-col.tt-today>.tt-day-rows{outline:1.5px solid var(--accent);outline-offset:-1px;border-radius:2px}
 .tt-day-col.tt-today .tt-day-rows .tt-row-bg{background:transparent}
-.tt-day-header{text-align:center;font-size:10px;font-weight:700;padding:3px 0;color:var(--text2);display:flex;flex-direction:column;align-items:center;position:sticky;top:82px;background:#2a2a2a;z-index:10;border-bottom:1px solid var(--border2);border-radius:3px 3px 0 0}
+.tt-day-header{text-align:center;font-size:11px;font-weight:700;padding:5px 0;color:var(--text2);display:flex;flex-direction:column;align-items:center;position:sticky;top:82px;background:#2a2a2a;z-index:10;border-bottom:1px solid var(--border2);border-radius:3px 3px 0 0}
 body.light .tt-day-header{background:#d0d0cc;color:#333}
 .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
@@ -345,7 +345,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 .tt-event{position:absolute;left:1px;right:1px;border-radius:4px;padding:2px 4px;font-weight:500;overflow:hidden;cursor:pointer;pointer-events:all;transition:filter .12s,box-shadow .12s;border:1.5px solid transparent;display:flex;flex-direction:column;line-height:1.25;z-index:5}
 .tt-event:hover{filter:brightness(1.15);box-shadow:0 2px 6px rgba(0,0,0,.4)}
 .tt-event .ev-label{font-size:var(--ev-label-size);font-weight:600;line-height:1.2;word-break:break-all;overflow:hidden;white-space:pre-wrap}
-.tt-event .ev-time{font-family:'JetBrains Mono',monospace;font-size:var(--ev-time-size);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.tt-event .ev-time{font-family:'JetBrains Mono',monospace;font-size:var(--ev-time-size);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;letter-spacing:-0.03em}
 .tt-now-line{position:absolute;left:0;right:0;height:1.5px;background:var(--accent);z-index:20;pointer-events:none}
 .tt-now-line::before{content:'';position:absolute;left:-3px;top:-3.25px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .tt-6h-overlay{position:absolute;left:0;right:0;height:2px;background:var(--line-6h);pointer-events:none;z-index:0}
@@ -2951,7 +2951,7 @@ async function renderCalendar() {
   container.innerHTML = `
     <div style="position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;min-height:36px">
       <button class="btn btn-ghost btn-sm" id="cal-prev">←</button>
-      <div style="position:absolute;left:50%;transform:translateX(-50%);font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;pointer-events:none">${moStr}</div>
+      <div style="position:absolute;left:50%;transform:translateX(-50%) translateY(-2px);font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;pointer-events:none">${moStr}</div>
       <div style="display:flex;gap:6px">
         <button class="btn btn-ghost btn-sm" id="cal-refresh" title="구글 캘린더 새로고침">↻</button>
         <button class="btn btn-ghost btn-sm" id="cal-next">→</button>
@@ -3000,16 +3000,16 @@ async function renderCalendar() {
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
-      `<div style="font-size:8px;color:var(--teal);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:2px"><span style="flex-shrink:0">✍🏻</span><span style="word-break:break-all;overflow-wrap:break-word">${e.summary}</span></div>`
+      `<div style="font-size:7px;color:var(--teal);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:6px">✍🏻</span><span style="word-break:break-all;overflow-wrap:break-word">${e.summary}</span></div>`
     ).join('');
     const personalEvtsHtml = evts.personal.map(e =>
-      `<div style="font-size:8px;color:var(--blue);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:2px"><span style="flex-shrink:0">📅</span><span style="word-break:break-all;overflow-wrap:break-word">${e.summary}</span></div>`
+      `<div style="font-size:7px;color:var(--blue);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:6px">📅</span><span style="word-break:break-all;overflow-wrap:break-word">${e.summary}</span></div>`
     ).join('');
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
       ${studyEvtsHtml}
       ${personalEvtsHtml}
-      ${memo ? `<div style="font-size:8px;color:var(--text2);line-height:1.4;margin-top:2px;display:flex;align-items:flex-start;gap:2px"><span style="flex-shrink:0">💬</span><span style="word-break:break-all;overflow-wrap:break-word">${memo}</span></div>` : (log ? `<div style="font-size:7px;color:var(--text3);margin-top:2px">• 기록있음</div>` : '')}
+      ${memo ? `<div style="font-size:7px;color:var(--text2);line-height:1.4;margin-top:2px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:6px">💬</span><span style="word-break:break-all;overflow-wrap:break-word">${memo}</span></div>` : ''}
     </div>`;
   }
   html += '</div>';
@@ -3383,22 +3383,20 @@ function renderAnnualPlan() {
     const statusColor = !started?'var(--text4)':ended?'var(--teal)':'var(--accent)';
     const todos = state.termTodos[t.id] || [];
 
-    return `<div style="margin-bottom:12px">
-      <div class="term-prog-block" style="margin-bottom:0;border-radius:var(--r) var(--r) 0 0;border-bottom:none">
-        <div class="term-prog-hd">
-          <div>
-            <div class="term-prog-name">${t.name}&#8239;&#8239;&#8239;<span style="font-size:11px;color:${statusColor};font-weight:600">${status}</span></div>
-            <div class="term-prog-dates">${t.start} ~ ${t.end}</div>
-          </div>
-          <div style="text-align:right">
-            <div class="term-prog-pct" style="color:${statusColor}">${dayPct}%</div>
-            <div class="term-prog-days">${elapsed}/${t.days}일</div>
-          </div>
+    return `<div class="term-block" style="margin-bottom:12px">
+      <div class="term-hd">
+        <div>
+          <div class="term-hd-name" style="font-size:14px">${t.name} <span style="font-size:11px;font-weight:400;color:${statusColor}">${status}</span></div>
+          <div class="term-hd-dates">${t.start} ~ ${t.end} · ${t.days}일</div>
         </div>
-        <div class="pbar" style="height:8px"><div class="pbar-fill" style="width:${dayPct}%;background:${statusColor}"></div></div>
+        <div style="text-align:right">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:${statusColor}">${dayPct}%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3)">${elapsed}/${t.days}일</div>
+        </div>
       </div>
-      <div class="term-body" style="background:var(--bg3);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);padding:12px 16px">
-        <div style="font-size:11px;color:var(--text3);margin-bottom:6px">할 일 목록</div>
+      <div class="term-body">
+        <div class="pbar" style="margin-bottom:12px"><div class="pbar-fill" style="width:${dayPct}%;background:${statusColor}"></div></div>
+        <div style="font-size:11px;color:#999;margin-bottom:6px">할 일 목록</div>
         <div class="todo-list" id="todo-list-${t.id}">${todos.map((td2,i)=>`
           <div class="todo-item ${td2.done?'done-item':''}" style="gap:4px">
             <span class="drag-handle" data-idx="${i}" style="cursor:grab;color:var(--text4);font-size:14px;padding:0 1px 0 0;flex-shrink:0;user-select:none">⠿</span>
@@ -3758,7 +3756,7 @@ function ttBuildEventBlock(ev) {
   const textCol    = isLightMode ? '#111111' : '#ffffff';
   const textShadow = isLightMode ? 'none' : '0 1px 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5)';
   const topPx = ttMinToPx(ev.startMin);
-  const hPx   = Math.max(ttMinToPx(ev.endMin) - topPx, TT_ROW_H_PX) * 0.9;
+  const hPx   = Math.max(ttMinToPx(ev.endMin) - topPx, TT_ROW_H_PX) * 0.8;
   const evShowTime = ev.showTime !== undefined ? ev.showTime : true;
   const showTime = evShowTime && hPx >= 24;
   let timeStr = '';
