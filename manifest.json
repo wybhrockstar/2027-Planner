@@ -1,6 +1,6 @@
 {
   "name": "2027 IMGO Planner",
-  "short_name": "IMGO",
+  "short_name": "2027 IMGO",
   "description": "2027 임고 시험 준비 플래너",
   "start_url": "./index.html",
   "display": "standalone",
