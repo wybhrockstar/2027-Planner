@@ -168,7 +168,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;margin-bottom:2px;text-align:right}
 
 /* TERM SUBTABS */
-.term-subtabs{display:flex;gap:4px;margin-bottom:10px}
+.term-subtabs{display:flex;gap:4px;margin-bottom:16px}
 .term-stab{flex:1;padding:7px 4px;font-size:12px;font-weight:500;border-radius:var(--rs);border:1px solid #4A4A4A;color:var(--text2);background:none;transition:.12s;text-align:center;cursor:pointer}
 .term-stab:hover{border-color:var(--accent);color:var(--accent)}
 .term-stab.on{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
@@ -258,7 +258,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 canvas{width:100%!important}
 .report-toggle{display:flex;gap:0;background:var(--bg4);border-radius:var(--r);padding:3px;margin-bottom:16px;width:fit-content}
 .report-tog-btn{padding:6px 20px;border-radius:calc(var(--r) - 3px);font-size:13px;font-weight:500;border:none;background:none;color:var(--text3);cursor:pointer;transition:.15s}
-.report-tog-btn.on{background:var(--bg5);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.report-tog-btn.on{background:#484848;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .report-nav{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .report-nav-btn{background:none;border:1px solid var(--border2);color:var(--text2);border-radius:var(--rs);padding:4px 10px;font-size:14px;cursor:pointer}
 .report-nav-btn:hover{border-color:var(--accent);color:var(--accent)}
@@ -3569,7 +3569,7 @@ function renderWeeklySchedule() {
   ).join('');
 
   container.innerHTML = `
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px" id="tt-term-tabs">${termTabsHtml}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px" id="tt-term-tabs">${termTabsHtml}</div>
     <div class="tt-top-bar" id="tt-top-bar-cats">
       <div class="tt-cat-pills" id="tt-cat-pills"></div>
     </div>
