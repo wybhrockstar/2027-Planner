@@ -3248,8 +3248,8 @@
     "wakeTimeLimit": "09:00"
   },
   "timetable": {
-    "activeTerm": 2,
-    "selectedCat": "rest",
+    "activeTerm": 1,
+    "selectedCat": null,
     "categories": [
       {
         "id": "blocked",
@@ -3337,5 +3337,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-10T11:38:20.242Z"
+  "lastModified": "2026-06-10T13:00:08.014Z"
 }
