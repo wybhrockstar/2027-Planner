@@ -1549,6 +1549,7 @@ document.getElementById('btn-theme').addEventListener('click', () => {
   const isLight = document.body.classList.contains('light');
   localStorage.setItem('imgo_theme', isLight ? 'light' : 'dark');
   document.getElementById('btn-theme').textContent = isLight ? '☀️' : '🌙';
+  renderPage(currentPage);
 });
 
 // ─── BACKUP MODAL ────────────────────────────────────────────────────────────
@@ -3763,7 +3764,7 @@ function ttBuildEventBlock(ev) {
   const textCol    = isLightMode ? '#111111' : '#ffffff';
   const textShadow = isLightMode ? 'none' : '0 1px 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5)';
   const topPx = ttMinToPx(ev.startMin);
-  const hPx   = Math.max(ttMinToPx(ev.endMin) - topPx, TT_ROW_H_PX) * 0.8;
+  const hPx   = Math.max(ttMinToPx(ev.endMin) - topPx, TT_ROW_H_PX);
   const evShowTime = ev.showTime !== undefined ? ev.showTime : true;
   const showTime = evShowTime && hPx >= 24;
   let timeStr = '';
