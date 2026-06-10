@@ -706,8 +706,8 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 <!-- ⑤ 강의 -->
 <div id="page-lectures" class="page" style="padding-top:0">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
-  <div class="sec" style="margin-top:-5px">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px">
+  <div class="sec" style="margin-top:-10px">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:11px">
       <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="position:relative;top:3px">📋 강의 파서</button>
     </div>
@@ -2909,6 +2909,7 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
       fill:true,tension:.35,
       pointBackgroundColor:colors,
       pointBorderColor:colors,
+      pointBorderWidth:0,
       pointRadius:data.map(v => v===null ? 0 : linePR),
       pointHoverRadius:data.map(v => v===null ? 0 : linePR+2),
       spanGaps:false,
