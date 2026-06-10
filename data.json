@@ -3170,8 +3170,8 @@
     },
     {
       "date": "2026-06-09",
-      "wakeTime": "",
-      "sleepTime": "",
+      "wakeTime": "08:38",
+      "sleepTime": "23:38",
       "studyMin": 0,
       "kcal": 0,
       "memo": "ㅇㅇㅇㅇㅇ",
@@ -3337,5 +3337,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-10T11:37:42.072Z"
+  "lastModified": "2026-06-10T11:38:20.242Z"
 }
