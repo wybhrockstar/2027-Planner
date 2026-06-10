@@ -3232,7 +3232,7 @@
     "wakeTimeLimit": "09:00"
   },
   "timetable": {
-    "activeTerm": 1,
+    "activeTerm": 2,
     "selectedCat": "lecture",
     "categories": [
       {
