@@ -3302,6 +3302,15 @@
           "categoryId": "rest",
           "label": "ghj",
           "showTime": true
+        },
+        {
+          "id": "mq7t70iaetgv",
+          "day": "wed",
+          "startMin": 840,
+          "endMin": 900,
+          "categoryId": "lecture",
+          "label": "",
+          "showTime": true
         }
       ],
       "2": [],
