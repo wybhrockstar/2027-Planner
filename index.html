@@ -707,7 +707,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 <div id="page-lectures" class="page" style="padding-top:0">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
   <div class="sec" style="margin-top:-5px">
-    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:11px">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px">
       <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="position:relative;top:3px">📋 강의 파서</button>
     </div>
@@ -2896,14 +2896,14 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
     return sleepHoursFromPrev(prevLog.sleepTime, curLog.wakeTime);
   });
 
-  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a' : '#5ecfb0');
+  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a88' : '#5ecfb088');
 
-  const linePR = mode === 'week' ? 4 : 2.5;
+  const linePR = mode === 'week' ? 3.7 : 2.3;
   const lineBW = mode === 'week' ? 3 : 1.5;
   chartsRef[id] = new Chart(canvas, {
     type:'line',
     data:{labels,datasets:[{data,
-      borderColor:'#5ecfb0',
+      borderColor:'#5ecfb088',
       borderWidth:lineBW,
       backgroundColor:'rgba(94,207,176,.1)',
       fill:true,tension:.35,
@@ -2914,7 +2914,7 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
       spanGaps:false,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
-        return v < minGoalH ? '#ff5a5a' : '#5ecfb0';
+        return v < minGoalH ? '#ff5a5a88' : '#5ecfb088';
       }}
     }]},
     options:{responsive:true,maintainAspectRatio:false,
