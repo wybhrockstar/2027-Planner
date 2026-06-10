@@ -295,13 +295,13 @@ canvas{width:100%!important}
 /* ── TIMETABLE (주간 시간표) ── */
 :root{
   --row-h:12px;
-  --time-w:32px;
+  --time-w:31px;
   --gap-w:3px;
   --line-6h:rgba(255,255,255,0.5);
   --line-1h:1px solid rgba(255,255,255,0.30);
   --line-30m:1px dashed rgba(255,255,255,0.11);
   --time-shadow:0 1px 3px rgba(0,0,0,0.9),0 0 6px rgba(0,0,0,0.6);
-  --ev-label-size:7px;
+  --ev-label-size:6px;
   --ev-time-size:5px;
 }
 body.light{
@@ -349,8 +349,8 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 .tt-events{position:absolute;inset:0;pointer-events:none}
 .tt-event{position:absolute;left:1px;right:1px;border-radius:4px;padding:2px 4px;font-weight:500;overflow:hidden;cursor:pointer;pointer-events:all;transition:filter .12s,box-shadow .12s;border:1.5px solid transparent;display:flex;flex-direction:column;line-height:1.25;z-index:5}
 .tt-event:hover{filter:brightness(1.15);box-shadow:0 2px 6px rgba(0,0,0,.4)}
-.tt-event .ev-label{font-size:var(--ev-label-size);font-weight:600;line-height:1.2;word-break:break-all;overflow:hidden;white-space:pre-wrap;letter-spacing:-0.2em}
-.tt-event .ev-time{font-family:'JetBrains Mono',monospace;font-size:var(--ev-time-size);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;letter-spacing:-0.03em}
+.tt-event .ev-label{font-size:var(--ev-label-size);font-weight:500;line-height:1.2;word-break:break-all;overflow:hidden;white-space:pre-wrap;letter-spacing:-0.1em}
+.tt-event .ev-time{font-family:'JetBrains Mono',monospace;font-size:var(--ev-time-size);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;letter-spacing:-0.05em}
 .tt-now-line{position:absolute;left:0;right:0;height:1.5px;background:var(--accent);z-index:20;pointer-events:none}
 .tt-now-line::before{content:'';position:absolute;left:-3px;top:-3.25px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .tt-6h-overlay{position:absolute;left:0;right:0;height:2px;background:var(--line-6h);pointer-events:none;z-index:0}
