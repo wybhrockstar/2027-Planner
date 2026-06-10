@@ -168,7 +168,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;margin-bottom:2px;text-align:right}
 
 /* TERM SUBTABS */
-.term-subtabs{display:flex;gap:4px;margin-bottom:16px}
+.term-subtabs{display:flex;gap:4px;margin-bottom:10px}
 .term-stab{flex:1;padding:7px 4px;font-size:12px;font-weight:500;border-radius:var(--rs);border:1px solid #4A4A4A;color:var(--text2);background:none;transition:.12s;text-align:center;cursor:pointer}
 .term-stab:hover{border-color:var(--accent);color:var(--accent)}
 .term-stab.on{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
@@ -293,7 +293,7 @@ canvas{width:100%!important}
 
 /* ── TIMETABLE (주간 시간표) ── */
 :root{
-  --row-h:13px;
+  --row-h:11px;
   --time-w:32px;
   --gap-w:3px;
   --line-6h:rgba(255,255,255,0.5);
@@ -3004,25 +3004,25 @@ async function renderCalendar() {
     const numColor = dow===0?'var(--red)':dow===6?'var(--blue)':isToday?'var(--accent)':'var(--text)';
 
     const studyEvtsHtml = evts.study.map(e =>
-      `<div style="font-size:6px;color:var(--teal);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">✍🏻</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.05em">${e.summary}</span></div>`
+      `<div style="font-size:6px;color:var(--teal);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">✍🏻</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.1em">${e.summary}</span></div>`
     ).join('');
     const personalEvtsHtml = evts.personal.map(e =>
-      `<div style="font-size:6px;color:var(--blue);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">📅</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.05em">${e.summary}</span></div>`
+      `<div style="font-size:6px;color:var(--blue);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">📅</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.1em">${e.summary}</span></div>`
     ).join('');
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
       ${studyEvtsHtml}
       ${personalEvtsHtml}
-      ${memo ? `<div style="font-size:6px;color:var(--text2);line-height:1.4;margin-top:2px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">💬</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.05em">${memo}</span></div>` : ''}
+      ${memo ? `<div style="font-size:6px;color:var(--text2);line-height:1.4;margin-top:2px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">💬</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.1em">${memo}</span></div>` : ''}
     </div>`;
   }
   html += '</div>';
 
   // 범례
-  html += `<div style="display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--text3)">
-    <span><span style="color:var(--teal)">✍🏻</span> 스터디</span>
-    <span><span style="color:var(--blue)">📅</span> 개인</span>
-    <span><span style="color:var(--text2)">💬</span> 한마디</span>
+  html += `<div style="display:flex;gap:6px;margin-top:10px;font-size:8px;">
+    <span style="color:var(--teal)">✍🏻 스터디</span>
+    <span style="color:var(--blue)">📅 개인</span>
+    <span style="color:var(--text2)">💬 한마디</span>
   </div>`;
 
   const statusEl = container.querySelector('[style*="로딩 중"]');
@@ -3486,7 +3486,7 @@ const TT_DAY_KEYS  = ['mon','tue','wed','thu','fri','sat','sun'];
 const TT_DAY_NAMES = ['월','화','수','목','금','토','일'];
 const TT_START_MIN = 6 * 60;
 const TT_END_MIN   = 26 * 60;
-const TT_ROW_H_PX  = 13;
+const TT_ROW_H_PX  = 11;
 const TT_SIX_HOUR_MARKS = new Set([6*60, 12*60, 18*60, 24*60]);
 
 const TT_DEFAULT_CATEGORIES = [
