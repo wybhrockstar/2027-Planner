@@ -287,8 +287,8 @@
       "title": "2강. 전통음악 (장구) [19분]",
       "minutes": 19,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_3",
@@ -307,8 +307,8 @@
       "title": "4강. 전통음악 (말붙임새 ~ 토리) [43분]",
       "minutes": 43,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_5",
@@ -317,8 +317,8 @@
       "title": "5강. 전통음악 (토리 분석) [43분]",
       "minutes": 43,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_6",
@@ -327,8 +327,8 @@
       "title": "6강. 전통음악 (장단 구분법), 서양음악 (음표와 쉼표 ~ 음이름과 계이름 익히기) [42분]",
       "minutes": 42,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_7",
@@ -337,8 +337,8 @@
       "title": "7강. 서양음악 (이동도법 계이름과 고정도법 계이름의 비교 ~ 조표와 임시표) [62분]",
       "minutes": 62,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_8",
@@ -347,8 +347,8 @@
       "title": "8강. 서양음악 (악곡의 구조와 형식 ~ 34박자와 68박자 구별하기) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_9",
@@ -357,8 +357,8 @@
       "title": "9강. 서양음악 (당김음의 여러 형태 ~ 화음) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_10",
@@ -367,8 +367,8 @@
       "title": "10강. 서양음악 (돌림 노래 ~ 바장조와 라단조의 주요 3화음 비교) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_11",
@@ -1547,8 +1547,8 @@
       "title": "2강. 3~4학년 제재곡 7개 지도서 (아리랑 ~ 어깨동무) [33분]",
       "minutes": 33,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_3",
@@ -1557,8 +1557,8 @@
       "title": "3강. 3~4학년 제재곡 6~5개 지도서 [48분]",
       "minutes": 48,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_4",
@@ -1567,8 +1567,8 @@
       "title": "4강. 3~4학년 제재곡 4개 지도서 [29분]",
       "minutes": 29,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_5",
@@ -1577,8 +1577,8 @@
       "title": "5강. 3~4학년 제재곡 3~2개 지도서 [53분]",
       "minutes": 53,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_6",
@@ -1587,8 +1587,8 @@
       "title": "6강. 3~4학년 제재곡 1개 지도서, 5~6학년 제재곡 9개 지도서 [25분]",
       "minutes": 25,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_7",
@@ -1597,8 +1597,8 @@
       "title": "7강. 5~6학년 제재곡 8개 지도서 [33분]",
       "minutes": 33,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_8",
@@ -1607,8 +1607,8 @@
       "title": "8강. 5~6학년 제재곡 7~6개 지도서 [24분]",
       "minutes": 24,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_9",
@@ -1617,8 +1617,8 @@
       "title": "9강. 5~6학년 제재곡 5개 지도서 [37분]",
       "minutes": 37,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_10",
@@ -1627,8 +1627,8 @@
       "title": "10강. 5~6학년 제재곡 4개 지도서 [29분]",
       "minutes": 29,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "수학_0",
