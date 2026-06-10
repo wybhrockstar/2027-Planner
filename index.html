@@ -464,8 +464,8 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 
   <!-- 섹션: GitHub 동기화 -->
   <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text2);margin-bottom:8px">GitHub 동기화</div>
-  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
-    <div class="form-row">
+  <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:6px">
+    <div class="form-row" style="margin-bottom:0">
       <div>
         <label class="form-lbl">Personal Access Token</label>
         <input type="password" id="input-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
@@ -494,8 +494,8 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
   <!-- 섹션: 리포트 기준값 -->
   <div style="height:1px;background:var(--border2);margin-bottom:16px"></div>
   <div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text2);margin-bottom:8px">리포트 경고선 기준값</div>
-  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
-    <div class="form-row">
+  <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+    <div class="form-row" style="margin-bottom:0">
       <div>
         <label class="form-lbl">목표 공부시간 (H:MM)</label>
         <input type="text" id="rs-study" placeholder="7:00" maxlength="5" style="font-family:'Noto Sans KR',sans-serif">
@@ -2891,14 +2891,17 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
     return sleepHoursFromPrev(prevLog.sleepTime, curLog.wakeTime);
   });
 
-  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a88' : '#5ecfb088');
+  const dotRed   = isDark ? '#C64D4D' : '#FF8686';
+  const dotGreen = isDark ? '#50A38C' : '#89DCC5';
+  const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? dotRed : dotGreen);
 
   const linePR = mode === 'week' ? 5 : 3;
   const lineBW = mode === 'week' ? 3 : 1.5;
+  const lineColor = isDark ? '#50A38C88' : '#89DCC588';
   chartsRef[id] = new Chart(canvas, {
     type:'line',
     data:{labels,datasets:[{data,
-      borderColor:'#5ecfb088',
+      borderColor:lineColor,
       borderWidth:lineBW,
       backgroundColor:'rgba(94,207,176,.04)',
       fill:true,tension:.35,
@@ -2910,7 +2913,7 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
       spanGaps:false,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
-        return v < minGoalH ? '#ff5a5a88' : '#5ecfb088';
+        return v < minGoalH ? (isDark ? '#C64D4D88' : '#FF868688') : lineColor;
       }}
     }]},
     options:{responsive:true,maintainAspectRatio:false,
@@ -2931,7 +2934,7 @@ function buildSleepLine(id, dates, logMap, rs, mode) {
             },
             labelColor:(ctx) => {
               const v = ctx.parsed.y;
-              const col = v < minGoalH ? '#ff5a5a' : '#5ecfb0';
+              const col = v < minGoalH ? dotRed : dotGreen;
               return {borderColor:col,backgroundColor:col};
             }
           }
