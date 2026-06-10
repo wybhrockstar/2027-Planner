@@ -1537,8 +1537,8 @@
       "title": "1강. 3~4학년 제재곡 7개 지도서 (우리나라의 춤과 음악 ~ 동물의 사육제) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악 심화_2",
@@ -3281,7 +3281,7 @@
           "startMin": 540,
           "endMin": 1355,
           "categoryId": "self",
-          "label": "dhdjdjdj",
+          "label": "김재언은 존잘",
           "showTime": true
         },
         {
