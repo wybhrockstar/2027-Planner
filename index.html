@@ -704,9 +704,9 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 </div>
 
 <!-- ⑤ 강의 -->
-<div id="page-lectures" class="page">
+<div id="page-lectures" class="page" style="padding-top:0">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
-  <div class="sec">
+  <div class="sec" style="margin-top:-10px">
     <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:11px">
       <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="position:relative;top:3px">📋 강의 파서</button>
@@ -717,7 +717,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
   <!-- 과목별 진행률 -->
   <div class="sec">
     <div class="sec-hd" style="margin-bottom:11px">과목별 진행률</div>
-    <div class="card" id="subj-inline-progress"></div>
+    <div class="card" id="subj-inline-progress" style="padding:10px 16px"></div>
   </div>
   <!-- 강의 목록 -->
   <div class="sec">
@@ -2810,9 +2810,9 @@ function buildSleepBubble(id, dates, logMap, rs) {
     type:'scatter',
     data:{datasets:[
       {label:'기상',data:wakePoints.map(p=>({x:p.x,y:p.y})),
-       backgroundColor:wakePoints.map(p=>p.color+'bb'),pointRadius:6,pointStyle:'circle'},
+       backgroundColor:wakePoints.map(p=>p.color+'bb'),pointRadius:3,pointStyle:'circle'},
       {label:'취침',data:bedPoints.map(p=>({x:p.x,y:p.y})),
-       backgroundColor:bedPoints.map(p=>p.color+'bb'),pointRadius:6,pointStyle:'circle'}
+       backgroundColor:bedPoints.map(p=>p.color+'bb'),pointRadius:3,pointStyle:'circle'}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{
@@ -2905,8 +2905,8 @@ function buildSleepLine(id, dates, logMap, rs) {
       fill:true,tension:.35,
       pointBackgroundColor:colors,
       pointBorderColor:colors,
-      pointRadius:data.map(v => v===null ? 0 : 4),
-      pointHoverRadius:data.map(v => v===null ? 0 : 6),
+      pointRadius:data.map(v => v===null ? 0 : 3),
+      pointHoverRadius:data.map(v => v===null ? 0 : 5),
       spanGaps:false,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
