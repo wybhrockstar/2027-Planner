@@ -14,7 +14,7 @@
 <style>
 :root{
   color-scheme: only light;
-  --bg:#141414;--bg2:#1c1c1c;--bg3:#2c2c2c;--bg4:#303030;--bg5:#3a3a3a;--memo-bg:#515151;
+  --bg:#141414;--bg2:#1c1c1c;--bg3:#2c2c2c;--bg4:#303030;--bg5:#3a3a3a;--memo-bg:#3f3f3f;--memo-border:#515151;
   --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--border3:rgba(255,255,255,0.24);--border-cal:#545454;
   --text:#efefef;--text2:#b8b8b8;--text3:#777;--text4:#444;
   --accent:#c8f060;--accent2:rgba(200,240,96,0.12);--accent3:rgba(200,240,96,0.06);
@@ -22,7 +22,7 @@
   --r:10px;--rs:6px;
 }
 body.light{
-  --bg:#f5f5f0;--bg2:#ebebeb;--bg3:#ffffff;--bg4:#f0f0eb;--bg5:#e6e6e1;--memo-bg:#e0e0db;
+  --bg:#f5f5f0;--bg2:#ebebeb;--bg3:#ffffff;--bg4:#f0f0eb;--bg5:#e6e6e1;--memo-bg:#ebebeb;--memo-border:#d0d0cb;
   --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.2);--border-cal:#d0d0d0;
   --text:#1a1a1a;--text2:#444;--text3:#888;--text4:#bbb;
   --accent:#5a8a10;--accent2:rgba(90,138,16,0.1);--accent3:rgba(90,138,16,0.05);
@@ -271,7 +271,8 @@ canvas{width:100%!important}
 .divider{height:1px;background:var(--border2);margin:16px 0}
 
 /* TODO LIST */
-.todo-list{display:flex;flex-direction:column;gap:5px}
+.todo-list:not(:empty){display:flex;flex-direction:column;gap:5px;margin-bottom:5px}
+.todo-list:empty{display:none}
 .todo-item{display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--bg4);border-radius:var(--rs);border:1px solid var(--border2)}
 .todo-item.done-item{opacity:.5}
 .todo-item input[type=checkbox]{width:14px;height:14px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)}
@@ -601,7 +602,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
     <div class="sec-hd">To-Do List</div>
     <div id="today-todo-area">
       <div class="todo-list" id="todo-list-items"></div>
-      <div class="todo-add-row" style="margin-top:5px">
+      <div class="todo-add-row">
         <input type="text" id="todo-inp" placeholder="할 일 추가...">
         <button class="btn btn-ghost btn-sm" onclick="addTodo()" style="white-space:nowrap">추가</button>
       </div>
@@ -1677,7 +1678,7 @@ function renderToday() {
             `;
           })()}
         </div>
-        ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--memo-bg);border-radius:var(--rs)">${log.memo}</div>` : ''}
+        ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--memo-bg);border:1px solid var(--memo-border);border-radius:var(--rs)">${log.memo}</div>` : ''}
       </div>`;
   } else {
     logArea.innerHTML = `<div class="empty"><div class="empty-icon">📝</div><div class="empty-txt">아직 오늘 기록이 없어요</div></div>`;
