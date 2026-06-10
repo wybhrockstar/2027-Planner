@@ -706,7 +706,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 <!-- ⑤ 강의 -->
 <div id="page-lectures" class="page" style="padding-top:0">
   <!-- 전체 진행률 + 강의 파서 버튼 (같은 행) -->
-  <div class="sec" style="margin-top:-10px">
+  <div class="sec" style="margin-top:-5px">
     <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:11px">
       <span>전체 진행률</span>
       <button class="btn btn-ghost btn-sm" onclick="openModal('modal-lec-parser')" style="position:relative;top:3px">📋 강의 파서</button>
@@ -2608,8 +2608,8 @@ function renderReport() {
   const kcalGoal = rs.kcalGoal || 200;
   buildBarChart('chart-study', labels, studyData, studyGoalH, 'var(--accent)', 'var(--red)', `${studyGoalH}h 목표`);
   buildBarChart('chart-kcal', labels, kcalData, kcalGoal, 'var(--orange)', 'var(--text3)', `${kcalGoal}kcal`);
-  buildSleepBubble('chart-sleep-bubble', dates, logMap, rs);
-  buildSleepLine('chart-sleep-line', dates, logMap, rs);
+  buildSleepBubble('chart-sleep-bubble', dates, logMap, rs, reportMode);
+  buildSleepLine('chart-sleep-line', dates, logMap, rs, reportMode);
 }
 
 // 툴팁 오버레이: alwaysShow 시 각 데이터 포인트 위치에 개별 라벨 렌더
@@ -2763,7 +2763,7 @@ function buildBarChart(id, labels, data, threshold, goodColor, badColor, thresho
   });
 }
 
-function buildSleepBubble(id, dates, logMap, rs) {
+function buildSleepBubble(id, dates, logMap, rs, mode) {
   const canvas = document.getElementById(id);
   if (!canvas) return;
   if (chartsRef[id]) { chartsRef[id].destroy(); }
@@ -2806,13 +2806,14 @@ function buildSleepBubble(id, dates, logMap, rs) {
     return `${String(Math.floor(realH)).padStart(2,'0')}:00`;
   }
 
+  const bubblePR = mode === 'week' ? 5 : 3;
   chartsRef[id] = new Chart(canvas, {
     type:'scatter',
     data:{datasets:[
       {label:'기상',data:wakePoints.map(p=>({x:p.x,y:p.y})),
-       backgroundColor:wakePoints.map(p=>p.color+'bb'),pointRadius:3,pointStyle:'circle'},
+       backgroundColor:wakePoints.map(p=>p.color+'bb'),pointRadius:bubblePR,pointStyle:'circle'},
       {label:'취침',data:bedPoints.map(p=>({x:p.x,y:p.y})),
-       backgroundColor:bedPoints.map(p=>p.color+'bb'),pointRadius:3,pointStyle:'circle'}
+       backgroundColor:bedPoints.map(p=>p.color+'bb'),pointRadius:bubblePR,pointStyle:'circle'}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{
@@ -2867,7 +2868,7 @@ function buildSleepBubble(id, dates, logMap, rs) {
   });
 }
 
-function buildSleepLine(id, dates, logMap, rs) {
+function buildSleepLine(id, dates, logMap, rs, mode) {
   const canvas = document.getElementById(id);
   if (!canvas) return;
   if (chartsRef[id]) { chartsRef[id].destroy(); }
@@ -2897,16 +2898,19 @@ function buildSleepLine(id, dates, logMap, rs) {
 
   const colors = data.map(v => v===null ? 'transparent' : v < minGoalH ? '#ff5a5a' : '#5ecfb0');
 
+  const linePR = mode === 'week' ? 4 : 2.5;
+  const lineBW = mode === 'week' ? 3 : 1.5;
   chartsRef[id] = new Chart(canvas, {
     type:'line',
     data:{labels,datasets:[{data,
       borderColor:'#5ecfb0',
+      borderWidth:lineBW,
       backgroundColor:'rgba(94,207,176,.1)',
       fill:true,tension:.35,
       pointBackgroundColor:colors,
       pointBorderColor:colors,
-      pointRadius:data.map(v => v===null ? 0 : 2),
-      pointHoverRadius:data.map(v => v===null ? 0 : 4),
+      pointRadius:data.map(v => v===null ? 0 : linePR),
+      pointHoverRadius:data.map(v => v===null ? 0 : linePR+2),
       spanGaps:false,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
