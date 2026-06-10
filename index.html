@@ -2905,8 +2905,8 @@ function buildSleepLine(id, dates, logMap, rs) {
       fill:true,tension:.35,
       pointBackgroundColor:colors,
       pointBorderColor:colors,
-      pointRadius:data.map(v => v===null ? 0 : 3),
-      pointHoverRadius:data.map(v => v===null ? 0 : 5),
+      pointRadius:data.map(v => v===null ? 0 : 2),
+      pointHoverRadius:data.map(v => v===null ? 0 : 4),
       spanGaps:false,
       segment:{borderColor:ctx => {
         const v = ctx.p1.parsed.y;
