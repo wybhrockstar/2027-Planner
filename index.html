@@ -205,14 +205,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .grass-subtable .row-label{font-size:8px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border2);width:4.8em;min-width:4.8em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
 .grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:7px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
-.grass-subtable .date-row th span{display:inline-block;letter-spacing:-0.05em;transform:scaleX(0.9);transform-origin:center}
+.grass-subtable .date-row th span{display:inline-block;letter-spacing:-0.00em;transform:scaleX(0.95);transform-origin:center}
 .grass-block{margin-bottom:10px;overflow:hidden}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
 .cell-x{background:rgba(255,90,90,.18);color:#ff5a5a}
-.cell-none{background:rgba(0,0,0,.15);color:var(--text4)}
-.cell-skip{background:rgba(0,0,0,.18);color:var(--text3)}
-.cell-blank{background:transparent!important;border-color:transparent!important;cursor:default!important;pointer-events:none}
+.cell-none{background:var(--bg);color:var(--text4)}
+.cell-skip{background:var(--bg);color:var(--text3)}
+.cell-blank{background:var(--bg)!important;border-color:var(--border2)!important;cursor:default!important;pointer-events:none}
 
 /* SUBJ INLINE PROGRESS (강의탭) */
 .subj-inline-grid{display:flex;flex-direction:column;gap:7px}
@@ -328,8 +328,7 @@ body.light{
 .tt-hour-wrap{height:calc(var(--row-h)*2);position:relative;display:flex;align-items:flex-start;justify-content:flex-end;padding-right:4px}
 .tt-hour-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--text3);text-shadow:var(--time-shadow);white-space:nowrap;transform:translateY(-50%)}
 body.light .tt-hour-label{text-shadow:none;color:#555}
-body.light .cell-none{background:rgba(0,0,0,.06)}
-body.light .cell-skip{background:rgba(0,0,0,.08)}
+
 .tt-hour-label.tt-on-hour{color:var(--accent)!important}
 body.light .tt-hour-label.tt-on-hour{color:var(--accent)!important}
 .tt-days{display:flex;flex:1;gap:var(--gap-w);position:relative;min-width:0}
@@ -601,7 +600,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
     <div class="sec-hd">To-Do List</div>
     <div id="today-todo-area">
       <div class="todo-list" id="todo-list-items"></div>
-      <div class="todo-add-row" style="margin-top:2px">
+      <div class="todo-add-row" style="margin-top:0px">
         <input type="text" id="todo-inp" placeholder="할 일 추가...">
         <button class="btn btn-ghost btn-sm" onclick="addTodo()" style="white-space:nowrap">추가</button>
       </div>
@@ -1694,7 +1693,7 @@ function renderToday() {
     const onStyle = isOn ? `style="border-color:${color};color:${color};background:${color}1a"` : '';
     const sLecs = state.lectures.filter(l => l.subject === s);
     const sDone = sLecs.filter(l => l.done).length;
-    return `<button class="stab${isOn?' on':''}" data-subj="${s}" ${onStyle}>${subjectName(s)} <span style="font-family:'JetBrains Mono',monospace;font-size:9px">(${sDone}/${sLecs.length}강)</span></button>`;
+    return `<button class="stab${isOn?' on':''}" data-subj="${s}" ${onStyle}>${subjectName(s)}</button>`;
   }).join('');
   tabs.querySelectorAll('.stab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2283,7 +2282,7 @@ function renderGrass(term) {
           const d = cells[col];
           const sep = (col > 0 && col % 7 === 0) ? ' week-sep' : '';
           if (!d) {
-            rows += `<td class="cell-blank${sep}" style="background:transparent!important;border-color:var(--border2)!important;cursor:default!important;pointer-events:none"></td>`;
+            rows += `<td class="cell-blank${sep}" style="background:var(--bg)!important;border-color:var(--border2)!important;cursor:default!important;pointer-events:none"></td>`;
           } else {
             const cd = getCellData(d);
             const { cls, txt, style } = row.render(d, cd);
@@ -2311,7 +2310,7 @@ function renderGrass(term) {
       <span class="cell-o" style="padding:1px 6px;border-radius:4px">○ 달성</span>
       <span class="cell-d" style="padding:1px 6px;border-radius:4px">△ 부분</span>
       <span class="cell-x" style="padding:1px 6px;border-radius:4px">× 미달</span>
-      <span style="color:var(--text4);font-size:10px">- 해당없음</span>
+      <span style="color:var(--text3);font-size:10px">- 해당없음</span>
     </div>
   </div>`;
 }
