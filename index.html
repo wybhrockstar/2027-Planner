@@ -85,7 +85,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 /* PROGRESS BAR */
 .pbar-wrap{margin-bottom:14px}
 .pbar-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
-.pbar-name{font-size:13px;font-weight:500}
+.pbar-name{font-size:12px;font-weight:500}
 .pbar-pct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
 .pbar{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden}
 .pbar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .5s cubic-bezier(.4,0,.2,1)}
@@ -196,14 +196,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .prog-table .date-row th{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;color:var(--text3);background:var(--bg4);padding:3px 6px}
 /* GRASS SUBTABLE (새 레이아웃) */
 .grass-subtable{border-collapse:collapse;font-size:11px;width:100%;table-layout:fixed;font-family:'Noto Sans KR',sans-serif}
-.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text);font-size:9px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
+.grass-subtable th{padding:4px 2px;text-align:center;font-weight:600;color:var(--text);font-size:8px;background:var(--bg4);border:1px solid var(--border);white-space:nowrap}
 .grass-subtable td{padding:4px 2px;border:1px solid var(--border);text-align:center;white-space:nowrap;cursor:pointer;transition:.1s;position:relative;overflow:hidden;font-size:8px}
 .grass-subtable td:hover{filter:brightness(1.15)}
 .grass-subtable td.future{background:var(--bg4)!important;color:var(--text4)!important;cursor:default}
 .grass-subtable td.today-col{outline:2px solid var(--accent);outline-offset:-2px}
-.grass-subtable .row-label{font-size:9px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border);width:4.8em;min-width:4.8em}
+.grass-subtable .row-label{font-size:8px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border);width:4.8em;min-width:4.8em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
-.grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:8px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
+.grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:7px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
 .grass-block{margin-bottom:10px;overflow:hidden}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
@@ -297,8 +297,8 @@ canvas{width:100%!important}
   --line-1h:1px solid rgba(255,255,255,0.30);
   --line-30m:1px dashed rgba(255,255,255,0.11);
   --time-shadow:0 1px 3px rgba(0,0,0,0.9),0 0 6px rgba(0,0,0,0.6);
-  --ev-label-size:8px;
-  --ev-time-size:6px;
+  --ev-label-size:7px;
+  --ev-time-size:5px;
 }
 body.light{
   --line-6h:rgba(0,0,0,0.35);
@@ -332,7 +332,7 @@ body.light .tt-hour-label.tt-on-hour{color:var(--accent)!important}
 .tt-day-col{flex:1;position:relative;min-width:0}
 .tt-day-col.tt-today>.tt-day-rows{outline:1.5px solid var(--accent);outline-offset:-1px;border-radius:2px}
 .tt-day-col.tt-today .tt-day-rows .tt-row-bg{background:transparent}
-.tt-day-header{text-align:center;font-size:11px;font-weight:700;padding:5px 0;color:var(--text2);display:flex;flex-direction:column;align-items:center;position:sticky;top:82px;background:#2a2a2a;z-index:10;border-bottom:1px solid var(--border2);border-radius:3px 3px 0 0}
+.tt-day-header{text-align:center;font-size:10px;font-weight:700;padding:3px 0;color:var(--text2);display:flex;flex-direction:column;align-items:center;position:sticky;top:82px;background:#2a2a2a;z-index:10;border-bottom:1px solid var(--border2);border-radius:3px 3px 0 0}
 body.light .tt-day-header{background:#d0d0cc;color:#333}
 .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
