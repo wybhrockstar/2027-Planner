@@ -14,7 +14,7 @@
 <style>
 :root{
   color-scheme: only light;
-  --bg:#141414;--bg2:#1c1c1c;--bg3:#2c2c2c;--bg4:#303030;--bg5:#3a3a3a;
+  --bg:#141414;--bg2:#1c1c1c;--bg3:#2c2c2c;--bg4:#303030;--bg5:#3a3a3a;--memo-bg:#515151;
   --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--border3:rgba(255,255,255,0.24);--border-cal:#545454;
   --text:#efefef;--text2:#b8b8b8;--text3:#777;--text4:#444;
   --accent:#c8f060;--accent2:rgba(200,240,96,0.12);--accent3:rgba(200,240,96,0.06);
@@ -22,7 +22,7 @@
   --r:10px;--rs:6px;
 }
 body.light{
-  --bg:#f5f5f0;--bg2:#ebebeb;--bg3:#ffffff;--bg4:#f0f0eb;--bg5:#e6e6e1;
+  --bg:#f5f5f0;--bg2:#ebebeb;--bg3:#ffffff;--bg4:#f0f0eb;--bg5:#e6e6e1;--memo-bg:#e0e0db;
   --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.2);--border-cal:#d0d0d0;
   --text:#1a1a1a;--text2:#444;--text3:#888;--text4:#bbb;
   --accent:#5a8a10;--accent2:rgba(90,138,16,0.1);--accent3:rgba(90,138,16,0.05);
@@ -138,7 +138,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .today-lec-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
 .today-lec-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--rs);border:1px solid var(--border2);background:var(--bg4);cursor:pointer;transition:.12s}
 .today-lec-row:hover{border-color:var(--accent)}
-.today-lec-row.done{border-color:rgba(200,240,96,.3);background:var(--accent3)}
+.today-lec-row.done{border-color:rgba(200,240,96,1);background:var(--accent3)}
 .today-lec-cb{width:16px;height:16px;border-radius:3px;border:1.5px solid var(--border3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
 .today-lec-row.done .today-lec-cb{background:var(--accent);border-color:var(--accent);color:#0a1a00;font-weight:700}
 .today-lec-text{font-size:12px;line-height:1.4;flex:1}
@@ -205,7 +205,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .grass-subtable .row-label{font-size:8px;font-weight:400;color:var(--text);background:var(--bg4);padding:4px 4px;text-align:center;white-space:nowrap;border:1px solid var(--border2);width:4.8em;min-width:4.8em}
 .grass-subtable .week-sep{border-left:2px solid var(--border2)!important}
 .grass-subtable .date-row th{font-family:'Noto Sans KR',sans-serif;font-size:7px;font-weight:500;color:var(--text);background:var(--bg4);padding:2px 2px}
-.grass-subtable .date-row th span{display:inline-block;letter-spacing:-0.00em;transform:scaleX(0.95);transform-origin:center}
+.grass-subtable .date-row th span{display:inline-block}.grass-subtable .date-row th span.compact{transform:scaleX(0.90);transform-origin:center}
 .grass-block{margin-bottom:10px;overflow:hidden}
 .cell-o{background:rgba(94,207,176,.25);color:#5ecfb0}
 .cell-d{background:rgba(255,179,71,.2);color:#ffb347}
@@ -225,12 +225,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 /* LOG TAG */
 .log-data{display:flex;flex-wrap:wrap;gap:5px}
 .log-tag{font-size:10px;padding:3px 5px;border-radius:8px;background:var(--bg4);border:1px solid var(--border2);text-align:center;white-space:nowrap}
-.log-tag.study{color:var(--accent);border-color:rgba(200,240,96,.3)}
-.log-tag.sleep{color:var(--blue);border-color:rgba(110,181,255,.3)}
-.log-tag.kcal{color:var(--orange);border-color:rgba(255,159,67,.3)}
-.log-tag.sr-o{color:var(--teal);border-color:rgba(94,207,176,.3)}
-.log-tag.sr-d{color:var(--amber);border-color:rgba(255,179,71,.3)}
-.log-tag.sr-x{color:var(--red);border-color:rgba(255,90,90,.3)}
+.log-tag.study{color:var(--accent);border-color:rgba(200,240,96,1)}
+.log-tag.sleep{color:var(--blue);border-color:rgba(110,181,255,1)}
+.log-tag.kcal{color:var(--orange);border-color:rgba(255,159,67,1)}
+.log-tag.sr-o{color:var(--teal);border-color:rgba(94,207,176,1)}
+.log-tag.sr-d{color:var(--amber);border-color:rgba(255,179,71,1)}
+.log-tag.sr-x{color:var(--red);border-color:rgba(255,90,90,1)}
 
 /* PLANNER SUBTABS */
 .planner-subtabs{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border2)}
@@ -1667,16 +1667,16 @@ function renderToday() {
             if (studyMin2 >= 60 && studyMin2 < studyGoalMin2) studyColor = '#ff9f43';
             else if (studyMin2 >= studyGoalMin2) studyColor = '#5ecfb0';
             return `
-              ${log.wakeTime ? `<span class="log-tag" style="color:${wakeColor};border-color:${wakeColor}40;background:var(--bg4)">기상 ${log.wakeTime}</span>` : ''}
-              ${log.sleepTime ? `<span class="log-tag" style="color:${bedColor};border-color:${bedColor}40;background:var(--bg4)">취침 ${log.sleepTime}</span>` : ''}
-              ${sh ? `<span class="log-tag" style="color:${sleepColor};border-color:${sleepColor}40;background:var(--bg4)">수면 ${fmtSleep(sh)}</span>` : ''}
-              ${log.kcal != null ? `<span class="log-tag" style="color:${kcalColor};border-color:${kcalColor}40;background:var(--bg4)">${log.kcal}kcal</span>` : ''}
-              ${log.studyMin != null ? `<span class="log-tag" style="color:${studyColor};border-color:${studyColor}40;background:var(--bg4)">공부 ${fmtMinLong(log.studyMin)}</span>` : ''}
+              ${log.wakeTime ? `<span class="log-tag" style="color:${wakeColor};border-color:${wakeColor};background:var(--bg4)">기상 ${log.wakeTime}</span>` : ''}
+              ${log.sleepTime ? `<span class="log-tag" style="color:${bedColor};border-color:${bedColor};background:var(--bg4)">취침 ${log.sleepTime}</span>` : ''}
+              ${sh ? `<span class="log-tag" style="color:${sleepColor};border-color:${sleepColor};background:var(--bg4)">수면 ${fmtSleep(sh)}</span>` : ''}
+              ${log.kcal != null ? `<span class="log-tag" style="color:${kcalColor};border-color:${kcalColor};background:var(--bg4)">${log.kcal}kcal</span>` : ''}
+              ${log.studyMin != null ? `<span class="log-tag" style="color:${studyColor};border-color:${studyColor};background:var(--bg4)">공부 ${fmtMinLong(log.studyMin)}</span>` : ''}
               ${log.studyResult ? `<span class="log-tag ${srClass}" style="color:${srColor}">${srLabel}</span>` : ''}
             `;
           })()}
         </div>
-        ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--bg5);border-radius:var(--rs)">${log.memo}</div>` : ''}
+        ${log.memo ? `<div style="margin-top:10px;font-size:12px;color:var(--text2);padding:8px 10px;background:var(--memo-bg);border-radius:var(--rs)">${log.memo}</div>` : ''}
       </div>`;
   } else {
     logArea.innerHTML = `<div class="empty"><div class="empty-icon">📝</div><div class="empty-txt">아직 오늘 기록이 없어요</div></div>`;
@@ -2269,7 +2269,7 @@ function renderGrass(term) {
           const label = `${dt.getMonth()+1}/${dt.getDate()}`;
           const dow = (dt.getDay() + 6) % 7;
           const color = dow===6?'var(--red)':dow===5?'var(--blue)':'';
-          hdr += `<th class="${sep}" style="${color?`color:${color}`:''}"><span>${label}</span></th>`;
+          hdr += `<th class="${sep}" style="${color?`color:${color}`:''}"><span class="${label.length>=5?'compact':''}">${label}</span></th>`;
         }
       }
       hdr += `</tr>`;
