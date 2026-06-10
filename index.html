@@ -165,9 +165,9 @@ body.light .pbar{background:#c8c8c4}
 .term-prog-block{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:14px 16px;margin-bottom:8px}
 .term-prog-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
 .term-prog-name{font-size:13px;font-weight:600}
-.term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;line-height:1;margin-bottom:2px}
-.term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-top:2px}
-.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);margin-top:2px;margin-bottom:2px;text-align:right}
+.term-prog-pct{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;line-height:1}
+.term-prog-dates{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:400;color:var(--text2);margin-top:2px;position:relative;top:-2px}
+.term-prog-days{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:400;color:var(--text);margin-top:2px;text-align:right;position:relative;top:0.2px}
 
 /* TERM SUBTABS */
 .term-subtabs{display:flex;gap:4px;margin-bottom:16px}
@@ -946,7 +946,8 @@ let state = {
   termTodos: {1:[],2:[],3:[],4:[]},
   weeklySchedule: {1:[],2:[],3:[],4:[]},
   reportSettings: {studyGoalHour:7, studyGoalMin:420, sleepMinHour:6, sleepMinMin:360, kcalGoal:200, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'},
-  timetable: null  // ttState 전체를 저장 (플래너 주간시간표)
+  timetable: null,  // ttState 전체를 저장 (플래너 주간시간표)
+  lastModified: null  // 마지막 수정 시각 (ISO string)
 };
 
 // ─── HARDCODED CONSTANTS ─────────────────────────────────────────────────────
@@ -1265,21 +1266,35 @@ function applyImportedState(d) {
 }
 
 function loadState() {
-  // localStorage 완전 제거 — GitHub이 단일 소스
-  // 초기 state는 기본값으로 시작, autoLoadFromGithub()에서 덮어씀
+  // GitHub 로드 실패 시 localStorage 백업으로 복원
+  try {
+    const backup = localStorage.getItem('imgo_state_backup');
+    if (backup) { applyImportedState(JSON.parse(backup)); }
+  } catch(e) {}
 }
 
 // saveState → autoSaveToGithub (변경 즉시 GitHub push)
 let _saveTimer = null;
+let _isSaving = false;
+let _pendingSave = false;
+
 function saveState() {
-  // 연속 저장 방지: 500ms 디바운스
+  // 수정 시각 기록
+  state.lastModified = new Date().toISOString();
+  // localStorage 백업 (GitHub 실패 대비)
+  try { localStorage.setItem('imgo_state_backup', JSON.stringify(state)); } catch(e) {}
+  // 연속 저장 방지: 1500ms 디바운스
   clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(() => { autoSaveToGithub(); }, 500);
+  _saveTimer = setTimeout(() => { autoSaveToGithub(); }, 1500);
 }
 
 async function autoSaveToGithub() {
   const s = getGhSettings();
-  if (!s.token || !s.repo) return; // 토큰 없으면 무시 (설정 전 상태)
+  if (!s.token || !s.repo) return;
+  // 저장 중이면 완료 후 재시도
+  if (_isSaving) { _pendingSave = true; return; }
+  _isSaving = true;
+  _pendingSave = false;
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
     let sha = null;
@@ -1289,13 +1304,43 @@ async function autoSaveToGithub() {
     if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
     const body = { message: `auto save ${today()}`, content, branch: s.branch };
     if (sha) body.sha = sha;
-    await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}`, {
+    const putRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}`, {
       method: 'PUT',
       headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json'},
       body: JSON.stringify(body)
     });
-  } catch(e) { console.warn('Auto save failed:', e); }
+    if (!putRes.ok) throw new Error(`GitHub PUT ${putRes.status}`);
+  } catch(e) {
+    console.warn('Auto save failed:', e);
+    toast('⚠️ 저장 실패 — 네트워크를 확인하세요');
+  } finally {
+    _isSaving = false;
+    if (_pendingSave) { _pendingSave = false; autoSaveToGithub(); }
+  }
 }
+
+// PWA 포그라운드 복귀 시 최신 데이터 pull
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && !_isSaving) {
+    const s = getGhSettings();
+    if (!s.token || !s.repo) return;
+    fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
+      headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
+    }).then(r => r.ok ? r.json() : null).then(d => {
+      if (!d) return;
+      const ghState = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
+      const ghTime = ghState.lastModified ? new Date(ghState.lastModified) : new Date(0);
+      const localTime = state.lastModified ? new Date(state.lastModified) : new Date(0);
+      if (ghTime > localTime) {
+        // GitHub이 더 최신 → 덮어씀
+        applyImportedState(ghState);
+      } else if (localTime > ghTime) {
+        // 로컬이 더 최신 (저장 실패했던 경우) → 재업로드
+        autoSaveToGithub();
+      }
+    }).catch(() => {});
+  }
+});
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 function today() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
@@ -3389,7 +3434,7 @@ function renderAnnualPlan() {
     }
     const dayPct = t.days ? Math.min(100, Math.round(elapsed/t.days*100)) : 0;
     const status = !started?'예정':ended?'완료':'진행  중';
-    const statusColor = !started?'var(--text4)':ended?'var(--teal)':'var(--accent)';
+    const statusColor = !started?'var(--text3)':ended?'var(--teal)':'var(--accent)';
     const todos = state.termTodos[t.id] || [];
 
     return `<div class="term-block" style="margin-bottom:12px;border-color:#4A4A4A">
@@ -3407,7 +3452,6 @@ function renderAnnualPlan() {
         <div class="pbar" style="height:8px"><div class="pbar-fill" style="width:${dayPct}%;background:${statusColor}"></div></div>
       </div>
       <div class="term-body" style="padding:10px 14px">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px">🎯 목표</div>
         <div class="todo-list" id="todo-list-${t.id}">${todos.map((td2,i)=>`
           <div class="todo-item ${td2.done?'done-item':''}" style="gap:4px;padding:4px 6px">
             <span class="drag-handle" data-idx="${i}" style="cursor:grab;color:var(--text4);font-size:14px;padding:0 1px 0 0;flex-shrink:0;user-select:none">⠿</span>
@@ -3416,7 +3460,7 @@ function renderAnnualPlan() {
             <button class="todo-del todo-edit" data-tid="${t.id}" data-idx="${i}" title="수정" style="font-size:11px;color:var(--text3);background:none;border:none;padding:0 3px;cursor:pointer">✎</button>
             <button class="todo-del todo-confirm-del" data-tid="${t.id}" data-idx="${i}" style="font-size:11px;padding:0 3px">✕</button>
           </div>`).join('')}</div>
-        <div class="todo-add-row" style="margin-top:10px">
+        <div class="todo-add-row" style="margin-top:4px">
           <input type="text" id="todo-inp-${t.id}" placeholder="목표 추가...">
           <button class="btn btn-ghost btn-sm" data-tid="${t.id}" class="todo-add-btn" style="white-space:nowrap">추가</button>
         </div>
@@ -4309,13 +4353,19 @@ if (localStorage.getItem('imgo_theme')==='light') { document.body.classList.add(
   if (loaded) {
     renderPage(currentPage);
   } else {
-    // 토큰 미설정 or 연결 실패 → 빈 상태로 렌더링 + 안내
-    renderToday();
-    const s = getGhSettings();
-    if (!s.token) {
-      toast('⚙️ 설정에서 GitHub 토큰을 먼저 입력하세요');
+    // GitHub 실패 시 localStorage 백업으로 복원 시도
+    const backup = localStorage.getItem('imgo_state_backup');
+    if (backup) {
+      try { applyImportedState(JSON.parse(backup)); toast('⚠️ GitHub 연결 실패 — 로컬 백업으로 복원됨'); }
+      catch(e) { renderToday(); }
     } else {
-      toast('⚠️ GitHub 연결 실패 — 토큰을 확인하세요');
+      renderToday();
+      const s = getGhSettings();
+      if (!s.token) {
+        toast('⚙️ 설정에서 GitHub 토큰을 먼저 입력하세요');
+      } else {
+        toast('⚠️ GitHub 연결 실패 — 토큰을 확인하세요');
+      }
     }
   }
 })();
