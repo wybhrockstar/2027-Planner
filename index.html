@@ -53,6 +53,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
 /* MAIN */
 .main{padding:20px 16px 90px;max-width:860px;margin:0 auto}
+.planner-subtabs{margin-top:-12px}
 .page{display:none}.page.on{display:block}
 
 /* SECTION */
@@ -293,7 +294,7 @@ canvas{width:100%!important}
 
 /* ── TIMETABLE (주간 시간표) ── */
 :root{
-  --row-h:11px;
+  --row-h:12px;
   --time-w:32px;
   --gap-w:3px;
   --line-6h:rgba(255,255,255,0.5);
@@ -311,7 +312,7 @@ body.light{
 }
 .tt-top-bar{padding:8px 0 0;display:flex;align-items:flex-end;gap:6px;flex-wrap:nowrap;min-width:0}
 .tt-cat-pills{display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:0}
-.tt-cat-pill{display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:500;border:1.5px solid transparent;cursor:pointer;transition:.12s;white-space:nowrap}
+.tt-cat-pill{display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid transparent;cursor:pointer;transition:.12s;white-space:nowrap}
 .tt-cat-pill.selected{box-shadow:0 0 0 2px var(--accent)}
 .tt-cat-pill-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .tt-cat-setting-btn{padding:3px 8px;font-size:11px;border-radius:20px;border:1px solid #4A4A4A;color:var(--text3);background:none;cursor:pointer;transition:.12s;white-space:nowrap;flex-shrink:0;font-family:'Noto Sans KR',sans-serif}
@@ -319,9 +320,9 @@ body.light{
 .tt-view-setting-btn{background:none;border:1px solid var(--border2);color:var(--text3);border-radius:20px;padding:3px 8px;font-size:11px;font-weight:500;transition:.15s;flex-shrink:0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif}
 .tt-view-setting-btn:hover{border-color:var(--accent);color:var(--accent)}
 .tt-summary{padding:4px 0 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.tt-sum-item{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text2)}
+.tt-sum-item{display:flex;align-items:center;gap:4px;font-size:8px;color:var(--text2)}
 .tt-sum-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.tt-sum-val{font-family:'JetBrains Mono',monospace;font-size:9px}
+.tt-sum-val{font-family:'JetBrains Mono',monospace;font-size:8px}
 .tt-wrap{padding:6px 0 20px;overflow-x:hidden}
 .tt-inner{width:100%}
 .tt-grid{display:flex;position:relative}
@@ -3486,7 +3487,7 @@ const TT_DAY_KEYS  = ['mon','tue','wed','thu','fri','sat','sun'];
 const TT_DAY_NAMES = ['월','화','수','목','금','토','일'];
 const TT_START_MIN = 6 * 60;
 const TT_END_MIN   = 26 * 60;
-const TT_ROW_H_PX  = 11;
+const TT_ROW_H_PX  = 12;
 const TT_SIX_HOUR_MARKS = new Set([6*60, 12*60, 18*60, 24*60]);
 
 const TT_DEFAULT_CATEGORIES = [
