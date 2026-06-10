@@ -277,8 +277,8 @@
       "title": "1강. OT [27분]",
       "minutes": 27,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_2",
@@ -297,8 +297,8 @@
       "title": "3강. 전통음악 (장단 ~ 정간보) [43분]",
       "minutes": 43,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-10"
     },
     {
       "id": "음악_4",
