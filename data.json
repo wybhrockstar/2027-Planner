@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "rest",
+    "selectedCat": "lecture",
     "categories": [
       {
         "id": "blocked",
@@ -3593,7 +3593,7 @@
           "id": "mqeftla8zb1z",
           "day": "mon",
           "startMin": 1140,
-          "endMin": 1150,
+          "endMin": 1170,
           "categoryId": "blocked",
           "label": "이동",
           "showTime": true
@@ -3606,6 +3606,24 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
+        },
+        {
+          "id": "mqefwvdwa9t5",
+          "day": "mon",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "lecture",
+          "label": "인강 7",
+          "showTime": true
+        },
+        {
+          "id": "mqefx3ljhdh1",
+          "day": "mon",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "lecture",
+          "label": "인강 8",
+          "showTime": true
         }
       ],
       "2": [],
@@ -3616,5 +3634,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:52:26.376Z"
+  "lastModified": "2026-06-14T23:53:35.863Z"
 }
