@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "blocked",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
@@ -3597,6 +3597,15 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": true
+        },
+        {
+          "id": "mqefux5zzf4k",
+          "day": "mon",
+          "startMin": 1170,
+          "endMin": 1200,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3607,5 +3616,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:50:59.694Z"
+  "lastModified": "2026-06-14T23:52:26.376Z"
 }
