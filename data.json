@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": null,
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -3462,6 +3462,15 @@
           "categoryId": "lecture",
           "label": "",
           "showTime": true
+        },
+        {
+          "id": "mqefkv9nd25n",
+          "day": "mon",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3472,5 +3481,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:11:48.659Z"
+  "lastModified": "2026-06-14T23:44:05.197Z"
 }
