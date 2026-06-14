@@ -3543,6 +3543,33 @@
           "categoryId": "lecture",
           "label": "인강 3",
           "showTime": true
+        },
+        {
+          "id": "mqefqzvhiipf",
+          "day": "mon",
+          "startMin": 900,
+          "endMin": 930,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
+        },
+        {
+          "id": "mqefrqa9173h",
+          "day": "mon",
+          "startMin": 930,
+          "endMin": 990,
+          "categoryId": "lecture",
+          "label": "인강 4",
+          "showTime": true
+        },
+        {
+          "id": "mqefsff7u4l8",
+          "day": "mon",
+          "startMin": 990,
+          "endMin": 1050,
+          "categoryId": "lecture",
+          "label": "인강 5",
+          "showTime": true
         }
       ],
       "2": [],
@@ -3553,5 +3580,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:48:37.972Z"
+  "lastModified": "2026-06-14T23:49:57.907Z"
 }
