@@ -3305,7 +3305,7 @@
     },
     {
       "date": "2026-06-14",
-      "wakeTime": "",
+      "wakeTime": "09:00",
       "sleepTime": "",
       "studyMin": 0,
       "kcal": 0,
@@ -3463,5 +3463,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T00:00:27.513Z"
+  "lastModified": "2026-06-14T00:00:37.040Z"
 }
