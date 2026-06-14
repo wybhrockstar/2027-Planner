@@ -3471,6 +3471,15 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "mqeflp2l3p87",
+          "day": "mon",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3481,5 +3490,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:44:05.197Z"
+  "lastModified": "2026-06-14T23:44:43.822Z"
 }
