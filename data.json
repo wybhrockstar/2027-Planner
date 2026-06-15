@@ -4713,6 +4713,60 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
+        },
+        {
+          "id": "mqelcqtnlvuw",
+          "day": "sat",
+          "startMin": 1170,
+          "endMin": 1200,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
+        },
+        {
+          "id": "mqelcxx64tpr",
+          "day": "sat",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "lecture",
+          "label": "인강 8",
+          "showTime": true
+        },
+        {
+          "id": "mqeld0zt0mix",
+          "day": "sat",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "lecture",
+          "label": "인강 9",
+          "showTime": true
+        },
+        {
+          "id": "mqeld458z2pd",
+          "day": "sat",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "lecture",
+          "label": "인강 10",
+          "showTime": true
+        },
+        {
+          "id": "mqeldelzehr0",
+          "day": "sat",
+          "startMin": 1380,
+          "endMin": 1470,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
+        },
+        {
+          "id": "mqeldlo2iflf",
+          "day": "sat",
+          "startMin": 1470,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "2": [],
@@ -4723,5 +4777,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:25:37.425Z"
+  "lastModified": "2026-06-15T02:26:23.858Z"
 }
