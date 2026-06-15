@@ -3768,6 +3768,51 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
+        },
+        {
+          "id": "mqekfydqzvni",
+          "day": "wed",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
+        },
+        {
+          "id": "mqekgbywy0x6",
+          "day": "thu",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "mqekgkq06qqf",
+          "day": "fri",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
+        },
+        {
+          "id": "mqekgszcpee6",
+          "day": "sat",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "mqekh1hfj5y8",
+          "day": "sun",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3778,5 +3823,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:00:04.112Z"
+  "lastModified": "2026-06-15T02:01:04.708Z"
 }
