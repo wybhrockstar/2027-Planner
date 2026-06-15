@@ -3410,15 +3410,6 @@
     "termEvents": {
       "1": [
         {
-          "id": "mq6qv4v3c75b",
-          "day": "tue",
-          "startMin": 420,
-          "endMin": 1035,
-          "categoryId": "blocked",
-          "label": "ㄱㄴㄱ",
-          "showTime": true
-        },
-        {
           "id": "mq6r45ormj13",
           "day": "thu",
           "startMin": 990,
@@ -3641,13 +3632,13 @@
           "endMin": 1470,
           "categoryId": "rest",
           "label": "휴식",
-          "showTime": true
+          "showTime": false
         },
         {
           "id": "mqefyiylv5je",
           "day": "mon",
           "startMin": 1470,
-          "endMin": 1530,
+          "endMin": 1560,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
@@ -3661,5 +3652,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:54:42.430Z"
+  "lastModified": "2026-06-14T23:55:23.318Z"
 }
