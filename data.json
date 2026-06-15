@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "blocked",
+    "selectedCat": "lecture",
     "categories": [
       {
         "id": "blocked",
@@ -4398,6 +4398,69 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
+        },
+        {
+          "id": "mqel49yxwrv5",
+          "day": "sun",
+          "startMin": 1170,
+          "endMin": 1200,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
+        },
+        {
+          "id": "mqel4laigz49",
+          "day": "sun",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "lecture",
+          "label": "인강 7",
+          "showTime": true
+        },
+        {
+          "id": "mqel4pk4dkbp",
+          "day": "sun",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "lecture",
+          "label": "인강 8",
+          "showTime": true
+        },
+        {
+          "id": "mqel4tpfp4k0",
+          "day": "sun",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "lecture",
+          "label": "인강 9",
+          "showTime": true
+        },
+        {
+          "id": "mqel51w9692z",
+          "day": "sun",
+          "startMin": 1380,
+          "endMin": 1470,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
+        },
+        {
+          "id": "mqel5am1bq87",
+          "day": "sun",
+          "startMin": 1470,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        },
+        {
+          "id": "mqel5j3s0mgp",
+          "day": "thu",
+          "startMin": 630,
+          "endMin": 690,
+          "categoryId": "lecture",
+          "label": "인강 1",
+          "showTime": true
         }
       ],
       "2": [],
@@ -4408,5 +4471,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:18:57.020Z"
+  "lastModified": "2026-06-15T02:20:07.288Z"
 }
