@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "blocked",
+    "selectedCat": "lecture",
     "categories": [
       {
         "id": "blocked",
@@ -4029,6 +4029,15 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "mqeks7642pn1",
+          "day": "wed",
+          "startMin": 720,
+          "endMin": 780,
+          "categoryId": "lecture",
+          "label": "인강 1",
+          "showTime": true
         }
       ],
       "2": [],
@@ -4039,5 +4048,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:08:44.424Z"
+  "lastModified": "2026-06-15T02:09:45.292Z"
 }
