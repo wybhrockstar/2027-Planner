@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "blocked",
+    "selectedCat": null,
     "categories": [
       {
         "id": "blocked",
@@ -3649,8 +3649,8 @@
       "4": []
     },
     "displayMode": "range",
-    "textAlign": "center",
+    "textAlign": "left",
     "highlightAll": true
   },
-  "lastModified": "2026-06-14T23:55:23.318Z"
+  "lastModified": "2026-06-15T00:48:12.931Z"
 }
