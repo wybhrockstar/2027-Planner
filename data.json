@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "self",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -3840,6 +3840,33 @@
           "categoryId": "self",
           "label": "교육과정\n스터디",
           "showTime": true
+        },
+        {
+          "id": "mqekio17ffow",
+          "day": "tue",
+          "startMin": 600,
+          "endMin": 630,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
+        },
+        {
+          "id": "mqekivkdudok",
+          "day": "thu",
+          "startMin": 600,
+          "endMin": 630,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
+        },
+        {
+          "id": "mqekjfbvjf66",
+          "day": "sat",
+          "startMin": 600,
+          "endMin": 630,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3850,5 +3877,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:02:07.870Z"
+  "lastModified": "2026-06-15T02:03:30.572Z"
 }
