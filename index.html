@@ -1938,6 +1938,7 @@ function addStudyCheckItem() {
 
 function saveLog() {
   const td = logModalDate || recordToday();
+  const wake = document.getElementById('inp-wake').value;
   const slp = document.getElementById('inp-sleep').value;
   const studyMin = parseStudyMin(document.getElementById('inp-study').value);
   const kcal = parseInt(document.getElementById('inp-kcal').value)||0;
