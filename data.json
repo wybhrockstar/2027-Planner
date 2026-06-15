@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "self",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -4515,6 +4515,60 @@
           "categoryId": "rest",
           "label": "휴식",
           "showTime": false
+        },
+        {
+          "id": "mqel70q727gs",
+          "day": "thu",
+          "startMin": 990,
+          "endMin": 1050,
+          "categoryId": "lecture",
+          "label": "인강 6",
+          "showTime": true
+        },
+        {
+          "id": "mqel7a568fnz",
+          "day": "thu",
+          "startMin": 1050,
+          "endMin": 1110,
+          "categoryId": "lecture",
+          "label": "인강 7",
+          "showTime": true
+        },
+        {
+          "id": "mqel7j4ohunk",
+          "day": "thu",
+          "startMin": 1110,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "정리",
+          "showTime": false
+        },
+        {
+          "id": "mqel7qmwc4de",
+          "day": "thu",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
+        },
+        {
+          "id": "mqel7xadao7j",
+          "day": "thu",
+          "startMin": 1170,
+          "endMin": 1200,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
+        },
+        {
+          "id": "mqel8co8k8i2",
+          "day": "thu",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "blocked",
+          "label": "보컬\n트레이닝",
+          "showTime": false
         }
       ],
       "2": [],
@@ -4525,5 +4579,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:21:07.871Z"
+  "lastModified": "2026-06-15T02:22:18.920Z"
 }
