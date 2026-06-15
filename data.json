@@ -3622,7 +3622,7 @@
           "startMin": 360,
           "endMin": 480,
           "categoryId": "blocked",
-          "label": "잠",
+          "label": "운동",
           "showTime": false
         },
         {
@@ -3669,6 +3669,69 @@
           "categoryId": "blocked",
           "label": "운동",
           "showTime": false
+        },
+        {
+          "id": "mqekcxzu48ll",
+          "day": "thu",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
+        },
+        {
+          "id": "mqekd2ftpfd9",
+          "day": "fri",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
+        },
+        {
+          "id": "mqekd6b8bpf5",
+          "day": "sat",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
+        },
+        {
+          "id": "mqekdakyfovj",
+          "day": "sun",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
+        },
+        {
+          "id": "mqekdroahwng",
+          "day": "tue",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
+        },
+        {
+          "id": "mqekdzoassfn",
+          "day": "wed",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
+        },
+        {
+          "id": "mqeke678r4bq",
+          "day": "thu",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
         }
       ],
       "2": [],
@@ -3679,5 +3742,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T01:57:43.451Z"
+  "lastModified": "2026-06-15T01:58:50.853Z"
 }
