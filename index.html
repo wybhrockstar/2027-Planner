@@ -361,7 +361,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 .tt-row-bg.tt-six-hour{border-bottom:none}
 .tt-row-bg:hover{background:rgba(200,240,96,0.05)}
 .tt-events{position:absolute;inset:0;pointer-events:none}
-.tt-event{position:absolute;left:1px;right:1px;border-radius:4px;padding:3px 6px;font-weight:500;overflow:hidden;cursor:pointer;pointer-events:all;transition:filter .12s,box-shadow .12s;border:1px solid transparent;display:flex;flex-direction:column;line-height:1.25;z-index:5}
+.tt-event{position:absolute;left:1px;right:1px;border-radius:4px;padding:2px 2px;font-weight:500;overflow:hidden;cursor:pointer;pointer-events:all;transition:filter .12s,box-shadow .12s;border:1px solid transparent;display:flex;flex-direction:column;line-height:1.25;z-index:5}
 .tt-event:hover{filter:brightness(1.15);box-shadow:0 2px 6px rgba(0,0,0,.4)}
 .tt-event .ev-label{font-size:var(--ev-label-size);font-weight:500;line-height:1.4;word-break:break-all;overflow:hidden;white-space:pre-wrap;letter-spacing:-0.1em;padding-right:0.1em}
 .tt-event .ev-time{font-family:'JetBrains Mono',monospace;font-size:var(--ev-time-size);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;letter-spacing:-0.05em}
@@ -1351,6 +1351,15 @@ document.addEventListener('visibilitychange', () => {
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 function today() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+// '오늘 기록' 전용 날짜 — 하루의 기준을 05:30~익일 05:30(24+체계의 29:30)으로 적용
+// 오전 05:30 이전에는 전날 날짜로 취급 (새벽에 수면기록 입력 시 날짜가 바뀌지 않도록)
+function recordToday() {
+  const d = new Date();
+  if (d.getHours() < 5 || (d.getHours() === 5 && d.getMinutes() < 30)) {
+    d.setDate(d.getDate() - 1);
+  }
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
 function dateStr(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function dDay() {
   const now = new Date(); now.setHours(0,0,0,0);
@@ -1615,6 +1624,7 @@ let todaySubjFilter = null; // null = no subject selected (show only tabs, no li
 
 function renderToday() {
   const td = today();
+  const rtd = recordToday();
   const dd = dDay();
   const log = state.dailyLogs.find(l => l.date === td);
 
@@ -1677,11 +1687,13 @@ function renderToday() {
     }
   })();
 
-  // log area
+  // log area ('오늘 기록' — 05:30 기준 날짜 사용)
   const logArea = document.getElementById('today-log-area');
-  if (log) {
-    // 수면시간: 전날 취침 → 오늘 기상
-    const prevDt = new Date(); prevDt.setDate(prevDt.getDate()-1);
+  const recordLog = state.dailyLogs.find(l => l.date === rtd);
+  if (recordLog) {
+    const log = recordLog;
+    // 수면시간: 전날 취침 → 오늘 기상 (rtd 기준 전날)
+    const prevDt = new Date(rtd+'T00:00:00'); prevDt.setDate(prevDt.getDate()-1);
     const prevDateStr = `${prevDt.getFullYear()}-${String(prevDt.getMonth()+1).padStart(2,'0')}-${String(prevDt.getDate()).padStart(2,'0')}`;
     const prevLog = state.dailyLogs.find(l=>l.date===prevDateStr);
     const shVal = (prevLog && prevLog.sleepTime && log.wakeTime) ? sleepHoursFromPrev(prevLog.sleepTime, log.wakeTime) : null;
@@ -1763,7 +1775,7 @@ function renderToday() {
   // 기록 버튼 라벨 동적 업데이트
   const btnLog = document.getElementById('btn-open-log');
   if (btnLog) {
-    const hasLog = !!state.dailyLogs.find(l => l.date === td);
+    const hasLog = !!state.dailyLogs.find(l => l.date === rtd);
     btnLog.textContent = hasLog ? '✏️ 오늘 기록 수정' : '+ 오늘 기록 입력';
   }
 }
@@ -1850,7 +1862,7 @@ let studyCheckItems = [];
 function openLogModal(edit=false) {
   logModalDate = null; // 오늘 기준
   editingLog = edit;
-  const td = today();
+  const td = recordToday();
   const log = state.dailyLogs.find(l=>l.date===td);
   document.getElementById('modal-log-title').textContent = edit ? '오늘 기록 수정' : '오늘 기록 입력';
 
@@ -1925,8 +1937,7 @@ function addStudyCheckItem() {
 }
 
 function saveLog() {
-  const td = logModalDate || today();
-  const wake = document.getElementById('inp-wake').value;
+  const td = logModalDate || recordToday();
   const slp = document.getElementById('inp-sleep').value;
   const studyMin = parseStudyMin(document.getElementById('inp-study').value);
   const kcal = parseInt(document.getElementById('inp-kcal').value)||0;
@@ -1940,25 +1951,25 @@ function saveLog() {
   else state.dailyLogs.push(entry);
   saveState();
   closeModal('modal-log');
-  if (td === today()) renderToday();
+  if (td === recordToday()) renderToday();
   else renderPage(currentPage);
   toast('✓ 기록 저장됨');
 }
 
 function deleteLog() {
   if (!confirm('삭제하시겠습니까?')) return;
-  const td = logModalDate || today();
+  const td = logModalDate || recordToday();
   state.dailyLogs = state.dailyLogs.filter(l=>l.date!==td);
   saveState();
   closeModal('modal-log');
-  if (td === today()) renderToday();
+  if (td === recordToday()) renderToday();
   else renderPage(currentPage);
   toast('기록 삭제됨');
 }
 
 // Modal button bindings
 document.getElementById('btn-open-log').addEventListener('click', () => {
-  const td = today();
+  const td = recordToday();
   const log = state.dailyLogs.find(l => l.date === td);
   openLogModal(!!log);
 });
@@ -3844,10 +3855,12 @@ function ttBuildEventBlock(ev) {
   const alignStyle = ttState.textAlign === 'center'
     ? 'text-align:center;align-items:center;justify-content:center;'
     : 'align-items:flex-start;justify-content:flex-start;';
+  const durationMin = ev.endMin - ev.startMin;
+  const padStyle = durationMin < 60 ? 'padding:1px 2px;' : '';
   const rawLabel = ev.label || (cat ? cat.name : '');
   const safeLabel = rawLabel.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   return `<div class="tt-event" data-evid="${ev.id}"
-    style="top:${topPx}px;height:${hPx}px;background:${bg};border-color:${border};color:${textCol};text-shadow:${textShadow};${alignStyle}">
+    style="top:${topPx}px;height:${hPx}px;background:${bg};border-color:${border};color:${textCol};text-shadow:${textShadow};${alignStyle}${padStyle}">
     <span class="ev-label">${safeLabel}</span>
     ${timeStr ? `<span class="ev-time">${timeStr}</span>` : ''}
   </div>`;
