@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "rest",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -3813,6 +3813,33 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
+        },
+        {
+          "id": "mqekhn0udfwb",
+          "day": "wed",
+          "startMin": 600,
+          "endMin": 690,
+          "categoryId": "self",
+          "label": "교육과정\n스터디",
+          "showTime": true
+        },
+        {
+          "id": "mqeki150xx91",
+          "day": "fri",
+          "startMin": 600,
+          "endMin": 690,
+          "categoryId": "self",
+          "label": "교육과정\n스터디",
+          "showTime": true
+        },
+        {
+          "id": "mqekie7ybf72",
+          "day": "sun",
+          "startMin": 600,
+          "endMin": 690,
+          "categoryId": "self",
+          "label": "교육과정\n스터디",
+          "showTime": true
         }
       ],
       "2": [],
@@ -3823,5 +3850,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:01:04.708Z"
+  "lastModified": "2026-06-15T02:02:07.870Z"
 }
