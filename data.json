@@ -4569,6 +4569,51 @@
           "categoryId": "blocked",
           "label": "보컬\n트레이닝",
           "showTime": false
+        },
+        {
+          "id": "mqel8m2whkvv",
+          "day": "thu",
+          "startMin": 1260,
+          "endMin": 1290,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
+        },
+        {
+          "id": "mqel8v7r5y5l",
+          "day": "thu",
+          "startMin": 1290,
+          "endMin": 1350,
+          "categoryId": "lecture",
+          "label": "인강 8",
+          "showTime": true
+        },
+        {
+          "id": "mqel94vp83y1",
+          "day": "thu",
+          "startMin": 1350,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "자기반성",
+          "showTime": false
+        },
+        {
+          "id": "mqel9dbiljtz",
+          "day": "thu",
+          "startMin": 1380,
+          "endMin": 1470,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
+        },
+        {
+          "id": "mqel9wvgrq14",
+          "day": "thu",
+          "startMin": 1470,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "2": [],
@@ -4579,5 +4624,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:22:18.920Z"
+  "lastModified": "2026-06-15T02:23:31.756Z"
 }
