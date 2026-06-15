@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "blocked",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
@@ -3731,7 +3731,43 @@
           "endMin": 570,
           "categoryId": "blocked",
           "label": "샤워",
-          "showTime": true
+          "showTime": false
+        },
+        {
+          "id": "mqekehqqjrbc",
+          "day": "fri",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
+        },
+        {
+          "id": "mqekemxx3pzn",
+          "day": "sat",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
+        },
+        {
+          "id": "mqekfa65txkq",
+          "day": "sun",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
+        },
+        {
+          "id": "mqekfqq7zuk4",
+          "day": "tue",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3742,5 +3778,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T01:58:50.853Z"
+  "lastModified": "2026-06-15T02:00:04.112Z"
 }
