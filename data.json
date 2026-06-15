@@ -3384,7 +3384,7 @@
   },
   "timetable": {
     "activeTerm": 1,
-    "selectedCat": "lecture",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -3993,6 +3993,42 @@
           "categoryId": "lecture",
           "label": "인강 8",
           "showTime": true
+        },
+        {
+          "id": "mqekq0jfehfh",
+          "day": "tue",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "lecture",
+          "label": "인강 9",
+          "showTime": true
+        },
+        {
+          "id": "mqekqcpup19z",
+          "day": "tue",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "lecture",
+          "label": "인강 10",
+          "showTime": true
+        },
+        {
+          "id": "mqekqmtne72x",
+          "day": "tue",
+          "startMin": 1380,
+          "endMin": 1470,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
+        },
+        {
+          "id": "mqekqu6wpiwd",
+          "day": "tue",
+          "startMin": 1470,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "2": [],
@@ -4003,5 +4039,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:07:57.611Z"
+  "lastModified": "2026-06-15T02:08:44.424Z"
 }
