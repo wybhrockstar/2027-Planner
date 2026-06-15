@@ -3419,24 +3419,6 @@
           "showTime": true
         },
         {
-          "id": "mq6xyggv0t26",
-          "day": "thu",
-          "startMin": 540,
-          "endMin": 1355,
-          "categoryId": "self",
-          "label": "김재언은존",
-          "showTime": true
-        },
-        {
-          "id": "mq6y0d19122n",
-          "day": "fri",
-          "startMin": 600,
-          "endMin": 1225,
-          "categoryId": "lecture",
-          "label": "gf",
-          "showTime": true
-        },
-        {
           "id": "mq6y105n153w",
           "day": "sun",
           "startMin": 570,
@@ -3652,5 +3634,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T01:33:01.035Z"
+  "lastModified": "2026-06-15T01:36:55.856Z"
 }
