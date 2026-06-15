@@ -4236,6 +4236,51 @@
           "categoryId": "lecture",
           "label": "인강 6",
           "showTime": true
+        },
+        {
+          "id": "mqekxejvvm28",
+          "day": "fri",
+          "startMin": 1110,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "정리",
+          "showTime": true
+        },
+        {
+          "id": "mqekxpyh88r2",
+          "day": "fri",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
+        },
+        {
+          "id": "mqekxz2rydfu",
+          "day": "fri",
+          "startMin": 1170,
+          "endMin": 1200,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
+        },
+        {
+          "id": "mqeky68vjcud",
+          "day": "fri",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "lecture",
+          "label": "인강 7",
+          "showTime": true
+        },
+        {
+          "id": "mqekykmp5w73",
+          "day": "fri",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "lecture",
+          "label": "인강 8",
+          "showTime": true
         }
       ],
       "2": [],
@@ -4246,5 +4291,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T02:13:37.344Z"
+  "lastModified": "2026-06-15T02:14:42.674Z"
 }
