@@ -3606,6 +3606,69 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "mqekbhtdikgn",
+          "day": "wed",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        },
+        {
+          "id": "mqekbsgzhavv",
+          "day": "thu",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        },
+        {
+          "id": "mqekc22sxbt9",
+          "day": "fri",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        },
+        {
+          "id": "mqekc7fcz36d",
+          "day": "sat",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        },
+        {
+          "id": "mqekcfunsfya",
+          "day": "sun",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        },
+        {
+          "id": "mqekcldl7td8",
+          "day": "tue",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
+        },
+        {
+          "id": "mqekcq6z3kd5",
+          "day": "wed",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
         }
       ],
       "2": [],
@@ -3616,5 +3679,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T01:56:37.461Z"
+  "lastModified": "2026-06-15T01:57:43.451Z"
 }
