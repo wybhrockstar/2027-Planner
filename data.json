@@ -3324,10 +3324,10 @@
     {
       "date": "2026-06-16",
       "wakeTime": "08:29",
-      "sleepTime": "",
-      "studyMin": 0,
+      "sleepTime": "02:14",
+      "studyMin": 122,
       "kcal": 0,
-      "memo": "",
+      "memo": "내일부터 진짜 달라짐. 기대해",
       "studyResult": null
     }
   ],
@@ -4786,5 +4786,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-15T23:30:02.556Z"
+  "lastModified": "2026-06-16T17:15:09.083Z"
 }
