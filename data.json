@@ -3329,6 +3329,15 @@
       "kcal": 0,
       "memo": "내일부터 진짜 달라짐. 기대해",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-17",
+      "wakeTime": "08:39",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -4786,5 +4795,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-16T17:15:09.083Z"
+  "lastModified": "2026-06-16T23:39:38.116Z"
 }
