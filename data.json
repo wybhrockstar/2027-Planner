@@ -941,256 +941,6 @@
       "doneDate": null
     },
     {
-      "id": "체육_1",
-      "subject": "체육",
-      "num": "1강",
-      "title": "1강. OT, 학습과제 단계화 [50분]",
-      "minutes": 50,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_2",
-      "subject": "체육",
-      "num": "2강",
-      "title": "2강. 설명 ~ 학습단서 [54분]",
-      "minutes": 54,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_3",
-      "subject": "체육",
-      "num": "3강",
-      "title": "3강. 관찰 ~ 동기유발 [43분]",
-      "minutes": 43,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_4",
-      "subject": "체육",
-      "num": "4강",
-      "title": "4강. 평가 ~ 예방적 수업 관리 전략 [50분]",
-      "minutes": 50,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_5",
-      "subject": "체육",
-      "num": "5강",
-      "title": "5강. 비과제 행동 최소화 전략 ~ 체육 수업 모형 [37분]",
-      "minutes": 37,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_6",
-      "subject": "체육",
-      "num": "6강",
-      "title": "6강. 직접 교수 모형 ~ 개별화 수업 모형 [37분]",
-      "minutes": 37,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_7",
-      "subject": "체육",
-      "num": "7강",
-      "title": "7강. 협동 학습 모형 [48분]",
-      "minutes": 48,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_8",
-      "subject": "체육",
-      "num": "8강",
-      "title": "8강. 스포츠 교육 모형 ~ 탐구 수업 모형 [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_9",
-      "subject": "체육",
-      "num": "9강",
-      "title": "9강. 이해 중심 게임 수업 모형 [52분]",
-      "minutes": 52,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_10",
-      "subject": "체육",
-      "num": "10강",
-      "title": "10강. TPSR 모형 ~ 체육과 교육과정 모형 [86분]",
-      "minutes": 86,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_11",
-      "subject": "체육",
-      "num": "11강",
-      "title": "11강. 교육과정 1 [41분]",
-      "minutes": 41,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_12",
-      "subject": "체육",
-      "num": "12강",
-      "title": "12강. 교육과정 2 [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_13",
-      "subject": "체육",
-      "num": "13강",
-      "title": "13강. 교육과정 3 [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_14",
-      "subject": "체육",
-      "num": "14강",
-      "title": "14강. 교육과정 4 [20분]",
-      "minutes": 20,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_15",
-      "subject": "체육",
-      "num": "15강",
-      "title": "15강. 교육과정 5 [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_16",
-      "subject": "체육",
-      "num": "16강",
-      "title": "16강. 교육과정 6 [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_17",
-      "subject": "체육",
-      "num": "17강",
-      "title": "17강. 교육과정 7 [51분]",
-      "minutes": 51,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_18",
-      "subject": "체육",
-      "num": "18강",
-      "title": "18강. 교육과정 8 [35분]",
-      "minutes": 35,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_19",
-      "subject": "체육",
-      "num": "19강",
-      "title": "19강. 운동 3~4학년 (기본 체력운동 - 체력운동 관련 기본 움직임) [61분]",
-      "minutes": 61,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_20",
-      "subject": "체육",
-      "num": "20강",
-      "title": "20강. 운동 3~4학년 (기본 체력운동 - 체력운동 기능) [68분]",
-      "minutes": 68,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_21",
-      "subject": "체육",
-      "num": "21강",
-      "title": "21강. 운동 3~4학년 (건강 운동 및 생활 습관) [65분]",
-      "minutes": 65,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_22",
-      "subject": "체육",
-      "num": "22강",
-      "title": "22강. 운동 5~6학년 (건강체력 관련 운동) [62분]",
-      "minutes": 62,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_23",
-      "subject": "체육",
-      "num": "23강",
-      "title": "23강. 운동 5~6학년 (운동체력 관련 운동) [58분]",
-      "minutes": 58,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_24",
-      "subject": "체육",
-      "num": "24강",
-      "title": "24강. 운동 5~6학년 (성장 및 안전 활동) [75분]",
-      "minutes": 75,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_25",
-      "subject": "체육",
-      "num": "25강",
-      "title": "25강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임) [47분]",
-      "minutes": 47,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
       "id": "사회_1",
       "subject": "사회",
       "num": "1강",
@@ -1586,986 +1336,6 @@
       "num": "40강",
       "title": "40강. 5학년 2학기 각론 (4) [45분]",
       "minutes": 45,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_0",
-      "subject": "국어",
-      "num": "0강",
-      "title": "0강. 2027학년도 국어 OT [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_1",
-      "subject": "국어",
-      "num": "1강",
-      "title": "1강. 기초 문식성 (1) [76분]",
-      "minutes": 76,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_2",
-      "subject": "국어",
-      "num": "2강",
-      "title": "2강. 기초 문식성 (2) [22분]",
-      "minutes": 22,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_3",
-      "subject": "국어",
-      "num": "3강",
-      "title": "3강. 기초 문식성 (3) [25분]",
-      "minutes": 25,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_4",
-      "subject": "국어",
-      "num": "4강",
-      "title": "4강. 기초 문식성 (4) [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_5",
-      "subject": "국어",
-      "num": "5강",
-      "title": "5강. 기초 문식성 (5) [32분]",
-      "minutes": 32,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_6",
-      "subject": "국어",
-      "num": "6강",
-      "title": "6강. 기초 문식성 (6) [50분]",
-      "minutes": 50,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_7",
-      "subject": "국어",
-      "num": "7강",
-      "title": "7강. 기초 문식성 (7) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_8",
-      "subject": "국어",
-      "num": "8강",
-      "title": "8강. 기초 문식성 (8) [49분]",
-      "minutes": 49,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_9",
-      "subject": "국어",
-      "num": "9강",
-      "title": "9강. 문법 영역 (1) [53분]",
-      "minutes": 53,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_10",
-      "subject": "국어",
-      "num": "10강",
-      "title": "10강. 문법 영역 (2) [25분]",
-      "minutes": 25,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_11",
-      "subject": "국어",
-      "num": "11강",
-      "title": "11강. 문법 영역 (3) [52분]",
-      "minutes": 52,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_12",
-      "subject": "국어",
-      "num": "12강",
-      "title": "12강. 문법 영역 (4) [38분]",
-      "minutes": 38,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_13",
-      "subject": "국어",
-      "num": "13강",
-      "title": "13강. 문법 영역 (5) [70분]",
-      "minutes": 70,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_14",
-      "subject": "국어",
-      "num": "14강",
-      "title": "14강. 문법 영역 (6) [69분]",
-      "minutes": 69,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_15",
-      "subject": "국어",
-      "num": "15강",
-      "title": "15강. 읽기 영역 (1) [41분]",
-      "minutes": 41,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_16",
-      "subject": "국어",
-      "num": "16강",
-      "title": "16강. 읽기 영역 (2) [48분]",
-      "minutes": 48,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_17",
-      "subject": "국어",
-      "num": "17강",
-      "title": "17강. 읽기 영역 (3) [31분]",
-      "minutes": 31,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_18",
-      "subject": "국어",
-      "num": "18강",
-      "title": "18강. 읽기 영역 (4) [26분]",
-      "minutes": 26,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_19",
-      "subject": "국어",
-      "num": "19강",
-      "title": "19강. 읽기 영역 (5) [80분]",
-      "minutes": 80,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_20",
-      "subject": "국어",
-      "num": "20강",
-      "title": "20강. 읽기 영역 (6) [43분]",
-      "minutes": 43,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_21",
-      "subject": "국어",
-      "num": "21강",
-      "title": "21강. 읽기 영역 (7) [26분]",
-      "minutes": 26,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_22",
-      "subject": "국어",
-      "num": "22강",
-      "title": "22강. 읽기 영역 (8) [33분]",
-      "minutes": 33,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_23",
-      "subject": "국어",
-      "num": "23강",
-      "title": "23강. 읽기 영역 (9) [23분]",
-      "minutes": 23,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_24",
-      "subject": "국어",
-      "num": "24강",
-      "title": "24강. 수업 모형 [12분]",
-      "minutes": 12,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_25",
-      "subject": "국어",
-      "num": "25강",
-      "title": "25강. 쓰기 영역 (1) [66분]",
-      "minutes": 66,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_26",
-      "subject": "국어",
-      "num": "26강",
-      "title": "26강. 쓰기 영역 (2) [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_27",
-      "subject": "국어",
-      "num": "27강",
-      "title": "27강. 쓰기 영역 (3) [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_28",
-      "subject": "국어",
-      "num": "28강",
-      "title": "28강. 쓰기 영역 (4) [20분]",
-      "minutes": 20,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_29",
-      "subject": "국어",
-      "num": "29강",
-      "title": "29강. 쓰기 영역 (5) [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_30",
-      "subject": "국어",
-      "num": "30강",
-      "title": "30강. 쓰기 영역 (6) [34분]",
-      "minutes": 34,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_31",
-      "subject": "국어",
-      "num": "31강",
-      "title": "31강. 쓰기 영역 (7) [35분]",
-      "minutes": 35,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_32",
-      "subject": "국어",
-      "num": "32강",
-      "title": "32강. 쓰기 영역 (8) [36분]",
-      "minutes": 36,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_33",
-      "subject": "국어",
-      "num": "33강",
-      "title": "33강. 듣기·말하기 영역 (1) [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_34",
-      "subject": "국어",
-      "num": "34강",
-      "title": "34강. 듣기·말하기 영역 (2) [48분]",
-      "minutes": 48,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_35",
-      "subject": "국어",
-      "num": "35강",
-      "title": "35강. 듣기·말하기 영역 (3) [45분]",
-      "minutes": 45,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_36",
-      "subject": "국어",
-      "num": "36강",
-      "title": "36강. 듣기·말하기 영역 (4) [47분]",
-      "minutes": 47,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_37",
-      "subject": "국어",
-      "num": "37강",
-      "title": "37강. 듣기·말하기 영역 (5) [60분]",
-      "minutes": 60,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_38",
-      "subject": "국어",
-      "num": "38강",
-      "title": "38강. 듣기·말하기 영역 (6) [33분]",
-      "minutes": 33,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "국어_39",
-      "subject": "국어",
-      "num": "39강",
-      "title": "39강. 교수·학습 모형 [8분]",
-      "minutes": 8,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_1",
-      "subject": "통교",
-      "num": "1강",
-      "title": "1강. OT ~ 교육과정 (1) (바른 생활) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_2",
-      "subject": "통교",
-      "num": "2강",
-      "title": "2강. 교육과정 (2) (바른 생활) [40분]",
-      "minutes": 40,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_3",
-      "subject": "통교",
-      "num": "3강",
-      "title": "3강. 교육과정 (3) (바른 생활 ~ 슬기로운 생활) [62분]",
-      "minutes": 62,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_4",
-      "subject": "통교",
-      "num": "4강",
-      "title": "4강. 교육과정 (4) (즐거운 생활 ~ 지도서 부록) [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_5",
-      "subject": "통교",
-      "num": "5강",
-      "title": "5강. 교육과정 (5) (지도서 총론) [27분]",
-      "minutes": 27,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_0",
-      "subject": "수학",
-      "num": "0강",
-      "title": "0강. 2027학년도 수학 OT [33분]",
-      "minutes": 33,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_1",
-      "subject": "수학",
-      "num": "1강",
-      "title": "1강. 수학의 가치 ~ 수학적 사고 [70분]",
-      "minutes": 70,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_2",
-      "subject": "수학",
-      "num": "2강",
-      "title": "2강. 수학적 지식의 형태와 특성 [56분]",
-      "minutes": 56,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_3",
-      "subject": "수학",
-      "num": "3강",
-      "title": "3강. 수학 수업 모형 (1) [66분]",
-      "minutes": 66,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_4",
-      "subject": "수학",
-      "num": "4강",
-      "title": "4강. 수학 수업 모형 (2) [62분]",
-      "minutes": 62,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_5",
-      "subject": "수학",
-      "num": "5강",
-      "title": "5강. 수학 수업 모형 (3) [68분]",
-      "minutes": 68,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_6",
-      "subject": "수학",
-      "num": "6강",
-      "title": "6강. 수학 교육 과정 [71분]",
-      "minutes": 71,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_7",
-      "subject": "수학",
-      "num": "7강",
-      "title": "7강. 평면도형 (1) [52분]",
-      "minutes": 52,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_8",
-      "subject": "수학",
-      "num": "8강",
-      "title": "8강. 평면도형 (2) [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_9",
-      "subject": "수학",
-      "num": "9강",
-      "title": "9강. 평면도형 (3) [49분]",
-      "minutes": 49,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_10",
-      "subject": "수학",
-      "num": "10강",
-      "title": "10강. 평면도형 (4) [39분]",
-      "minutes": 39,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_11",
-      "subject": "수학",
-      "num": "11강",
-      "title": "11강. 평면도형 (5) [61분]",
-      "minutes": 61,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_12",
-      "subject": "수학",
-      "num": "12강",
-      "title": "12강. 평면도형 (6) [67분]",
-      "minutes": 67,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_13",
-      "subject": "수학",
-      "num": "13강",
-      "title": "13강. 평면도형 (7) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_14",
-      "subject": "수학",
-      "num": "14강",
-      "title": "14강. 평면도형 (8) [31분]",
-      "minutes": 31,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_15",
-      "subject": "수학",
-      "num": "15강",
-      "title": "15강. 평면도형 (9) [43분]",
-      "minutes": 43,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_16",
-      "subject": "수학",
-      "num": "16강",
-      "title": "16강. 평면도형 (10) [47분]",
-      "minutes": 47,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_17",
-      "subject": "수학",
-      "num": "17강",
-      "title": "17강. 입체도형 (1) [48분]",
-      "minutes": 48,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_18",
-      "subject": "수학",
-      "num": "18강",
-      "title": "18강. 입체도형 (2) [60분]",
-      "minutes": 60,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_19",
-      "subject": "수학",
-      "num": "19강",
-      "title": "19강. 입체도형 (3) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_20",
-      "subject": "수학",
-      "num": "20강",
-      "title": "20강. 입체도형 (4) [31분]",
-      "minutes": 31,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_21",
-      "subject": "수학",
-      "num": "21강",
-      "title": "21강. 기본 이론 - 디에네스 (개념학습 이론) [72분]",
-      "minutes": 72,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_22",
-      "subject": "수학",
-      "num": "22강",
-      "title": "22강. 반힐레 (1) [70분]",
-      "minutes": 70,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_23",
-      "subject": "수학",
-      "num": "23강",
-      "title": "23강. 반힐레 (2) [34분]",
-      "minutes": 34,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_24",
-      "subject": "수학",
-      "num": "24강",
-      "title": "24강. 측정 (1) [48분]",
-      "minutes": 48,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_25",
-      "subject": "수학",
-      "num": "25강",
-      "title": "25강. 측정 (2) [58분]",
-      "minutes": 58,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_26",
-      "subject": "수학",
-      "num": "26강",
-      "title": "26강. 측정 (3) [29분]",
-      "minutes": 29,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_27",
-      "subject": "수학",
-      "num": "27강",
-      "title": "27강. 측정 (4) [40분]",
-      "minutes": 40,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_28",
-      "subject": "수학",
-      "num": "28강",
-      "title": "28강. 측정 (5) [28분]",
-      "minutes": 28,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_29",
-      "subject": "수학",
-      "num": "29강",
-      "title": "29강. 측정 (6) [39분]",
-      "minutes": 39,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_30",
-      "subject": "수학",
-      "num": "30강",
-      "title": "30강. 측정 (7) [40분]",
-      "minutes": 40,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_31",
-      "subject": "수학",
-      "num": "31강",
-      "title": "31강. 측정 (8) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_32",
-      "subject": "수학",
-      "num": "32강",
-      "title": "32강. 측정 (9) [25분]",
-      "minutes": 25,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_33",
-      "subject": "수학",
-      "num": "33강",
-      "title": "33강. 측정 (10) [36분]",
-      "minutes": 36,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_34",
-      "subject": "수학",
-      "num": "34강",
-      "title": "34강. 측정 (11) [41분]",
-      "minutes": 41,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_35",
-      "subject": "수학",
-      "num": "35강",
-      "title": "35강. 수와 연산 (1) [60분]",
-      "minutes": 60,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_36",
-      "subject": "수학",
-      "num": "36강",
-      "title": "36강. 수와 연산 (2) [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_37",
-      "subject": "수학",
-      "num": "37강",
-      "title": "37강. 수와 연산 (3) [47분]",
-      "minutes": 47,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_38",
-      "subject": "수학",
-      "num": "38강",
-      "title": "38강. 수와 연산 (4) [63분]",
-      "minutes": 63,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_39",
-      "subject": "수학",
-      "num": "39강",
-      "title": "39강. 수와 연산 (5) [65분]",
-      "minutes": 65,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_40",
-      "subject": "수학",
-      "num": "40강",
-      "title": "40강. 수와 연산 (6) [21분]",
-      "minutes": 21,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_41",
-      "subject": "수학",
-      "num": "41강",
-      "title": "41강. 수와 연산 (7) [38분]",
-      "minutes": 38,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_42",
-      "subject": "수학",
-      "num": "42강",
-      "title": "42강. 수와 연산 (8) [46분]",
-      "minutes": 46,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_43",
-      "subject": "수학",
-      "num": "43강",
-      "title": "43강. 수와 연산 (9) [63분]",
-      "minutes": 63,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_44",
-      "subject": "수학",
-      "num": "44강",
-      "title": "44강. 수와 연산 (10) [52분]",
-      "minutes": 52,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_45",
-      "subject": "수학",
-      "num": "45강",
-      "title": "45강. 수와 연산 (11) [49분]",
-      "minutes": 49,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_46",
-      "subject": "수학",
-      "num": "46강",
-      "title": "46강. 수와 연산 (12) [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_47",
-      "subject": "수학",
-      "num": "47강",
-      "title": "47강. 수와 연산 (13) [19분]",
-      "minutes": 19,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_48",
-      "subject": "수학",
-      "num": "48강",
-      "title": "48강. 수와 연산 (14) [54분]",
-      "minutes": 54,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_49",
-      "subject": "수학",
-      "num": "49강",
-      "title": "49강. 수와 연산 (15) [38분]",
-      "minutes": 38,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_50",
-      "subject": "수학",
-      "num": "50강",
-      "title": "50강. 수와 연산 (16) [40분]",
-      "minutes": 40,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_51",
-      "subject": "수학",
-      "num": "51강",
-      "title": "51강. 수와 연산 (17) [30분]",
-      "minutes": 30,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "수학_52",
-      "subject": "수학",
-      "num": "52강",
-      "title": "52강. 수와 연산 (18) [40분]",
-      "minutes": 40,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -3216,6 +1986,1466 @@
       "num": "29강",
       "title": "29강. 과학과 사회 (1) 3학년 2학기 감염병과 건강한 생활 [12분]",
       "minutes": 12,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_1",
+      "subject": "체육",
+      "num": "1강",
+      "title": "1강. OT, 학습과제 단계화 [50분]",
+      "minutes": 50,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_2",
+      "subject": "체육",
+      "num": "2강",
+      "title": "2강. 설명 ~ 학습단서 [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_3",
+      "subject": "체육",
+      "num": "3강",
+      "title": "3강. 관찰 ~ 동기유발 [43분]",
+      "minutes": 43,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_4",
+      "subject": "체육",
+      "num": "4강",
+      "title": "4강. 평가 ~ 예방적 수업 관리 전략 [50분]",
+      "minutes": 50,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_5",
+      "subject": "체육",
+      "num": "5강",
+      "title": "5강. 비과제 행동 최소화 전략 ~ 체육 수업 모형 [37분]",
+      "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_6",
+      "subject": "체육",
+      "num": "6강",
+      "title": "6강. 직접 교수 모형 ~ 개별화 수업 모형 [37분]",
+      "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_7",
+      "subject": "체육",
+      "num": "7강",
+      "title": "7강. 협동 학습 모형 [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_8",
+      "subject": "체육",
+      "num": "8강",
+      "title": "8강. 스포츠 교육 모형 ~ 탐구 수업 모형 [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_9",
+      "subject": "체육",
+      "num": "9강",
+      "title": "9강. 이해 중심 게임 수업 모형 [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_10",
+      "subject": "체육",
+      "num": "10강",
+      "title": "10강. TPSR 모형 ~ 체육과 교육과정 모형 [86분]",
+      "minutes": 86,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_11",
+      "subject": "체육",
+      "num": "11강",
+      "title": "11강. 교육과정 1 [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_12",
+      "subject": "체육",
+      "num": "12강",
+      "title": "12강. 교육과정 2 [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_13",
+      "subject": "체육",
+      "num": "13강",
+      "title": "13강. 교육과정 3 [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_14",
+      "subject": "체육",
+      "num": "14강",
+      "title": "14강. 교육과정 4 [20분]",
+      "minutes": 20,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_15",
+      "subject": "체육",
+      "num": "15강",
+      "title": "15강. 교육과정 5 [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_16",
+      "subject": "체육",
+      "num": "16강",
+      "title": "16강. 교육과정 6 [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_17",
+      "subject": "체육",
+      "num": "17강",
+      "title": "17강. 교육과정 7 [51분]",
+      "minutes": 51,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_18",
+      "subject": "체육",
+      "num": "18강",
+      "title": "18강. 교육과정 8 [35분]",
+      "minutes": 35,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_19",
+      "subject": "체육",
+      "num": "19강",
+      "title": "19강. 운동 3~4학년 (기본 체력운동 - 체력운동 관련 기본 움직임) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_20",
+      "subject": "체육",
+      "num": "20강",
+      "title": "20강. 운동 3~4학년 (기본 체력운동 - 체력운동 기능) [68분]",
+      "minutes": 68,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_21",
+      "subject": "체육",
+      "num": "21강",
+      "title": "21강. 운동 3~4학년 (건강 운동 및 생활 습관) [65분]",
+      "minutes": 65,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_22",
+      "subject": "체육",
+      "num": "22강",
+      "title": "22강. 운동 5~6학년 (건강체력 관련 운동) [62분]",
+      "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_23",
+      "subject": "체육",
+      "num": "23강",
+      "title": "23강. 운동 5~6학년 (운동체력 관련 운동) [58분]",
+      "minutes": 58,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_24",
+      "subject": "체육",
+      "num": "24강",
+      "title": "24강. 운동 5~6학년 (성장 및 안전 활동) [75분]",
+      "minutes": 75,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_25",
+      "subject": "체육",
+      "num": "25강",
+      "title": "25강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_1_old",
+      "subject": "실과",
+      "num": "1강",
+      "title": "1강. OT ~ 성취기준 [01 - 01]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_2_old",
+      "subject": "실과",
+      "num": "2강",
+      "title": "2강. 성취기준 [01 - 02] ~ [01 - 04]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_3_old",
+      "subject": "실과",
+      "num": "3강",
+      "title": "3강. 성취기준 [01 - 05] ~ [01 - 07]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_4_old",
+      "subject": "실과",
+      "num": "4강",
+      "title": "4강. 성취기준 [02 - 01]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_5_old",
+      "subject": "실과",
+      "num": "5강",
+      "title": "5강. 성취기준 [02 - 02] ~ [02 - 04]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_6_old",
+      "subject": "실과",
+      "num": "6강",
+      "title": "6강. 성취기준 [02 - 05] ~ [02 - 06]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_7_old",
+      "subject": "실과",
+      "num": "7강",
+      "title": "7강. 성취기준 [02 - 07], [02 - 09]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_8_old",
+      "subject": "실과",
+      "num": "8강",
+      "title": "8강. 성취기준 [02 - 08] 1",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_9_old",
+      "subject": "실과",
+      "num": "9강",
+      "title": "9강. 성취기준 [02 - 08] 2",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_10_old",
+      "subject": "실과",
+      "num": "10강",
+      "title": "10강. 성취기준 [02 - 08] 3 ~ [02 - 11]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_11_old",
+      "subject": "실과",
+      "num": "11강",
+      "title": "11강. 성취기준 [03 - 01] ~ [03 - 02] 1",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_12_old",
+      "subject": "실과",
+      "num": "12강",
+      "title": "12강. 성취기준 [03 - 02] 2",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_13_old",
+      "subject": "실과",
+      "num": "13강",
+      "title": "13강. 성취기준 [03 - 03] ~ [03 - 05] 1",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_14_old",
+      "subject": "실과",
+      "num": "14강",
+      "title": "14강. 성취기준 [03 - 05] 2",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_15_old",
+      "subject": "실과",
+      "num": "15강",
+      "title": "15강. 성취기준 [04 - 01] ~ [04 - 05]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_16_old",
+      "subject": "실과",
+      "num": "16강",
+      "title": "16강. 성취기준 [04 - 07] ~ [04 - 08] 1",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_17_old",
+      "subject": "실과",
+      "num": "17강",
+      "title": "17강. 성취기준 [04 - 08] 2 ~ [04 - 11]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_18_old",
+      "subject": "실과",
+      "num": "18강",
+      "title": "18강. 성취기준 [05 - 01]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_19_old",
+      "subject": "실과",
+      "num": "19강",
+      "title": "19강. 성취기준 [05 - 02] ~ [05 - 03]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_20_old",
+      "subject": "실과",
+      "num": "20강",
+      "title": "20강. 성취기준 [05 - 04] ~ [05 - 05], [04 - 06]",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_21_old",
+      "subject": "실과",
+      "num": "21강",
+      "title": "21강. 실과 교과교육론1",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_22_old",
+      "subject": "실과",
+      "num": "22강",
+      "title": "22강. 실과 교과교육론2",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_23_old",
+      "subject": "실과",
+      "num": "23강",
+      "title": "23강. 실과 교육과정",
+      "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_1",
+      "subject": "통교",
+      "num": "1강",
+      "title": "1강. OT ~ 교육과정 (1) (바른 생활) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_2",
+      "subject": "통교",
+      "num": "2강",
+      "title": "2강. 교육과정 (2) (바른 생활) [40분]",
+      "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_3",
+      "subject": "통교",
+      "num": "3강",
+      "title": "3강. 교육과정 (3) (바른 생활 ~ 슬기로운 생활) [62분]",
+      "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_4",
+      "subject": "통교",
+      "num": "4강",
+      "title": "4강. 교육과정 (4) (즐거운 생활 ~ 지도서 부록) [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_5",
+      "subject": "통교",
+      "num": "5강",
+      "title": "5강. 교육과정 (5) (지도서 총론) [27분]",
+      "minutes": 27,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_0",
+      "subject": "국어",
+      "num": "0강",
+      "title": "0강. 2027학년도 국어 OT [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_1",
+      "subject": "국어",
+      "num": "1강",
+      "title": "1강. 기초 문식성 (1) [76분]",
+      "minutes": 76,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_2",
+      "subject": "국어",
+      "num": "2강",
+      "title": "2강. 기초 문식성 (2) [22분]",
+      "minutes": 22,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_3",
+      "subject": "국어",
+      "num": "3강",
+      "title": "3강. 기초 문식성 (3) [25분]",
+      "minutes": 25,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_4",
+      "subject": "국어",
+      "num": "4강",
+      "title": "4강. 기초 문식성 (4) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_5",
+      "subject": "국어",
+      "num": "5강",
+      "title": "5강. 기초 문식성 (5) [32분]",
+      "minutes": 32,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_6",
+      "subject": "국어",
+      "num": "6강",
+      "title": "6강. 기초 문식성 (6) [50분]",
+      "minutes": 50,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_7",
+      "subject": "국어",
+      "num": "7강",
+      "title": "7강. 기초 문식성 (7) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_8",
+      "subject": "국어",
+      "num": "8강",
+      "title": "8강. 기초 문식성 (8) [49분]",
+      "minutes": 49,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_9",
+      "subject": "국어",
+      "num": "9강",
+      "title": "9강. 문법 영역 (1) [53분]",
+      "minutes": 53,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_10",
+      "subject": "국어",
+      "num": "10강",
+      "title": "10강. 문법 영역 (2) [25분]",
+      "minutes": 25,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_11",
+      "subject": "국어",
+      "num": "11강",
+      "title": "11강. 문법 영역 (3) [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_12",
+      "subject": "국어",
+      "num": "12강",
+      "title": "12강. 문법 영역 (4) [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_13",
+      "subject": "국어",
+      "num": "13강",
+      "title": "13강. 문법 영역 (5) [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_14",
+      "subject": "국어",
+      "num": "14강",
+      "title": "14강. 문법 영역 (6) [69분]",
+      "minutes": 69,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_15",
+      "subject": "국어",
+      "num": "15강",
+      "title": "15강. 읽기 영역 (1) [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_16",
+      "subject": "국어",
+      "num": "16강",
+      "title": "16강. 읽기 영역 (2) [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_17",
+      "subject": "국어",
+      "num": "17강",
+      "title": "17강. 읽기 영역 (3) [31분]",
+      "minutes": 31,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_18",
+      "subject": "국어",
+      "num": "18강",
+      "title": "18강. 읽기 영역 (4) [26분]",
+      "minutes": 26,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_19",
+      "subject": "국어",
+      "num": "19강",
+      "title": "19강. 읽기 영역 (5) [80분]",
+      "minutes": 80,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_20",
+      "subject": "국어",
+      "num": "20강",
+      "title": "20강. 읽기 영역 (6) [43분]",
+      "minutes": 43,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_21",
+      "subject": "국어",
+      "num": "21강",
+      "title": "21강. 읽기 영역 (7) [26분]",
+      "minutes": 26,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_22",
+      "subject": "국어",
+      "num": "22강",
+      "title": "22강. 읽기 영역 (8) [33분]",
+      "minutes": 33,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_23",
+      "subject": "국어",
+      "num": "23강",
+      "title": "23강. 읽기 영역 (9) [23분]",
+      "minutes": 23,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_24",
+      "subject": "국어",
+      "num": "24강",
+      "title": "24강. 수업 모형 [12분]",
+      "minutes": 12,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_25",
+      "subject": "국어",
+      "num": "25강",
+      "title": "25강. 쓰기 영역 (1) [66분]",
+      "minutes": 66,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_26",
+      "subject": "국어",
+      "num": "26강",
+      "title": "26강. 쓰기 영역 (2) [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_27",
+      "subject": "국어",
+      "num": "27강",
+      "title": "27강. 쓰기 영역 (3) [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_28",
+      "subject": "국어",
+      "num": "28강",
+      "title": "28강. 쓰기 영역 (4) [20분]",
+      "minutes": 20,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_29",
+      "subject": "국어",
+      "num": "29강",
+      "title": "29강. 쓰기 영역 (5) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_30",
+      "subject": "국어",
+      "num": "30강",
+      "title": "30강. 쓰기 영역 (6) [34분]",
+      "minutes": 34,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_31",
+      "subject": "국어",
+      "num": "31강",
+      "title": "31강. 쓰기 영역 (7) [35분]",
+      "minutes": 35,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_32",
+      "subject": "국어",
+      "num": "32강",
+      "title": "32강. 쓰기 영역 (8) [36분]",
+      "minutes": 36,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_33",
+      "subject": "국어",
+      "num": "33강",
+      "title": "33강. 듣기·말하기 영역 (1) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_34",
+      "subject": "국어",
+      "num": "34강",
+      "title": "34강. 듣기·말하기 영역 (2) [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_35",
+      "subject": "국어",
+      "num": "35강",
+      "title": "35강. 듣기·말하기 영역 (3) [45분]",
+      "minutes": 45,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_36",
+      "subject": "국어",
+      "num": "36강",
+      "title": "36강. 듣기·말하기 영역 (4) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_37",
+      "subject": "국어",
+      "num": "37강",
+      "title": "37강. 듣기·말하기 영역 (5) [60분]",
+      "minutes": 60,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_38",
+      "subject": "국어",
+      "num": "38강",
+      "title": "38강. 듣기·말하기 영역 (6) [33분]",
+      "minutes": 33,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_39",
+      "subject": "국어",
+      "num": "39강",
+      "title": "39강. 교수·학습 모형 [8분]",
+      "minutes": 8,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_0",
+      "subject": "수학",
+      "num": "0강",
+      "title": "0강. 2027학년도 수학 OT [33분]",
+      "minutes": 33,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_1",
+      "subject": "수학",
+      "num": "1강",
+      "title": "1강. 수학의 가치 ~ 수학적 사고 [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_2",
+      "subject": "수학",
+      "num": "2강",
+      "title": "2강. 수학적 지식의 형태와 특성 [56분]",
+      "minutes": 56,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_3",
+      "subject": "수학",
+      "num": "3강",
+      "title": "3강. 수학 수업 모형 (1) [66분]",
+      "minutes": 66,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_4",
+      "subject": "수학",
+      "num": "4강",
+      "title": "4강. 수학 수업 모형 (2) [62분]",
+      "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_5",
+      "subject": "수학",
+      "num": "5강",
+      "title": "5강. 수학 수업 모형 (3) [68분]",
+      "minutes": 68,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_6",
+      "subject": "수학",
+      "num": "6강",
+      "title": "6강. 수학 교육 과정 [71분]",
+      "minutes": 71,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_7",
+      "subject": "수학",
+      "num": "7강",
+      "title": "7강. 평면도형 (1) [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_8",
+      "subject": "수학",
+      "num": "8강",
+      "title": "8강. 평면도형 (2) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_9",
+      "subject": "수학",
+      "num": "9강",
+      "title": "9강. 평면도형 (3) [49분]",
+      "minutes": 49,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_10",
+      "subject": "수학",
+      "num": "10강",
+      "title": "10강. 평면도형 (4) [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_11",
+      "subject": "수학",
+      "num": "11강",
+      "title": "11강. 평면도형 (5) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_12",
+      "subject": "수학",
+      "num": "12강",
+      "title": "12강. 평면도형 (6) [67분]",
+      "minutes": 67,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_13",
+      "subject": "수학",
+      "num": "13강",
+      "title": "13강. 평면도형 (7) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_14",
+      "subject": "수학",
+      "num": "14강",
+      "title": "14강. 평면도형 (8) [31분]",
+      "minutes": 31,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_15",
+      "subject": "수학",
+      "num": "15강",
+      "title": "15강. 평면도형 (9) [43분]",
+      "minutes": 43,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_16",
+      "subject": "수학",
+      "num": "16강",
+      "title": "16강. 평면도형 (10) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_17",
+      "subject": "수학",
+      "num": "17강",
+      "title": "17강. 입체도형 (1) [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_18",
+      "subject": "수학",
+      "num": "18강",
+      "title": "18강. 입체도형 (2) [60분]",
+      "minutes": 60,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_19",
+      "subject": "수학",
+      "num": "19강",
+      "title": "19강. 입체도형 (3) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_20",
+      "subject": "수학",
+      "num": "20강",
+      "title": "20강. 입체도형 (4) [31분]",
+      "minutes": 31,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_21",
+      "subject": "수학",
+      "num": "21강",
+      "title": "21강. 기본 이론 - 디에네스 (개념학습 이론) [72분]",
+      "minutes": 72,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_22",
+      "subject": "수학",
+      "num": "22강",
+      "title": "22강. 반힐레 (1) [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_23",
+      "subject": "수학",
+      "num": "23강",
+      "title": "23강. 반힐레 (2) [34분]",
+      "minutes": 34,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_24",
+      "subject": "수학",
+      "num": "24강",
+      "title": "24강. 측정 (1) [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_25",
+      "subject": "수학",
+      "num": "25강",
+      "title": "25강. 측정 (2) [58분]",
+      "minutes": 58,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_26",
+      "subject": "수학",
+      "num": "26강",
+      "title": "26강. 측정 (3) [29분]",
+      "minutes": 29,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_27",
+      "subject": "수학",
+      "num": "27강",
+      "title": "27강. 측정 (4) [40분]",
+      "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_28",
+      "subject": "수학",
+      "num": "28강",
+      "title": "28강. 측정 (5) [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_29",
+      "subject": "수학",
+      "num": "29강",
+      "title": "29강. 측정 (6) [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_30",
+      "subject": "수학",
+      "num": "30강",
+      "title": "30강. 측정 (7) [40분]",
+      "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_31",
+      "subject": "수학",
+      "num": "31강",
+      "title": "31강. 측정 (8) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_32",
+      "subject": "수학",
+      "num": "32강",
+      "title": "32강. 측정 (9) [25분]",
+      "minutes": 25,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_33",
+      "subject": "수학",
+      "num": "33강",
+      "title": "33강. 측정 (10) [36분]",
+      "minutes": 36,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_34",
+      "subject": "수학",
+      "num": "34강",
+      "title": "34강. 측정 (11) [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_35",
+      "subject": "수학",
+      "num": "35강",
+      "title": "35강. 수와 연산 (1) [60분]",
+      "minutes": 60,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_36",
+      "subject": "수학",
+      "num": "36강",
+      "title": "36강. 수와 연산 (2) [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_37",
+      "subject": "수학",
+      "num": "37강",
+      "title": "37강. 수와 연산 (3) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_38",
+      "subject": "수학",
+      "num": "38강",
+      "title": "38강. 수와 연산 (4) [63분]",
+      "minutes": 63,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_39",
+      "subject": "수학",
+      "num": "39강",
+      "title": "39강. 수와 연산 (5) [65분]",
+      "minutes": 65,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_40",
+      "subject": "수학",
+      "num": "40강",
+      "title": "40강. 수와 연산 (6) [21분]",
+      "minutes": 21,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_41",
+      "subject": "수학",
+      "num": "41강",
+      "title": "41강. 수와 연산 (7) [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_42",
+      "subject": "수학",
+      "num": "42강",
+      "title": "42강. 수와 연산 (8) [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_43",
+      "subject": "수학",
+      "num": "43강",
+      "title": "43강. 수와 연산 (9) [63분]",
+      "minutes": 63,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_44",
+      "subject": "수학",
+      "num": "44강",
+      "title": "44강. 수와 연산 (10) [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_45",
+      "subject": "수학",
+      "num": "45강",
+      "title": "45강. 수와 연산 (11) [49분]",
+      "minutes": 49,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_46",
+      "subject": "수학",
+      "num": "46강",
+      "title": "46강. 수와 연산 (12) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_47",
+      "subject": "수학",
+      "num": "47강",
+      "title": "47강. 수와 연산 (13) [19분]",
+      "minutes": 19,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_48",
+      "subject": "수학",
+      "num": "48강",
+      "title": "48강. 수와 연산 (14) [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_49",
+      "subject": "수학",
+      "num": "49강",
+      "title": "49강. 수와 연산 (15) [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_50",
+      "subject": "수학",
+      "num": "50강",
+      "title": "50강. 수와 연산 (16) [40분]",
+      "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_51",
+      "subject": "수학",
+      "num": "51강",
+      "title": "51강. 수와 연산 (17) [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_52",
+      "subject": "수학",
+      "num": "52강",
+      "title": "52강. 수와 연산 (18) [40분]",
+      "minutes": 40,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -4795,5 +5025,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-17T07:31:18.040Z"
+  "lastModified": "2026-06-17T07:46:45.464Z"
 }
