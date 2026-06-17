@@ -217,8 +217,8 @@
       "title": "1강. 3~4학년 제재곡 7개 지도서 (우리나라의 춤과 음악 ~ 동물의 사육제) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-17"
     },
     {
       "id": "음악 심화_2",
@@ -5025,5 +5025,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-17T07:47:07.349Z"
+  "lastModified": "2026-06-17T07:56:07.548Z"
 }
