@@ -3577,6 +3577,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-19",
+      "wakeTime": "08:04",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -5034,5 +5043,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-18T16:56:33.597Z"
+  "lastModified": "2026-06-18T23:04:16.148Z"
 }
