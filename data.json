@@ -311,6 +311,16 @@
       "doneDate": null
     },
     {
+      "id": "음악 심화_11",
+      "subject": "음악 심화",
+      "num": "11강",
+      "title": "11강. 5~6학년 제재곡 3~1개 지도서 [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "영어_0",
       "subject": "영어",
       "num": "0강",
@@ -1701,6 +1711,36 @@
       "doneDate": null
     },
     {
+      "id": "과학_36",
+      "subject": "과학",
+      "num": "36강",
+      "title": "36강. 과학과 사회 (2) 4학년 2학기 기후 변화와 우리 생활 [26분]",
+      "minutes": 26,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학_37",
+      "subject": "과학",
+      "num": "37강",
+      "title": "37강. 과학과 사회 (3) 5학년 2학기 자원과 에너지 [31분]",
+      "minutes": 31,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학_38",
+      "subject": "과학",
+      "num": "38강",
+      "title": "38강. 과학과 사회 (4) 6학년 2학기 과학과 나의 진로 [18분]",
+      "minutes": 18,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "과학 개념_1",
       "subject": "과학 개념",
       "num": "1강",
@@ -1991,6 +2031,36 @@
       "doneDate": null
     },
     {
+      "id": "과학 개념_30",
+      "subject": "과학 개념",
+      "num": "30강",
+      "title": "30강. 과학과 사회 (2) 4학년 2학기 기후 변화와 우리 생활 [11분]",
+      "minutes": 11,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_31",
+      "subject": "과학 개념",
+      "num": "31강",
+      "title": "31강. 과학과 사회 (3) 5학년 2학기 자원과 에너지 [15분]",
+      "minutes": 15,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학 개념_32",
+      "subject": "과학 개념",
+      "num": "32강",
+      "title": "32강. 과학과 사회 (4) 6학년 2학기 과학과 나의 진로 [8분]",
+      "minutes": 8,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "체육_1",
       "subject": "체육",
       "num": "1강",
@@ -2241,11 +2311,41 @@
       "doneDate": null
     },
     {
+      "id": "체육_26",
+      "subject": "체육",
+      "num": "26강",
+      "title": "26강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임 ~ 비이동 움직임) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_27",
+      "subject": "체육",
+      "num": "27강",
+      "title": "27강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 비이동 움직임) [24분]",
+      "minutes": 24,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "실과_1_old",
       "subject": "실과",
       "num": "1강",
       "title": "1강. OT ~ 성취기준 [01 - 01]",
       "minutes": 0,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_1",
+      "subject": "실과",
+      "num": "1강",
+      "title": "1강. OT ~ 성취기준 [01 - 02] [37분]",
+      "minutes": 37,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -3446,6 +3546,56 @@
       "num": "52강",
       "title": "52강. 수와 연산 (18) [40분]",
       "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_53",
+      "subject": "수학",
+      "num": "53강",
+      "title": "53강. 수와 연산 (19) [35분]",
+      "minutes": 35,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_54",
+      "subject": "수학",
+      "num": "54강",
+      "title": "54강. 수와 연산 (20) [34분]",
+      "minutes": 34,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_55",
+      "subject": "수학",
+      "num": "55강",
+      "title": "55강. 수와 연산 (21) [71분]",
+      "minutes": 71,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_56",
+      "subject": "수학",
+      "num": "56강",
+      "title": "56강. 수와 연산 (22) [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_57",
+      "subject": "수학",
+      "num": "57강",
+      "title": "57강. 수와 연산 (23) [37분]",
+      "minutes": 37,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -5055,5 +5205,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-19T04:07:38.839Z"
+  "lastModified": "2026-06-19T14:44:42.898Z"
 }
