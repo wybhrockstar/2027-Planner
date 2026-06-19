@@ -4121,7 +4121,7 @@ function applyNaming(raw){
   t = t.replace(/(\d)~(\d)/g, '$1\x00$2');
   t = t.replace(/(?<!\s)\(/g, ' (');
   t = t.replace(/\s*~\s*/g, ' ~ ');
-  t = t.replace(/(?<=[^\s])-(?=[^\s])/g, ' - ');
+  t = t.replace(/(?<=[^\s\d])-(?=[^\s])|(?<=[^\s])-(?=[^\s\d])/g, ' - ');
   t = t.replaceAll('\x00', '~');
   return t.replace(/  +/g, ' ').trim();
 }
