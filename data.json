@@ -3608,7 +3608,14 @@
         "done": false
       }
     ],
-    "2026-06-10": []
+    "2026-06-10": [],
+    "2026-06-19": [
+      {
+        "id": "mqkeq9ni",
+        "text": "사회 1~10",
+        "done": false
+      }
+    ]
   },
   "examScores": [],
   "termTodos": {
@@ -5043,5 +5050,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-18T23:04:16.148Z"
+  "lastModified": "2026-06-19T04:06:54.558Z"
 }
