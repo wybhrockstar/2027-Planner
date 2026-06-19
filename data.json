@@ -3583,7 +3583,7 @@
       "wakeTime": "08:04",
       "sleepTime": "",
       "studyMin": 0,
-      "kcal": 0,
+      "kcal": 200,
       "memo": "",
       "studyResult": null
     }
@@ -3613,6 +3613,11 @@
       {
         "id": "mqkeq9ni",
         "text": "사회 1~10",
+        "done": false
+      },
+      {
+        "id": "mqkeqyyw",
+        "text": "순공 7h",
         "done": false
       }
     ]
@@ -5050,5 +5055,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-19T04:06:54.558Z"
+  "lastModified": "2026-06-19T04:07:38.839Z"
 }
