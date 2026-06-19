@@ -2331,6 +2331,16 @@
       "doneDate": null
     },
     {
+      "id": "실과_1",
+      "subject": "실과",
+      "num": "1강",
+      "title": "1강. OT ~ 성취기준 [01-02] [37분]",
+      "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "통교_1",
       "subject": "통교",
       "num": "1강",
@@ -4965,5 +4975,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-19T14:44:42.898Z"
+  "lastModified": "2026-06-19T14:59:10.989Z"
 }
