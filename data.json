@@ -3424,7 +3424,7 @@
       "studyMin": 0,
       "kcal": 100,
       "memo": "낝ㆍㄷㅈ됨",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-06-11",
@@ -3456,7 +3456,7 @@
     {
       "date": "2026-06-14",
       "wakeTime": "09:00",
-      "sleepTime": "",
+      "sleepTime": "02:10",
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
@@ -3502,10 +3502,10 @@
       "date": "2026-06-19",
       "wakeTime": "08:04",
       "sleepTime": "02:30",
-      "studyMin": 0,
+      "studyMin": 103,
       "kcal": 200,
       "memo": "의지박약한 새끼",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-06-20",
@@ -4984,5 +4984,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-20T01:08:45.261Z"
+  "lastModified": "2026-06-20T01:10:13.263Z"
 }
