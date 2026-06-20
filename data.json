@@ -27,8 +27,8 @@
       "title": "3강. 2022개정 창의적 체험활동 교육과정 [37분]",
       "minutes": 37,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-09"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_1",
@@ -37,8 +37,8 @@
       "title": "1강. OT [27분]",
       "minutes": 27,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_2",
@@ -47,8 +47,8 @@
       "title": "2강. 전통음악 (장구) [19분]",
       "minutes": 19,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_3",
@@ -57,8 +57,8 @@
       "title": "3강. 전통음악 (장단 ~ 정간보) [43분]",
       "minutes": 43,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_4",
@@ -67,8 +67,8 @@
       "title": "4강. 전통음악 (말붙임새 ~ 토리) [43분]",
       "minutes": 43,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_5",
@@ -77,8 +77,8 @@
       "title": "5강. 전통음악 (토리 분석) [43분]",
       "minutes": 43,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_6",
@@ -87,8 +87,8 @@
       "title": "6강. 전통음악 (장단 구분법), 서양음악 (음표와 쉼표 ~ 음이름과 계이름 익히기) [42분]",
       "minutes": 42,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_7",
@@ -97,8 +97,8 @@
       "title": "7강. 서양음악 (이동도법 계이름과 고정도법 계이름의 비교 ~ 조표와 임시표) [62분]",
       "minutes": 62,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_8",
@@ -107,8 +107,8 @@
       "title": "8강. 서양음악 (악곡의 구조와 형식 ~ 34박자와 68박자 구별하기) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_9",
@@ -117,8 +117,8 @@
       "title": "9강. 서양음악 (당김음의 여러 형태 ~ 화음) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_10",
@@ -127,8 +127,8 @@
       "title": "10강. 서양음악 (돌림 노래 ~ 바장조와 라단조의 주요 3화음 비교) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-10"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악_11",
@@ -217,8 +217,8 @@
       "title": "1강. 3~4학년 제재곡 7개 지도서 (우리나라의 춤과 음악 ~ 동물의 사육제) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-17"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "음악 심화_2",
@@ -327,8 +327,8 @@
       "title": "0강. 영어 OT [14분]",
       "minutes": 14,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_1",
@@ -337,8 +337,8 @@
       "title": "1강. 언어 습득 이론 (모국어 습득 이론 ~ Five Hypotheses) [83분]",
       "minutes": 83,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_2",
@@ -347,8 +347,8 @@
       "title": "2강. 언어 습득 이론 (Noticing Hypothesis ~ Interaction Hypothesis) [65분]",
       "minutes": 65,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_3",
@@ -357,8 +357,8 @@
       "title": "3강. 언어 습득 이론 (Sociocultural Theory) [35분]",
       "minutes": 35,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_4",
@@ -367,8 +367,8 @@
       "title": "4강. 영어 교수법 (GTM - ALM) [47분]",
       "minutes": 47,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_5",
@@ -377,8 +377,8 @@
       "title": "5강. 영어 교수법 (TPR ~ NA) [59분]",
       "minutes": 59,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_6",
@@ -387,8 +387,8 @@
       "title": "6강. 영어 교수법 (CLT) [82분]",
       "minutes": 82,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_7",
@@ -397,8 +397,8 @@
       "title": "7강. 영어 교수법 (TBLT ~ WLA) [67분]",
       "minutes": 67,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_8",
@@ -407,8 +407,8 @@
       "title": "8강. 학습자 변인 (초등 학습자의 특성 ~ 학습 전략) [52분]",
       "minutes": 52,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_9",
@@ -417,8 +417,8 @@
       "title": "9강. 학습자 변인 (의사소통 전략 ~ 정의적 요인) [42분]",
       "minutes": 42,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_10",
@@ -427,8 +427,8 @@
       "title": "10강. 기능별 언어지도 (공통) [46분]",
       "minutes": 46,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_11",
@@ -437,8 +437,8 @@
       "title": "11강. 기능별 언어지도 (듣기) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_12",
@@ -447,8 +447,8 @@
       "title": "12강. 기능별 언어지도 (읽기의 이해 과정 ~ 읽기의 유형) [72분]",
       "minutes": 72,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_13",
@@ -457,8 +457,8 @@
       "title": "13강. 기능별 언어지도 (음철법 ~ 일견 어휘) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_14",
@@ -467,8 +467,8 @@
       "title": "14강. 기능별 언어지도 (말하기의 특성 ~ PPP) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_15",
@@ -477,8 +477,8 @@
       "title": "15강. 기능별 언어지도 (중간 언어 ~ 오류 처리 유형) [65분]",
       "minutes": 65,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_16",
@@ -487,8 +487,8 @@
       "title": "16강. 기능별 언어지도 (쓰기) [42분]",
       "minutes": 42,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_17",
@@ -497,8 +497,8 @@
       "title": "17강. 요소별 언어지도 (발음 지도 ~ 어휘 지도) [59분]",
       "minutes": 59,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_18",
@@ -507,8 +507,8 @@
       "title": "18강. 요소별 언어지도 (문법 지도 ~ 문화 지도) [38분]",
       "minutes": 38,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-20"
     },
     {
       "id": "영어_19",
@@ -1747,8 +1747,8 @@
       "title": "1강. 물질 (1) 3학년 2학기 물체와 물질 [30분]",
       "minutes": 30,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-09"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "과학 개념_2",
@@ -4984,5 +4984,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-20T09:51:01.209Z"
+  "lastModified": "2026-06-20T09:51:43.274Z"
 }
