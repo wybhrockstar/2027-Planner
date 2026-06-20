@@ -3379,7 +3379,7 @@
       "studyMin": 420,
       "kcal": 300,
       "memo": "생각보다 코딩이 너무 힘듦..",
-      "studyResult": "O"
+      "studyResult": "△"
     },
     {
       "date": "2026-06-07",
@@ -3442,7 +3442,7 @@
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-06-13",
@@ -3460,7 +3460,7 @@
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-06-15",
@@ -3469,7 +3469,7 @@
       "studyMin": 0,
       "kcal": 200,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-06-16",
@@ -4984,5 +4984,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-20T01:10:13.263Z"
+  "lastModified": "2026-06-20T01:10:47.759Z"
 }
