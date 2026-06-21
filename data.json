@@ -3519,7 +3519,7 @@
     {
       "date": "2026-06-21",
       "wakeTime": "09:15",
-      "sleepTime": "02:00",
+      "sleepTime": "02:11",
       "studyMin": 53,
       "kcal": 0,
       "memo": "미친놈인가",
@@ -4993,5 +4993,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-21T16:19:59.356Z"
+  "lastModified": "2026-06-21T17:11:44.918Z"
 }
