@@ -1208,7 +1208,7 @@
       "minutes": 44,
       "term": 1,
       "done": true,
-      "doneDate": "2026-06-23"
+      "doneDate": "2026-06-22"
     },
     {
       "id": "사회_27",
@@ -1218,7 +1218,7 @@
       "minutes": 93,
       "term": 1,
       "done": true,
-      "doneDate": "2026-06-23"
+      "doneDate": "2026-06-22"
     },
     {
       "id": "사회_28",
@@ -1227,8 +1227,8 @@
       "title": "28강. 5학년 1학기 각론 (6) ~ 6학년 1학기 각론 (1) [63분]",
       "minutes": 63,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-22"
     },
     {
       "id": "사회_29",
@@ -5026,5 +5026,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T15:13:41.528Z"
+  "lastModified": "2026-06-22T15:15:12.598Z"
 }
