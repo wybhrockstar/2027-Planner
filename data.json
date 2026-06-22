@@ -3524,6 +3524,15 @@
       "kcal": 0,
       "memo": "미친놈인가",
       "studyResult": "△"
+    },
+    {
+      "date": "2026-06-22",
+      "wakeTime": "09:15",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 100,
+      "memo": "",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -3575,7 +3584,7 @@
       {
         "id": "mqpcutxb",
         "text": "순공 7h",
-        "done": false
+        "done": true
       },
       {
         "id": "mqpcv324",
@@ -5017,5 +5026,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T15:13:30.940Z"
+  "lastModified": "2026-06-22T15:13:41.528Z"
 }
