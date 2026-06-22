@@ -3528,7 +3528,7 @@
     {
       "date": "2026-06-22",
       "wakeTime": "09:15",
-      "sleepTime": "",
+      "sleepTime": "03:35",
       "studyMin": 612,
       "kcal": 100,
       "memo": "아 진짜 빡세네",
@@ -5026,5 +5026,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T16:14:22.472Z"
+  "lastModified": "2026-06-22T18:36:00.943Z"
 }
