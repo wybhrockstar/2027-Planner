@@ -1197,8 +1197,8 @@
       "title": "25강. 5학년 1학기 각론 (3) [54분]",
       "minutes": 54,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-22"
     },
     {
       "id": "사회_26",
@@ -5005,5 +5005,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T08:51:24.527Z"
+  "lastModified": "2026-06-22T10:15:48.847Z"
 }
