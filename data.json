@@ -3582,11 +3582,6 @@
     ],
     "2026-06-23": [
       {
-        "id": "mqpcutxb",
-        "text": "순공 7h",
-        "done": true
-      },
-      {
         "id": "mqpcv324",
         "text": "사회 23~32",
         "done": false
@@ -5026,5 +5021,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T18:36:00.943Z"
+  "lastModified": "2026-06-22T23:48:57.680Z"
 }
