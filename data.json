@@ -1217,8 +1217,8 @@
       "title": "27강. 5학년 1학기 각론 (5) [93분]",
       "minutes": 93,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-23"
     },
     {
       "id": "사회_28",
@@ -3570,6 +3570,18 @@
         "text": "사회 23~31강, 32강 일부",
         "done": false
       }
+    ],
+    "2026-06-23": [
+      {
+        "id": "mqpcutxb",
+        "text": "순공 7h",
+        "done": false
+      },
+      {
+        "id": "mqpcv324",
+        "text": "사회 23~32",
+        "done": false
+      }
     ]
   },
   "examScores": [],
@@ -5005,5 +5017,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T15:12:43.162Z"
+  "lastModified": "2026-06-22T15:13:30.940Z"
 }
