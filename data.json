@@ -1177,8 +1177,8 @@
       "title": "23강. 5학년 1학기 각론 (1) [64분]",
       "minutes": 64,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-22"
     },
     {
       "id": "사회_24",
@@ -1187,8 +1187,8 @@
       "title": "24강. 5학년 1학기 각론 (2) [44분]",
       "minutes": 44,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-22"
     },
     {
       "id": "사회_25",
@@ -5005,5 +5005,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T03:45:02.204Z"
+  "lastModified": "2026-06-22T08:51:24.527Z"
 }
