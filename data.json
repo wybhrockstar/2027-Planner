@@ -3558,6 +3558,13 @@
         "text": "순공 7h",
         "done": false
       }
+    ],
+    "2026-06-22": [
+      {
+        "id": "mqoo6upr",
+        "text": "순공 7시간",
+        "done": false
+      }
     ]
   },
   "examScores": [],
@@ -4993,5 +5000,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-21T17:11:44.918Z"
+  "lastModified": "2026-06-22T03:42:49.600Z"
 }
