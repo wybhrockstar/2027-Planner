@@ -3564,6 +3564,11 @@
         "id": "mqoo6upr",
         "text": "순공 7시간",
         "done": false
+      },
+      {
+        "id": "mqoo9p18",
+        "text": "사회 23~31강, 32강 일부",
+        "done": false
       }
     ]
   },
@@ -5000,5 +5005,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T03:42:49.600Z"
+  "lastModified": "2026-06-22T03:45:02.204Z"
 }
