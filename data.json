@@ -1207,8 +1207,8 @@
       "title": "26강. 5학년 1학기 각론 (4) [44분]",
       "minutes": 44,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-23"
     },
     {
       "id": "사회_27",
@@ -5005,5 +5005,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T10:15:48.847Z"
+  "lastModified": "2026-06-22T15:12:43.162Z"
 }
