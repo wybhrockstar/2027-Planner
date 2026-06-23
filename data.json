@@ -3457,7 +3457,7 @@
       "date": "2026-06-14",
       "wakeTime": "09:00",
       "sleepTime": "02:10",
-      "studyMin": 0,
+      "studyMin": 83,
       "kcal": 0,
       "memo": "",
       "studyResult": "△"
@@ -5088,5 +5088,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T02:37:22.128Z"
+  "lastModified": "2026-06-23T02:37:30.109Z"
 }
