@@ -3551,6 +3551,33 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-03",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": "△"
+    },
+    {
+      "date": "2026-06-04",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
+    },
+    {
+      "date": "2026-06-05",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -3599,11 +3626,6 @@
       }
     ],
     "2026-06-23": [
-      {
-        "id": "mqpcv324",
-        "text": "사회 28~37",
-        "done": false
-      },
       {
         "id": "mqpx0lbns8fgvqahqe",
         "text": "순공 7시간",
@@ -5058,5 +5080,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T01:00:50.980Z"
+  "lastModified": "2026-06-23T01:08:16.094Z"
 }
