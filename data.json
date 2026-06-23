@@ -3421,7 +3421,7 @@
       "date": "2026-06-10",
       "wakeTime": "08:43",
       "sleepTime": "03:05",
-      "studyMin": 0,
+      "studyMin": 72,
       "kcal": 100,
       "memo": "난 ㅈ됨",
       "studyResult": "△"
@@ -5088,5 +5088,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T02:36:20.586Z"
+  "lastModified": "2026-06-23T02:36:49.252Z"
 }
