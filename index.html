@@ -1315,6 +1315,7 @@ async function autoLoadFromGithub() {
       return true;
     }
     applyImportedState(json);
+    updateSaveStatusDot('saved');
     return true;
   } catch(e) { return false; }
 }
