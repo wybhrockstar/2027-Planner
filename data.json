@@ -3585,7 +3585,7 @@
       "sleepTime": "",
       "studyMin": 360,
       "kcal": 0,
-      "memo": "",
+      "memo": "d",
       "studyResult": null
     }
   ],
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T04:47:59.995Z"
+  "lastModified": "2026-06-23T04:48:15.608Z"
 }
