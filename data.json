@@ -3635,7 +3635,7 @@
       {
         "id": "mqq91neq",
         "text": "14, 37강",
-        "done": false
+        "done": true
       },
       {
         "id": "mqq92bwd",
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T15:14:20.378Z"
+  "lastModified": "2026-06-23T15:14:30.105Z"
 }
