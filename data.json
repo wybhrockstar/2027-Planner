@@ -3627,13 +3627,13 @@
     ],
     "2026-06-23": [
       {
-        "id": "mqpzgkljqrtd2d8a6pn",
+        "id": "mqpzi8qwg622kk2xwwi",
         "text": "순공 7시간",
         "done": false,
         "_carriedFrom": "mqoo6upr"
       },
       {
-        "id": "mqpzi71j12mcixxddiar",
+        "id": "mqpzia2ufy0w9s95ju",
         "text": "사회 23~31강, 32강 일부",
         "done": false,
         "_carriedFrom": "mqoo9p18"
@@ -5080,5 +5080,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T01:47:20.743Z"
+  "lastModified": "2026-06-23T01:47:24.678Z"
 }
