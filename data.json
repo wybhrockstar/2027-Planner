@@ -7,8 +7,8 @@
       "title": "1강. 2022개정 교육과정 총론 (1) [68분]",
       "minutes": 68,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-23"
     },
     {
       "id": "총창_2",
@@ -5088,5 +5088,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T03:08:16.746Z"
+  "lastModified": "2026-06-23T03:16:10.140Z"
 }
