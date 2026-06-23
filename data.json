@@ -3628,7 +3628,7 @@
     "2026-06-23": [
       {
         "id": "mqpx0lbns8fgvqahqe",
-        "text": "순공 7시간",
+        "text": "순공 7h",
         "done": false,
         "_carriedFrom": "mqoo6upr"
       },
@@ -5080,5 +5080,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T01:08:16.094Z"
+  "lastModified": "2026-06-23T01:44:06.468Z"
 }
