@@ -3627,30 +3627,19 @@
     ],
     "2026-06-23": [
       {
-        "id": "mqpzia2ufy0w9s95ju",
-        "text": "사회 23~31강, 32강 일부",
-        "done": false,
-        "_carriedFrom": "mqoo9p18"
-      },
-      {
         "id": "mqpzmvrcmfs0oa1m7o",
         "text": "순공 7시간",
         "done": false,
         "_carriedFrom": "mqoo6upr"
       },
       {
-        "id": "mqq080ql",
-        "text": "d",
-        "done": false
-      },
-      {
-        "id": "mqq0820f",
+        "id": "mqq07q5j",
         "text": "f",
         "done": false
       },
       {
-        "id": "mqq0844m",
-        "text": "r",
+        "id": "mqq07rmh",
+        "text": "f",
         "done": false
       }
     ],
@@ -3662,7 +3651,9 @@
       }
     ]
   },
-  "dismissedTodoIds": [],
+  "dismissedTodoIds": [
+    "mqoo9p18"
+  ],
   "examScores": [],
   "termTodos": {
     "1": [
@@ -5096,5 +5087,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T02:07:30.022Z"
+  "lastModified": "2026-06-23T02:08:39.047Z"
 }
