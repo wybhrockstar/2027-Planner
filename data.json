@@ -3594,6 +3594,18 @@
         "id": "mqpcv324",
         "text": "사회 28~37",
         "done": false
+      },
+      {
+        "id": "mqpx0lbns8fgvqahqe",
+        "text": "순공 7시간",
+        "done": false,
+        "_carriedFrom": "mqoo6upr"
+      },
+      {
+        "id": "mqpx0lbne6ca8lchhz5",
+        "text": "사회 23~31강, 32강 일부",
+        "done": false,
+        "_carriedFrom": "mqoo9p18"
       }
     ],
     "2026-06-17": [
@@ -5037,5 +5049,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T00:22:47.462Z"
+  "lastModified": "2026-06-23T00:37:40.211Z"
 }
