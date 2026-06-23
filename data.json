@@ -3376,7 +3376,7 @@
       "date": "2026-06-08",
       "wakeTime": "11:19",
       "sleepTime": "02:22",
-      "studyMin": 420,
+      "studyMin": 64,
       "kcal": 300,
       "memo": "생각보다 코딩이 너무 힘듦..",
       "studyResult": "△"
@@ -5088,5 +5088,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T02:36:05.170Z"
+  "lastModified": "2026-06-23T02:36:20.586Z"
 }
