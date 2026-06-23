@@ -3495,7 +3495,7 @@
       "sleepTime": "01:56",
       "studyMin": 227,
       "kcal": 0,
-      "memo": "",
+      "memo": "tt",
       "studyResult": null
     },
     {
@@ -5088,5 +5088,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T02:38:23.510Z"
+  "lastModified": "2026-06-23T03:08:16.746Z"
 }
