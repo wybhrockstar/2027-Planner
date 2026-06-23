@@ -3633,11 +3633,6 @@
         "_carriedFrom": "mqoo6upr"
       },
       {
-        "id": "mqq07rmh",
-        "text": "f",
-        "done": false
-      },
-      {
         "id": "mqq0nuv8",
         "text": "1119 2",
         "done": false
@@ -3653,7 +3648,8 @@
   },
   "dismissedTodoIds": [
     "mqoo9p18",
-    "mqq07q5j"
+    "mqq07q5j",
+    "mqq07rmh"
   ],
   "examScores": [],
   "termTodos": {
@@ -5089,5 +5085,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T03:54:46.260Z"
+  "lastModified": "2026-06-23T03:56:41.316Z"
 }
