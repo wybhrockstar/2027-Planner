@@ -3631,11 +3631,6 @@
         "text": "순공 7시간",
         "done": false,
         "_carriedFrom": "mqoo6upr"
-      },
-      {
-        "id": "mqq4eygi",
-        "text": "g",
-        "done": false
       }
     ],
     "2026-06-17": [
@@ -3653,7 +3648,8 @@
     "mqq0nuv8",
     "mqq6ebv4",
     "mqq6eei6",
-    "mqq6f7qo"
+    "mqq6f7qo",
+    "mqq4eygi"
   ],
   "examScores": [],
   "termTodos": {
@@ -5089,5 +5085,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T05:15:10.357Z"
+  "lastModified": "2026-06-23T05:15:16.667Z"
 }
