@@ -53,10 +53,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .dday-badge{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--accent2);border:1px solid var(--accent);color:var(--accent);padding:3px 10px;border-radius:20px;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
 .dday-badge.is-saving{background:rgba(255,179,71,0.18);border-color:var(--amber);color:var(--amber);animation:save-dot-pulse 1s ease-in-out infinite}
 .dday-badge.is-error{background:rgba(255,90,90,0.18);border-color:var(--red);color:var(--red)}
+.dday-badge.is-local{background:rgba(94,207,176,0.18);border-color:var(--teal);color:var(--teal)}
 .save-dot{display:inline-block;width:9px;height:9px;border-radius:50%;flex-shrink:0;transition:background-color .2s;cursor:pointer}
-.save-dot.is-saved{background:var(--teal)}
+.save-dot.is-saved{background:var(--accent)}
 .save-dot.is-saving{background:var(--amber);animation:save-dot-pulse 1s ease-in-out infinite}
 .save-dot.is-error{background:var(--red)}
+.save-dot.is-local{background:var(--teal)}
 @keyframes save-dot-pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .theme-btn{font-size:15px;padding:4px 7px;border-radius:20px;border:1px solid var(--border2);background:none;color:var(--text3);transition:.15s;line-height:1}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent)}
@@ -962,6 +964,7 @@ let state = {
   weeklySchedule: {1:[],2:[],3:[],4:[]},
   reportSettings: {studyGoalHour:7, studyGoalMin:420, sleepMinHour:6, sleepMinMin:360, kcalGoal:200, bedtimeLimit:'01:00', wakeTimeLimit:'07:30'},
   timetable: null,  // ttState 전체를 저장 (플래너 주간시간표)
+  lastCarryOverDate: null,  // 마지막으로 투두 이월(carry-over)을 실행한 날짜 (recordToday 기준, 하루 1회만 실행)
   lastModified: null  // 마지막 수정 시각 (ISO string)
 };
 
@@ -1218,19 +1221,21 @@ let _isSaving = false;
 let _pendingSave = false;
 
 function updateSaveStatusDot(status) {
-  // status: 'saved' | 'saving' | 'error'
-  const dotCls = status === 'saving' ? 'is-saving' : status === 'error' ? 'is-error' : 'is-saved';
+  // status: 'saved' | 'saving' | 'error' | 'local'
+  // 'local': GitHub 캐시 지연으로 로컬(localStorage) 데이터를 표시 중 — teal로 구분 표시
+  const dotCls = status === 'saving' ? 'is-saving' : status === 'error' ? 'is-error' : status === 'local' ? 'is-local' : 'is-saved';
   const modalDot = document.getElementById('save-dot-modal');
   if (modalDot) {
-    modalDot.classList.remove('is-saved', 'is-saving', 'is-error');
+    modalDot.classList.remove('is-saved', 'is-saving', 'is-error', 'is-local');
     modalDot.classList.add(dotCls);
   }
   // 헤더 D-145 배지: saved 상태는 기본 색(--accent)이므로 별도 클래스 없음
   const ddayBadge = document.getElementById('dday-txt');
   if (ddayBadge) {
-    ddayBadge.classList.remove('is-saving', 'is-error');
+    ddayBadge.classList.remove('is-saving', 'is-error', 'is-local');
     if (status === 'saving') ddayBadge.classList.add('is-saving');
     else if (status === 'error') ddayBadge.classList.add('is-error');
+    else if (status === 'local') ddayBadge.classList.add('is-local');
   }
 }
 
@@ -1298,6 +1303,17 @@ async function autoLoadFromGithub() {
     if (!res.ok) return false;
     const d = await res.json();
     const json = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
+    // GitHub Contents API의 eventual consistency로 옛 데이터를 받을 수 있음 →
+    // localStorage 백업의 lastModified와 비교해 더 과거면 무시하고 로컬 백업을 신뢰
+    let backupState = null;
+    try { const b = localStorage.getItem('imgo_state_backup'); if (b) backupState = JSON.parse(b); } catch(e) {}
+    const ghTime = new Date(json.lastModified || 0);
+    const localTime = new Date((backupState && backupState.lastModified) || 0);
+    if (backupState && ghTime < localTime) {
+      applyImportedState(backupState);
+      updateSaveStatusDot('local');
+      return true;
+    }
     applyImportedState(json);
     return true;
   } catch(e) { return false; }
@@ -1307,12 +1323,14 @@ function applyImportedState(d) {
   if (d.dailyLogs) state.dailyLogs = d.dailyLogs;
   if (d.dailyTodos) state.dailyTodos = d.dailyTodos;
   if (d.dismissedTodoIds) state.dismissedTodoIds = d.dismissedTodoIds;
+  if (d.lastCarryOverDate) state.lastCarryOverDate = d.lastCarryOverDate;
   if (d.examScores) state.examScores = d.examScores;
   if (d.termTodos) state.termTodos = {...state.termTodos,...d.termTodos};
   if (d.weeklySchedule) state.weeklySchedule = {...state.weeklySchedule,...d.weeklySchedule};
   if (d.reportSettings) state.reportSettings = {...state.reportSettings,...d.reportSettings};
   if (d.lectures) state.lectures = d.lectures;
   if (d.timetable) state.timetable = d.timetable;
+  if (d.lastModified) state.lastModified = d.lastModified;
   renderPage(currentPage);
 }
 
@@ -1391,7 +1409,9 @@ document.addEventListener('visibilitychange', () => {
         // GitHub이 더 최신 → 덮어씀
         applyImportedState(ghState);
       } else if (localTime > ghTime) {
-        // 로컬이 더 최신 (저장 실패했던 경우) → 재업로드
+        // 로컬이 더 최신(캐시 지연으로 GitHub이 옛 데이터를 줬거나, 저장 실패했던 경우)
+        // → 화면은 현재 로컬 state 유지, teal로 표시 후 재업로드
+        updateSaveStatusDot('local');
         autoSaveToGithub();
       }
     }).catch(() => {});
@@ -2080,6 +2100,9 @@ function addModalTodo() {
 function carryOverTodos() {
   // 어제(recordToday 기준 전날) 미완료 항목을 오늘 날짜로 복사 (이동 아닌 복사)
   const td = recordToday();
+  // 오늘(05:30 기준) 이미 이월을 실행했으면 재실행하지 않음 — 렌더링마다 재평가되어
+  // dismissedTodoIds가 일시적으로 옛 데이터로 롤백될 때 좀비처럼 다시 이월되는 문제 방지
+  if (state.lastCarryOverDate === td) return;
   const prevDt = new Date(td + 'T00:00:00');
   prevDt.setDate(prevDt.getDate() - 1);
   const prevKey = `${prevDt.getFullYear()}-${String(prevDt.getMonth()+1).padStart(2,'0')}-${String(prevDt.getDate()).padStart(2,'0')}`;
@@ -2087,19 +2110,20 @@ function carryOverTodos() {
   if (!state.dismissedTodoIds) state.dismissedTodoIds = [];
   const dismissed = new Set(state.dismissedTodoIds);
   const undone = prevTodos.filter(t => !t.done && !dismissed.has(t._carriedFrom || t.id));
-  if (!undone.length) return;
-  if (!state.dailyTodos[td]) state.dailyTodos[td] = [];
-  const todayIds = new Set(state.dailyTodos[td].map(t => t._carriedFrom || t.id));
-  let added = false;
-  undone.forEach(t => {
-    const srcId = t._carriedFrom || t.id;
-    if (!todayIds.has(srcId)) {
-      state.dailyTodos[td].push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2), text: t.text, done: false, _carriedFrom: srcId });
-      todayIds.add(srcId);
-      added = true;
-    }
-  });
-  if (added) saveState();
+  if (undone.length) {
+    if (!state.dailyTodos[td]) state.dailyTodos[td] = [];
+    const todayIds = new Set(state.dailyTodos[td].map(t => t._carriedFrom || t.id));
+    undone.forEach(t => {
+      const srcId = t._carriedFrom || t.id;
+      if (!todayIds.has(srcId)) {
+        state.dailyTodos[td].push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2), text: t.text, done: false, _carriedFrom: srcId });
+        todayIds.add(srcId);
+      }
+    });
+  }
+  // 오늘 날짜에 대해 이월 완료를 기록 — 정식 saveState 경로로 GitHub에도 반영
+  state.lastCarryOverDate = td;
+  saveState();
 }
 
 function dismissTodoPermanently(item) {
@@ -3185,7 +3209,7 @@ async function renderCalendar() {
       const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
       const studyColor = sm >= goalMin ? 'var(--teal)' : sm >= 60 ? 'var(--amber)' : 'var(--red)';
       const studyBgColor = sm >= goalMin ? 'rgba(94,207,176,0.18)' : sm >= 60 ? 'rgba(255,179,71,0.18)' : 'rgba(255,90,90,0.18)';
-      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:1px"><span style="flex-shrink:0;font-size:5px;line-height:1">⏱️</span><span style="background:${studyBgColor};border-radius:3px;padding:1px 2px 0 2px;line-height:1;display:inline-block">${studyTimeStr}</span></div>`;
+      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:1px"><span style="flex-shrink:0;font-size:5px;line-height:1">⏱️</span><span style="background:${studyBgColor};border-radius:3px;padding:1px 1px 0 1px;line-height:1;display:inline-block">${studyTimeStr}</span></div>`;
     }
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
