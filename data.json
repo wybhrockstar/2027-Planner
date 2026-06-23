@@ -3631,6 +3631,11 @@
         "text": "순공 7시간",
         "done": false,
         "_carriedFrom": "mqoo6upr"
+      },
+      {
+        "id": "mqq4eygi",
+        "text": "g",
+        "done": false
       }
     ],
     "2026-06-17": [
@@ -5081,5 +5086,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T04:01:04.179Z"
+  "lastModified": "2026-06-23T04:04:47.730Z"
 }
