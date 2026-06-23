@@ -3629,7 +3629,7 @@
       {
         "id": "mqpzmvrcmfs0oa1m7o",
         "text": "순공 7시간",
-        "done": false,
+        "done": true,
         "_carriedFrom": "mqoo6upr"
       },
       {
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T13:40:52.191Z"
+  "lastModified": "2026-06-23T15:14:20.378Z"
 }
