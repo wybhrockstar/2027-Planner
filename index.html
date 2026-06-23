@@ -3377,8 +3377,27 @@ function openCalDayModal(dateStr, cache) {
 
   const existingLog = state.dailyLogs.find(l => l.date === dateStr);
   const existingMemo = existingLog?.memo || '';
-  const memoHtml = `
+
+  // 공부기록 요약 (오늘기록과 동일한 달성도 색상 기준)
+  const sm = existingLog?.studyMin || 0;
+  const h = Math.floor(sm / 60);
+  const m = sm % 60;
+  const rs = state.reportSettings;
+  const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
+  const studyColor = !existingLog ? 'var(--text3)' : sm >= goalMin ? 'var(--teal)' : sm >= 60 ? 'var(--amber)' : 'var(--red)';
+  const studyBgColor = !existingLog ? 'var(--bg4)' : sm >= goalMin ? 'rgba(94,207,176,0.14)' : sm >= 60 ? 'rgba(255,179,71,0.14)' : 'rgba(255,90,90,0.14)';
+  const studyValStr = existingLog ? `${h}:${String(m).padStart(2,'0')}` : '기록 없음';
+  const studyHtml = `
     <div style="margin-top:14px;border-top:1px solid var(--border2);padding-top:12px">
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:${studyBgColor};border-radius:var(--rs)">
+        <span style="font-size:13px;flex-shrink:0;color:${studyColor};line-height:1.5">⏱️</span>
+        <span style="font-size:13px;flex:1;color:${studyColor};line-height:1.5;font-family:'JetBrains Mono',monospace;font-weight:700">${studyValStr}</span>
+        <button onclick="closeModal();openLogModalForDate('${dateStr}')" style="font-size:11px;color:var(--accent);background:none;border:none;padding:2px 6px;cursor:pointer;flex-shrink:0">${existingLog?'수정':'기록'}</button>
+      </div>
+    </div>`;
+
+  const memoHtml = `
+    <div style="margin-top:10px">
       <div style="display:flex;align-items:flex-start;gap:4px;font-size:11px;color:var(--text3);margin-bottom:6px">
         <span style="flex-shrink:0;line-height:1.6">💬</span>
         <span style="line-height:1.6">오늘의 한마디</span>
@@ -3393,13 +3412,13 @@ function openCalDayModal(dateStr, cache) {
   window.calDayCache = { allEvts };
 
   showModal(`
-    <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title} 일정</div>
+    <div style="font-weight:700;font-size:16px;margin-bottom:14px">${title}</div>
     <div id="cal-day-evt-list">${evtListHtml}</div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_STUDY_ID)" style="background:var(--blue);color:#000;flex:1;justify-content:center">✍🏻 스터디 일정 추가</button>
       <button class="btn btn-sm" onclick="openAddEventModal('${dateStr}',GCAL_PERSONAL_ID)" style="background:var(--purple);color:#000;flex:1;justify-content:center">📅 개인 일정 추가</button>
-      <button class="btn btn-sm btn-ghost" onclick="closeModal()">닫기</button>
     </div>
+    ${studyHtml}
     ${memoHtml}
   `);
 }
