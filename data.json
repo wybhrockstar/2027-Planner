@@ -1087,8 +1087,8 @@
       "title": "14강. 사회과 교육과정 전반부 [47분]",
       "minutes": 47,
       "term": 1,
-      "done": true,
-      "doneDate": "2026-06-23"
+      "done": false,
+      "doneDate": null
     },
     {
       "id": "사회_15",
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T06:51:56.851Z"
+  "lastModified": "2026-06-23T06:52:00.196Z"
 }
