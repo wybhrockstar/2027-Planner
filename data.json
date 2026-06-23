@@ -3537,7 +3537,7 @@
     {
       "date": "2026-06-23",
       "wakeTime": "08:45",
-      "sleepTime": "",
+      "sleepTime": "03:48",
       "studyMin": 480,
       "kcal": 0,
       "memo": "신이여 허락하소서!",
@@ -5117,5 +5117,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T15:43:15.465Z"
+  "lastModified": "2026-06-23T18:48:54.331Z"
 }
