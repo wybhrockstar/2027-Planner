@@ -1317,8 +1317,8 @@
       "title": "37강. 사회과 교육과정 후반부 ~ 5학년 2학기 각론 (1) [84분]",
       "minutes": 84,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-23"
     },
     {
       "id": "사회_38",
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T13:40:07.355Z"
+  "lastModified": "2026-06-23T13:40:48.849Z"
 }
