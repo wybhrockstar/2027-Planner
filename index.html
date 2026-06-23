@@ -2168,7 +2168,7 @@ function renderProgressContent() {
 
   // study days: Mon/Wed/Fri/Sun within term
   const studyDayLogs = termLogs.filter(l => isStudyDay(l.date));
-  const studyO = studyDayLogs.filter(l => l.studyResult==='O').length;
+  const studyO = studyDayLogs.filter(l => l.studyResult==='O' || l.studyResult==='△').length;
   // count all study days in FULL TERM (분모: 텀 전체 스터디 총횟수)
   let totalStudyDays = 0;
   const tStart = new Date(t.start), tEnd = new Date(t.end);
@@ -3112,17 +3112,17 @@ async function renderCalendar() {
     const personalEvtsHtml = evts.personal.map(e =>
       `<div style="font-size:6px;color:var(--purple);line-height:1.4;margin-top:1px;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">📅</span><span style="word-break:break-all;overflow-wrap:break-word;letter-spacing:-0.1em">${e.summary}</span></div>`
     ).join('');
-    // 공부시간 표시 (달성도 색상)
+    // 공부시간 표시 (달성도 색상, 기록 있는 날 0:00 포함)
     let studyTimeHtml = '';
-    if (!isFuture && log && log.studyMin) {
-      const sm = log.studyMin;
+    if (!isFuture && log) {
+      const sm = log.studyMin || 0;
       const h = Math.floor(sm / 60);
       const m = sm % 60;
       const studyTimeStr = `${h}:${String(m).padStart(2,'0')}`;
       const rs = state.reportSettings;
       const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
       const studyColor = sm >= goalMin ? 'var(--teal)' : sm >= 60 ? 'var(--amber)' : 'var(--red)';
-      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1.4;margin-bottom:1px;font-family:'JetBrains Mono',monospace">⏱️ ${studyTimeStr}</div>`;
+      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1.4;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">⏱️</span><span>${studyTimeStr}</span></div>`;
     }
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
@@ -3136,6 +3136,7 @@ async function renderCalendar() {
 
   // 범례
   html += `<div style="display:flex;gap:6px;margin-top:10px;font-size:8px;">
+    <span style="color:var(--accent)">⏱️ 공부시간</span>
     <span style="color:var(--blue)">✍🏻 스터디</span>
     <span style="color:var(--purple)">📅 개인</span>
     <span style="color:var(--text2)">💬 한마디</span>
