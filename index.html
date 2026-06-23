@@ -3210,7 +3210,7 @@ async function renderCalendar() {
       const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
       const studyColor = sm >= goalMin ? 'var(--teal)' : sm >= 60 ? 'var(--amber)' : 'var(--red)';
       const studyBgColor = sm >= goalMin ? 'rgba(94,207,176,0.18)' : sm >= 60 ? 'rgba(255,179,71,0.18)' : 'rgba(255,90,90,0.18)';
-      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:1px"><span style="flex-shrink:0;font-size:5px;line-height:1">⏱️</span><span style="background:${studyBgColor};border-radius:3px;padding:1px 1px 0 1px;line-height:1;display:inline-block">${studyTimeStr}</span></div>`;
+      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:1px"><span style="flex-shrink:0;font-size:5px;line-height:1">⏱️</span><span style="background:${studyBgColor};border-radius:1.5px;padding:1px 1px 0 1px;line-height:1;display:inline-block">${studyTimeStr}</span></div>`;
     }
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
@@ -3381,12 +3381,12 @@ function openCalDayModal(dateStr, cache) {
   const rs = state.reportSettings;
   const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
   const studyColor = !existingLog ? 'var(--text3)' : sm >= goalMin ? 'var(--teal)' : sm >= 60 ? 'var(--amber)' : 'var(--red)';
-  const studyValStr = existingLog ? `${h}:${String(m).padStart(2,'0')}` : '기록 없음';
+  const studyValStr = existingLog ? `${h}:${String(m).padStart(2,'0')}` : '';
   const studyHtml = `
     <div>
       <div style="${sectionTitleStyle}"><span style="flex-shrink:0;line-height:1.6">⏱️</span><span style="line-height:1.6">공부시간</span></div>
       <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;${fieldStyle}">
-        <span style="font-size:13px;flex-shrink:0;color:${studyColor};line-height:1.5">⏱️</span>
+        ${existingLog ? `<span style="font-size:13px;flex-shrink:0;color:${studyColor};line-height:1.5">⏱️</span>` : ''}
         <span style="font-size:13px;flex:1;color:${studyColor};line-height:1.5;font-family:'JetBrains Mono',monospace;font-weight:700">${studyValStr}</span>
         <button onclick="closeModal();openLogModalForDate('${dateStr}')" style="font-size:11px;color:var(--accent);background:none;border:none;padding:2px 6px;cursor:pointer;flex-shrink:0">${existingLog?'수정':'기록'}</button>
       </div>
@@ -3400,7 +3400,7 @@ function openCalDayModal(dateStr, cache) {
       <span style="font-size:13px;flex:1;color:${item.type==='study'?'var(--blue)':'var(--purple)'};line-height:1.5;word-break:break-word">${item.summary || item.event.summary}</span>
       <button onclick="openEditEventModal('${dateStr}',${i},calDayCache)" style="font-size:11px;color:var(--accent);background:none;border:none;padding:2px 6px;cursor:pointer;flex-shrink:0">수정</button>
       <button onclick="deleteEvent('${item.calendarId}','${item.event.id}')" style="font-size:11px;color:var(--red);background:none;border:none;padding:2px 6px;cursor:pointer;flex-shrink:0">삭제</button>
-    </div>`).join('') : `<div style="color:var(--text3);font-size:13px;text-align:center;padding:16px;${fieldStyle}">일정 없음</div>`;
+    </div>`).join('') : `<div style="display:flex;align-items:center;gap:8px;padding:10px 12px;${fieldStyle}"><span style="font-size:13px;line-height:1.5;color:transparent">　</span></div>`;
 
   const eventsHtml = `
     <div>
