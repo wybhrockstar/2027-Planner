@@ -3542,6 +3542,15 @@
       "kcal": 0,
       "memo": "신이여 허락하소서",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-02",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -3596,16 +3605,16 @@
         "done": false
       },
       {
-        "id": "mqpx0lbne6ca8lchhz5",
-        "text": "사회 23~31강, 32강 일부",
-        "done": false,
-        "_carriedFrom": "mqoo9p18"
-      },
-      {
-        "id": "mqpxshrglo5ldmg5oc8",
+        "id": "mqpx0lbns8fgvqahqe",
         "text": "순공 7시간",
         "done": false,
         "_carriedFrom": "mqoo6upr"
+      },
+      {
+        "id": "mqpxt1mxnh3ostr7e6r",
+        "text": "사회 23~31강, 32강 일부",
+        "done": false,
+        "_carriedFrom": "mqoo9p18"
       }
     ],
     "2026-06-17": [
@@ -5049,5 +5058,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T00:59:21.964Z"
+  "lastModified": "2026-06-23T01:00:50.980Z"
 }
