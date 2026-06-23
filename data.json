@@ -3636,11 +3636,6 @@
         "id": "mqq4eygi",
         "text": "g",
         "done": false
-      },
-      {
-        "id": "mqq6f7qo",
-        "text": "g",
-        "done": false
       }
     ],
     "2026-06-17": [
@@ -3657,7 +3652,8 @@
     "mqq07rmh",
     "mqq0nuv8",
     "mqq6ebv4",
-    "mqq6eei6"
+    "mqq6eei6",
+    "mqq6f7qo"
   ],
   "examScores": [],
   "termTodos": {
@@ -5093,5 +5089,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T05:01:02.445Z"
+  "lastModified": "2026-06-23T05:15:10.357Z"
 }
