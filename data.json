@@ -3637,21 +3637,6 @@
         "text": "사회 23~31강, 32강 일부",
         "done": false,
         "_carriedFrom": "mqoo9p18"
-      },
-      {
-        "id": "mqpzee5o",
-        "text": "hi",
-        "done": false
-      },
-      {
-        "id": "mqpzfgbg",
-        "text": "t",
-        "done": false
-      },
-      {
-        "id": "mqpzfhqh",
-        "text": "g",
-        "done": false
       }
     ],
     "2026-06-17": [
@@ -5095,5 +5080,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-23T01:45:14.634Z"
+  "lastModified": "2026-06-23T01:45:24.917Z"
 }
