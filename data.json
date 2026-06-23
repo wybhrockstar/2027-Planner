@@ -1237,8 +1237,8 @@
       "title": "29강. 6학년 1학기 각론 (2) [59분]",
       "minutes": 59,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-23"
     },
     {
       "id": "사회_30",
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T12:08:36.204Z"
+  "lastModified": "2026-06-23T13:40:07.355Z"
 }
