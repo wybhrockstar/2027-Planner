@@ -1247,8 +1247,8 @@
       "title": "30강. 6학년 1학기 각론 (3) [59분]",
       "minutes": 59,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-24"
     },
     {
       "id": "사회_31",
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T15:14:30.105Z"
+  "lastModified": "2026-06-23T15:36:27.731Z"
 }
