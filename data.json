@@ -3540,7 +3540,7 @@
       "sleepTime": "",
       "studyMin": 0,
       "kcal": 0,
-      "memo": "신이여 허락하소서!",
+      "memo": "신이여\n허락하소서!",
       "studyResult": null
     },
     {
@@ -5085,5 +5085,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T05:15:16.667Z"
+  "lastModified": "2026-06-23T06:05:30.729Z"
 }
