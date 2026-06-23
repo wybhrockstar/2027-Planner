@@ -51,6 +51,11 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .logo{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:14px;color:var(--accent);letter-spacing:.02em}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .dday-badge{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--accent2);border:1px solid var(--accent);color:var(--accent);padding:3px 10px;border-radius:20px}
+.save-dot{display:inline-block;width:9px;height:9px;border-radius:50%;flex-shrink:0;transition:background-color .2s;cursor:pointer}
+.save-dot.is-saved{background:var(--teal)}
+.save-dot.is-saving{background:var(--amber);animation:save-dot-pulse 1s ease-in-out infinite}
+.save-dot.is-error{background:var(--red)}
+@keyframes save-dot-pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .theme-btn{font-size:15px;padding:4px 7px;border-radius:20px;border:1px solid var(--border2);background:none;color:var(--text3);transition:.15s;line-height:1}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent)}
 .backup-btn{font-size:15px;padding:4px 7px;border-radius:20px;border:1px solid var(--border2);background:none;color:var(--text3);transition:.15s;line-height:1}
@@ -458,7 +463,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 <div id="modal-backup" class="modal-bg">
 <div class="modal">
   <div class="modal-hd">
-    <div class="modal-title">⚙️ 설정</div>
+    <div class="modal-title">⚙️ 설정 <span class="save-dot is-saved" id="save-dot-modal" title="저장 상태 (클릭해서 다시 저장)" onclick="pushToGithub()"></span></div>
     <button class="modal-close" id="btn-close-backup">✕</button>
   </div>
 
@@ -586,6 +591,7 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 <header class="hdr">
   <div class="logo">📒 2027 IMGO Planner</div>
   <div class="hdr-r">
+    <span class="save-dot is-saved" id="save-dot-header" title="저장 상태"></span>
     <div class="dday-badge" id="dday-txt">D-???</div>
     <button class="backup-btn" id="btn-open-backup" title="백업·복원">⚙️</button>
     <button class="theme-btn" id="btn-theme" title="테마 전환">🌙</button>
@@ -1205,17 +1211,37 @@ function setGhStatus(msg, type) {
   el.style.color = type==='ok' ? 'var(--teal)' : type==='err' ? 'var(--red)' : 'var(--text3)';
 }
 
+let _cachedSha = null;
+let _isSaving = false;
+let _pendingSave = false;
+
+function updateSaveStatusDot(status) {
+  // status: 'saved' | 'saving' | 'error'
+  const cls = status === 'saving' ? 'is-saving' : status === 'error' ? 'is-error' : 'is-saved';
+  ['save-dot-header', 'save-dot-modal'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('is-saved', 'is-saving', 'is-error');
+    el.classList.add(cls);
+  });
+}
+
 async function pushToGithub() {
   const s = getGhSettings();
   if (!s.token || !s.repo) { setGhStatus('❌ 토큰을 먼저 저장하세요', 'err'); return; }
+  if (_isSaving) { setGhStatus('⏳ 저장 진행 중... 잠시 후 다시 시도하세요', ''); return; }
+  _isSaving = true;
+  updateSaveStatusDot('saving');
   setGhStatus('⬆️ 저장 중...', '');
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
-    let sha = null;
-    const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
-      headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
-    });
-    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    let sha = _cachedSha;
+    if (!sha) {
+      const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
+        headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
+      });
+      if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    }
     const body = { message: `manual save ${today()}`, content, branch: s.branch };
     if (sha) body.sha = sha;
     const putRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}`, {
@@ -1223,9 +1249,18 @@ async function pushToGithub() {
       headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json'},
       body: JSON.stringify(body)
     });
-    if (putRes.ok) { setGhStatus('✓ 저장 완료', 'ok'); toast('✓ GitHub 저장 완료'); }
-    else { const e = await putRes.json(); setGhStatus(`❌ ${e.message}`, 'err'); }
-  } catch(e) { setGhStatus(`❌ ${e.message}`, 'err'); }
+    if (putRes.ok) {
+      const saved = await putRes.json();
+      _cachedSha = saved.content?.sha ?? saved.commit?.sha ?? null;
+      updateSaveStatusDot('saved');
+      setGhStatus('✓ 저장 완료', 'ok'); toast('✓ GitHub 저장 완료');
+    }
+    else { const e = await putRes.json(); _cachedSha = null; updateSaveStatusDot('error'); setGhStatus(`❌ ${e.message}`, 'err'); }
+  } catch(e) { _cachedSha = null; updateSaveStatusDot('error'); setGhStatus(`❌ ${e.message}`, 'err'); }
+  finally {
+    _isSaving = false;
+    if (_pendingSave) { _pendingSave = false; autoSaveToGithub(); }
+  }
 }
 
 async function pullFromGithub() {
@@ -1282,8 +1317,6 @@ function loadState() {
 
 // saveState → autoSaveToGithub (변경 즉시 GitHub push)
 let _saveTimer = null;
-let _isSaving = false;
-let _pendingSave = false;
 
 function saveState() {
   // 수정 시각 기록
@@ -1302,13 +1335,16 @@ async function autoSaveToGithub() {
   if (_isSaving) { _pendingSave = true; return; }
   _isSaving = true;
   _pendingSave = false;
+  updateSaveStatusDot('saving');
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
-    let sha = null;
-    const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
-      headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
-    });
-    if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    let sha = _cachedSha;
+    if (!sha) {
+      const getRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}?ref=${s.branch}`, {
+        headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json'}
+      });
+      if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+    }
     const body = { message: `auto save ${today()}`, content, branch: s.branch };
     if (sha) body.sha = sha;
     const putRes = await fetch(`https://api.github.com/repos/${s.repo}/contents/${s.path}`, {
@@ -1316,9 +1352,13 @@ async function autoSaveToGithub() {
       headers: {'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json'},
       body: JSON.stringify(body)
     });
-    if (!putRes.ok) throw new Error(`GitHub PUT ${putRes.status}`);
+    if (!putRes.ok) { _cachedSha = null; throw new Error(`GitHub PUT ${putRes.status}`); }
+    const saved = await putRes.json();
+    _cachedSha = saved.content?.sha ?? saved.commit?.sha ?? null;
+    updateSaveStatusDot('saved');
   } catch(e) {
     console.warn('Auto save failed:', e);
+    updateSaveStatusDot('error');
     toast('⚠️ 저장 실패 — 네트워크를 확인하세요');
   } finally {
     _isSaving = false;
@@ -3122,7 +3162,8 @@ async function renderCalendar() {
       const rs = state.reportSettings;
       const goalMin = rs.studyGoalMin ? rs.studyGoalMin : (rs.studyGoalHour||7)*60;
       const studyColor = sm >= goalMin ? 'var(--teal)' : sm >= 60 ? 'var(--amber)' : 'var(--red)';
-      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1.4;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">⏱️</span><span>${studyTimeStr}</span></div>`;
+      const studyBgColor = sm >= goalMin ? 'rgba(94,207,176,0.18)' : sm >= 60 ? 'rgba(255,179,71,0.18)' : 'rgba(255,90,90,0.18)';
+      studyTimeHtml = `<div style="font-size:6px;color:${studyColor};line-height:1.4;margin-bottom:1px;font-family:'JetBrains Mono',monospace;display:flex;align-items:flex-start;gap:1px"><span style="flex-shrink:0;font-size:5px">⏱️</span><span style="background:${studyBgColor};border-radius:3px;padding:1px 3px;">${studyTimeStr}</span></div>`;
     }
     html += `<div class="cal-cell" data-date="${dateStr}" style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px;min-height:60px;cursor:${isFuture?'default':'pointer'};position:relative">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:${numColor};margin-bottom:2px">${day}</div>
