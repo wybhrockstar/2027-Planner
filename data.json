@@ -1227,8 +1227,8 @@
       "title": "28강. 5학년 1학기 각론 (6) ~ 6학년 1학기 각론 (1) [63분]",
       "minutes": 63,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-23"
     },
     {
       "id": "사회_29",
@@ -5095,5 +5095,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T12:08:33.736Z"
+  "lastModified": "2026-06-23T12:08:36.204Z"
 }
