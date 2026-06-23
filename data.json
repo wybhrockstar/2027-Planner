@@ -3669,6 +3669,12 @@
         "id": "mqqtadp8",
         "text": "[과학] 물질 1~4 개념+탐구 8강",
         "done": false
+      },
+      {
+        "id": "mqra503t5ejesrfl1xa",
+        "text": "28~32강",
+        "done": false,
+        "_carriedFrom": "mqq92bwd"
       }
     ]
   },
@@ -5116,6 +5122,6 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T18:48:54.331Z"
+  "lastCarryOverDate": "2026-06-24",
+  "lastModified": "2026-06-23T23:32:47.177Z"
 }
