@@ -3595,6 +3595,13 @@
         "text": "사회 28~37",
         "done": false
       }
+    ],
+    "2026-06-17": [
+      {
+        "id": "mqpwhgh1",
+        "text": "ㅅ",
+        "done": false
+      }
     ]
   },
   "examScores": [],
@@ -5030,5 +5037,5 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastModified": "2026-06-22T23:50:25.053Z"
+  "lastModified": "2026-06-23T00:22:47.462Z"
 }
