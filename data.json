@@ -3547,7 +3547,7 @@
       "date": "2026-06-02",
       "wakeTime": "",
       "sleepTime": "",
-      "studyMin": 0,
+      "studyMin": 2,
       "kcal": 0,
       "memo": "",
       "studyResult": null
@@ -3631,11 +3631,6 @@
         "text": "순공 7시간",
         "done": false,
         "_carriedFrom": "mqoo6upr"
-      },
-      {
-        "id": "mqq0nuv8",
-        "text": "1119 2",
-        "done": false
       }
     ],
     "2026-06-17": [
@@ -3649,7 +3644,8 @@
   "dismissedTodoIds": [
     "mqoo9p18",
     "mqq07q5j",
-    "mqq07rmh"
+    "mqq07rmh",
+    "mqq0nuv8"
   ],
   "examScores": [],
   "termTodos": {
@@ -5085,5 +5081,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-23",
-  "lastModified": "2026-06-23T03:56:41.316Z"
+  "lastModified": "2026-06-23T03:57:38.857Z"
 }
