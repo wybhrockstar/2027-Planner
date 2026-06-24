@@ -3686,6 +3686,11 @@
         "id": "mqsbphbi",
         "text": "[과학] 물질 1~4강",
         "done": false
+      },
+      {
+        "id": "mqsbprt7",
+        "text": "SCAN",
+        "done": false
       }
     ]
   },
@@ -5135,5 +5140,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T17:04:28.398Z"
+  "lastModified": "2026-06-24T17:04:41.996Z"
 }
