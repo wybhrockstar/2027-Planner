@@ -3583,7 +3583,7 @@
       "date": "2026-06-24",
       "wakeTime": "09:00",
       "sleepTime": "",
-      "studyMin": 0,
+      "studyMin": 550,
       "kcal": 230,
       "memo": "日新又日新",
       "studyResult": "△"
@@ -5146,5 +5146,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T17:05:12.061Z"
+  "lastModified": "2026-06-24T17:07:10.005Z"
 }
