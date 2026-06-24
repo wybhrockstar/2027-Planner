@@ -3670,6 +3670,13 @@
         "text": "[과학] 물질 1~4 개념+탐구 8강",
         "done": false
       }
+    ],
+    "2026-06-25": [
+      {
+        "id": "mqsbo2ze",
+        "text": "test1",
+        "done": false
+      }
     ]
   },
   "dismissedTodoIds": [
@@ -5118,5 +5125,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T16:59:31.603Z"
+  "lastModified": "2026-06-24T17:03:23.162Z"
 }
