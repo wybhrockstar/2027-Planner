@@ -1747,8 +1747,8 @@
       "title": "1강. 물질 (1) 3학년 2학기 물체와 물질 [30분]",
       "minutes": 30,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-25"
     },
     {
       "id": "과학 개념_2",
@@ -1757,8 +1757,8 @@
       "title": "2강. 물질 (2) 4학년 1학기 물의 상태 변화 [46분]",
       "minutes": 46,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-25"
     },
     {
       "id": "과학 개념_3",
@@ -5118,5 +5118,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T16:58:52.876Z"
+  "lastModified": "2026-06-24T16:59:16.614Z"
 }
