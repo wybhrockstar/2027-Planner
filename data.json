@@ -3581,12 +3581,12 @@
     },
     {
       "date": "2026-06-24",
-      "wakeTime": "",
+      "wakeTime": "09:00",
       "sleepTime": "",
       "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
-      "studyResult": null
+      "kcal": 230,
+      "memo": "日新又日新",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -5123,5 +5123,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-23T23:32:47.177Z"
+  "lastModified": "2026-06-24T04:22:25.732Z"
 }
