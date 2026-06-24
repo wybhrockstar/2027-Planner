@@ -3587,6 +3587,15 @@
       "kcal": 230,
       "memo": "日新又日新",
       "studyResult": "△"
+    },
+    {
+      "date": "2026-06-25",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -3673,11 +3682,6 @@
     ],
     "2026-06-25": [
       {
-        "id": "mqsbo2ze",
-        "text": "test1",
-        "done": false
-      },
-      {
         "id": "mqsboujm",
         "text": "[과학 개념] 3강 마무리",
         "done": false
@@ -3690,6 +3694,11 @@
       {
         "id": "mqsbprt7",
         "text": "SCAN",
+        "done": false
+      },
+      {
+        "id": "mqsbpwet",
+        "text": "순공 7시간",
         "done": false
       }
     ]
@@ -3704,7 +3713,8 @@
     "mqq6f7qo",
     "mqq4eygi",
     "mqqt8o5c",
-    "mqq92bwd"
+    "mqq92bwd",
+    "mqsbo2ze"
   ],
   "examScores": [],
   "termTodos": {
@@ -5140,5 +5150,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T17:04:41.996Z"
+  "lastModified": "2026-06-24T17:04:50.420Z"
 }
