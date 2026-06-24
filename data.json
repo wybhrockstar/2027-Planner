@@ -3681,6 +3681,11 @@
         "id": "mqsboujm",
         "text": "[과학 개념] 3강 마무리",
         "done": false
+      },
+      {
+        "id": "mqsbphbi",
+        "text": "[과학] 물질 1~4강",
+        "done": false
       }
     ]
   },
@@ -5130,5 +5135,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T17:03:58.883Z"
+  "lastModified": "2026-06-24T17:04:28.398Z"
 }
