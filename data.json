@@ -1758,7 +1758,7 @@
       "minutes": 46,
       "term": 1,
       "done": true,
-      "doneDate": "2026-06-25"
+      "doneDate": "2026-06-24"
     },
     {
       "id": "과학 개념_3",
@@ -1767,8 +1767,8 @@
       "title": "3강. 물질 (3) 4학년 2학기 여러 가지 기체 [31분]",
       "minutes": 31,
       "term": 1,
-      "done": false,
-      "doneDate": null
+      "done": true,
+      "doneDate": "2026-06-25"
     },
     {
       "id": "과학 개념_4",
@@ -5118,5 +5118,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T16:59:21.687Z"
+  "lastModified": "2026-06-24T16:59:27.729Z"
 }
