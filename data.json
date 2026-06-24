@@ -3673,11 +3673,6 @@
         "id": "mqqt9k8y",
         "text": "[사회] 31~32 (6-1)",
         "done": false
-      },
-      {
-        "id": "mqqtadp8",
-        "text": "[과학] 물질 1~4 개념+탐구 8강",
-        "done": true
       }
     ],
     "2026-06-25": [
@@ -3714,7 +3709,8 @@
     "mqq4eygi",
     "mqqt8o5c",
     "mqq92bwd",
-    "mqsbo2ze"
+    "mqsbo2ze",
+    "mqqtadp8"
   ],
   "examScores": [],
   "termTodos": {
@@ -5150,5 +5146,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T17:05:09.150Z"
+  "lastModified": "2026-06-24T17:05:12.061Z"
 }
