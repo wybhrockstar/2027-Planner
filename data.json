@@ -3596,6 +3596,15 @@
       "kcal": 252,
       "memo": "핑계 그만대자",
       "studyResult": null
+    },
+    {
+      "date": "2026-06-26",
+      "wakeTime": "08:00",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -5172,5 +5181,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-26",
-  "lastModified": "2026-06-25T23:42:01.900Z"
+  "lastModified": "2026-06-25T23:42:28.993Z"
 }
