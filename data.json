@@ -3679,7 +3679,7 @@
       {
         "id": "mqsboujm",
         "text": "[과학 개념] 3강 마무리",
-        "done": false
+        "done": true
       },
       {
         "id": "mqsbphbi",
@@ -5172,5 +5172,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-26",
-  "lastModified": "2026-06-25T23:41:37.782Z"
+  "lastModified": "2026-06-25T23:41:45.425Z"
 }
