@@ -3696,6 +3696,32 @@
         "text": "순공 7시간",
         "done": false
       }
+    ],
+    "2026-06-26": [
+      {
+        "id": "mqu5a8n7ptjq93h08h",
+        "text": "[과학 개념] 3강 마무리",
+        "done": false,
+        "_carriedFrom": "mqsboujm"
+      },
+      {
+        "id": "mqu5a8n7dmo64lvm4ub",
+        "text": "[과학] 물질 1~4강",
+        "done": false,
+        "_carriedFrom": "mqsbphbi"
+      },
+      {
+        "id": "mqu5a8n7mvbkkbe3zx",
+        "text": "SCAN",
+        "done": false,
+        "_carriedFrom": "mqsbprt7"
+      },
+      {
+        "id": "mqu5a8n7vhvmugcwk8o",
+        "text": "순공 7시간",
+        "done": false,
+        "_carriedFrom": "mqsbpwet"
+      }
     ]
   },
   "dismissedTodoIds": [
@@ -5145,6 +5171,6 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastCarryOverDate": "2026-06-24",
-  "lastModified": "2026-06-24T18:33:47.311Z"
+  "lastCarryOverDate": "2026-06-26",
+  "lastModified": "2026-06-25T23:40:11.971Z"
 }
