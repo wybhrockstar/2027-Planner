@@ -3590,11 +3590,11 @@
     },
     {
       "date": "2026-06-25",
-      "wakeTime": "",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
+      "wakeTime": "09:00",
+      "sleepTime": "02:30",
+      "studyMin": 260,
+      "kcal": 252,
+      "memo": "핑계 그만대자",
       "studyResult": null
     }
   ],
@@ -5172,5 +5172,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-26",
-  "lastModified": "2026-06-25T23:41:45.425Z"
+  "lastModified": "2026-06-25T23:42:01.900Z"
 }
