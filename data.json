@@ -3734,12 +3734,6 @@
     ],
     "2026-06-27": [
       {
-        "id": "mqvkwzlzp6863uwt2wh",
-        "text": "[과학 개념] 3강 마무리",
-        "done": false,
-        "_carriedFrom": "mqsboujm"
-      },
-      {
         "id": "mqvkwzlz38ez48zp2xg",
         "text": "[과학] 물질 1~4강",
         "done": false,
@@ -3766,7 +3760,8 @@
     "mqq92bwd",
     "mqsbo2ze",
     "mqqtadp8",
-    "mqsbprt7"
+    "mqsbprt7",
+    "mqsboujm"
   ],
   "examScores": [],
   "termTodos": {
@@ -5202,5 +5197,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:47:56.072Z"
+  "lastModified": "2026-06-26T23:48:01.684Z"
 }
