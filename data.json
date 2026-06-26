@@ -3603,7 +3603,7 @@
       "sleepTime": "02:30",
       "studyMin": 87,
       "kcal": 0,
-      "memo": "",
+      "memo": "웬수같은 스캔.",
       "studyResult": "△"
     }
   ],
@@ -5192,5 +5192,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:48:09.838Z"
+  "lastModified": "2026-06-26T23:48:51.015Z"
 }
