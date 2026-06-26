@@ -3605,6 +3605,15 @@
       "kcal": 0,
       "memo": "웬수같은 스캔.",
       "studyResult": "△"
+    },
+    {
+      "date": "2026-06-27",
+      "wakeTime": "08:45",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -5192,5 +5201,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:48:51.015Z"
+  "lastModified": "2026-06-26T23:49:03.767Z"
 }
