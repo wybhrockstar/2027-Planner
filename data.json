@@ -3600,11 +3600,11 @@
     {
       "date": "2026-06-26",
       "wakeTime": "08:00",
-      "sleepTime": "",
+      "sleepTime": "02:30",
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -5207,5 +5207,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:45:33.767Z"
+  "lastModified": "2026-06-26T23:47:22.183Z"
 }
