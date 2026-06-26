@@ -3722,7 +3722,7 @@
       {
         "id": "mqu5a8n7mvbkkbe3zx",
         "text": "SCAN",
-        "done": false,
+        "done": true,
         "_carriedFrom": "mqsbprt7"
       },
       {
@@ -5207,5 +5207,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:47:22.183Z"
+  "lastModified": "2026-06-26T23:47:44.102Z"
 }
