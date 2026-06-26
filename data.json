@@ -3734,12 +3734,6 @@
     ],
     "2026-06-27": [
       {
-        "id": "mqvkwzlz38ez48zp2xg",
-        "text": "[과학] 물질 1~4강",
-        "done": false,
-        "_carriedFrom": "mqsbphbi"
-      },
-      {
         "id": "mqvkwzlz6ax69rpn4ni",
         "text": "순공 7시간",
         "done": false,
@@ -3761,7 +3755,8 @@
     "mqsbo2ze",
     "mqqtadp8",
     "mqsbprt7",
-    "mqsboujm"
+    "mqsboujm",
+    "mqsbphbi"
   ],
   "examScores": [],
   "termTodos": {
@@ -5197,5 +5192,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:48:01.684Z"
+  "lastModified": "2026-06-26T23:48:09.838Z"
 }
