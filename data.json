@@ -3746,12 +3746,6 @@
         "_carriedFrom": "mqsbphbi"
       },
       {
-        "id": "mqvkwzlzw3k1rf6ifn",
-        "text": "SCAN",
-        "done": false,
-        "_carriedFrom": "mqsbprt7"
-      },
-      {
         "id": "mqvkwzlz6ax69rpn4ni",
         "text": "순공 7시간",
         "done": false,
@@ -3771,7 +3765,8 @@
     "mqqt8o5c",
     "mqq92bwd",
     "mqsbo2ze",
-    "mqqtadp8"
+    "mqqtadp8",
+    "mqsbprt7"
   ],
   "examScores": [],
   "termTodos": {
@@ -5207,5 +5202,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-27",
-  "lastModified": "2026-06-26T23:47:48.015Z"
+  "lastModified": "2026-06-26T23:47:56.072Z"
 }
