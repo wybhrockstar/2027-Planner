@@ -3609,8 +3609,8 @@
     {
       "date": "2026-06-27",
       "wakeTime": "08:45",
-      "sleepTime": "",
-      "studyMin": 0,
+      "sleepTime": "02:30",
+      "studyMin": 63,
       "kcal": 0,
       "memo": "",
       "studyResult": null
@@ -5218,5 +5218,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-28",
-  "lastModified": "2026-06-28T02:27:36.386Z"
+  "lastModified": "2026-06-28T02:31:23.183Z"
 }
