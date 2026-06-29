@@ -3765,6 +3765,14 @@
         "done": false,
         "_carriedFrom": "mqsbpwet"
       }
+    ],
+    "2026-06-29": [
+      {
+        "id": "mqyhy943ak9xhcn5qa9",
+        "text": "순공 7시간",
+        "done": false,
+        "_carriedFrom": "mqsbpwet"
+      }
     ]
   },
   "dismissedTodoIds": [
@@ -5217,6 +5225,6 @@
     "textAlign": "center",
     "highlightAll": true
   },
-  "lastCarryOverDate": "2026-06-28",
-  "lastModified": "2026-06-28T02:31:23.183Z"
+  "lastCarryOverDate": "2026-06-29",
+  "lastModified": "2026-06-29T00:45:52.419Z"
 }
