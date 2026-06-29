@@ -1741,6 +1741,36 @@
       "doneDate": null
     },
     {
+      "id": "과학_39",
+      "subject": "과학",
+      "num": "39강",
+      "title": "39강. 과학 태도, 과학적 방법, 과학 지식 [62분]",
+      "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학_40",
+      "subject": "과학",
+      "num": "40강",
+      "title": "40강. 과학의 진보, 과학 학습 이론 (구성주의, 행동주의) [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학_41",
+      "subject": "과학",
+      "num": "41강",
+      "title": "41강. 과학 학습 이론 (피아제 ~ 브루너) [64분]",
+      "minutes": 64,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "과학 개념_1",
       "subject": "과학 개념",
       "num": "1강",
@@ -2331,11 +2361,101 @@
       "doneDate": null
     },
     {
+      "id": "체육_28",
+      "subject": "체육",
+      "num": "28강",
+      "title": "28강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 조작 움직임) [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_29",
+      "subject": "체육",
+      "num": "29강",
+      "title": "29강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 조작 움직임2) [45분]",
+      "minutes": 45,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_30",
+      "subject": "체육",
+      "num": "30강",
+      "title": "30강. 스포츠 5~6학년 (스포츠 유형별 움직임 기술 - 기술형) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "실과_1",
       "subject": "실과",
       "num": "1강",
       "title": "1강. OT ~ 성취기준 [01-02] [37분]",
       "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_2",
+      "subject": "실과",
+      "num": "2강",
+      "title": "2강. 성취기준 [01-03] ~ [01-04] [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_3",
+      "subject": "실과",
+      "num": "3강",
+      "title": "3강. 성취기준 [01-05] ~ [01-07] [24분]",
+      "minutes": 24,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_4",
+      "subject": "실과",
+      "num": "4강",
+      "title": "4강. 성취기준 [02-01] [26분]",
+      "minutes": 26,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_5",
+      "subject": "실과",
+      "num": "5강",
+      "title": "5강. 성취기준 [02-02] ~ [02-04] [51분]",
+      "minutes": 51,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_6",
+      "subject": "실과",
+      "num": "6강",
+      "title": "6강. 성취기준 [02-05] ~ [02-06] [67분]",
+      "minutes": 67,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_7",
+      "subject": "실과",
+      "num": "7강",
+      "title": "7강. 성취기준 [02-07], [02-09] [54분]",
+      "minutes": 54,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -2786,6 +2906,56 @@
       "num": "39강",
       "title": "39강. 교수·학습 모형 [8분]",
       "minutes": 8,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_40",
+      "subject": "국어",
+      "num": "40강",
+      "title": "40강. 문학 (1) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_41",
+      "subject": "국어",
+      "num": "41강",
+      "title": "41강. 문학 (2) [20분]",
+      "minutes": 20,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_42",
+      "subject": "국어",
+      "num": "42강",
+      "title": "42강. 문학 (3) [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_43",
+      "subject": "국어",
+      "num": "43강",
+      "title": "43강. 문학 (4) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_44",
+      "subject": "국어",
+      "num": "44강",
+      "title": "44강. 문학 (5) [35분]",
+      "minutes": 35,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -5226,5 +5396,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-06-29",
-  "lastModified": "2026-06-29T00:45:52.419Z"
+  "lastModified": "2026-06-29T00:46:31.729Z"
 }
