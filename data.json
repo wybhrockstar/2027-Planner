@@ -3811,6 +3811,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-07-01",
+      "wakeTime": "08:54",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -3970,14 +3979,7 @@
         "_carriedFrom": "mqsbpwet"
       }
     ],
-    "2026-07-01": [
-      {
-        "id": "mr1hcx3yejr33qzxq9v",
-        "text": "순공 7시간",
-        "done": false,
-        "_carriedFrom": "mqsbpwet"
-      }
-    ]
+    "2026-07-01": []
   },
   "dismissedTodoIds": [
     "mqoo9p18",
@@ -3994,7 +3996,8 @@
     "mqqtadp8",
     "mqsbprt7",
     "mqsboujm",
-    "mqsbphbi"
+    "mqsbphbi",
+    "mqsbpwet"
   ],
   "examScores": [],
   "termTodos": {
@@ -5435,5 +5438,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-01",
-  "lastModified": "2026-07-01T13:50:52.186Z"
+  "lastModified": "2026-07-01T13:51:53.082Z"
 }
