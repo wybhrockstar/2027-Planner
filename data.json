@@ -4013,6 +4013,11 @@
         "id": "mq7wpajt",
         "text": "인강 - 39일동안 1 term 완료하기",
         "done": false
+      },
+      {
+        "id": "mr24ud2m",
+        "text": "여가 - 유튜브 only 한요한, 인스타 보관",
+        "done": false
       }
     ],
     "2": [],
@@ -5430,5 +5435,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-01",
-  "lastModified": "2026-07-01T13:39:50.181Z"
+  "lastModified": "2026-07-01T13:50:00.623Z"
 }
