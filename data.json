@@ -4001,7 +4001,7 @@
     "1": [
       {
         "id": "mq7wp11e",
-        "text": "순공 - 월수금일 11h / 화토 10.5h / 목",
+        "text": "순공 - 월수금일 11h / 화토 10.5h",
         "done": false
       },
       {
@@ -5430,5 +5430,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-01",
-  "lastModified": "2026-07-01T13:27:29.825Z"
+  "lastModified": "2026-07-01T13:27:40.471Z"
 }
