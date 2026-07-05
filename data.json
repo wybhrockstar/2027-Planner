@@ -1771,6 +1771,36 @@
       "doneDate": null
     },
     {
+      "id": "과학_42",
+      "subject": "과학",
+      "num": "42강",
+      "title": "42강. 과학 교수 학습 방법 (실험 수업 ~ 협동 학습) [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학_43",
+      "subject": "과학",
+      "num": "43강",
+      "title": "43강. 과학 교수 학습 방법 (창의적 사고 촉진 기법 ~ 거꾸로 학습), 과학 학습의 평가 [69분]",
+      "minutes": 69,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "과학_44",
+      "subject": "과학",
+      "num": "44강",
+      "title": "44강. 과학 실험 안전, 2022 과학과 교육과정 [80분]",
+      "minutes": 80,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "과학 개념_1",
       "subject": "과학 개념",
       "num": "1강",
@@ -2391,6 +2421,36 @@
       "doneDate": null
     },
     {
+      "id": "체육_31",
+      "subject": "체육",
+      "num": "31강",
+      "title": "31강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 기술형 ~ 전략형) [49분]",
+      "minutes": 49,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_32",
+      "subject": "체육",
+      "num": "32강",
+      "title": "32강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 전략형 ~ 생태형) [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_33",
+      "subject": "체육",
+      "num": "33강",
+      "title": "33강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "실과_1",
       "subject": "실과",
       "num": "1강",
@@ -2456,6 +2516,66 @@
       "num": "7강",
       "title": "7강. 성취기준 [02-07], [02-09] [54분]",
       "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_8",
+      "subject": "실과",
+      "num": "8강",
+      "title": "8강. 성취기준 [02-08] 1 [36분]",
+      "minutes": 36,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_9",
+      "subject": "실과",
+      "num": "9강",
+      "title": "9강. 성취기준 [02-08] 2 [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_10",
+      "subject": "실과",
+      "num": "10강",
+      "title": "10강. 성취기준 [02-08] 3 ~ [02-11] [45분]",
+      "minutes": 45,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_11",
+      "subject": "실과",
+      "num": "11강",
+      "title": "11강. 성취기준 [03-01] [13분]",
+      "minutes": 13,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_12",
+      "subject": "실과",
+      "num": "12강",
+      "title": "12강. 성취기준 [03-02] [59분]",
+      "minutes": 59,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_13",
+      "subject": "실과",
+      "num": "13강",
+      "title": "13강. 성취기준 [03-03] [22분]",
+      "minutes": 22,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -3536,6 +3656,66 @@
       "num": "57강",
       "title": "57강. 수와 연산 (23) [37분]",
       "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_58",
+      "subject": "수학",
+      "num": "58강",
+      "title": "58강. 수와 연산 (24) [21분]",
+      "minutes": 21,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_59",
+      "subject": "수학",
+      "num": "59강",
+      "title": "59강. 수와 연산 (25) [22분]",
+      "minutes": 22,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_60",
+      "subject": "수학",
+      "num": "60강",
+      "title": "60강. 수와 연산 (26) [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_61",
+      "subject": "수학",
+      "num": "61강",
+      "title": "61강. 수와 연산 (27) [25분]",
+      "minutes": 25,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_62",
+      "subject": "수학",
+      "num": "62강",
+      "title": "62강. 스켐프 ~ 브루너 [35분]",
+      "minutes": 35,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_63",
+      "subject": "수학",
+      "num": "63강",
+      "title": "63강. 피아제 [28분]",
+      "minutes": 28,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -5474,5 +5654,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-05",
-  "lastModified": "2026-07-05T02:53:21.843Z"
+  "lastModified": "2026-07-05T06:11:22.287Z"
 }
