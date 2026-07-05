@@ -361,9 +361,12 @@ body.light .tt-hour-label.tt-on-hour{color:var(--accent)!important}
 .tt-day-col{flex:1;position:relative;min-width:0}
 .tt-day-col.tt-today>.tt-day-rows{outline:1.5px solid var(--accent);outline-offset:-1px;border-radius:2px}
 .tt-day-col.tt-today .tt-day-rows .tt-row-bg{background:transparent}
-.tt-day-header{text-align:center;font-size:10px;font-weight:700;padding:3px 0;color:var(--text2);display:flex;flex-direction:column;align-items:center;position:sticky;top:82px;background:var(--day-header-bg);z-index:10;border-bottom:1px solid var(--border2);border-radius:3px 3px 0 0}
+.tt-day-header{text-align:center;font-size:10px;font-weight:700;padding:3px 0;color:var(--text2);display:flex;flex-direction:column;align-items:center;position:sticky;top:82px;background:var(--day-header-bg);z-index:10;border-bottom:1px solid var(--border2);border-radius:3px 3px 0 0;cursor:pointer;transition:filter .12s}
+.tt-day-header:active{filter:brightness(1.3)}
 .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
+.tt-day-study{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;color:var(--accent);opacity:.85;margin-top:1px}
+.tt-day-header.tt-today-hd .tt-day-study{color:#0a1a00;opacity:.75}
 .tt-day-rows{position:relative}
 .tt-row-bg{height:var(--row-h);border-bottom:var(--line-30m);cursor:pointer;transition:background .1s}
 .tt-row-bg.tt-on-hour{border-bottom:var(--line-1h)}
@@ -3910,6 +3913,62 @@ function ttRenderSummary() {
   el.innerHTML = items.join('');
 }
 
+function ttShowDaySummary(dayKey) {
+  const dayIdx  = TT_DAY_KEYS.indexOf(dayKey);
+  const dayName = TT_DAY_NAMES[dayIdx];
+  const termName = (TERMS.find(t => t.id === ttState.activeTerm) || {}).name || '';
+  const events = (ttState.termEvents[ttState.activeTerm] || []).filter(ev => ev.day === dayKey);
+
+  const totals = {};
+  ttState.categories.forEach(c => { totals[c.id] = 0; });
+  events.forEach(ev => {
+    if (ev.categoryId && totals[ev.categoryId] !== undefined)
+      totals[ev.categoryId] += (ev.endMin - ev.startMin);
+  });
+  const totalMin = Object.values(totals).reduce((a, b) => a + b, 0);
+
+  const fmt = mins => {
+    if (mins <= 0) return '-';
+    const h = Math.floor(mins / 60), m = mins % 60;
+    return h > 0 ? (m > 0 ? `${h}h\u202F${m}m` : `${h}h`) : `${m}m`;
+  };
+
+  const rows = ttState.categories.map(c => {
+    const mins = totals[c.id] || 0;
+    const pct  = totalMin > 0 ? Math.round(mins / totalMin * 100) : 0;
+    return `<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)">
+      <span style="width:9px;height:9px;border-radius:50%;background:${c.color};flex-shrink:0"></span>
+      <span style="flex:1;font-size:13px">${c.name}</span>
+      <span style="font-size:11px;color:var(--text3);width:32px;text-align:right">${mins > 0 ? pct + '%' : ''}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;min-width:56px;text-align:right;color:${mins>0?'var(--text)':'var(--text4)'}">${fmt(mins)}</span>
+    </div>`;
+  }).join('');
+
+  const emptyState = !ttState.categories.length
+    ? `<div style="font-size:12px;color:var(--text3);padding:16px 0;text-align:center">등록된 카테고리가 없습니다</div>`
+    : (totalMin === 0 ? `<div style="font-size:12px;color:var(--text3);padding:4px 0 12px">이 요일에 등록된 일정이 없습니다</div>` : '');
+
+  showModal(`
+    <div style="font-weight:700;font-size:16px;margin-bottom:2px">${dayName}요일 카테고리 합계</div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:12px">${termName}${termName?' · ':''}총 ${fmt(totalMin)}</div>
+    ${totalMin > 0 ? rows : emptyState}
+    <div style="margin-top:14px;display:flex;justify-content:flex-end">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">닫기</button>
+    </div>
+  `);
+}
+
+function ttStudyCategoryIds() {
+  const byName = ttState.categories.filter(c => c.name === '자습' || c.name === '인강').map(c => c.id);
+  if (byName.length) return byName;
+  return ttState.categories.filter(c => c.id === 'self' || c.id === 'lecture').map(c => c.id);
+}
+function ttFmtMin(mins) {
+  if (mins <= 0) return '-';
+  const h = Math.floor(mins / 60), m = mins % 60;
+  return h > 0 ? (m > 0 ? `${h}h\u202F${m}m` : `${h}h`) : `${m}m`;
+}
+
 function ttRenderGrid() {
   const headerEl = document.getElementById('tt-header');
   const timesEl  = document.getElementById('tt-times');
@@ -3918,11 +3977,25 @@ function ttRenderGrid() {
   const todayIdx = ttTodayDayIdx();
   const nowMin   = ttNowMinutes();
 
+  const events = ttState.termEvents[ttState.activeTerm] || [];
+  const studyCatIds = ttStudyCategoryIds();
+  const ttDayStudyMin = dk => events
+    .filter(ev => ev.day === dk && studyCatIds.includes(ev.categoryId))
+    .reduce((sum, ev) => sum + (ev.endMin - ev.startMin), 0);
+
   headerEl.innerHTML = TT_DAY_NAMES.map((name, i) => {
     const isToday = i === todayIdx;
     const todayHL = isToday && ttState.highlightAll;
-    return `<div class="tt-day-header ${todayHL?'tt-today-hd':''}" style="flex:1;min-width:0">${name}</div>`;
+    const dk = TT_DAY_KEYS[i];
+    const studyMin = ttDayStudyMin(dk);
+    return `<div class="tt-day-header ${todayHL?'tt-today-hd':''}" style="flex:1;min-width:0" data-day="${dk}">
+      <span>${name}</span>
+      <span class="tt-day-study">${ttFmtMin(studyMin)}</span>
+    </div>`;
   }).join('');
+  headerEl.querySelectorAll('.tt-day-header').forEach(hd => {
+    hd.addEventListener('click', () => ttShowDaySummary(hd.dataset.day));
+  });
 
   const slots = [];
   for (let m = TT_START_MIN; m < TT_END_MIN; m += 30) slots.push(m);
@@ -3936,7 +4009,6 @@ function ttRenderGrid() {
     </div>`;
   }).join('');
 
-  const events = ttState.termEvents[ttState.activeTerm] || [];
   daysEl.innerHTML = TT_DAY_KEYS.map((dk, di) => {
     const isToday = di === todayIdx;
     const showTodayHL = isToday && ttState.highlightAll;
