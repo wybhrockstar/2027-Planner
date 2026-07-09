@@ -4051,7 +4051,7 @@
       "wakeTime": "08:35",
       "sleepTime": "01:42",
       "studyMin": 164,
-      "kcal": 0,
+      "kcal": 200,
       "memo": "",
       "studyResult": null
     },
@@ -5690,5 +5690,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-09",
-  "lastModified": "2026-07-09T16:44:28.228Z"
+  "lastModified": "2026-07-09T16:44:36.228Z"
 }
