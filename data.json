@@ -4049,7 +4049,7 @@
     {
       "date": "2026-07-09",
       "wakeTime": "08:35",
-      "sleepTime": "01:42",
+      "sleepTime": "01:50",
       "studyMin": 164,
       "kcal": 200,
       "memo": "",
@@ -5690,5 +5690,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-09",
-  "lastModified": "2026-07-09T16:44:49.621Z"
+  "lastModified": "2026-07-09T16:47:06.494Z"
 }
