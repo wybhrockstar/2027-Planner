@@ -4063,6 +4063,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-07-08",
+      "wakeTime": "08:43",
+      "sleepTime": "01:30",
+      "studyMin": 139,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -5681,5 +5690,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-09",
-  "lastModified": "2026-07-09T16:43:44.534Z"
+  "lastModified": "2026-07-09T16:44:28.228Z"
 }
