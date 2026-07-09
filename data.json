@@ -4071,7 +4071,7 @@
       "studyMin": 139,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -5690,5 +5690,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-09",
-  "lastModified": "2026-07-09T16:44:36.228Z"
+  "lastModified": "2026-07-09T16:44:49.621Z"
 }
