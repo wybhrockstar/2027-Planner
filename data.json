@@ -5998,8 +5998,8 @@
     "highlightAll": true
   },
   "subjGroupOrder": [
-    "음악",
     "총창",
+    "음악",
     "영어",
     "도덕",
     "미술",
@@ -6012,5 +6012,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-07-11",
-  "lastModified": "2026-07-11T03:22:51.810Z"
+  "lastModified": "2026-07-11T03:23:26.543Z"
 }
