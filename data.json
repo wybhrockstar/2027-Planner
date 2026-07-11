@@ -1,6 +1,96 @@
 {
   "lectures": [
     {
+      "id": "영어 심화_1",
+      "subject": "영어 심화",
+      "num": "1강",
+      "title": "1강. [복습] OT & 언어 습득 이론 [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_2",
+      "subject": "영어 심화",
+      "num": "2강",
+      "title": "2강. [복습] 교수법 ~ 학습자 변인 [43분]",
+      "minutes": 43,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_3",
+      "subject": "영어 심화",
+      "num": "3강",
+      "title": "3강. [복습] 기능별 언어 지도 [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_4",
+      "subject": "영어 심화",
+      "num": "4강",
+      "title": "4강. [복습] 요소별 언어 지도 ~ 학습자 중심 교육 [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_5",
+      "subject": "영어 심화",
+      "num": "5강",
+      "title": "5강. [심화] 언어 습득 이론 (추가 원문 p. 1-2 + 중등 기출 1-6번) [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_6",
+      "subject": "영어 심화",
+      "num": "6강",
+      "title": "6강. [심화] 교수법 ~ 학습자 변인 (추가 원문 p. 3-4 + 중등 기출 7-14번) [56분]",
+      "minutes": 56,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_7",
+      "subject": "영어 심화",
+      "num": "7강",
+      "title": "7강. [심화] 기능별 언어 지도 공통 ~ receptive skills (중등 기출 15-21번) [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_8",
+      "subject": "영어 심화",
+      "num": "8강",
+      "title": "8강. [심화] productive skills ~ 어휘 지도 (추가 원문 p. 5 + 중등 기출 22-30번) [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_9",
+      "subject": "영어 심화",
+      "num": "9강",
+      "title": "9강. [심화] 문법 지도 ~ 학습자 중심 교육 (추가 원문 p. 6-7 + 중등 기출 31-41번) [66분]",
+      "minutes": 66,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "총창_1",
       "subject": "총창",
       "num": "1강",
@@ -2451,6 +2541,56 @@
       "doneDate": null
     },
     {
+      "id": "체육_34",
+      "subject": "체육",
+      "num": "34강",
+      "title": "34강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형2) [64분]",
+      "minutes": 64,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_35",
+      "subject": "체육",
+      "num": "35강",
+      "title": "35강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형3) [59분]",
+      "minutes": 59,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_36",
+      "subject": "체육",
+      "num": "36강",
+      "title": "36강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 동작형) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_37",
+      "subject": "체육",
+      "num": "37강",
+      "title": "37강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 투기형) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_38",
+      "subject": "체육",
+      "num": "38강",
+      "title": "38강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동 - 영역형) [92분]",
+      "minutes": 92,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
       "id": "실과_1",
       "subject": "실과",
       "num": "1강",
@@ -2576,6 +2716,66 @@
       "num": "13강",
       "title": "13강. 성취기준 [03-03] [22분]",
       "minutes": 22,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_14",
+      "subject": "실과",
+      "num": "14강",
+      "title": "14강. 성취기준 [03-04] ~ [03-05] [36분]",
+      "minutes": 36,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_15",
+      "subject": "실과",
+      "num": "15강",
+      "title": "15강. 성취기준 [04-01] ~ [04-03] [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_16",
+      "subject": "실과",
+      "num": "16강",
+      "title": "16강. 성취기준 [04-07] ~ [04-08] [60분]",
+      "minutes": 60,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_17",
+      "subject": "실과",
+      "num": "17강",
+      "title": "17강. 성취기준 [04-09] ~ [04-11] [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_18",
+      "subject": "실과",
+      "num": "18강",
+      "title": "18강. 성취기준 [05-01] ~ [05-03] [66분]",
+      "minutes": 66,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_19",
+      "subject": "실과",
+      "num": "19강",
+      "title": "19강. 성취기준 [05-04] ~ [05-05] [27분]",
+      "minutes": 27,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -3716,6 +3916,96 @@
       "num": "63강",
       "title": "63강. 피아제 [28분]",
       "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_64",
+      "subject": "수학",
+      "num": "64강",
+      "title": "64강. 변화와 관계 (1) [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_65",
+      "subject": "수학",
+      "num": "65강",
+      "title": "65강. 변화와 관계 (2) [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_66",
+      "subject": "수학",
+      "num": "66강",
+      "title": "66강. 변화와 관계 (3) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_67",
+      "subject": "수학",
+      "num": "67강",
+      "title": "67강. 자료와 가능성 (1) [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_68",
+      "subject": "수학",
+      "num": "68강",
+      "title": "68강. 자료와 가능성 (2) [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_69",
+      "subject": "수학",
+      "num": "69강",
+      "title": "69강. 자료와 가능성 (3) [32분]",
+      "minutes": 32,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_70",
+      "subject": "수학",
+      "num": "70강",
+      "title": "70강. 자료와 가능성 (4) [34분]",
+      "minutes": 34,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_71",
+      "subject": "수학",
+      "num": "71강",
+      "title": "71강. 프로이덴탈 ~ 베르트하이머 [53분]",
+      "minutes": 53,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학_72",
+      "subject": "수학",
+      "num": "72강",
+      "title": "72강. 오슈벨, 교수학적 변환론 ~ 초등학교 수학 학습에 대한 관점 [39분]",
+      "minutes": 39,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -5708,5 +5998,5 @@
     "highlightAll": true
   },
   "lastCarryOverDate": "2026-07-11",
-  "lastModified": "2026-07-10T23:43:27.345Z"
+  "lastModified": "2026-07-11T02:07:37.541Z"
 }
