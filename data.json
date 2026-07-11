@@ -5997,6 +5997,20 @@
     "textAlign": "center",
     "highlightAll": true
   },
+  "subjGroupOrder": [
+    "음악",
+    "총창",
+    "영어",
+    "도덕",
+    "미술",
+    "사회",
+    "과학",
+    "국어",
+    "체육",
+    "실과",
+    "통교",
+    "수학"
+  ],
   "lastCarryOverDate": "2026-07-11",
-  "lastModified": "2026-07-11T03:01:03.359Z"
+  "lastModified": "2026-07-11T03:22:51.810Z"
 }
