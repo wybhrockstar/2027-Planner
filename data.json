@@ -1,96 +1,6 @@
 {
   "lectures": [
     {
-      "id": "영어 심화_1",
-      "subject": "영어 심화",
-      "num": "1강",
-      "title": "1강. [복습] OT & 언어 습득 이론 [39분]",
-      "minutes": 39,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_2",
-      "subject": "영어 심화",
-      "num": "2강",
-      "title": "2강. [복습] 교수법 ~ 학습자 변인 [43분]",
-      "minutes": 43,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_3",
-      "subject": "영어 심화",
-      "num": "3강",
-      "title": "3강. [복습] 기능별 언어 지도 [38분]",
-      "minutes": 38,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_4",
-      "subject": "영어 심화",
-      "num": "4강",
-      "title": "4강. [복습] 요소별 언어 지도 ~ 학습자 중심 교육 [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_5",
-      "subject": "영어 심화",
-      "num": "5강",
-      "title": "5강. [심화] 언어 습득 이론 (추가 원문 p. 1-2 + 중등 기출 1-6번) [46분]",
-      "minutes": 46,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_6",
-      "subject": "영어 심화",
-      "num": "6강",
-      "title": "6강. [심화] 교수법 ~ 학습자 변인 (추가 원문 p. 3-4 + 중등 기출 7-14번) [56분]",
-      "minutes": 56,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_7",
-      "subject": "영어 심화",
-      "num": "7강",
-      "title": "7강. [심화] 기능별 언어 지도 공통 ~ receptive skills (중등 기출 15-21번) [30분]",
-      "minutes": 30,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_8",
-      "subject": "영어 심화",
-      "num": "8강",
-      "title": "8강. [심화] productive skills ~ 어휘 지도 (추가 원문 p. 5 + 중등 기출 22-30번) [41분]",
-      "minutes": 41,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "영어 심화_9",
-      "subject": "영어 심화",
-      "num": "9강",
-      "title": "9강. [심화] 문법 지도 ~ 학습자 중심 교육 (추가 원문 p. 6-7 + 중등 기출 31-41번) [66분]",
-      "minutes": 66,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
       "id": "총창_1",
       "subject": "총창",
       "num": "1강",
@@ -636,6 +546,96 @@
       "num": "22강",
       "title": "22강. 교육과정 (표현영역 성취기준) ~ 기타 기출 [62분]",
       "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_1",
+      "subject": "영어 심화",
+      "num": "1강",
+      "title": "1강. [복습] OT & 언어 습득 이론 [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_2",
+      "subject": "영어 심화",
+      "num": "2강",
+      "title": "2강. [복습] 교수법 ~ 학습자 변인 [43분]",
+      "minutes": 43,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_3",
+      "subject": "영어 심화",
+      "num": "3강",
+      "title": "3강. [복습] 기능별 언어 지도 [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_4",
+      "subject": "영어 심화",
+      "num": "4강",
+      "title": "4강. [복습] 요소별 언어 지도 ~ 학습자 중심 교육 [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_5",
+      "subject": "영어 심화",
+      "num": "5강",
+      "title": "5강. [심화] 언어 습득 이론 (추가 원문 p. 1-2 + 중등 기출 1-6번) [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_6",
+      "subject": "영어 심화",
+      "num": "6강",
+      "title": "6강. [심화] 교수법 ~ 학습자 변인 (추가 원문 p. 3-4 + 중등 기출 7-14번) [56분]",
+      "minutes": 56,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_7",
+      "subject": "영어 심화",
+      "num": "7강",
+      "title": "7강. [심화] 기능별 언어 지도 공통 ~ receptive skills (중등 기출 15-21번) [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_8",
+      "subject": "영어 심화",
+      "num": "8강",
+      "title": "8강. [심화] productive skills ~ 어휘 지도 (추가 원문 p. 5 + 중등 기출 22-30번) [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "영어 심화_9",
+      "subject": "영어 심화",
+      "num": "9강",
+      "title": "9강. [심화] 문법 지도 ~ 학습자 중심 교육 (추가 원문 p. 6-7 + 중등 기출 31-41번) [66분]",
+      "minutes": 66,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -2211,626 +2211,6 @@
       "doneDate": null
     },
     {
-      "id": "체육_1",
-      "subject": "체육",
-      "num": "1강",
-      "title": "1강. OT, 학습과제 단계화 [50분]",
-      "minutes": 50,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_2",
-      "subject": "체육",
-      "num": "2강",
-      "title": "2강. 설명 ~ 학습단서 [54분]",
-      "minutes": 54,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_3",
-      "subject": "체육",
-      "num": "3강",
-      "title": "3강. 관찰 ~ 동기유발 [43분]",
-      "minutes": 43,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_4",
-      "subject": "체육",
-      "num": "4강",
-      "title": "4강. 평가 ~ 예방적 수업 관리 전략 [50분]",
-      "minutes": 50,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_5",
-      "subject": "체육",
-      "num": "5강",
-      "title": "5강. 비과제 행동 최소화 전략 ~ 체육 수업 모형 [37분]",
-      "minutes": 37,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_6",
-      "subject": "체육",
-      "num": "6강",
-      "title": "6강. 직접 교수 모형 ~ 개별화 수업 모형 [37분]",
-      "minutes": 37,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_7",
-      "subject": "체육",
-      "num": "7강",
-      "title": "7강. 협동 학습 모형 [48분]",
-      "minutes": 48,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_8",
-      "subject": "체육",
-      "num": "8강",
-      "title": "8강. 스포츠 교육 모형 ~ 탐구 수업 모형 [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_9",
-      "subject": "체육",
-      "num": "9강",
-      "title": "9강. 이해 중심 게임 수업 모형 [52분]",
-      "minutes": 52,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_10",
-      "subject": "체육",
-      "num": "10강",
-      "title": "10강. TPSR 모형 ~ 체육과 교육과정 모형 [86분]",
-      "minutes": 86,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_11",
-      "subject": "체육",
-      "num": "11강",
-      "title": "11강. 교육과정 (1) [41분]",
-      "minutes": 41,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_12",
-      "subject": "체육",
-      "num": "12강",
-      "title": "12강. 교육과정 (2) [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_13",
-      "subject": "체육",
-      "num": "13강",
-      "title": "13강. 교육과정 (3) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_14",
-      "subject": "체육",
-      "num": "14강",
-      "title": "14강. 교육과정 (4) [20분]",
-      "minutes": 20,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_15",
-      "subject": "체육",
-      "num": "15강",
-      "title": "15강. 교육과정 (5) [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_16",
-      "subject": "체육",
-      "num": "16강",
-      "title": "16강. 교육과정 (6) [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_17",
-      "subject": "체육",
-      "num": "17강",
-      "title": "17강. 교육과정 (7) [51분]",
-      "minutes": 51,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_18",
-      "subject": "체육",
-      "num": "18강",
-      "title": "18강. 교육과정 (8) [35분]",
-      "minutes": 35,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_19",
-      "subject": "체육",
-      "num": "19강",
-      "title": "19강. 운동 3~4학년 (기본 체력운동 - 체력운동 관련 기본 움직임) [61분]",
-      "minutes": 61,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_20",
-      "subject": "체육",
-      "num": "20강",
-      "title": "20강. 운동 3~4학년 (기본 체력운동 - 체력운동 기능) [68분]",
-      "minutes": 68,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_21",
-      "subject": "체육",
-      "num": "21강",
-      "title": "21강. 운동 3~4학년 (건강 운동 및 생활 습관) [65분]",
-      "minutes": 65,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_22",
-      "subject": "체육",
-      "num": "22강",
-      "title": "22강. 운동 5~6학년 (건강체력 관련 운동) [62분]",
-      "minutes": 62,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_23",
-      "subject": "체육",
-      "num": "23강",
-      "title": "23강. 운동 5~6학년 (운동체력 관련 운동) [58분]",
-      "minutes": 58,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_24",
-      "subject": "체육",
-      "num": "24강",
-      "title": "24강. 운동 5~6학년 (성장 및 안전 활동) [75분]",
-      "minutes": 75,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_25",
-      "subject": "체육",
-      "num": "25강",
-      "title": "25강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임) [47분]",
-      "minutes": 47,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_26",
-      "subject": "체육",
-      "num": "26강",
-      "title": "26강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임 ~ 비이동 움직임) [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_27",
-      "subject": "체육",
-      "num": "27강",
-      "title": "27강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 비이동 움직임) [24분]",
-      "minutes": 24,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_28",
-      "subject": "체육",
-      "num": "28강",
-      "title": "28강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 조작 움직임 (1)) [46분]",
-      "minutes": 46,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_29",
-      "subject": "체육",
-      "num": "29강",
-      "title": "29강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 조작 움직임 (2)) [45분]",
-      "minutes": 45,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_30",
-      "subject": "체육",
-      "num": "30강",
-      "title": "30강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 기술형) [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_31",
-      "subject": "체육",
-      "num": "31강",
-      "title": "31강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 기술형 ~ 전략형) [49분]",
-      "minutes": 49,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_32",
-      "subject": "체육",
-      "num": "32강",
-      "title": "32강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 전략형 ~ 생태형) [70분]",
-      "minutes": 70,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_33",
-      "subject": "체육",
-      "num": "33강",
-      "title": "33강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형 (1)) [61분]",
-      "minutes": 61,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_34",
-      "subject": "체육",
-      "num": "34강",
-      "title": "34강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형 (2)) [64분]",
-      "minutes": 64,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_35",
-      "subject": "체육",
-      "num": "35강",
-      "title": "35강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형 (3)) [59분]",
-      "minutes": 59,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_36",
-      "subject": "체육",
-      "num": "36강",
-      "title": "36강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 동작형) [57분]",
-      "minutes": 57,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_37",
-      "subject": "체육",
-      "num": "37강",
-      "title": "37강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 투기형) [44분]",
-      "minutes": 44,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "체육_38",
-      "subject": "체육",
-      "num": "38강",
-      "title": "38강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동 - 영역형) [92분]",
-      "minutes": 92,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_1",
-      "subject": "실과",
-      "num": "1강",
-      "title": "1강. OT ~ 성취기준 [01-02] [37분]",
-      "minutes": 37,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_2",
-      "subject": "실과",
-      "num": "2강",
-      "title": "2강. 성취기준 [01-03] ~ [01-04] [47분]",
-      "minutes": 47,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_3",
-      "subject": "실과",
-      "num": "3강",
-      "title": "3강. 성취기준 [01-05] ~ [01-07] [24분]",
-      "minutes": 24,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_4",
-      "subject": "실과",
-      "num": "4강",
-      "title": "4강. 성취기준 [02-01] [26분]",
-      "minutes": 26,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_5",
-      "subject": "실과",
-      "num": "5강",
-      "title": "5강. 성취기준 [02-02] ~ [02-04] [51분]",
-      "minutes": 51,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_6",
-      "subject": "실과",
-      "num": "6강",
-      "title": "6강. 성취기준 [02-05] ~ [02-06] [67분]",
-      "minutes": 67,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_7",
-      "subject": "실과",
-      "num": "7강",
-      "title": "7강. 성취기준 [02-07], [02-09] [54분]",
-      "minutes": 54,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_8",
-      "subject": "실과",
-      "num": "8강",
-      "title": "8강. 성취기준 [02-08] (1) [36분]",
-      "minutes": 36,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_9",
-      "subject": "실과",
-      "num": "9강",
-      "title": "9강. 성취기준 [02-08] (2) [52분]",
-      "minutes": 52,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_10",
-      "subject": "실과",
-      "num": "10강",
-      "title": "10강. 성취기준 [02-08] (3) ~ [02-11] [45분]",
-      "minutes": 45,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_11",
-      "subject": "실과",
-      "num": "11강",
-      "title": "11강. 성취기준 [03-01] [13분]",
-      "minutes": 13,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_12",
-      "subject": "실과",
-      "num": "12강",
-      "title": "12강. 성취기준 [03-02] [59분]",
-      "minutes": 59,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_13",
-      "subject": "실과",
-      "num": "13강",
-      "title": "13강. 성취기준 [03-03] [22분]",
-      "minutes": 22,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_14",
-      "subject": "실과",
-      "num": "14강",
-      "title": "14강. 성취기준 [03-04] ~ [03-05] [36분]",
-      "minutes": 36,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_15",
-      "subject": "실과",
-      "num": "15강",
-      "title": "15강. 성취기준 [04-01] ~ [04-03] [28분]",
-      "minutes": 28,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_16",
-      "subject": "실과",
-      "num": "16강",
-      "title": "16강. 성취기준 [04-07] ~ [04-08] [60분]",
-      "minutes": 60,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_17",
-      "subject": "실과",
-      "num": "17강",
-      "title": "17강. 성취기준 [04-09] ~ [04-11] [30분]",
-      "minutes": 30,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_18",
-      "subject": "실과",
-      "num": "18강",
-      "title": "18강. 성취기준 [05-01] ~ [05-03] [66분]",
-      "minutes": 66,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "실과_19",
-      "subject": "실과",
-      "num": "19강",
-      "title": "19강. 성취기준 [05-04] ~ [05-05] [27분]",
-      "minutes": 27,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_1",
-      "subject": "통교",
-      "num": "1강",
-      "title": "1강. OT ~ 교육과정 (1) (바른 생활) [42분]",
-      "minutes": 42,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_2",
-      "subject": "통교",
-      "num": "2강",
-      "title": "2강. 교육과정 (2) (바른 생활) [40분]",
-      "minutes": 40,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_3",
-      "subject": "통교",
-      "num": "3강",
-      "title": "3강. 교육과정 (3) (바른 생활 ~ 슬기로운 생활) [62분]",
-      "minutes": 62,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_4",
-      "subject": "통교",
-      "num": "4강",
-      "title": "4강. 교육과정 (4) (즐거운 생활 ~ 지도서 부록) [55분]",
-      "minutes": 55,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
-      "id": "통교_5",
-      "subject": "통교",
-      "num": "5강",
-      "title": "5강. 교육과정 (5) (지도서 총론) [27분]",
-      "minutes": 27,
-      "term": 1,
-      "done": false,
-      "doneDate": null
-    },
-    {
       "id": "국어_0",
       "subject": "국어",
       "num": "0강",
@@ -3276,6 +2656,736 @@
       "num": "44강",
       "title": "44강. 문학 (5) [35분]",
       "minutes": 35,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_45",
+      "subject": "국어",
+      "num": "45강",
+      "title": "45강. 문학 (6) [71분]",
+      "minutes": 71,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_46",
+      "subject": "국어",
+      "num": "46강",
+      "title": "46강. 문학 (7), 수업 모형, 그림책 읽기 자료 [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어_47",
+      "subject": "국어",
+      "num": "47강",
+      "title": "47강. 매체 [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_1",
+      "subject": "체육",
+      "num": "1강",
+      "title": "1강. OT, 학습과제 단계화 [50분]",
+      "minutes": 50,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_2",
+      "subject": "체육",
+      "num": "2강",
+      "title": "2강. 설명 ~ 학습단서 [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_3",
+      "subject": "체육",
+      "num": "3강",
+      "title": "3강. 관찰 ~ 동기유발 [43분]",
+      "minutes": 43,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_4",
+      "subject": "체육",
+      "num": "4강",
+      "title": "4강. 평가 ~ 예방적 수업 관리 전략 [50분]",
+      "minutes": 50,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_5",
+      "subject": "체육",
+      "num": "5강",
+      "title": "5강. 비과제 행동 최소화 전략 ~ 체육 수업 모형 [37분]",
+      "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_6",
+      "subject": "체육",
+      "num": "6강",
+      "title": "6강. 직접 교수 모형 ~ 개별화 수업 모형 [37분]",
+      "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_7",
+      "subject": "체육",
+      "num": "7강",
+      "title": "7강. 협동 학습 모형 [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_8",
+      "subject": "체육",
+      "num": "8강",
+      "title": "8강. 스포츠 교육 모형 ~ 탐구 수업 모형 [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_9",
+      "subject": "체육",
+      "num": "9강",
+      "title": "9강. 이해 중심 게임 수업 모형 [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_10",
+      "subject": "체육",
+      "num": "10강",
+      "title": "10강. TPSR 모형 ~ 체육과 교육과정 모형 [86분]",
+      "minutes": 86,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_11",
+      "subject": "체육",
+      "num": "11강",
+      "title": "11강. 교육과정 (1) [41분]",
+      "minutes": 41,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_12",
+      "subject": "체육",
+      "num": "12강",
+      "title": "12강. 교육과정 (2) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_13",
+      "subject": "체육",
+      "num": "13강",
+      "title": "13강. 교육과정 (3) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_14",
+      "subject": "체육",
+      "num": "14강",
+      "title": "14강. 교육과정 (4) [20분]",
+      "minutes": 20,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_15",
+      "subject": "체육",
+      "num": "15강",
+      "title": "15강. 교육과정 (5) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_16",
+      "subject": "체육",
+      "num": "16강",
+      "title": "16강. 교육과정 (6) [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_17",
+      "subject": "체육",
+      "num": "17강",
+      "title": "17강. 교육과정 (7) [51분]",
+      "minutes": 51,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_18",
+      "subject": "체육",
+      "num": "18강",
+      "title": "18강. 교육과정 (8) [35분]",
+      "minutes": 35,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_19",
+      "subject": "체육",
+      "num": "19강",
+      "title": "19강. 운동 3~4학년 (기본 체력운동 - 체력운동 관련 기본 움직임) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_20",
+      "subject": "체육",
+      "num": "20강",
+      "title": "20강. 운동 3~4학년 (기본 체력운동 - 체력운동 기능) [68분]",
+      "minutes": 68,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_21",
+      "subject": "체육",
+      "num": "21강",
+      "title": "21강. 운동 3~4학년 (건강 운동 및 생활 습관) [65분]",
+      "minutes": 65,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_22",
+      "subject": "체육",
+      "num": "22강",
+      "title": "22강. 운동 5~6학년 (건강체력 관련 운동) [62분]",
+      "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_23",
+      "subject": "체육",
+      "num": "23강",
+      "title": "23강. 운동 5~6학년 (운동체력 관련 운동) [58분]",
+      "minutes": 58,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_24",
+      "subject": "체육",
+      "num": "24강",
+      "title": "24강. 운동 5~6학년 (성장 및 안전 활동) [75분]",
+      "minutes": 75,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_25",
+      "subject": "체육",
+      "num": "25강",
+      "title": "25강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임) [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_26",
+      "subject": "체육",
+      "num": "26강",
+      "title": "26강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 이동 움직임 ~ 비이동 움직임) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_27",
+      "subject": "체육",
+      "num": "27강",
+      "title": "27강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 비이동 움직임) [24분]",
+      "minutes": 24,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_28",
+      "subject": "체육",
+      "num": "28강",
+      "title": "28강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 조작 움직임 (1)) [46분]",
+      "minutes": 46,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_29",
+      "subject": "체육",
+      "num": "29강",
+      "title": "29강. 스포츠 3~4학년 (기본 움직임의 기초 기술 - 조작 움직임 (2)) [45분]",
+      "minutes": 45,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_30",
+      "subject": "체육",
+      "num": "30강",
+      "title": "30강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 기술형) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_31",
+      "subject": "체육",
+      "num": "31강",
+      "title": "31강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 기술형 ~ 전략형) [49분]",
+      "minutes": 49,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_32",
+      "subject": "체육",
+      "num": "32강",
+      "title": "32강. 스포츠 3~4학년 (스포츠 유형별 움직임 기술 - 전략형 ~ 생태형) [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_33",
+      "subject": "체육",
+      "num": "33강",
+      "title": "33강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형 (1)) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_34",
+      "subject": "체육",
+      "num": "34강",
+      "title": "34강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형 (2)) [64분]",
+      "minutes": 64,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_35",
+      "subject": "체육",
+      "num": "35강",
+      "title": "35강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 기록형 (3)) [59분]",
+      "minutes": 59,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_36",
+      "subject": "체육",
+      "num": "36강",
+      "title": "36강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 동작형) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_37",
+      "subject": "체육",
+      "num": "37강",
+      "title": "37강. 스포츠 5~6학년 (기술형 스포츠 유형별 활동 - 투기형) [44분]",
+      "minutes": 44,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_38",
+      "subject": "체육",
+      "num": "38강",
+      "title": "38강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동 - 영역형) [92분]",
+      "minutes": 92,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_39",
+      "subject": "체육",
+      "num": "39강",
+      "title": "39강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동 - 필드형) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_40",
+      "subject": "체육",
+      "num": "40강",
+      "title": "40강. 스포츠 5~6학년 (전략형 스포츠 유형별 활동 - 네트형) [63분]",
+      "minutes": 63,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_41",
+      "subject": "체육",
+      "num": "41강",
+      "title": "41강. 스포츠 5~6학년 (생태형 스포츠 유형별 활동) [92분]",
+      "minutes": 92,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_42",
+      "subject": "체육",
+      "num": "42강",
+      "title": "42강. 표현 3~4학년 [59분]",
+      "minutes": 59,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "체육_43",
+      "subject": "체육",
+      "num": "43강",
+      "title": "43강. 표현 5~6학년 [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_1",
+      "subject": "실과",
+      "num": "1강",
+      "title": "1강. OT ~ 성취기준 [01-02] [37분]",
+      "minutes": 37,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_2",
+      "subject": "실과",
+      "num": "2강",
+      "title": "2강. 성취기준 [01-03] ~ [01-04] [47분]",
+      "minutes": 47,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_3",
+      "subject": "실과",
+      "num": "3강",
+      "title": "3강. 성취기준 [01-05] ~ [01-07] [24분]",
+      "minutes": 24,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_4",
+      "subject": "실과",
+      "num": "4강",
+      "title": "4강. 성취기준 [02-01] [26분]",
+      "minutes": 26,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_5",
+      "subject": "실과",
+      "num": "5강",
+      "title": "5강. 성취기준 [02-02] ~ [02-04] [51분]",
+      "minutes": 51,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_6",
+      "subject": "실과",
+      "num": "6강",
+      "title": "6강. 성취기준 [02-05] ~ [02-06] [67분]",
+      "minutes": 67,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_7",
+      "subject": "실과",
+      "num": "7강",
+      "title": "7강. 성취기준 [02-07], [02-09] [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_8",
+      "subject": "실과",
+      "num": "8강",
+      "title": "8강. 성취기준 [02-08] (1) [36분]",
+      "minutes": 36,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_9",
+      "subject": "실과",
+      "num": "9강",
+      "title": "9강. 성취기준 [02-08] (2) [52분]",
+      "minutes": 52,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_10",
+      "subject": "실과",
+      "num": "10강",
+      "title": "10강. 성취기준 [02-08] (3) ~ [02-11] [45분]",
+      "minutes": 45,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_11",
+      "subject": "실과",
+      "num": "11강",
+      "title": "11강. 성취기준 [03-01] [13분]",
+      "minutes": 13,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_12",
+      "subject": "실과",
+      "num": "12강",
+      "title": "12강. 성취기준 [03-02] [59분]",
+      "minutes": 59,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_13",
+      "subject": "실과",
+      "num": "13강",
+      "title": "13강. 성취기준 [03-03] [22분]",
+      "minutes": 22,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_14",
+      "subject": "실과",
+      "num": "14강",
+      "title": "14강. 성취기준 [03-04] ~ [03-05] [36분]",
+      "minutes": 36,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_15",
+      "subject": "실과",
+      "num": "15강",
+      "title": "15강. 성취기준 [04-01] ~ [04-03] [28분]",
+      "minutes": 28,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_16",
+      "subject": "실과",
+      "num": "16강",
+      "title": "16강. 성취기준 [04-07] ~ [04-08] [60분]",
+      "minutes": 60,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_17",
+      "subject": "실과",
+      "num": "17강",
+      "title": "17강. 성취기준 [04-09] ~ [04-11] [30분]",
+      "minutes": 30,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_18",
+      "subject": "실과",
+      "num": "18강",
+      "title": "18강. 성취기준 [05-01] ~ [05-03] [66분]",
+      "minutes": 66,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_19",
+      "subject": "실과",
+      "num": "19강",
+      "title": "19강. 성취기준 [05-04] ~ [05-05] [27분]",
+      "minutes": 27,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_20",
+      "subject": "실과",
+      "num": "20강",
+      "title": "20강. 성취기준 [04-04] ~ 실과 교과교육론 (1) [56분]",
+      "minutes": 56,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_21",
+      "subject": "실과",
+      "num": "21강",
+      "title": "21강. 실과 교과교육론 (2) [66분]",
+      "minutes": 66,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "실과_22",
+      "subject": "실과",
+      "num": "22강",
+      "title": "22강. 실과 교과교육론 (3) ~ 실과 교육과정 [54분]",
+      "minutes": 54,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_1",
+      "subject": "통교",
+      "num": "1강",
+      "title": "1강. OT ~ 교육과정 (1) (바른 생활) [42분]",
+      "minutes": 42,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_2",
+      "subject": "통교",
+      "num": "2강",
+      "title": "2강. 교육과정 (2) (바른 생활) [40분]",
+      "minutes": 40,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_3",
+      "subject": "통교",
+      "num": "3강",
+      "title": "3강. 교육과정 (3) (바른 생활 ~ 슬기로운 생활) [62분]",
+      "minutes": 62,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_4",
+      "subject": "통교",
+      "num": "4강",
+      "title": "4강. 교육과정 (4) (즐거운 생활 ~ 지도서 부록) [55분]",
+      "minutes": 55,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "통교_5",
+      "subject": "통교",
+      "num": "5강",
+      "title": "5강. 교육과정 (5) (지도서 총론) [27분]",
+      "minutes": 27,
       "term": 1,
       "done": false,
       "doneDate": null
@@ -6012,5 +6122,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-07-15",
-  "lastModified": "2026-07-15T01:02:21.853Z"
+  "lastModified": "2026-07-15T14:03:55.280Z"
 }
