@@ -4498,7 +4498,7 @@
       "studyMin": 88,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -6131,5 +6131,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-07-24",
-  "lastModified": "2026-07-24T00:01:06.083Z"
+  "lastModified": "2026-07-24T00:01:15.463Z"
 }
