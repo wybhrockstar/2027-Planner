@@ -4594,7 +4594,7 @@
       "date": "2026-07-24",
       "wakeTime": "",
       "sleepTime": "",
-      "studyMin": 420,
+      "studyMin": 0,
       "kcal": 0,
       "memo": "",
       "studyResult": "△"
@@ -6239,5 +6239,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-07-24",
-  "lastModified": "2026-07-24T00:04:03.865Z"
+  "lastModified": "2026-07-24T00:04:19.903Z"
 }
