@@ -409,6 +409,13 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 .apply-btn-sm{padding:5px 12px;font-size:11px;font-weight:600;border-radius:20px;border:1px solid var(--accent);color:#0a1a00;background:var(--accent);transition:.15s;cursor:pointer;white-space:nowrap}
 .apply-btn-sm:hover{opacity:.85}
 .apply-btn-sm:active{transform:scale(.97)}
+.example-box{background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--text3);line-height:1.8;font-style:italic}
+.example-box span{color:var(--teal)}
+.preview-title{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.preview-box{background:var(--bg4);border:1px solid var(--border);border-radius:var(--rs);padding:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-all;line-height:1.6}
+.ai-status{margin-top:10px;font-size:12px;min-height:20px}
+.ai-status.ok{color:var(--teal)}
+.ai-status.err{color:var(--red)}
 .nc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:14px}
 .nc-stitle{font-size:11px;color:#fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-weight:700}
 body.light .nc-stitle{color:var(--text3)}
@@ -799,7 +806,7 @@ body.light .nc-stitle{color:var(--text3)}
   <div id="exam-status" class="exam-panel">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
       <div class="sec-title" id="exam-updated-label" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;margin-bottom:0"></div>
-      <button class="apply-btn-sm" onclick="openExamStatusModal()">+ 업데이트</button>
+      <button class="apply-btn-sm" onclick="openExamStatusModal()">업데이트</button>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
       <span style="font-size:11px;color:var(--text3)">현황:</span>
@@ -1002,6 +1009,7 @@ body.light .nc-stitle{color:var(--text3)}
   <button class="btab" id="btab-report"><span class="btab-icon">📈</span>리포트</button>
   <button class="btab" id="btab-planner"><span class="btab-icon">📅</span>플래너</button>
   <button class="btab" id="btab-lectures"><span class="btab-icon">📚</span>강의</button>
+  <button class="btab" id="btab-exam"><span class="btab-icon">🎯</span>모의고사</button>
 </nav>
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -1884,7 +1892,7 @@ function showPage(name) {
     if (el) el.classList.toggle('on', p===name);
   });
   // update bottom nav
-  ['today','progress','report','planner','lectures'].forEach(p => {
+  ['today','progress','report','planner','lectures','exam'].forEach(p => {
     const el = document.getElementById('btab-'+p);
     if (el) el.classList.toggle('on', p===name);
   });
@@ -1905,7 +1913,7 @@ document.querySelectorAll('#top-nav .ntab').forEach(btn => {
   const page = btn.id.replace('ntab-','');
   btn.addEventListener('click', () => showPage(page));
 });
-['today','progress','report','planner','lectures'].forEach(p => {
+['today','progress','report','planner','lectures','exam'].forEach(p => {
   const el = document.getElementById('btab-'+p);
   if (el) el.addEventListener('click', () => showPage(p));
 });
@@ -4843,7 +4851,7 @@ function applyParsedLectures(mode){
 // ─── 모의고사 (EXAM) ────────────────────────────────────────────────────────
 const MOCK_EXAM_API_URL = 'https://script.google.com/macros/s/AKfycbxjq2WVkjDo_2zPtVaHmi_a1vn9od4AC2yqp7b5tIPWCcNE2AxHKdxej-x4ZHo5jdfPSw/exec';
 const EXAM_ME = '재언'; // 본인 author 값 (Google Sheet 기록 기준)
-function examThemeTextColor(){ return document.body.classList.contains('light') ? '#1a1a1a' : '#efefef'; }
+function examThemeTextColor(){ return document.body.classList.contains('light') ? '#444444' : '#ffffff'; }
 
 const SUBJECT_META = [
   {name:'국어',type:'A',max:11,color:'#ff5a5a'},
@@ -4978,84 +4986,100 @@ function renderExamStatus(){
   }).join('');
 }
 
-// ─── 현황 업데이트 모달 ───
+// ─── 현황 업데이트 모달 (규칙 기반 파서) ───
+// 일정 표기 패턴: (mm/dd, ...) / (n~n월) / (n월) / (미정) 등 끝에 오는 괄호
+const EXAM_DATE_PAT = /\s*\([^)]*(?:\d+\/\d+|\d+월|미정)[^)]*\)\s*$/;
+function parseExamStatusLine(line){
+  line = line.trim();
+  if(!line) return null;
+  // 앞에 붙은 - / • / * 등 제거 (예: "- [2] [완료] ...")
+  line = line.replace(/^[-•*]\s*/, '');
+  // [횟수] 추출
+  const cm = line.match(/^\[([^\]]+)\]/);
+  if(!cm) return null;
+  let rest = line.slice(cm[0].length).trim();
+  // [현황] 추출
+  const sm = rest.match(/^\[([^\]]+)\]/);
+  if(!sm) return null;
+  let rawStatus = sm[1].trim();
+  // 결제/결제예정 → 완료 통일
+  const status = (rawStatus === '결제' || rawStatus === '결제예정') ? '완료' : rawStatus;
+  rest = rest.slice(sm[0].length).trim();
+  // 논술有 감지
+  const essay = /논술有/.test(rest);
+  // 일정 괄호 제거 (끝에서부터)
+  rest = rest.replace(/\s*\(논술有\)/g, '');
+  rest = rest.replace(EXAM_DATE_PAT, '');
+  rest = rest.replace(/\s*\((?:\d+\/\d+[^)]*|\d+[~-]\d+월[^)]*|\d+월[^)]*|미정)\)/g, '').trim();
+  return {count: cm[1].trim(), status, name: rest, essay};
+}
+let parsedExamStatusBuffer = null;
 function openExamStatusModal(){
   document.getElementById('modal-dynamic-title').textContent = '모의고사 현황 업데이트';
+  const existingText = (state.examStatus||[]).map(e=>`[${e.count}] [${e.status}] ${e.name}${e.essay?' (논술有)':''}`).join('\n');
   showModal(`
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
-      <div>
-        <label class="form-lbl">이름</label>
-        <input type="text" id="es-name" placeholder="예: 6월 모의고사">
-      </div>
-      <div style="display:flex;gap:8px">
-        <div style="flex:1">
-          <label class="form-lbl">현황</label>
-          <select id="es-status">
-            <option value="완료">완료</option>
-            <option value="예정">예정</option>
-            <option value="미정">미정</option>
-          </select>
-        </div>
-        <div style="flex:1">
-          <label class="form-lbl">횟수</label>
-          <input type="number" id="es-count" min="0" value="1">
-        </div>
-      </div>
-      <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)">
-        <input type="checkbox" id="es-essay" style="width:auto"> 논술 포함
-      </label>
+    <div class="ai-desc">
+      형식: <code style="font-family:monospace;background:var(--bg4);padding:1px 5px;border-radius:3px;font-size:11px">[횟수] [현황] 이름 회차 (논술有) (일정)</code><br>
+      현황: <b>결제</b> / <b>결제예정</b> / <b>완료</b> → 모두 <b style="color:var(--teal)">완료</b>로 통일 &nbsp;|&nbsp; <b>예정</b> (일정 공지됨) &nbsp;|&nbsp; <b>미정</b> (회차·일정 미확정) — 일정 표기는 자동 제거됩니다.
     </div>
-    <button class="apply-btn-sm" style="width:100%;padding:8px 0" onclick="addExamStatusEntry()">+ 추가</button>
-    <div class="sec-hd" style="margin:18px 0 8px;font-size:12px">등록된 항목</div>
-    <div id="es-list"></div>
-  `);
-  renderExamStatusEditList();
-}
-function renderExamStatusEditList(){
-  const el = document.getElementById('es-list');
-  if(!el) return;
-  const exams = state.examStatus||[];
-  if(!exams.length){
-    el.innerHTML = '<div style="color:var(--text3);font-size:12px;padding:8px 0">등록된 항목이 없습니다.</div>';
-    return;
-  }
-  el.innerHTML = exams.map((e,i)=>{
-    const sc = STATUS_CLASS[e.status]||'badge-unknown';
-    const essay = e.essay ? '<span class="exam-essay">논술有</span>' : '';
-    return `<div class="exam-row" style="justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:8px;min-width:0">
-        <span class="exam-badge ${sc}" style="flex-shrink:0">${e.status}</span>
-        <span class="exam-name" style="overflow:hidden;text-overflow:ellipsis">[${e.count}] ${e.name}${essay}</span>
+    <div class="example-box">
+      <span>예시</span><br>
+      [3] [결제] 엑시트 1~3회 (6/15, 8/10, 9/14)<br>
+      [1] [결제] 초임공 1회 (논술有) (5~6월)<br>
+      [3?] [미정] 시그니처 1~3?회 (미정)
+    </div>
+    <div style="margin-bottom:8px">
+      <label class="form-lbl">업데이트 날짜 (예: 8/9)</label>
+      <input type="text" id="es-updated" placeholder="8/9" style="max-width:160px">
+    </div>
+    <div style="margin-bottom:12px">
+      <label class="form-lbl">모의고사 목록 (줄바꿈으로 구분)</label>
+      <textarea id="es-input" style="min-height:180px;line-height:1.8;width:100%;font-family:'JetBrains Mono',monospace;font-size:12px" placeholder="[횟수] [현황] 이름 회차 (논술有) (일정)">${existingText}</textarea>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <button class="apply-btn-sm" onclick="parseAndPreviewExamStatus()">⚡ 파싱 미리보기</button>
+      <div class="ai-status" id="es-parse-status"></div>
+    </div>
+    <div id="es-preview-wrap" style="display:none">
+      <div style="border-top:1px solid var(--border2);margin:14px 0"></div>
+      <div class="preview-title">파싱 결과</div>
+      <div class="preview-box" id="es-preview"></div>
+      <div style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="applyExamStatus()">✓ 최종 반영</button>
+        <div class="ai-status" id="es-apply-status"></div>
       </div>
-      <button class="btn-danger btn-sm" style="padding:3px 9px;font-size:11px;border-radius:10px;flex-shrink:0" onclick="removeExamStatusEntry(${i})">삭제</button>
-    </div>`;
-  }).join('');
+    </div>
+  `);
+  const updEl = document.getElementById('es-updated');
+  if (updEl && state.examStatusUpdated) updEl.value = state.examStatusUpdated;
+  parsedExamStatusBuffer = null;
 }
-function addExamStatusEntry(){
-  const nameEl = document.getElementById('es-name');
-  const name = nameEl.value.trim();
-  if(!name){ toast('이름을 입력해주세요'); return; }
-  const status = document.getElementById('es-status').value;
-  const count = Number(document.getElementById('es-count').value)||0;
-  const essay = document.getElementById('es-essay').checked;
-  if(!state.examStatus) state.examStatus = [];
-  state.examStatus.push({ name, status, count, essay });
-  state.examStatusUpdated = mmdd(today());
-  saveState();
-  nameEl.value = '';
-  document.getElementById('es-count').value = 1;
-  document.getElementById('es-essay').checked = false;
-  renderExamStatusEditList();
-  renderExamStatus();
-  toast('✓ 현황에 추가됨');
+function parseAndPreviewExamStatus(){
+  const raw = document.getElementById('es-input').value.trim();
+  const statusEl = document.getElementById('es-parse-status');
+  if(!raw){ statusEl.textContent='내용을 입력해주세요.'; statusEl.className='ai-status err'; return; }
+  const lines = raw.split('\n');
+  const items = lines.map(parseExamStatusLine).filter(Boolean);
+  if(!items.length){ statusEl.textContent='파싱된 항목이 없습니다.'; statusEl.className='ai-status err'; return; }
+  parsedExamStatusBuffer = items;
+  const preview = items.map(e=>`[${e.count}] [${e.status}] ${e.name}${e.essay?' (논술有)':''}`).join('\n');
+  document.getElementById('es-preview').textContent = preview;
+  document.getElementById('es-preview-wrap').style.display = 'block';
+  statusEl.textContent = `✓ ${items.length}개 파싱 완료`;
+  statusEl.className = 'ai-status ok';
 }
-function removeExamStatusEntry(i){
-  if(!state.examStatus) return;
-  state.examStatus.splice(i,1);
-  state.examStatusUpdated = mmdd(today());
+function applyExamStatus(){
+  const statusEl = document.getElementById('es-apply-status');
+  if(!parsedExamStatusBuffer){ statusEl.textContent='먼저 파싱을 실행해주세요.'; statusEl.className='ai-status err'; return; }
+  const updated = document.getElementById('es-updated').value.trim();
+  state.examStatus = parsedExamStatusBuffer;
+  state.examStatusUpdated = updated || mmdd(today());
   saveState();
-  renderExamStatusEditList();
   renderExamStatus();
+  statusEl.textContent = '✓ 반영 완료';
+  statusEl.className = 'ai-status ok';
+  toast('✓ 모의고사 현황 업데이트 완료');
+  setTimeout(()=>{ closeModal('modal-dynamic'); }, 700);
 }
 
 // ─── 기록: 표 형식 ───
@@ -5080,13 +5104,13 @@ function renderExamRecordTable(){
   const subjCols = SUBJECT_META;
   let html = '<table class="exam-score-table"><thead><tr><th style="text-align:left">회차</th><th>날짜</th>';
   subjCols.forEach(s=>{ html += `<th style="color:${s.color}">${s.name}</th>`; });
-  html += `<th style="color:${SERIES_COLOR.A}">A형</th><th style="color:${SERIES_COLOR.B}">B형</th><th>총점</th></tr></thead><tbody>`;
+  html += `<th style="color:${SERIES_COLOR.A}">A형</th><th style="color:${SERIES_COLOR.B}">B형</th><th style="color:var(--purple)">총점</th></tr></thead><tbody>`;
   examNames.forEach(n=>{
     const e = byExam[n];
     html += `<tr><td class="exam-score-name">${n}</td><td>${mmdd(e.date)}</td>`;
     subjCols.forEach(s=>{ html += `<td>${e.subj[s.name]!==undefined ? e.subj[s.name] : '-'}</td>`; });
     html += `<td style="color:${SERIES_COLOR.A};font-weight:600">${e.a}</td><td style="color:${SERIES_COLOR.B};font-weight:600">${e.b}</td>`;
-    html += `<td style="color:var(--accent);font-weight:700">${e.total}</td></tr>`;
+    html += `<td style="color:var(--purple);font-weight:700">${e.total}</td></tr>`;
   });
   html += '</tbody></table>';
   wrap.innerHTML = html;
@@ -5399,7 +5423,7 @@ function renderExamTrend(){
   examAttachTooltipToggle(examTrendChart);
 }
 function subjectBtnStyle(active,color){
-  return active ? `border-color:${color};color:${color}` : `border-color:var(--border2);color:var(--text3)`;
+  return active ? `border-color:${color};color:${color}` : '';
 }
 function renderExamSubjectTabs(){
   const el = document.getElementById('examSubjectTabs');
