@@ -847,10 +847,10 @@ body.light .nc-stitle{color:var(--text3)}
         </div>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
-        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:#b8a5ff;display:inline-block"></span>총점</span>
-        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:#5b8dee;display:inline-block"></span>A형</span>
-        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:#3ecf8e;display:inline-block"></span>B형</span>
-        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:transparent;border:2px solid var(--text3);display:inline-block"></span>평균</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text2)"><span style="width:6px;height:6px;border-radius:50%;background:#b8a5ff;display:inline-block"></span>총점</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text2)"><span style="width:6px;height:6px;border-radius:50%;background:#5b8dee;display:inline-block"></span>A형</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text2)"><span style="width:6px;height:6px;border-radius:50%;background:#3ecf8e;display:inline-block"></span>B형</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text2)"><span style="width:6px;height:6px;border-radius:50%;background:transparent;border:2px solid var(--text3);display:inline-block"></span>평균</span>
       </div>
     </div>
 
@@ -885,16 +885,16 @@ body.light .nc-stitle{color:var(--text3)}
     </div>
     <div class="nc">
       <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center;flex-wrap:wrap">
-        <select id="wrongQueryMode" onchange="onWrongQueryModeChange()" style="flex:0 0 64px;min-width:64px">
+        <select id="wrongQueryMode" onchange="onWrongQueryModeChange()" style="flex:0 0 72px;min-width:72px;font-size:12px">
           <option value="exam">회차</option>
           <option value="subject">과목</option>
         </select>
         <div id="wrongExamRow" style="display:flex;gap:6px;flex:1;min-width:0">
-          <select id="wrongExamBase" onchange="onWrongBaseChange()" style="flex:2;min-width:0"></select>
-          <select id="wrongExamRound" onchange="renderWrongList()" style="flex:1;min-width:0"></select>
+          <select id="wrongExamBase" onchange="onWrongBaseChange()" style="flex:1;min-width:0;font-size:12px"></select>
+          <select id="wrongExamRound" onchange="renderWrongList()" style="flex:0 0 72px;min-width:72px;font-size:12px"></select>
         </div>
         <div id="wrongSubjectRow" style="display:none;gap:6px;flex:1;min-width:0">
-          <select id="wrongSubjectSelect" onchange="renderWrongList()" style="flex:1;min-width:0"></select>
+          <select id="wrongSubjectSelect" onchange="renderWrongList()" style="flex:1;min-width:0;font-size:12px"></select>
         </div>
       </div>
       <div id="wrongAnswerList"></div>
@@ -5106,7 +5106,7 @@ function renderExamRecordTable(){
   }
   const subjCols = SUBJECT_META;
   let html = '<table class="exam-score-table"><thead><tr><th style="text-align:left">회차</th><th>날짜</th>';
-  subjCols.forEach(s=>{ html += `<th style="color:${s.color}"><span style="display:block;line-height:1.2">${s.name}</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">${s.max}점</span></th>`; });
+  subjCols.forEach(s=>{ html += `<th style="color:${s.color}"><span style="display:block;line-height:1.2">${s.name}</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2;margin-top:3px">${s.max}점</span></th>`; });
   html += `<th style="color:${SERIES_COLOR.A}"><span style="display:block;line-height:1.2">A형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">39점</span></th><th style="color:${SERIES_COLOR.B}"><span style="display:block;line-height:1.2">B형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">41점</span></th><th style="color:var(--purple)"><span style="display:block;line-height:1.2">총점</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">80점</span></th></tr></thead><tbody>`;
   examNames.forEach(n=>{
     const e = byExam[n];
@@ -5154,7 +5154,7 @@ const examValueLabelPlugin = {
         const v = ds.data[i];
         if(v===null || v===undefined) return;
         ctx.save();
-        ctx.font = '10px sans-serif';
+        ctx.font = '9px sans-serif';
         ctx.fillStyle = ds.isAvgDataset ? examThemeTextColor() : (ds.borderColor || '#888');
         ctx.textAlign = 'center';
         ctx.fillText(fmtVal(v), point.x, point.y - 8);
@@ -5173,7 +5173,7 @@ const examValueLabelBarPlugin = {
         const v = ds.data[i];
         if(v===null || v===undefined) return;
         ctx.save();
-        ctx.font = '7px sans-serif';
+        ctx.font = '6px sans-serif';
         ctx.fillStyle = Array.isArray(ds.backgroundColor) ? ds.backgroundColor[i] : (ds.backgroundColor||'#888');
         ctx.textAlign = 'center';
         ctx.fillText(v.toFixed(1)+'%', bar.x, bar.y - 6);
@@ -5294,7 +5294,7 @@ function buildExamControls(){
     const label = s==='total'?'총점 평균':s==='A'?'A형 평균':'B형 평균';
     const on = examAvgActive.has(s);
     const c = SERIES_COLOR[s];
-    return `<button class="stab${on?' on':''}" style="${on?`border-color:${c};color:${examThemeTextColor()};background:${c}2a`:''}" onclick="toggleExamAvg('${s}',this)">${label}</button>`;
+    return `<button class="stab${on?' on':''}" style="${on?`border-color:${c};color:${examThemeTextColor()};background:${c}1a`:''}" onclick="toggleExamAvg('${s}',this)">${label}</button>`;
   }).join('');
 }
 function toggleExamAvg(s,btn){
@@ -5421,7 +5421,7 @@ function renderExamTrend(){
             return ds.label+': '+fmtBoth(ds.rawScores[i], ds.maxScore);
           }
         } } },
-      scales:{ y:{ beginAtZero:true, max:yMax }, x:{ grid:{display:false}, ticks:{ color: examThemeTextColor() } } } }
+      scales:{ y:{ beginAtZero:true, max:yMax, ticks:{ font:{size:9} } }, x:{ grid:{display:false}, ticks:{ color: examThemeTextColor(), font:{size:9} } } } }
   });
   examAttachTooltipToggle(examTrendChart);
 }
@@ -5501,7 +5501,7 @@ function renderExamSubjectChart(){
           ticks.push({value:subjYMax});
           axis.ticks = ticks;
         }
-      }, x:{ grid:{display:false}, ticks:{ color: examThemeTextColor() } } } }
+      }, x:{ grid:{display:false}, ticks:{ color: examThemeTextColor(), font:{size:9} } } } }
   });
   examAttachTooltipToggle(examSubjectChart);
 }
@@ -5549,7 +5549,7 @@ function renderAvgRateChart(){
         tooltip:{ callbacks:{
           label:(c)=> (c.raw===null||c.raw===undefined) ? '기록 없음' : c.raw.toFixed(1)+'%'
         } } },
-      scales:{ y:{ beginAtZero:true, max:100 }, x:{ grid:{display:false}, ticks:{ font:{ size:8 }, color: (c)=>tickColors[c.index] } } } }
+      scales:{ y:{ beginAtZero:true, max:100, ticks:{ font:{size:8} } }, x:{ grid:{display:false}, ticks:{ font:{ size:7 }, color: (c)=>tickColors[c.index], padding:2 } } } }
   });
   examAttachBarTooltipToggle(avgRateChart);
 }
