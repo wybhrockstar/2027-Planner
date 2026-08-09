@@ -4811,14 +4811,12 @@
       }
     ],
     "2": [],
-    "3": [],
-    "4": []
+    "3": []
   },
   "weeklySchedule": {
     "1": [],
     "2": [],
-    "3": [],
-    "4": []
+    "3": []
   },
   "reportSettings": {
     "studyGoalHour": 7,
@@ -6239,5 +6237,7 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-09",
-  "lastModified": "2026-08-09T04:28:09.491Z"
+  "lastModified": "2026-08-09T04:28:09.491Z",
+  "examStatus": [],
+  "examStatusUpdated": ""
 }
