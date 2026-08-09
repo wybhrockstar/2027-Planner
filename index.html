@@ -5549,7 +5549,7 @@ function renderAvgRateChart(){
         tooltip:{ callbacks:{
           label:(c)=> (c.raw===null||c.raw===undefined) ? '기록 없음' : c.raw.toFixed(1)+'%'
         } } },
-      scales:{ y:{ beginAtZero:true, max:100, ticks:{ font:{size:9} } }, x:{ grid:{display:false}, ticks:{ font:{ size:7 }, color: (c)=>tickColors[c.index], padding:1 } } } }
+      scales:{ y:{ beginAtZero:true, max:100, ticks:{ font:{size:9} } }, x:{ grid:{display:false}, ticks:{ font:{ size:7 }, color: (c)=>tickColors[c.index], padding:0 } } } }
   });
   examAttachBarTooltipToggle(avgRateChart);
 }
@@ -5626,8 +5626,8 @@ function openExamRecordModal(mode){
     return `<button class="stab${on?' on':''}" style="${on?'border-color:var(--accent);color:var(--accent);background:var(--accent3)':''}" onclick="setExamRecordMode('${m}',this)">${m==='score'?'점수 기록':'오답 기록'}</button>`;
   }).join('');
   showModal(`
-    <div class="subj-tabs" id="examRecModeTabs" style="margin-bottom:14px">${modeHtml}</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
+    <div class="subj-tabs" id="examRecModeTabs" style="margin-bottom:10px">${modeHtml}</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px">
       <div style="display:flex;gap:8px">
         <select id="rec-examBase" onchange="onExamRecBaseChange()" style="flex:1;font-size:12px"></select>
         <select id="rec-examRound" onchange="prefillExamRecordFields()" style="flex:1;font-size:12px"></select>
@@ -5636,21 +5636,21 @@ function openExamRecordModal(mode){
     </div>
     <div id="rec-scoreFields"></div>
     <div id="rec-wrongFields" style="display:none"></div>
-    <div id="rec-avgField" style="display:none;margin-top:10px">
+    <div id="rec-avgField" style="display:none;margin-top:6px">
       <label style="font-size:12px;color:var(--text3)">이번 회차 응시자 평균</label>
-      <div style="display:flex;gap:8px;margin-top:4px">
+      <div style="display:flex;gap:6px;margin-top:3px">
         <div style="flex:1">
-          <div style="font-size:12px;color:#5b8dee;margin-bottom:3px">A형 평균</div>
+          <div style="font-size:12px;color:#5b8dee;margin-bottom:2px">A형 평균</div>
           <input type="number" id="rec-avgScoreA" style="width:100%;font-size:12px">
         </div>
         <div style="flex:1">
-          <div style="font-size:12px;color:#3ecf8e;margin-bottom:3px">B형 평균</div>
+          <div style="font-size:12px;color:#3ecf8e;margin-bottom:2px">B형 평균</div>
           <input type="number" id="rec-avgScoreB" style="width:100%;font-size:12px">
         </div>
       </div>
     </div>
-    <div id="exam-record-status" style="font-size:12px;margin-top:10px;color:var(--text3)"></div>
-    <button class="btn btn-primary" style="width:100%;margin-top:14px" onclick="submitExamRecord()">저장</button>
+    <div id="exam-record-status" style="font-size:12px;margin-top:6px;color:var(--text3)"></div>
+    <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="submitExamRecord()">저장</button>
   `);
   document.getElementById('rec-examBase').innerHTML = tree.map(t=>`<option value="${t.base}">${t.base}</option>`).join('');
   onExamRecBaseChange();
@@ -5691,17 +5691,17 @@ function setExamRecordMode(m,btn){
 function buildExamRecordFields(){
   if(recordMode==='score'){
     document.getElementById('rec-scoreFields').innerHTML = SUBJECT_META.map((s,i)=>
-      `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+      `<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
         <label style="width:78px;flex-shrink:0;font-size:12px;color:${s.color}">${s.name}</label>
         <span style="font-size:12px;color:var(--text3);width:32px;flex-shrink:0">${s.max}점</span>
-        <input type="number" min="0" max="${s.max}" id="rec-score-${i}" style="flex:1;font-size:12px">
+        <input type="number" min="0" max="${s.max}" id="rec-score-${i}" style="flex:1;font-size:12px;padding:4px 6px">
       </div>`
     ).join('');
   } else {
     document.getElementById('rec-wrongFields').innerHTML = SUBJECT_META.map((s,i)=>
-      `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+      `<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
         <label style="width:78px;flex-shrink:0;font-size:12px;color:${s.color}">${s.name}</label>
-        <input type="text" id="rec-wrong-${i}" placeholder="오답 내용 간략히" style="flex:1;font-size:12px">
+        <input type="text" id="rec-wrong-${i}" placeholder="오답 내용 간략히" style="flex:1;font-size:12px;padding:4px 6px">
       </div>`
     ).join('');
   }
