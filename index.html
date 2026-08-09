@@ -154,6 +154,9 @@ body.light .pbar{background:#c8c8c4}
   .btab{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 4px 6px;background:none;border:none;color:var(--text3);font-size:9px;font-family:'Noto Sans KR',sans-serif;gap:3px;transition:.12s}
   .btab.on{color:var(--accent)}
   .btab-icon{font-size:18px;line-height:1}
+  .planner-stab{padding:8px 8px;font-size:11px;white-space:nowrap}
+  .planner-subtabs{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .planner-subtabs::-webkit-scrollbar{display:none}
 }
 @media(min-width:601px){.bnav{display:none}}
 
@@ -416,21 +419,21 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 .ai-status{margin-top:10px;font-size:12px;min-height:20px}
 .ai-status.ok{color:var(--teal)}
 .ai-status.err{color:var(--red)}
-.nc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:14px}
+.nc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px;margin-bottom:14px}
 .nc-stitle{font-size:11px;color:#fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-weight:700}
 body.light .nc-stitle{color:var(--text3)}
-.exam-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;letter-spacing:.03em;white-space:nowrap}
+.exam-badge{font-size:9px;font-weight:600;padding:1px 6px;border-radius:9px;letter-spacing:.03em;white-space:nowrap}
 .badge-complete{background:rgba(94,207,176,.15);color:var(--teal);border:1px solid rgba(94,207,176,.3)}
 .badge-plan{background:rgba(200,240,96,.12);color:var(--accent);border:1px solid rgba(200,240,96,.25)}
 .badge-unknown{background:rgba(136,136,136,.12);color:var(--text3);border:1px solid rgba(136,136,136,.2)}
-.exam-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:5px;transition:.12s}
+.exam-row{display:flex;align-items:flex-start;gap:8px;padding:6px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:4px;transition:.12s}
 .exam-row:hover{border-color:var(--border2)}
-.exam-cnt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);min-width:28px;text-align:right;padding-top:2px}
+.exam-cnt{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);min-width:22px;text-align:right;padding-top:1px}
 .exam-cnt.cnt-complete{color:var(--teal)}
 .exam-cnt.cnt-plan{color:var(--accent)}
 .exam-cnt.cnt-unknown{color:var(--text3)}
-.exam-name{font-size:13px;color:var(--text);flex:1;line-height:1.5}
-.exam-essay{font-size:10px;color:var(--amber);background:rgba(255,179,71,.15);border:1px solid rgba(255,179,71,.3);padding:1px 6px;border-radius:8px;white-space:nowrap;margin-left:4px;vertical-align:middle}
+.exam-name{font-size:12px;color:var(--text);flex:1;line-height:1.4}
+.exam-essay{font-size:9px;color:var(--amber);background:rgba(255,179,71,.15);border:1px solid rgba(255,179,71,.3);padding:0px 5px;border-radius:7px;white-space:nowrap;margin-left:4px;vertical-align:middle}
 .exam-score-table{width:100%;border-collapse:collapse;font-size:12px}
 .exam-score-table th{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:6px 6px;border-bottom:1px solid var(--border2);text-align:center;white-space:nowrap}
 .exam-score-table td{padding:8px 6px;border-bottom:1px solid var(--border);text-align:center;white-space:nowrap;font-family:'JetBrains Mono',monospace}
@@ -804,12 +807,12 @@ body.light .nc-stitle{color:var(--text3)}
 
   <!-- 현황 -->
   <div id="exam-status" class="exam-panel">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
       <div class="sec-title" id="exam-updated-label" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;margin-bottom:0"></div>
       <button class="apply-btn-sm" onclick="openExamStatusModal()">업데이트</button>
     </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
-      <span style="font-size:11px;color:var(--text3)">현황:</span>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
+      <span style="font-size:10px;color:var(--text3)">현황:</span>
       <span class="exam-badge badge-complete">완료</span>
       <span class="exam-badge badge-plan">예정</span>
       <span class="exam-badge badge-unknown">미정</span>
@@ -832,42 +835,42 @@ body.light .nc-stitle{color:var(--text3)}
       <div class="subj-tabs" id="modeTabs" style="margin:0"></div>
     </div>
 
-    <div class="nc" style="margin-bottom:16px">
-      <div class="nc-stitle" style="margin-bottom:10px">점수 추이</div>
-      <div style="margin:0 0 10px;display:flex;flex-wrap:wrap;gap:5px">
+    <div class="nc" style="margin-bottom:12px">
+      <div class="nc-stitle" style="margin-bottom:8px">점수 추이</div>
+      <div style="margin:0 0 8px;display:flex;flex-wrap:wrap;gap:5px">
         <div class="subj-tabs" id="seriesTabs" style="margin:0;gap:5px"></div>
         <div class="subj-tabs" id="avgTabs" style="margin:0;gap:5px"></div>
       </div>
       <div style="overflow-x:auto">
-        <div style="position:relative;height:330px">
+        <div style="position:relative;height:220px">
           <canvas id="examTrendChart"></canvas>
         </div>
       </div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px">
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)"><span style="width:9px;height:9px;border-radius:50%;background:#b8a5ff;display:inline-block"></span>총점</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)"><span style="width:9px;height:9px;border-radius:50%;background:#5b8dee;display:inline-block"></span>A형</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)"><span style="width:9px;height:9px;border-radius:50%;background:#3ecf8e;display:inline-block"></span>B형</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)"><span style="width:9px;height:9px;border-radius:50%;background:transparent;border:2px solid var(--text3);display:inline-block"></span>평균</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:#b8a5ff;display:inline-block"></span>총점</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:#5b8dee;display:inline-block"></span>A형</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:#3ecf8e;display:inline-block"></span>B형</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:7px;height:7px;border-radius:50%;background:transparent;border:2px solid var(--text3);display:inline-block"></span>평균</span>
       </div>
     </div>
 
-    <div class="nc" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0;flex-wrap:wrap;gap:8px">
+    <div class="nc" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 8px;flex-wrap:wrap;gap:8px">
         <div class="nc-stitle" style="margin:0">세부 점수 추이</div>
         <button class="stab" id="subjToggleAllBtn" style="border-color:var(--accent);color:var(--accent)" onclick="toggleAllSubjects()"></button>
       </div>
-      <div class="subj-tabs" id="examSubjectTabs" style="margin:10px 0"></div>
+      <div class="subj-tabs" id="examSubjectTabs" style="margin:0 0 8px"></div>
       <div style="overflow-x:auto">
-        <div style="position:relative;height:270px">
+        <div style="position:relative;height:190px">
           <canvas id="examSubjectChart"></canvas>
         </div>
       </div>
     </div>
 
     <div class="nc">
-      <div class="nc-stitle" style="margin-bottom:10px">평균 정답률</div>
+      <div class="nc-stitle" style="margin-bottom:8px">평균 정답률</div>
       <div style="overflow-x:auto">
-        <div style="position:relative;height:220px">
+        <div style="position:relative;height:150px">
           <canvas id="avgRateChart"></canvas>
         </div>
       </div>
@@ -5103,7 +5106,7 @@ function renderExamRecordTable(){
   }
   const subjCols = SUBJECT_META;
   let html = '<table class="exam-score-table"><thead><tr><th style="text-align:left">회차</th><th>날짜</th>';
-  subjCols.forEach(s=>{ html += `<th style="color:${s.color}">${s.name}</th>`; });
+  subjCols.forEach(s=>{ html += `<th style="color:${s.color}">${s.name}<br><span style="font-size:9px;font-weight:400;opacity:.7">${s.max}점</span></th>`; });
   html += `<th style="color:${SERIES_COLOR.A}">A형</th><th style="color:${SERIES_COLOR.B}">B형</th><th style="color:var(--purple)">총점</th></tr></thead><tbody>`;
   examNames.forEach(n=>{
     const e = byExam[n];
@@ -5170,7 +5173,7 @@ const examValueLabelBarPlugin = {
         const v = ds.data[i];
         if(v===null || v===undefined) return;
         ctx.save();
-        ctx.font = '9px sans-serif';
+        ctx.font = '8px sans-serif';
         ctx.fillStyle = Array.isArray(ds.backgroundColor) ? ds.backgroundColor[i] : (ds.backgroundColor||'#888');
         ctx.textAlign = 'center';
         ctx.fillText(v.toFixed(1)+'%', bar.x, bar.y - 6);
@@ -5291,7 +5294,7 @@ function buildExamControls(){
     const label = s==='total'?'총점 평균':s==='A'?'A형 평균':'B형 평균';
     const on = examAvgActive.has(s);
     const c = SERIES_COLOR[s];
-    return `<button class="stab${on?' on':''}" style="${on?`border-color:${c};color:${c};background:${c}2a`:''}" onclick="toggleExamAvg('${s}',this)">${label}</button>`;
+    return `<button class="stab${on?' on':''}" style="${on?`border-color:${c};color:${examThemeTextColor()};background:${c}2a`:''}" onclick="toggleExamAvg('${s}',this)">${label}</button>`;
   }).join('');
 }
 function toggleExamAvg(s,btn){
@@ -5546,7 +5549,7 @@ function renderAvgRateChart(){
         tooltip:{ callbacks:{
           label:(c)=> (c.raw===null||c.raw===undefined) ? '기록 없음' : c.raw.toFixed(1)+'%'
         } } },
-      scales:{ y:{ beginAtZero:true, max:100 }, x:{ grid:{display:false}, ticks:{ font:{ size:10 }, color: (c)=>tickColors[c.index] } } } }
+      scales:{ y:{ beginAtZero:true, max:100 }, x:{ grid:{display:false}, ticks:{ font:{ size:8 }, color: (c)=>tickColors[c.index] } } } }
   });
   examAttachBarTooltipToggle(avgRateChart);
 }
