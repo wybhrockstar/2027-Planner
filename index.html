@@ -5106,8 +5106,8 @@ function renderExamRecordTable(){
   }
   const subjCols = SUBJECT_META;
   let html = '<table class="exam-score-table"><thead><tr><th style="text-align:left">회차</th><th>날짜</th>';
-  subjCols.forEach(s=>{ html += `<th style="color:${s.color}"><span style="display:block;line-height:1.2">${s.name}</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2;margin-top:3px">${s.max}점</span></th>`; });
-  html += `<th style="color:${SERIES_COLOR.A}"><span style="display:block;line-height:1.2">A형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">39점</span></th><th style="color:${SERIES_COLOR.B}"><span style="display:block;line-height:1.2">B형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">41점</span></th><th style="color:var(--purple)"><span style="display:block;line-height:1.2">총점</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">80점</span></th></tr></thead><tbody>`;
+  subjCols.forEach(s=>{ html += `<th style="color:${s.color}"><span style="display:block;line-height:1.2">${s.name}</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2;margin-top:1px">${s.max}점</span></th>`; });
+  html += `<th style="color:${SERIES_COLOR.A}"><span style="display:block;line-height:1.2">A형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2;margin-top:1px">39점</span></th><th style="color:${SERIES_COLOR.B}"><span style="display:block;line-height:1.2">B형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2;margin-top:1px">41점</span></th><th style="color:var(--purple)"><span style="display:block;line-height:1.2">총점</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2;margin-top:1px">80점</span></th></tr></thead><tbody>`;
   examNames.forEach(n=>{
     const e = byExam[n];
     html += `<tr><td class="exam-score-name">${n}</td><td>${mmdd(e.date)}</td>`;
@@ -5480,7 +5480,7 @@ function renderExamSubjectChart(){
   if(examSubjectChart) examSubjectChart.destroy();
   examFitChartWidth('examSubjectChart', labels.length);
   const subjYMax = examMode==='rate' ? 100 : (activeList.length ? Math.max(...activeList.map(s=>s.max)) : undefined);
-  const yTicks = examMode==='rate' ? {} : { stepSize:1, precision:0, autoSkip:false };
+  const yTicks = examMode==='rate' ? { font:{size:9} } : { stepSize:1, precision:0, autoSkip:false, font:{size:9} };
   examSubjectChart = new Chart(ctx,{
     type:'line',
     data:{ labels, datasets },
@@ -5549,7 +5549,7 @@ function renderAvgRateChart(){
         tooltip:{ callbacks:{
           label:(c)=> (c.raw===null||c.raw===undefined) ? '기록 없음' : c.raw.toFixed(1)+'%'
         } } },
-      scales:{ y:{ beginAtZero:true, max:100, ticks:{ font:{size:8} } }, x:{ grid:{display:false}, ticks:{ font:{ size:7 }, color: (c)=>tickColors[c.index], padding:2 } } } }
+      scales:{ y:{ beginAtZero:true, max:100, ticks:{ font:{size:9} } }, x:{ grid:{display:false}, ticks:{ font:{ size:7 }, color: (c)=>tickColors[c.index], padding:1 } } } }
   });
   examAttachBarTooltipToggle(avgRateChart);
 }
@@ -5629,10 +5629,10 @@ function openExamRecordModal(mode){
     <div class="subj-tabs" id="examRecModeTabs" style="margin-bottom:14px">${modeHtml}</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
       <div style="display:flex;gap:8px">
-        <select id="rec-examBase" onchange="onExamRecBaseChange()" style="flex:1"></select>
-        <select id="rec-examRound" onchange="prefillExamRecordFields()" style="flex:1"></select>
+        <select id="rec-examBase" onchange="onExamRecBaseChange()" style="flex:1;font-size:12px"></select>
+        <select id="rec-examRound" onchange="prefillExamRecordFields()" style="flex:1;font-size:12px"></select>
       </div>
-      <input type="date" id="rec-examDate">
+      <input type="date" id="rec-examDate" style="font-size:12px">
     </div>
     <div id="rec-scoreFields"></div>
     <div id="rec-wrongFields" style="display:none"></div>
@@ -5640,12 +5640,12 @@ function openExamRecordModal(mode){
       <label style="font-size:12px;color:var(--text3)">이번 회차 응시자 평균</label>
       <div style="display:flex;gap:8px;margin-top:4px">
         <div style="flex:1">
-          <div style="font-size:11px;color:#5b8dee;margin-bottom:3px">A형 평균</div>
-          <input type="number" id="rec-avgScoreA" style="width:100%">
+          <div style="font-size:12px;color:#5b8dee;margin-bottom:3px">A형 평균</div>
+          <input type="number" id="rec-avgScoreA" style="width:100%;font-size:12px">
         </div>
         <div style="flex:1">
-          <div style="font-size:11px;color:#3ecf8e;margin-bottom:3px">B형 평균</div>
-          <input type="number" id="rec-avgScoreB" style="width:100%">
+          <div style="font-size:12px;color:#3ecf8e;margin-bottom:3px">B형 평균</div>
+          <input type="number" id="rec-avgScoreB" style="width:100%;font-size:12px">
         </div>
       </div>
     </div>
@@ -5692,16 +5692,16 @@ function buildExamRecordFields(){
   if(recordMode==='score'){
     document.getElementById('rec-scoreFields').innerHTML = SUBJECT_META.map((s,i)=>
       `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <label style="width:78px;flex-shrink:0;font-size:13px;color:${s.color}">${s.name}</label>
-        <span style="font-size:11px;color:var(--text3);width:32px;flex-shrink:0">${s.max}점</span>
-        <input type="number" min="0" max="${s.max}" id="rec-score-${i}" style="flex:1">
+        <label style="width:78px;flex-shrink:0;font-size:12px;color:${s.color}">${s.name}</label>
+        <span style="font-size:12px;color:var(--text3);width:32px;flex-shrink:0">${s.max}점</span>
+        <input type="number" min="0" max="${s.max}" id="rec-score-${i}" style="flex:1;font-size:12px">
       </div>`
     ).join('');
   } else {
     document.getElementById('rec-wrongFields').innerHTML = SUBJECT_META.map((s,i)=>
       `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <label style="width:78px;flex-shrink:0;font-size:13px;color:${s.color}">${s.name}</label>
-        <input type="text" id="rec-wrong-${i}" placeholder="오답 내용 간략히" style="flex:1">
+        <label style="width:78px;flex-shrink:0;font-size:12px;color:${s.color}">${s.name}</label>
+        <input type="text" id="rec-wrong-${i}" placeholder="오답 내용 간략히" style="flex:1;font-size:12px">
       </div>`
     ).join('');
   }
