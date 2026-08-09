@@ -422,24 +422,24 @@ body.light .tt-day-header.tt-today-hd{background:var(--accent);color:#0a1a00}
 .nc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px;margin-bottom:14px}
 .nc-stitle{font-size:11px;color:#fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-weight:700}
 body.light .nc-stitle{color:var(--text3)}
-.exam-badge{font-size:9px;font-weight:600;padding:1px 6px;border-radius:9px;letter-spacing:.03em;white-space:nowrap}
+.exam-badge{font-size:8px;font-weight:600;padding:1px 5px;border-radius:8px;letter-spacing:.03em;white-space:nowrap}
 .badge-complete{background:rgba(94,207,176,.15);color:var(--teal);border:1px solid rgba(94,207,176,.3)}
 .badge-plan{background:rgba(200,240,96,.12);color:var(--accent);border:1px solid rgba(200,240,96,.25)}
 .badge-unknown{background:rgba(136,136,136,.12);color:var(--text3);border:1px solid rgba(136,136,136,.2)}
-.exam-row{display:flex;align-items:flex-start;gap:8px;padding:6px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:4px;transition:.12s}
+.exam-row{display:flex;align-items:flex-start;gap:6px;padding:5px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:3px;transition:.12s}
 .exam-row:hover{border-color:var(--border2)}
-.exam-cnt{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);min-width:22px;text-align:right;padding-top:1px}
+.exam-cnt{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3);min-width:18px;text-align:right;padding-top:1px}
 .exam-cnt.cnt-complete{color:var(--teal)}
 .exam-cnt.cnt-plan{color:var(--accent)}
 .exam-cnt.cnt-unknown{color:var(--text3)}
-.exam-name{font-size:12px;color:var(--text);flex:1;line-height:1.4}
-.exam-essay{font-size:9px;color:var(--amber);background:rgba(255,179,71,.15);border:1px solid rgba(255,179,71,.3);padding:0px 5px;border-radius:7px;white-space:nowrap;margin-left:4px;vertical-align:middle}
+.exam-name{font-size:11px;color:var(--text);flex:1;line-height:1.3}
+.exam-essay{font-size:8px;color:var(--amber);background:rgba(255,179,71,.15);border:1px solid rgba(255,179,71,.3);padding:0px 4px;border-radius:6px;white-space:nowrap;margin-left:3px;vertical-align:middle}
 .exam-score-table{width:100%;border-collapse:collapse;font-size:12px}
 .exam-score-table th{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:6px 6px;border-bottom:1px solid var(--border2);text-align:center;white-space:nowrap}
 .exam-score-table td{padding:8px 6px;border-bottom:1px solid var(--border);text-align:center;white-space:nowrap;font-family:'JetBrains Mono',monospace}
 .exam-score-table td.exam-score-name{font-family:'Noto Sans KR',sans-serif;text-align:left;color:var(--text)}
 .exam-score-table tr:last-child td{border-bottom:none}
-.exam-wrong-item{display:flex;gap:8px;padding:8px 10px;background:var(--bg4);border-radius:8px;font-size:13px;margin-bottom:6px}
+.exam-wrong-item{display:flex;gap:8px;padding:8px 10px;background:var(--bg4);border-radius:8px;font-size:12px;margin-bottom:6px}
 .exam-wrong-item span:first-child{font-weight:600;min-width:88px;flex-shrink:0}
 </style>
 </head>
@@ -808,7 +808,7 @@ body.light .nc-stitle{color:var(--text3)}
   <!-- 현황 -->
   <div id="exam-status" class="exam-panel">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <div class="sec-title" id="exam-updated-label" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;margin-bottom:0"></div>
+      <div class="sec-title" id="exam-updated-label" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text);text-transform:uppercase;margin-bottom:0"></div>
       <button class="apply-btn-sm" onclick="openExamStatusModal()">업데이트</button>
     </div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
@@ -884,16 +884,16 @@ body.light .nc-stitle{color:var(--text3)}
       <button class="apply-btn-sm" onclick="openExamRecordModal('wrong')">+ 기록</button>
     </div>
     <div class="nc">
-      <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap">
-        <select id="wrongQueryMode" onchange="onWrongQueryModeChange()" style="flex:1;min-width:110px">
-          <option value="exam">회차로 조회</option>
-          <option value="subject">과목으로 조회</option>
+      <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center;flex-wrap:wrap">
+        <select id="wrongQueryMode" onchange="onWrongQueryModeChange()" style="flex:0 0 64px;min-width:64px">
+          <option value="exam">회차</option>
+          <option value="subject">과목</option>
         </select>
-        <div id="wrongExamRow" style="display:flex;gap:8px;flex:2;min-width:0">
-          <select id="wrongExamBase" onchange="onWrongBaseChange()" style="flex:1;min-width:0"></select>
+        <div id="wrongExamRow" style="display:flex;gap:6px;flex:1;min-width:0">
+          <select id="wrongExamBase" onchange="onWrongBaseChange()" style="flex:2;min-width:0"></select>
           <select id="wrongExamRound" onchange="renderWrongList()" style="flex:1;min-width:0"></select>
         </div>
-        <div id="wrongSubjectRow" style="display:none;gap:8px;flex:2;min-width:0">
+        <div id="wrongSubjectRow" style="display:none;gap:6px;flex:1;min-width:0">
           <select id="wrongSubjectSelect" onchange="renderWrongList()" style="flex:1;min-width:0"></select>
         </div>
       </div>
@@ -5106,8 +5106,8 @@ function renderExamRecordTable(){
   }
   const subjCols = SUBJECT_META;
   let html = '<table class="exam-score-table"><thead><tr><th style="text-align:left">회차</th><th>날짜</th>';
-  subjCols.forEach(s=>{ html += `<th style="color:${s.color}">${s.name}<br><span style="font-size:9px;font-weight:400;opacity:.7">${s.max}점</span></th>`; });
-  html += `<th style="color:${SERIES_COLOR.A}">A형</th><th style="color:${SERIES_COLOR.B}">B형</th><th style="color:var(--purple)">총점</th></tr></thead><tbody>`;
+  subjCols.forEach(s=>{ html += `<th style="color:${s.color}"><span style="display:block;line-height:1.2">${s.name}</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">${s.max}점</span></th>`; });
+  html += `<th style="color:${SERIES_COLOR.A}"><span style="display:block;line-height:1.2">A형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">39점</span></th><th style="color:${SERIES_COLOR.B}"><span style="display:block;line-height:1.2">B형</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">41점</span></th><th style="color:var(--purple)"><span style="display:block;line-height:1.2">총점</span><span style="display:block;font-size:9px;font-weight:400;opacity:.7;line-height:1.2">80점</span></th></tr></thead><tbody>`;
   examNames.forEach(n=>{
     const e = byExam[n];
     html += `<tr><td class="exam-score-name">${n}</td><td>${mmdd(e.date)}</td>`;
@@ -5173,7 +5173,7 @@ const examValueLabelBarPlugin = {
         const v = ds.data[i];
         if(v===null || v===undefined) return;
         ctx.save();
-        ctx.font = '8px sans-serif';
+        ctx.font = '7px sans-serif';
         ctx.fillStyle = Array.isArray(ds.backgroundColor) ? ds.backgroundColor[i] : (ds.backgroundColor||'#888');
         ctx.textAlign = 'center';
         ctx.fillText(v.toFixed(1)+'%', bar.x, bar.y - 6);
@@ -5603,7 +5603,7 @@ function renderWrongList(){
       const roundLabel = round ? (title+' '+round) : title;
       return `<div class="exam-wrong-item"><span style="color:${s?s.color:''}">${roundLabel}</span><span>${r.note}</span></div>`;
     }).join('');
-    el.innerHTML = items || '<div style="font-size:13px;color:var(--text3)">기록된 오답이 없습니다.</div>';
+    el.innerHTML = items || '<div style="font-size:12px;color:var(--text3)">기록된 오답이 없습니다.</div>';
     return;
   }
 
@@ -5614,16 +5614,17 @@ function renderWrongList(){
   const items = SUBJECT_META.filter(s=>bySubject[s.name]).map(s=>
     `<div class="exam-wrong-item"><span style="color:${s.color}">${s.name}</span><span>${bySubject[s.name]}</span></div>`
   ).join('');
-  el.innerHTML = items || '<div style="font-size:13px;color:var(--text3)">기록된 오답이 없습니다.</div>';
+  el.innerHTML = items || '<div style="font-size:12px;color:var(--text3)">기록된 오답이 없습니다.</div>';
 }
 
 // ─── 기록 모달 (점수 / 오답) ───
 function openExamRecordModal(mode){
   document.getElementById('modal-dynamic-title').textContent = '모의고사 기록 추가';
   const tree = examTree();
-  const modeHtml = ['score','wrong'].map(m =>
-    `<button class="stab${(mode||recordMode)===m?' on':''}" onclick="setExamRecordMode('${m}',this)">${m==='score'?'점수 기록':'오답 기록'}</button>`
-  ).join('');
+  const modeHtml = ['score','wrong'].map(m =>{
+    const on = (mode||recordMode)===m;
+    return `<button class="stab${on?' on':''}" style="${on?'border-color:var(--accent);color:var(--accent);background:var(--accent3)':''}" onclick="setExamRecordMode('${m}',this)">${m==='score'?'점수 기록':'오답 기록'}</button>`;
+  }).join('');
   showModal(`
     <div class="subj-tabs" id="examRecModeTabs" style="margin-bottom:14px">${modeHtml}</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
@@ -5676,7 +5677,11 @@ function currentExamRecName(){
 function setExamRecordMode(m,btn){
   recordMode=m;
   const tabsEl = document.getElementById('examRecModeTabs');
-  if (tabsEl) tabsEl.querySelectorAll('.stab').forEach(b=>b.classList.toggle('on', b===btn));
+  if (tabsEl) tabsEl.querySelectorAll('.stab').forEach(b=>{
+    const on = btn ? b===btn : b===tabsEl.querySelector(`[onclick*="'${m}'"]`);
+    b.classList.toggle('on', on);
+    b.style.cssText = on ? 'border-color:var(--accent);color:var(--accent);background:var(--accent3)' : '';
+  });
   document.getElementById('rec-scoreFields').style.display = m==='score'?'':'none';
   document.getElementById('rec-wrongFields').style.display = m==='wrong'?'':'none';
   document.getElementById('rec-avgField').style.display = m==='score' ? '' : 'none';
