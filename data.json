@@ -6675,7 +6675,7 @@
           "endMin": 1350,
           "categoryId": "blocked",
           "label": "이동",
-          "showTime": true
+          "showTime": false
         }
       ],
       "3": [],
@@ -6700,5 +6700,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:44:37.132Z"
+  "lastModified": "2026-08-10T09:44:39.661Z"
 }
