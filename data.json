@@ -6514,6 +6514,15 @@
           "categoryId": "blocked",
           "label": "샤워",
           "showTime": false
+        },
+        {
+          "id": "msn1f22mweiu",
+          "day": "mon",
+          "startMin": 1410,
+          "endMin": 1500,
+          "categoryId": "blocked",
+          "label": "휴식",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6538,5 +6547,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:36:41.998Z"
+  "lastModified": "2026-08-10T09:36:59.711Z"
 }
