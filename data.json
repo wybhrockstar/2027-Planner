@@ -6558,7 +6558,7 @@
           "endMin": 570,
           "categoryId": "blocked",
           "label": "샤워",
-          "showTime": true
+          "showTime": false
         }
       ],
       "3": [],
@@ -6583,5 +6583,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:38:43.414Z"
+  "lastModified": "2026-08-10T09:38:46.428Z"
 }
