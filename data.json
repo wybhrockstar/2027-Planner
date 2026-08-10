@@ -7360,6 +7360,15 @@
           "categoryId": "self",
           "label": "月 준비",
           "showTime": true
+        },
+        {
+          "id": "msn2ov05inov",
+          "day": "sun",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "月 준비",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7384,5 +7393,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:12:24.235Z"
+  "lastModified": "2026-08-10T10:12:36.727Z"
 }
