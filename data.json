@@ -7333,6 +7333,15 @@
           "categoryId": "self",
           "label": "모의고사\n스터디",
           "showTime": true
+        },
+        {
+          "id": "msn2nypj4pww",
+          "day": "sat",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7357,5 +7366,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:11:40.396Z"
+  "lastModified": "2026-08-10T10:11:54.873Z"
 }
