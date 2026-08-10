@@ -6375,7 +6375,7 @@
           "id": "msn1732s97ev",
           "day": "mon",
           "startMin": 480,
-          "endMin": 510,
+          "endMin": 540,
           "categoryId": "blocked",
           "label": "운동 및 갈무리",
           "showTime": true
@@ -6403,5 +6403,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:30:47.765Z"
+  "lastModified": "2026-08-10T09:31:01.250Z"
 }
