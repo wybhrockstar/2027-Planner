@@ -6901,6 +6901,15 @@
           "categoryId": "blocked",
           "label": "운동 및 갈무리",
           "showTime": false
+        },
+        {
+          "id": "msn24imv7kle",
+          "day": "thu",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6925,5 +6934,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:56:29.537Z"
+  "lastModified": "2026-08-10T09:56:47.577Z"
 }
