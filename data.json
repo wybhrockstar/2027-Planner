@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "rest",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -6397,6 +6397,15 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": true
+        },
+        {
+          "id": "msn18yupqrdt",
+          "day": "mon",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "교육과정\n스터디",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6421,5 +6430,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:31:47.420Z"
+  "lastModified": "2026-08-10T09:32:15.603Z"
 }
