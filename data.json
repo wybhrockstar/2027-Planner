@@ -7396,6 +7396,15 @@
           "categoryId": "self",
           "label": "月 준비",
           "showTime": true
+        },
+        {
+          "id": "msn2pxy6hpj7",
+          "day": "sun",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "월 준비",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7420,5 +7429,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:13:18.649Z"
+  "lastModified": "2026-08-10T10:13:27.199Z"
 }
