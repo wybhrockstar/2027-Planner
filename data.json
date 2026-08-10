@@ -6811,6 +6811,15 @@
           "categoryId": "self",
           "label": "金 준비",
           "showTime": true
+        },
+        {
+          "id": "msn1yn7l6jnb",
+          "day": "wed",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6835,5 +6844,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:51:49.733Z"
+  "lastModified": "2026-08-10T09:52:13.571Z"
 }
