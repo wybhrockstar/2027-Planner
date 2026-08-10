@@ -6379,6 +6379,15 @@
           "categoryId": "self",
           "label": "운동 및 갈무리",
           "showTime": true
+        },
+        {
+          "id": "msn183mu50kd",
+          "day": "mon",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6403,5 +6412,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:31:17.144Z"
+  "lastModified": "2026-08-10T09:31:35.143Z"
 }
