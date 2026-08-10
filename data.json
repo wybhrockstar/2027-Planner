@@ -6882,7 +6882,7 @@
           "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
-          "showTime": false
+          "showTime": true
         },
         {
           "id": "msn23c6jl0ui",
@@ -7591,5 +7591,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:26:14.265Z"
+  "lastModified": "2026-08-10T10:26:19.207Z"
 }
