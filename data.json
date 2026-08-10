@@ -7320,7 +7320,7 @@
           "id": "msn2n1u0trtd",
           "day": "sat",
           "startMin": 600,
-          "endMin": 660,
+          "endMin": 720,
           "categoryId": "self",
           "label": "교직논술\n스터디",
           "showTime": true
@@ -7348,5 +7348,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:11:12.266Z"
+  "lastModified": "2026-08-10T10:11:20.824Z"
 }
