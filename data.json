@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "blocked",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
@@ -6856,6 +6856,15 @@
           "categoryId": "blocked",
           "label": "샤워",
           "showTime": false
+        },
+        {
+          "id": "msn21lekfb2s",
+          "day": "wed",
+          "startMin": 1410,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6880,5 +6889,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:54:10.425Z"
+  "lastModified": "2026-08-10T09:54:31.198Z"
 }
