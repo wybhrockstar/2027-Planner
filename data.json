@@ -6520,7 +6520,7 @@
           "day": "mon",
           "startMin": 1410,
           "endMin": 1500,
-          "categoryId": "blocked",
+          "categoryId": "rest",
           "label": "휴식",
           "showTime": false
         }
@@ -6547,5 +6547,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:36:59.711Z"
+  "lastModified": "2026-08-10T09:37:02.141Z"
 }
