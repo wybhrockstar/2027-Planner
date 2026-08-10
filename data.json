@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "blocked",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -7072,6 +7072,15 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "msn2d1akzscy",
+          "day": "fri",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동 및 갈무리",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7096,5 +7105,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:03:12.280Z"
+  "lastModified": "2026-08-10T10:03:25.005Z"
 }
