@@ -6496,6 +6496,15 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
+        },
+        {
+          "id": "msn1eb84pksv",
+          "day": "mon",
+          "startMin": 1350,
+          "endMin": 1380,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6520,5 +6529,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:35:53.775Z"
+  "lastModified": "2026-08-10T09:36:24.917Z"
 }
