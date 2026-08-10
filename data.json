@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "blocked",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -7027,6 +7027,15 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
+        },
+        {
+          "id": "msn2atqjm01i",
+          "day": "thu",
+          "startMin": 1290,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "정리",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7051,5 +7060,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:01:21.600Z"
+  "lastModified": "2026-08-10T10:01:41.901Z"
 }
