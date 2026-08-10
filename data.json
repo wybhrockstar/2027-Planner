@@ -6478,6 +6478,15 @@
           "categoryId": "self",
           "label": "水 준비",
           "showTime": true
+        },
+        {
+          "id": "msn1d70mwl1v",
+          "day": "mon",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "self",
+          "label": "정리",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6502,5 +6511,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:35:15.633Z"
+  "lastModified": "2026-08-10T09:35:32.807Z"
 }
