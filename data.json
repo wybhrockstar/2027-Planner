@@ -7233,7 +7233,7 @@
           "endMin": 1500,
           "categoryId": "rest",
           "label": "휴식",
-          "showTime": true
+          "showTime": false
         }
       ],
       "3": [],
@@ -7258,5 +7258,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:08:45.417Z"
+  "lastModified": "2026-08-10T10:08:48.499Z"
 }
