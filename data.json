@@ -6798,7 +6798,7 @@
           "id": "msn1x59o2vt3",
           "day": "wed",
           "startMin": 1020,
-          "endMin": 1080,
+          "endMin": 1050,
           "categoryId": "rest",
           "label": "휴식",
           "showTime": false
@@ -6826,5 +6826,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:51:03.661Z"
+  "lastModified": "2026-08-10T09:51:10.104Z"
 }
