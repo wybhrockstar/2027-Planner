@@ -6658,6 +6658,15 @@
           "categoryId": "self",
           "label": "水 준비",
           "showTime": true
+        },
+        {
+          "id": "msn1odvlogim",
+          "day": "tue",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "self",
+          "label": "金 준비\n",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6682,5 +6691,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:43:59.784Z"
+  "lastModified": "2026-08-10T09:44:14.914Z"
 }
