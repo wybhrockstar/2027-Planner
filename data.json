@@ -7513,6 +7513,15 @@
           "categoryId": "blocked",
           "label": "운동",
           "showTime": false
+        },
+        {
+          "id": "msn2u9rjewh6",
+          "day": "sat",
+          "startMin": 1380,
+          "endMin": 1410,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7537,5 +7546,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:16:40.358Z"
+  "lastModified": "2026-08-10T10:16:49.137Z"
 }
