@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "self",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
@@ -7405,6 +7405,15 @@
           "categoryId": "self",
           "label": "월 준비",
           "showTime": true
+        },
+        {
+          "id": "msn2q9qwv8m6",
+          "day": "sat",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴시ㅣ",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7429,5 +7438,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:13:27.199Z"
+  "lastModified": "2026-08-10T10:13:42.490Z"
 }
