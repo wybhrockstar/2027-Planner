@@ -6523,6 +6523,15 @@
           "categoryId": "rest",
           "label": "휴식",
           "showTime": false
+        },
+        {
+          "id": "msn1fb5x8c1f",
+          "day": "mon",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6547,5 +6556,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:37:02.141Z"
+  "lastModified": "2026-08-10T09:37:11.494Z"
 }
