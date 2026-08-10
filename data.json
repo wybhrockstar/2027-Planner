@@ -7485,7 +7485,7 @@
           "endMin": 1350,
           "categoryId": "blocked",
           "label": "이동",
-          "showTime": true
+          "showTime": false
         },
         {
           "id": "msn2tpohsix2",
@@ -7519,5 +7519,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:16:23.106Z"
+  "lastModified": "2026-08-10T10:16:25.453Z"
 }
