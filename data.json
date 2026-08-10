@@ -6761,8 +6761,8 @@
         {
           "id": "msn1v5zthf9i",
           "day": "wed",
-          "startMin": 750,
-          "endMin": 780,
+          "startMin": 720,
+          "endMin": 750,
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
@@ -6790,5 +6790,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:49:31.290Z"
+  "lastModified": "2026-08-10T09:49:44.556Z"
 }
