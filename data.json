@@ -6808,7 +6808,7 @@
           "day": "wed",
           "startMin": 1050,
           "endMin": 1140,
-          "categoryId": "rest",
+          "categoryId": "self",
           "label": "金 준비",
           "showTime": true
         }
@@ -6835,5 +6835,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:51:44.367Z"
+  "lastModified": "2026-08-10T09:51:49.733Z"
 }
