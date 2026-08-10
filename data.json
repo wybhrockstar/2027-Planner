@@ -7063,6 +7063,15 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "msn2crh3moff",
+          "day": "fri",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7087,5 +7096,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:02:43.943Z"
+  "lastModified": "2026-08-10T10:03:12.280Z"
 }
