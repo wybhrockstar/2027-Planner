@@ -7522,6 +7522,15 @@
           "categoryId": "blocked",
           "label": "샤워",
           "showTime": false
+        },
+        {
+          "id": "msn2uhd2it73",
+          "day": "sun",
+          "startMin": 1380,
+          "endMin": 1410,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7546,5 +7555,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:16:51.569Z"
+  "lastModified": "2026-08-10T10:16:58.984Z"
 }
