@@ -7504,6 +7504,15 @@
           "categoryId": "blocked",
           "label": "운동",
           "showTime": false
+        },
+        {
+          "id": "msn2u2zog6od",
+          "day": "sun",
+          "startMin": 1350,
+          "endMin": 1380,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7528,5 +7537,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:16:33.600Z"
+  "lastModified": "2026-08-10T10:16:40.358Z"
 }
