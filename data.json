@@ -7288,6 +7288,15 @@
           "categoryId": "blocked",
           "label": "샤워",
           "showTime": false
+        },
+        {
+          "id": "msn2mbg3gsxz",
+          "day": "sun",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7312,5 +7321,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:10:30.960Z"
+  "lastModified": "2026-08-10T10:10:38.069Z"
 }
