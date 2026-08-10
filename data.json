@@ -6838,6 +6838,15 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": true
+        },
+        {
+          "id": "msn20nveacej",
+          "day": "wed",
+          "startMin": 1350,
+          "endMin": 1380,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6862,5 +6871,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:53:38.363Z"
+  "lastModified": "2026-08-10T09:53:47.739Z"
 }
