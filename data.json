@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "self",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -6667,6 +6667,15 @@
           "categoryId": "self",
           "label": "金 준비\n",
           "showTime": true
+        },
+        {
+          "id": "msn1ov0q1ue1",
+          "day": "tue",
+          "startMin": 1320,
+          "endMin": 1350,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6691,5 +6700,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:44:14.914Z"
+  "lastModified": "2026-08-10T09:44:37.132Z"
 }
