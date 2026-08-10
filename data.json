@@ -6847,6 +6847,15 @@
           "categoryId": "blocked",
           "label": "운동",
           "showTime": true
+        },
+        {
+          "id": "msn215diorz7",
+          "day": "wed",
+          "startMin": 1380,
+          "endMin": 1410,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6871,5 +6880,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:53:47.739Z"
+  "lastModified": "2026-08-10T09:54:10.425Z"
 }
