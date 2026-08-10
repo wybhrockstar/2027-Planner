@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "rest",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -6469,6 +6469,15 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
+        },
+        {
+          "id": "msn1ctrlxnfs",
+          "day": "mon",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "水 준비",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6493,5 +6502,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:34:55.020Z"
+  "lastModified": "2026-08-10T09:35:15.633Z"
 }
