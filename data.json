@@ -7162,6 +7162,15 @@
           "categoryId": "self",
           "label": "교직논술",
           "showTime": true
+        },
+        {
+          "id": "msn2helh30z8",
+          "day": "fri",
+          "startMin": 1110,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교직논술 복습",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7186,5 +7195,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:06:30.969Z"
+  "lastModified": "2026-08-10T10:06:48.870Z"
 }
