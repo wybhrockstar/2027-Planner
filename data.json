@@ -6891,7 +6891,7 @@
           "endMin": 510,
           "categoryId": "blocked",
           "label": "운동 및 청킹",
-          "showTime": true
+          "showTime": false
         },
         {
           "id": "msn24imv7kle",
@@ -7591,5 +7591,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:26:07.117Z"
+  "lastModified": "2026-08-10T10:26:14.265Z"
 }
