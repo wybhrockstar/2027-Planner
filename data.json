@@ -7018,6 +7018,15 @@
           "categoryId": "blocked",
           "label": "보컬 트레이닝",
           "showTime": false
+        },
+        {
+          "id": "msn2ae2m9q7r",
+          "day": "thu",
+          "startMin": 1260,
+          "endMin": 1290,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7042,5 +7051,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:01:04.529Z"
+  "lastModified": "2026-08-10T10:01:21.600Z"
 }
