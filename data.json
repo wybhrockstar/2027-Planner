@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "blocked",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
@@ -7297,6 +7297,15 @@
           "categoryId": "blocked",
           "label": "샤워",
           "showTime": false
+        },
+        {
+          "id": "msn2migi3coi",
+          "day": "sat",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7321,5 +7330,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:10:38.069Z"
+  "lastModified": "2026-08-10T10:10:47.156Z"
 }
