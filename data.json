@@ -6888,8 +6888,8 @@
           "id": "msn23c6jl0ui",
           "day": "thu",
           "startMin": 480,
-          "endMin": 540,
-          "categoryId": "self",
+          "endMin": 510,
+          "categoryId": "blocked",
           "label": "운동 및 청킹",
           "showTime": true
         },
@@ -7582,5 +7582,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:24:47.093Z"
+  "lastModified": "2026-08-10T10:25:54.312Z"
 }
