@@ -7189,6 +7189,15 @@
           "categoryId": "self",
           "label": "모의고사 오답",
           "showTime": true
+        },
+        {
+          "id": "msn2i9fd5irc",
+          "day": "fri",
+          "startMin": 1260,
+          "endMin": 1320,
+          "categoryId": "self",
+          "label": "모의고사 정리",
+          "showTime": true
         }
       ],
       "3": [],
@@ -7213,5 +7222,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:07:16.678Z"
+  "lastModified": "2026-08-10T10:07:28.826Z"
 }
