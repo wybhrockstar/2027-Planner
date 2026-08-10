@@ -7306,6 +7306,15 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": true
+        },
+        {
+          "id": "msn2mpbhh20w",
+          "day": "sun",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7330,5 +7339,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:10:47.156Z"
+  "lastModified": "2026-08-10T10:10:56.046Z"
 }
