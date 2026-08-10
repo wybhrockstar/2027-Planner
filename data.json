@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "self",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -7108,6 +7108,15 @@
           "categoryId": "self",
           "label": "교육과정\n스터디",
           "showTime": false
+        },
+        {
+          "id": "msn2em4hdpzf",
+          "day": "fri",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7132,5 +7141,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:04:19.339Z"
+  "lastModified": "2026-08-10T10:04:38.658Z"
 }
