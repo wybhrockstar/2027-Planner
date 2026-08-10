@@ -7203,7 +7203,7 @@
           "id": "msn2iso579ec",
           "day": "fri",
           "startMin": 1320,
-          "endMin": 1380,
+          "endMin": 1350,
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
@@ -7231,5 +7231,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:07:53.766Z"
+  "lastModified": "2026-08-10T10:08:05.422Z"
 }
