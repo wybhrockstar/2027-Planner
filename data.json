@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "self",
+    "selectedCat": "rest",
     "categories": [
       {
         "id": "blocked",
@@ -7126,6 +7126,15 @@
           "categoryId": "self",
           "label": "모의고사 1",
           "showTime": true
+        },
+        {
+          "id": "msn2fqqdagtg",
+          "day": "fri",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7150,5 +7159,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:05:19.669Z"
+  "lastModified": "2026-08-10T10:05:31.286Z"
 }
