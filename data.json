@@ -6969,7 +6969,7 @@
           "id": "msn27xx80xu5",
           "day": "thu",
           "startMin": 930,
-          "endMin": 990,
+          "endMin": 1020,
           "categoryId": "self",
           "label": "金 준비",
           "showTime": true
@@ -6997,5 +6997,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:59:27.358Z"
+  "lastModified": "2026-08-10T09:59:43.073Z"
 }
