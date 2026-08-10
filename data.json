@@ -7107,7 +7107,7 @@
           "endMin": 720,
           "categoryId": "self",
           "label": "교육과정\n스터디",
-          "showTime": false
+          "showTime": true
         },
         {
           "id": "msn2em4hdpzf",
@@ -7141,5 +7141,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:04:38.658Z"
+  "lastModified": "2026-08-10T10:04:47.932Z"
 }
