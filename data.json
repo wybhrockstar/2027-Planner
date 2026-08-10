@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "rest",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -7009,6 +7009,15 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
+        },
+        {
+          "id": "msn2a0wgwipd",
+          "day": "thu",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "blocked",
+          "label": "보컬 트레이닝",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7033,5 +7042,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:00:53.794Z"
+  "lastModified": "2026-08-10T10:01:04.529Z"
 }
