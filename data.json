@@ -6743,8 +6743,8 @@
         {
           "id": "msn1tzloq1c8",
           "day": "wed",
-          "startMin": 600,
-          "endMin": 630,
+          "startMin": 570,
+          "endMin": 600,
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
@@ -6772,5 +6772,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:48:36.350Z"
+  "lastModified": "2026-08-10T09:48:49.120Z"
 }
