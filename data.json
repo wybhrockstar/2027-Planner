@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "blocked",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -6415,6 +6415,15 @@
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
+        },
+        {
+          "id": "msn1a4dqilq5",
+          "day": "mon",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "水 준비",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6439,5 +6448,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:32:47.936Z"
+  "lastModified": "2026-08-10T09:33:09.424Z"
 }
