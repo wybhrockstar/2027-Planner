@@ -6834,7 +6834,7 @@
       "3": [],
       "4": []
     },
-    "displayMode": "range",
+    "displayMode": "duration",
     "textAlign": "center",
     "highlightAll": true
   },
@@ -6853,5 +6853,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:52:55.004Z"
+  "lastModified": "2026-08-10T09:53:07.237Z"
 }
