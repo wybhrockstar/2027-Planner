@@ -7540,6 +7540,15 @@
           "categoryId": "rest",
           "label": "휴식",
           "showTime": false
+        },
+        {
+          "id": "msn2uuqeurf1",
+          "day": "sun",
+          "startMin": 1410,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": false
         }
       ],
       "3": [],
@@ -7564,5 +7573,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:17:08.753Z"
+  "lastModified": "2026-08-10T10:17:16.312Z"
 }
