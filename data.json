@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "self",
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -6892,6 +6892,15 @@
           "categoryId": "self",
           "label": "운동 및 청킹",
           "showTime": true
+        },
+        {
+          "id": "msn23zpw0amo",
+          "day": "wed",
+          "startMin": 510,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "운동 및 갈무리",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6916,5 +6925,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:56:11.634Z"
+  "lastModified": "2026-08-10T09:56:23.062Z"
 }
