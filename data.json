@@ -6411,7 +6411,7 @@
           "id": "msn19fhuinva",
           "day": "mon",
           "startMin": 720,
-          "endMin": 780,
+          "endMin": 750,
           "categoryId": "blocked",
           "label": "이동",
           "showTime": false
@@ -6439,5 +6439,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:32:37.171Z"
+  "lastModified": "2026-08-10T09:32:47.936Z"
 }
