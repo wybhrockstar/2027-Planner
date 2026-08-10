@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": null,
+    "selectedCat": "blocked",
     "categories": [
       {
         "id": "blocked",
@@ -6361,7 +6361,17 @@
           "showTime": false
         }
       ],
-      "2": [],
+      "2": [
+        {
+          "id": "msn16h2z7ryu",
+          "day": "mon",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
+        }
+      ],
       "3": [],
       "4": []
     },
@@ -6384,5 +6394,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:29:55.031Z"
+  "lastModified": "2026-08-10T09:30:19.260Z"
 }
