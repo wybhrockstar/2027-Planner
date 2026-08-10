@@ -4976,7 +4976,7 @@
   },
   "timetable": {
     "activeTerm": 2,
-    "selectedCat": "rest",
+    "selectedCat": "self",
     "categories": [
       {
         "id": "blocked",
@@ -6820,6 +6820,15 @@
           "categoryId": "rest",
           "label": "밥",
           "showTime": false
+        },
+        {
+          "id": "msn1zj6j51oz",
+          "day": "wed",
+          "startMin": 1170,
+          "endMin": 1320,
+          "categoryId": "self",
+          "label": "金 준비",
+          "showTime": true
         }
       ],
       "3": [],
@@ -6844,5 +6853,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:52:13.571Z"
+  "lastModified": "2026-08-10T09:52:55.004Z"
 }
