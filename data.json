@@ -6894,15 +6894,6 @@
           "showTime": true
         },
         {
-          "id": "msn23zpw0amo",
-          "day": "wed",
-          "startMin": 510,
-          "endMin": 540,
-          "categoryId": "blocked",
-          "label": "운동 및 갈무리",
-          "showTime": false
-        },
-        {
           "id": "msn24imv7kle",
           "day": "thu",
           "startMin": 540,
@@ -7591,5 +7582,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T10:17:30.718Z"
+  "lastModified": "2026-08-10T10:24:39.025Z"
 }
