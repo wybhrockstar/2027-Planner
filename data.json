@@ -6874,6 +6874,15 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "msn22iykcbgx",
+          "day": "thu",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6898,5 +6907,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:54:47.290Z"
+  "lastModified": "2026-08-10T09:55:14.686Z"
 }
