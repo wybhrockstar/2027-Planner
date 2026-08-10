@@ -6712,6 +6712,15 @@
           "categoryId": "blocked",
           "label": "잠",
           "showTime": false
+        },
+        {
+          "id": "msn1rm815ssm",
+          "day": "wed",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": false
         }
       ],
       "3": [],
@@ -6736,5 +6745,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-10",
-  "lastModified": "2026-08-10T09:46:08.744Z"
+  "lastModified": "2026-08-10T09:46:45.698Z"
 }
