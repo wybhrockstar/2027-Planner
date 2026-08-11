@@ -4643,6 +4643,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-07-31",
+      "wakeTime": "",
+      "sleepTime": "",
+      "studyMin": 51,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -7627,5 +7636,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-11",
-  "lastModified": "2026-08-11T02:04:04.088Z"
+  "lastModified": "2026-08-11T02:04:17.131Z"
 }
