@@ -4975,7 +4975,7 @@
     "wakeTimeLimit": "09:00"
   },
   "timetable": {
-    "activeTerm": 3,
+    "activeTerm": 2,
     "selectedCat": null,
     "categories": [
       {
@@ -7591,5 +7591,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-11",
-  "lastModified": "2026-08-11T01:10:39.628Z"
+  "lastModified": "2026-08-11T01:59:42.477Z"
 }
