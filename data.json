@@ -4607,6 +4607,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-08-10",
+      "wakeTime": "08:59",
+      "sleepTime": "02:30",
+      "studyMin": 480,
+      "kcal": 305,
+      "memo": "김재언 시즌3 ON",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -7591,5 +7600,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-11",
-  "lastModified": "2026-08-11T01:59:44.590Z"
+  "lastModified": "2026-08-11T02:01:09.819Z"
 }
