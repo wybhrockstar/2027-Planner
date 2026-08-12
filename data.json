@@ -4692,11 +4692,11 @@
     {
       "date": "2026-08-12",
       "wakeTime": "08:18",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
-      "studyResult": null
+      "sleepTime": "02:35",
+      "studyMin": 300,
+      "kcal": 260,
+      "memo": "쉽지않다 정말",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -7681,5 +7681,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-12",
-  "lastModified": "2026-08-11T23:18:27.705Z"
+  "lastModified": "2026-08-12T17:34:45.453Z"
 }
