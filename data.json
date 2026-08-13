@@ -4701,10 +4701,10 @@
     {
       "date": "2026-08-13",
       "wakeTime": "08:35",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
+      "sleepTime": "00:34",
+      "studyMin": 25,
+      "kcal": 120,
+      "memo": "나약하다",
       "studyResult": null
     }
   ],
@@ -7690,5 +7690,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-13",
-  "lastModified": "2026-08-12T23:35:51.665Z"
+  "lastModified": "2026-08-13T15:35:18.962Z"
 }
