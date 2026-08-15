@@ -4719,7 +4719,7 @@
     {
       "date": "2026-08-15",
       "wakeTime": "09:02",
-      "sleepTime": "",
+      "sleepTime": "02:55",
       "studyMin": 600,
       "kcal": 330,
       "memo": "더 할 수 있었잖아",
@@ -7708,5 +7708,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-15",
-  "lastModified": "2026-08-15T14:56:26.341Z"
+  "lastModified": "2026-08-15T17:54:12.913Z"
 }
