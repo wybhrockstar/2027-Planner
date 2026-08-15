@@ -4715,6 +4715,15 @@
       "kcal": 200,
       "memo": "하기 싫어도 해야 한다",
       "studyResult": "△"
+    },
+    {
+      "date": "2026-08-15",
+      "wakeTime": "09:02",
+      "sleepTime": "",
+      "studyMin": 600,
+      "kcal": 330,
+      "memo": "더 할 수 있었잖아",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -7699,5 +7708,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-15",
-  "lastModified": "2026-08-15T14:55:07.538Z"
+  "lastModified": "2026-08-15T14:56:20.240Z"
 }
