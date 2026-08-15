@@ -4710,11 +4710,11 @@
     {
       "date": "2026-08-14",
       "wakeTime": "09:05",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
-      "studyResult": null
+      "sleepTime": "00:30",
+      "studyMin": 382,
+      "kcal": 200,
+      "memo": "하기 싫어도 해야 한다",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -7699,5 +7699,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-15",
-  "lastModified": "2026-08-15T09:22:20.853Z"
+  "lastModified": "2026-08-15T14:55:07.538Z"
 }
