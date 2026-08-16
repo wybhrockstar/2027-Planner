@@ -4728,7 +4728,7 @@
     {
       "date": "2026-08-16",
       "wakeTime": "08:49",
-      "sleepTime": "",
+      "sleepTime": "02:35",
       "studyMin": 360,
       "kcal": 150,
       "memo": "106.2kg (ㅅㅂ)",
@@ -7717,5 +7717,5 @@
     "수학"
   ],
   "lastCarryOverDate": "2026-08-16",
-  "lastModified": "2026-08-16T17:33:45.247Z"
+  "lastModified": "2026-08-16T17:35:10.006Z"
 }
