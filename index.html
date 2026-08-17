@@ -5603,7 +5603,7 @@ function renderAvgRateChart(){
             return lines;
           }
         } } },
-      scales:{ y:{ beginAtZero:true, max: isRate ? 100 : Math.max(...maxScores), ticks:{ font:{size:9} } }, x:{ grouped:false, grid:{display:false}, ticks:{ font:{ size:10 }, color: (c)=>tickColors[c.index],
+      scales:{ y:{ beginAtZero:true, max: isRate ? 100 : Math.max(...maxScores), ticks:{ font:{size:9} } }, x:{ grouped:false, grid:{display:false}, ticks:{ autoSkip:false, maxRotation:0, minRotation:0, font:{ size:7 }, color: (c)=>tickColors[c.index],
         callback:(val,idx)=> [labels[idx], maxScores[idx]+'점'] } } } }
   });
   examAttachBarTooltipToggle(avgRateChart, barDatasetIndex);
