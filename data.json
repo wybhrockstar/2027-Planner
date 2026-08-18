@@ -4119,6 +4119,106 @@
       "term": 1,
       "done": false,
       "doneDate": null
+    },
+    {
+      "id": "수학 특강_1",
+      "subject": "수학 특강",
+      "num": "1강",
+      "title": "1강. [복습] 도형 [67분]",
+      "minutes": 67,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학 특강_2",
+      "subject": "수학 특강",
+      "num": "2강",
+      "title": "2강. [복습] 측정 [70분]",
+      "minutes": 70,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학 특강_3",
+      "subject": "수학 특강",
+      "num": "3강",
+      "title": "3강. [복습] 수와 연산 (1) [57분]",
+      "minutes": 57,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학 특강_4",
+      "subject": "수학 특강",
+      "num": "4강",
+      "title": "4강. [복습] 수와 연산 (2) [61분]",
+      "minutes": 61,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학 특강_5",
+      "subject": "수학 특강",
+      "num": "5강",
+      "title": "5강. [복습] 수와 연산 (3) [48분]",
+      "minutes": 48,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "수학 특강_6",
+      "subject": "수학 특강",
+      "num": "6강",
+      "title": "6강. [복습] 변화와 관계, 자료와 가능성 [39분]",
+      "minutes": 39,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어 특강_1",
+      "subject": "국어 특강",
+      "num": "1강",
+      "title": "1강. [복습] 읽기 [69분]",
+      "minutes": 69,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어 특강_2",
+      "subject": "국어 특강",
+      "num": "2강",
+      "title": "2강. [복습] 쓰기 [71분]",
+      "minutes": 71,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어 특강_3",
+      "subject": "국어 특강",
+      "num": "3강",
+      "title": "3강. [복습] 듣기·말하기 [63분]",
+      "minutes": 63,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어 특강_4",
+      "subject": "국어 특강",
+      "num": "4강",
+      "title": "4강. [복습] 문학 [59분]",
+      "minutes": 59,
+      "term": 1,
+      "done": false,
+      "doneDate": null
     }
   ],
   "dailyLogs": [
