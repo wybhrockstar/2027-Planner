@@ -4951,13 +4951,13 @@ function showExamTab(name){
       });
     });
   }
-  if (name === 'status') { renderExamStatus(); applyExamTabPanel(); return; }
+  if (name === 'status') { applyExamTabPanel(); renderExamStatus(); return; }
   if (name === 'record' || name === 'analysis' || name === 'wrong') {
+    applyExamTabPanel();
     ensureExamDataLoaded().then(() => {
       if (name === 'record') renderExamRecordTable();
       if (name === 'analysis') { buildExamControls(); renderExamTrend(); renderExamSubjectTabs(); renderAvgRateChart(); }
       if (name === 'wrong') { buildWrongExamSelects(); renderWrongList(); }
-      applyExamTabPanel();
     });
   }
 }
@@ -5352,6 +5352,7 @@ function setExamMode(m,btn){
   buildExamControls();
   renderExamTrend();
   renderExamSubjectChart();
+  renderAvgRateChart();
 }
 function examTrendPoints(seriesKey){
   const rows = dedupeLatest(personScores().filter(r=> seriesKey==='total' || r.type===seriesKey),
