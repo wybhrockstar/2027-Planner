@@ -4938,10 +4938,12 @@ function personScores(){ return examData.scores.filter(r=>r.author===EXAM_ME); }
 // ─── 서브탭 전환 ───
 function showExamTab(name){
   examTab = name;
-  function applyExamTabPanel(){
+  function applyExamTabPanel(hideContent){
     ['status','record','analysis','wrong'].forEach(t=>{
       document.getElementById('estab-'+t).classList.toggle('on', t===name);
-      document.getElementById('exam-'+t).style.display = t===name ? '' : 'none';
+      const panel = document.getElementById('exam-'+t);
+      panel.style.display = t===name ? '' : 'none';
+      if(t===name) panel.style.visibility = hideContent ? 'hidden' : '';
     });
     // display:none 상태에서 그려진 차트는 크기가 0으로 굳어버릴 수 있어,
     // 화면에 다시 보일 때 강제로 resize 해준다.
@@ -4951,13 +4953,19 @@ function showExamTab(name){
       });
     });
   }
-  if (name === 'status') { applyExamTabPanel(); renderExamStatus(); return; }
+  function revealPanel(){
+    document.getElementById('exam-'+name).style.visibility = '';
+  }
+  if (name === 'status') { applyExamTabPanel(false); renderExamStatus(); return; }
   if (name === 'record' || name === 'analysis' || name === 'wrong') {
-    applyExamTabPanel();
+    applyExamTabPanel(true);
     ensureExamDataLoaded().then(() => {
       if (name === 'record') renderExamRecordTable();
       if (name === 'analysis') { buildExamControls(); renderExamTrend(); renderExamSubjectTabs(); renderAvgRateChart(); }
       if (name === 'wrong') { buildWrongExamSelects(); renderWrongList(); }
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(revealPanel);
+      });
     });
   }
 }
@@ -5604,7 +5612,7 @@ function renderAvgRateChart(){
             return lines;
           }
         } } },
-      scales:{ y:{ beginAtZero:true, max: isRate ? 100 : Math.max(...maxScores), ticks:{ font:{size:9} } }, x:{ grouped:false, grid:{display:false}, ticks:{ autoSkip:false, maxRotation:0, minRotation:0, font:{ size:6 }, color: (c)=>tickColors[c.index],
+      scales:{ y:{ beginAtZero:true, max: isRate ? 100 : Math.max(...maxScores), ticks:{ font:{size:9} } }, x:{ grouped:false, grid:{display:false}, ticks:{ autoSkip:false, maxRotation:0, minRotation:0, font:{ size:7 }, color: (c)=>tickColors[c.index],
         callback:(val,idx)=> [labels[idx], maxScores[idx]+'점'] } } } }
   });
   examAttachBarTooltipToggle(avgRateChart, barDatasetIndex);
