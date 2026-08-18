@@ -5182,7 +5182,7 @@ const examValueLabelPlugin = {
         const v = ds.data[i];
         if(v===null || v===undefined) return;
         ctx.save();
-        ctx.font = '9px sans-serif';
+        ctx.font = '7px sans-serif';
         ctx.fillStyle = ds.isAvgDataset ? examThemeTextColor() : (ds.borderColor || '#888');
         ctx.textAlign = 'center';
         ctx.fillText(fmtVal(v), point.x, point.y - 8);
@@ -5204,7 +5204,7 @@ const examValueLabelBarPlugin = {
         const v = ds.data[i];
         if(v===null || v===undefined) return;
         ctx.save();
-        ctx.font = '9px sans-serif';
+        ctx.font = '7px sans-serif';
         ctx.fillStyle = Array.isArray(colorSrc) ? colorSrc[i] : (colorSrc||'#888');
         ctx.textAlign = 'center';
         ctx.fillText((ds.labelPrefix||'') + v + (ds.unitLabel || '%'), bar.x, bar.y - offset);
@@ -5603,7 +5603,7 @@ function renderAvgRateChart(){
             return lines;
           }
         } } },
-      scales:{ y:{ beginAtZero:true, max: isRate ? 100 : Math.max(...maxScores), ticks:{ font:{size:9} } }, x:{ grouped:false, grid:{display:false}, ticks:{ autoSkip:false, maxRotation:0, minRotation:0, font:{ size:7 }, color: (c)=>tickColors[c.index],
+      scales:{ y:{ beginAtZero:true, max: isRate ? 100 : Math.max(...maxScores), ticks:{ font:{size:9} } }, x:{ grouped:false, grid:{display:false}, ticks:{ autoSkip:false, maxRotation:0, minRotation:0, font:{ size:6 }, color: (c)=>tickColors[c.index],
         callback:(val,idx)=> [labels[idx], maxScores[idx]+'점'] } } } }
   });
   examAttachBarTooltipToggle(avgRateChart, barDatasetIndex);
