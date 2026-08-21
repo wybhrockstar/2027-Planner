@@ -5246,7 +5246,7 @@
     "wakeTimeLimit": "09:00"
   },
   "timetable": {
-    "activeTerm": 1,
+    "activeTerm": 2,
     "selectedCat": null,
     "categories": [
       {
@@ -7862,5 +7862,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-21",
-  "lastModified": "2026-08-21T01:01:23.450Z"
+  "lastModified": "2026-08-21T05:58:52.813Z"
 }
