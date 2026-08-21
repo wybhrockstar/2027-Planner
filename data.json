@@ -4219,6 +4219,36 @@
       "term": 1,
       "done": false,
       "doneDate": null
+    },
+    {
+      "id": "국어 특강_5",
+      "subject": "국어 특강",
+      "num": "5강",
+      "title": "5강. [심화] 독서 (읽기) [64분]",
+      "minutes": 64,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어 특강_6",
+      "subject": "국어 특강",
+      "num": "6강",
+      "title": "6강. [심화] 작문 (쓰기) [49분]",
+      "minutes": 49,
+      "term": 1,
+      "done": false,
+      "doneDate": null
+    },
+    {
+      "id": "국어 특강_7",
+      "subject": "국어 특강",
+      "num": "7강",
+      "title": "7강. [심화] 화법 (듣기·말하기) [38분]",
+      "minutes": 38,
+      "term": 1,
+      "done": false,
+      "doneDate": null
     }
   ],
   "dailyLogs": [
