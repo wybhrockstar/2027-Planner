@@ -4903,11 +4903,11 @@
     {
       "date": "2026-08-21",
       "wakeTime": "08:43",
-      "sleepTime": "",
-      "studyMin": 0,
+      "sleepTime": "02:20",
+      "studyMin": 576,
       "kcal": 160,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -7892,5 +7892,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-21",
-  "lastModified": "2026-08-21T05:58:52.813Z"
+  "lastModified": "2026-08-21T17:20:07.864Z"
 }
