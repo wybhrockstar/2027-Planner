@@ -4912,10 +4912,10 @@
     {
       "date": "2026-08-22",
       "wakeTime": "08:45",
-      "sleepTime": "",
-      "studyMin": 0,
-      "kcal": 0,
-      "memo": "",
+      "sleepTime": "02:45",
+      "studyMin": 480,
+      "kcal": 200,
+      "memo": "ㅅㅂ 암기준비 80%",
       "studyResult": null
     }
   ],
@@ -7901,5 +7901,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-22",
-  "lastModified": "2026-08-21T23:45:42.504Z"
+  "lastModified": "2026-08-22T17:36:37.548Z"
 }
