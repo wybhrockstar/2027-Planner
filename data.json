@@ -4917,6 +4917,15 @@
       "kcal": 200,
       "memo": "ㅅㅂ 암기준비 80%",
       "studyResult": null
+    },
+    {
+      "date": "2026-08-23",
+      "wakeTime": "08:59",
+      "sleepTime": "02:30",
+      "studyMin": 348,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -7901,5 +7910,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-24",
-  "lastModified": "2026-08-24T18:09:32.575Z"
+  "lastModified": "2026-08-24T18:11:09.433Z"
 }
