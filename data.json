@@ -4951,7 +4951,7 @@
       "sleepTime": "",
       "studyMin": 0,
       "kcal": 0,
-      "memo": "휴가 끝",
+      "memo": "",
       "studyResult": null
     },
     {
@@ -7946,5 +7946,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-29",
-  "lastModified": "2026-08-29T00:00:40.162Z"
+  "lastModified": "2026-08-29T00:01:01.309Z"
 }
