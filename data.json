@@ -4980,6 +4980,15 @@
       "kcal": 0,
       "memo": "여행 중",
       "studyResult": null
+    },
+    {
+      "date": "2026-08-30",
+      "wakeTime": "09:00",
+      "sleepTime": "04:05",
+      "studyMin": 601,
+      "kcal": 0,
+      "memo": "회복 필요",
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -7964,5 +7973,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-30",
-  "lastModified": "2026-08-30T19:01:37.601Z"
+  "lastModified": "2026-08-30T19:02:47.176Z"
 }
