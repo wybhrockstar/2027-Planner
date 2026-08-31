@@ -4989,6 +4989,15 @@
       "kcal": 0,
       "memo": "회복 필요",
       "studyResult": "△"
+    },
+    {
+      "date": "2026-08-31",
+      "wakeTime": "09:02",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -7973,5 +7982,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-08-31",
-  "lastModified": "2026-08-31T00:02:23.375Z"
+  "lastModified": "2026-08-31T00:02:27.419Z"
 }
