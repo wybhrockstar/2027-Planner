@@ -5114,7 +5114,7 @@
       "studyMin": 112,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     }
   ],
   "dailyTodos": {
@@ -8099,5 +8099,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-13",
-  "lastModified": "2026-09-12T23:50:12.621Z"
+  "lastModified": "2026-09-12T23:50:14.901Z"
 }
