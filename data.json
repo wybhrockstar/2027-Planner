@@ -4988,7 +4988,7 @@
       "studyMin": 601,
       "kcal": 0,
       "memo": "회복 필요",
-      "studyResult": "△"
+      "studyResult": "O"
     },
     {
       "date": "2026-08-31",
@@ -8099,5 +8099,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-13",
-  "lastModified": "2026-09-12T23:50:26.757Z"
+  "lastModified": "2026-09-12T23:50:30.641Z"
 }
