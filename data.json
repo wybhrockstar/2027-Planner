@@ -5061,6 +5061,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-09-12",
+      "wakeTime": "",
+      "sleepTime": "04:10",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -8045,5 +8054,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-12",
-  "lastModified": "2026-09-12T19:10:13.627Z"
+  "lastModified": "2026-09-12T19:10:32.644Z"
 }
