@@ -5051,7 +5051,7 @@
       "studyMin": 0,
       "kcal": 0,
       "memo": "",
-      "studyResult": null
+      "studyResult": "△"
     },
     {
       "date": "2026-09-08",
@@ -8099,5 +8099,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-13",
-  "lastModified": "2026-09-12T23:48:41.924Z"
+  "lastModified": "2026-09-12T23:49:46.389Z"
 }
