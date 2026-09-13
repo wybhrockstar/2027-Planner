@@ -5092,7 +5092,7 @@
     {
       "date": "2026-09-09",
       "wakeTime": "09:47",
-      "sleepTime": "",
+      "sleepTime": "02:00",
       "studyMin": 175,
       "kcal": 0,
       "memo": "",
@@ -8099,5 +8099,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-13",
-  "lastModified": "2026-09-13T00:10:31.460Z"
+  "lastModified": "2026-09-13T00:10:51.118Z"
 }
