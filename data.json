@@ -8077,7 +8077,1097 @@
           "showTime": true
         }
       ],
-      "3": [],
+      "3": [
+        {
+          "id": "63b75bj9gc",
+          "day": "mon",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75bngt1",
+          "day": "mon",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75b3fzp",
+          "day": "mon",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75bqxrf",
+          "day": "mon",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75cb69y",
+          "day": "mon",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75cjogp",
+          "day": "mon",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75coxsw",
+          "day": "mon",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75c2p6z",
+          "day": "mon",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75cf5h1",
+          "day": "mon",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75chbdw",
+          "day": "mon",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75ckn4u",
+          "day": "mon",
+          "startMin": 1050,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75c1zsl",
+          "day": "mon",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75cs7uv",
+          "day": "mon",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75cl72o",
+          "day": "mon",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75cg38s",
+          "day": "mon",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75ccidh",
+          "day": "mon",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75cijj2",
+          "day": "mon",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75c6d43",
+          "day": "tue",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75c578h",
+          "day": "tue",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75c4yqe",
+          "day": "tue",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75csr26",
+          "day": "tue",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75ckm31",
+          "day": "tue",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75cggse",
+          "day": "tue",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75c0f21",
+          "day": "tue",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75cz8ak",
+          "day": "tue",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75c868f",
+          "day": "tue",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75ciqrk",
+          "day": "tue",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75cd9ay",
+          "day": "tue",
+          "startMin": 1050,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75c97cn",
+          "day": "tue",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75c5sfc",
+          "day": "tue",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75c5s1l",
+          "day": "tue",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75czu37",
+          "day": "tue",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75c0eu7",
+          "day": "tue",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75cj4oy",
+          "day": "tue",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75cpdbv",
+          "day": "wed",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75cl0zr",
+          "day": "wed",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75cket8",
+          "day": "wed",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75cjoki",
+          "day": "wed",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75cnal9",
+          "day": "wed",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75cxa2b",
+          "day": "wed",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75cmbnc",
+          "day": "wed",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75c28gk",
+          "day": "wed",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75czkxg",
+          "day": "wed",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75c51fb",
+          "day": "wed",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75c4atj",
+          "day": "wed",
+          "startMin": 1050,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75cb6s4",
+          "day": "wed",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75cfg81",
+          "day": "wed",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75cp8h5",
+          "day": "wed",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75c2m64",
+          "day": "wed",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75coafs",
+          "day": "wed",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75cxidf",
+          "day": "wed",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75ci470",
+          "day": "thu",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75ccwpl",
+          "day": "thu",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75d59ao",
+          "day": "thu",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75drwhg",
+          "day": "thu",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75dz4bo",
+          "day": "thu",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75dxpyb",
+          "day": "thu",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75dak25",
+          "day": "thu",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75do54c",
+          "day": "thu",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75do831",
+          "day": "thu",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75de7vp",
+          "day": "thu",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75d8mux",
+          "day": "thu",
+          "startMin": 1050,
+          "endMin": 1110,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75dmiab",
+          "day": "thu",
+          "startMin": 1110,
+          "endMin": 1140,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75dr850",
+          "day": "thu",
+          "startMin": 1140,
+          "endMin": 1200,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75dqnf9",
+          "day": "thu",
+          "startMin": 1200,
+          "endMin": 1260,
+          "categoryId": "blocked",
+          "label": "보컬 트레이닝",
+          "showTime": true
+        },
+        {
+          "id": "63b75dp913",
+          "day": "thu",
+          "startMin": 1260,
+          "endMin": 1290,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75dvoj0",
+          "day": "thu",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "self",
+          "label": "정리",
+          "showTime": true
+        },
+        {
+          "id": "63b75dxxwh",
+          "day": "thu",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75dhvkw",
+          "day": "thu",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75dgiar",
+          "day": "thu",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75dp8kn",
+          "day": "fri",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75db88b",
+          "day": "fri",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75d8v7n",
+          "day": "fri",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75dk3rm",
+          "day": "fri",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75docrx",
+          "day": "fri",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75dye8g",
+          "day": "fri",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75d2b6o",
+          "day": "fri",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75dkjfg",
+          "day": "fri",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75dpt1o",
+          "day": "fri",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75dp3nx",
+          "day": "fri",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75epy6h",
+          "day": "fri",
+          "startMin": 1050,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75ejq68",
+          "day": "fri",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75e40qv",
+          "day": "fri",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75ew3m4",
+          "day": "fri",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75eatuu",
+          "day": "fri",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75ess3e",
+          "day": "fri",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75exsbe",
+          "day": "fri",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75e45hs",
+          "day": "sat",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75esqwj",
+          "day": "sat",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75e7cxi",
+          "day": "sat",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75e5sxb",
+          "day": "sat",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75eck26",
+          "day": "sat",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75epo4e",
+          "day": "sat",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75eq2xu",
+          "day": "sat",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75ecbi8",
+          "day": "sat",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75eswcv",
+          "day": "sat",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75ev11e",
+          "day": "sat",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75euaap",
+          "day": "sat",
+          "startMin": 1050,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75ezpd3",
+          "day": "sat",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75f3er5",
+          "day": "sat",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75fvkpu",
+          "day": "sat",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75f1bme",
+          "day": "sat",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75f1o6r",
+          "day": "sat",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75fmmb0",
+          "day": "sat",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75f0nlr",
+          "day": "sun",
+          "startMin": 360,
+          "endMin": 480,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        },
+        {
+          "id": "63b75fvys2",
+          "day": "sun",
+          "startMin": 480,
+          "endMin": 540,
+          "categoryId": "self",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "63b75fz07h",
+          "day": "sun",
+          "startMin": 540,
+          "endMin": 570,
+          "categoryId": "blocked",
+          "label": "샤워",
+          "showTime": true
+        },
+        {
+          "id": "63b75f0g3v",
+          "day": "sun",
+          "startMin": 570,
+          "endMin": 600,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75f9vb5",
+          "day": "sun",
+          "startMin": 600,
+          "endMin": 720,
+          "categoryId": "self",
+          "label": "모의고사",
+          "showTime": true
+        },
+        {
+          "id": "63b75fpi4o",
+          "day": "sun",
+          "startMin": 720,
+          "endMin": 750,
+          "categoryId": "blocked",
+          "label": "이동",
+          "showTime": true
+        },
+        {
+          "id": "63b75fz8au",
+          "day": "sun",
+          "startMin": 750,
+          "endMin": 870,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75f2yku",
+          "day": "sun",
+          "startMin": 870,
+          "endMin": 900,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75f9b4f",
+          "day": "sun",
+          "startMin": 900,
+          "endMin": 1020,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75fd9zi",
+          "day": "sun",
+          "startMin": 1020,
+          "endMin": 1050,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75f9ux1",
+          "day": "sun",
+          "startMin": 1050,
+          "endMin": 1140,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75fnzcn",
+          "day": "sun",
+          "startMin": 1140,
+          "endMin": 1170,
+          "categoryId": "rest",
+          "label": "밥",
+          "showTime": true
+        },
+        {
+          "id": "63b75flijb",
+          "day": "sun",
+          "startMin": 1170,
+          "endMin": 1290,
+          "categoryId": "self",
+          "label": "교육과정",
+          "showTime": true
+        },
+        {
+          "id": "63b75fxgt3",
+          "day": "sun",
+          "startMin": 1290,
+          "endMin": 1320,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75fs6b4",
+          "day": "sun",
+          "startMin": 1320,
+          "endMin": 1380,
+          "categoryId": "self",
+          "label": "스터디",
+          "showTime": true
+        },
+        {
+          "id": "63b75fv5mn",
+          "day": "sun",
+          "startMin": 1380,
+          "endMin": 1500,
+          "categoryId": "rest",
+          "label": "휴식",
+          "showTime": true
+        },
+        {
+          "id": "63b75fqw9p",
+          "day": "sun",
+          "startMin": 1500,
+          "endMin": 1560,
+          "categoryId": "blocked",
+          "label": "잠",
+          "showTime": true
+        }
+      ],
       "4": []
     },
     "displayMode": "duration",
@@ -8099,5 +9189,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-30",
-  "lastModified": "2026-09-30T08:24:37.822Z"
+  "lastModified": "2026-09-30T08:24:45.820Z"
 }
