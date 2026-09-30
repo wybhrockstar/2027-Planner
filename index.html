@@ -350,6 +350,11 @@ body.light{
 .tt-sum-item{display:flex;align-items:center;gap:4px;font-size:8px;color:var(--text2)}
 .tt-sum-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .tt-sum-val{font-family:'JetBrains Mono',monospace;font-size:8px}
+.tt-breakdown{padding:0 0 6px;display:flex;flex-direction:column;gap:3px}
+.tt-bd-row{display:flex;align-items:flex-start;gap:5px;font-size:9px;color:var(--text2);line-height:1.5}
+.tt-bd-row .tt-sum-dot{margin-top:4px}
+.tt-bd-val{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text)}
+.tt-bd-empty{color:var(--text4)}
 .tt-wrap{padding:6px 0 20px;overflow-x:hidden}
 .tt-inner{width:100%}
 .tt-grid{display:flex;position:relative}
@@ -993,6 +998,11 @@ body.light .nc-stitle{color:var(--text3)}
         <button class="tt-opt-btn" id="tt-opt-align-left">⬅️ 좌측 정렬</button>
         <button class="tt-opt-btn" id="tt-opt-align-center">↔️ 가운데 정렬</button>
       </div>
+    </div>
+    <div class="tt-opt-section">
+      <div class="tt-opt-section-title">엑셀 시간표 가져오기 (현재 선택된 텀에 적용)</div>
+      <input type="file" id="tt-import-file" accept=".json,application/json" style="font-size:11px;width:100%">
+      <div style="font-size:10px;color:var(--text3);margin-top:6px;line-height:1.5">excel_to_tt.py로 만든 tt_term3.json을 선택하면 해당 텀의 기존 일정이 교체됩니다.</div>
     </div>
     <div style="display:flex;gap:8px;margin-top:20px;justify-content:flex-end">
       <button class="btn btn-primary btn-sm" id="tt-btn-close-view-save">저장</button>
@@ -4049,6 +4059,7 @@ function renderWeeklySchedule() {
       <div class="tt-cat-pills" id="tt-cat-pills"></div>
     </div>
     <div class="tt-summary" id="tt-summary"></div>
+    <div class="tt-breakdown" id="tt-breakdown"></div>
     <div class="tt-wrap">
       <div class="tt-inner" id="tt-inner">
         <div style="display:flex;margin-left:var(--time-w);gap:var(--gap-w)" id="tt-header"></div>
@@ -4148,6 +4159,27 @@ function ttRenderSummary() {
     </div>`;
   });
   el.innerHTML = items.join('');
+  ttRenderBreakdown(events);
+}
+
+// 카테고리별 세부 현황: 같은 이름(label)끼리 주간 합계
+function ttRenderBreakdown(events) {
+  const el = document.getElementById('tt-breakdown');
+  if (!el) return;
+  const fmtH = m => { const h = Math.round(m / 60 * 10) / 10; return h + 'h'; };
+  el.innerHTML = ttState.categories.map(c => {
+    const byName = {};
+    events.filter(ev => ev.categoryId === c.id).forEach(ev => {
+      const name = (ev.label || c.name).trim();
+      byName[name] = (byName[name] || 0) + (ev.endMin - ev.startMin);
+    });
+    const list = Object.entries(byName).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ko'));
+    const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const body = list.length
+      ? list.map(([n, m]) => `${esc(n)} <span class="tt-bd-val">${fmtH(m)}</span>`).join(' / ')
+      : '<span class="tt-bd-empty">-</span>';
+    return `<div class="tt-bd-row"><span class="tt-sum-dot" style="background:${c.color}"></span><span>${body}</span></div>`;
+  }).join('');
 }
 
 function ttShowDaySummary(dayKey) {
@@ -4524,6 +4556,25 @@ function ttUpdateViewOptBtns() {
   document.getElementById('tt-opt-highlight-on').classList.toggle('active',  ttState.highlightAll);
   document.getElementById('tt-opt-highlight-off').classList.toggle('active', !ttState.highlightAll);
 }
+document.getElementById('tt-import-file').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try {
+      const arr = JSON.parse(rd.result);
+      const ok = Array.isArray(arr) && arr.length && arr.every(v => TT_DAY_KEYS.includes(v.day) && Number.isFinite(v.startMin) && Number.isFinite(v.endMin) && v.endMin > v.startMin);
+      if (!ok) { toast('형식이 올바르지 않은 파일입니다'); return; }
+      const tn = (TERMS.find(t => t.id === ttState.activeTerm) || {}).name || '';
+      const cur = (ttState.termEvents[ttState.activeTerm] || []).length;
+      if (cur && !confirm(`${tn}의 기존 일정 ${cur}개를 지우고 ${arr.length}개로 교체할까요?`)) return;
+      ttState.termEvents[ttState.activeTerm] = arr.map(v => ({...v, id: v.id || ttUid()}));
+      ttSaveState(); ttCloseModal('tt-modal-view'); ttRenderAll();
+      toast(`✓ ${tn} ${arr.length}개 일정 가져옴`);
+    } catch (err) { toast('파일을 읽지 못했습니다'); }
+    e.target.value = '';
+  };
+  rd.readAsText(f);
+});
 document.getElementById('tt-btn-close-view').addEventListener('click',      () => ttCloseModal('tt-modal-view'));
 document.getElementById('tt-btn-close-view-save').addEventListener('click', () => { ttSaveState(); ttCloseModal('tt-modal-view'); ttRenderGrid(); });
 document.getElementById('tt-opt-mode-range').addEventListener('click',    () => { ttState.displayMode='range';    ttUpdateViewOptBtns(); });
