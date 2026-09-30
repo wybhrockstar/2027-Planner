@@ -8079,16 +8079,25 @@
       ],
       "3": [
         {
-          "id": "63b75bj9gc",
+          "id": "b1b09980eo",
           "day": "mon",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75bngt1",
+          "id": "b1b099284c",
+          "day": "mon",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b099x7wl",
           "day": "mon",
           "startMin": 510,
           "endMin": 540,
@@ -8097,7 +8106,7 @@
           "showTime": true
         },
         {
-          "id": "63b75b3fzp",
+          "id": "b1b0990cxq",
           "day": "mon",
           "startMin": 540,
           "endMin": 570,
@@ -8106,7 +8115,7 @@
           "showTime": true
         },
         {
-          "id": "63b75bqxrf",
+          "id": "b1b099o1h9",
           "day": "mon",
           "startMin": 570,
           "endMin": 600,
@@ -8115,7 +8124,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cb69y",
+          "id": "b1b099ozg4",
           "day": "mon",
           "startMin": 600,
           "endMin": 720,
@@ -8124,16 +8133,16 @@
           "showTime": true
         },
         {
-          "id": "63b75cjogp",
+          "id": "b1b099qx8f",
           "day": "mon",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75coxsw",
+          "id": "b1b0991kos",
           "day": "mon",
           "startMin": 750,
           "endMin": 870,
@@ -8142,7 +8151,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c2p6z",
+          "id": "b1b0991xhh",
           "day": "mon",
           "startMin": 870,
           "endMin": 900,
@@ -8151,7 +8160,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cf5h1",
+          "id": "b1b099f4oj",
           "day": "mon",
           "startMin": 900,
           "endMin": 1020,
@@ -8160,7 +8169,7 @@
           "showTime": true
         },
         {
-          "id": "63b75chbdw",
+          "id": "b1b099di84",
           "day": "mon",
           "startMin": 1020,
           "endMin": 1050,
@@ -8169,7 +8178,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ckn4u",
+          "id": "b1b09910wy",
           "day": "mon",
           "startMin": 1050,
           "endMin": 1140,
@@ -8178,7 +8187,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c1zsl",
+          "id": "b1b099g6eg",
           "day": "mon",
           "startMin": 1140,
           "endMin": 1170,
@@ -8187,7 +8196,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cs7uv",
+          "id": "b1b099i6i1",
           "day": "mon",
           "startMin": 1170,
           "endMin": 1290,
@@ -8196,16 +8205,16 @@
           "showTime": true
         },
         {
-          "id": "63b75cl72o",
+          "id": "b1b099ipg5",
           "day": "mon",
           "startMin": 1290,
           "endMin": 1320,
-          "categoryId": "rest",
-          "label": "휴식",
+          "categoryId": "blocked",
+          "label": "이동",
           "showTime": true
         },
         {
-          "id": "63b75cg38s",
+          "id": "b1b0994nqg",
           "day": "mon",
           "startMin": 1320,
           "endMin": 1380,
@@ -8214,7 +8223,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ccidh",
+          "id": "b1b099ebv6",
           "day": "mon",
           "startMin": 1380,
           "endMin": 1500,
@@ -8223,7 +8232,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cijj2",
+          "id": "b1b099dzjb",
           "day": "mon",
           "startMin": 1500,
           "endMin": 1560,
@@ -8232,16 +8241,25 @@
           "showTime": true
         },
         {
-          "id": "63b75c6d43",
+          "id": "b1b099j0dy",
           "day": "tue",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75c578h",
+          "id": "b1b099huqt",
+          "day": "tue",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b099q328",
           "day": "tue",
           "startMin": 510,
           "endMin": 540,
@@ -8250,7 +8268,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c4yqe",
+          "id": "b1b099z0qo",
           "day": "tue",
           "startMin": 540,
           "endMin": 570,
@@ -8259,7 +8277,7 @@
           "showTime": true
         },
         {
-          "id": "63b75csr26",
+          "id": "b1b099p7nw",
           "day": "tue",
           "startMin": 570,
           "endMin": 600,
@@ -8268,7 +8286,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ckm31",
+          "id": "b1b099eg2r",
           "day": "tue",
           "startMin": 600,
           "endMin": 720,
@@ -8277,16 +8295,16 @@
           "showTime": true
         },
         {
-          "id": "63b75cggse",
+          "id": "b1b099jt7k",
           "day": "tue",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75c0f21",
+          "id": "b1b0992gvn",
           "day": "tue",
           "startMin": 750,
           "endMin": 870,
@@ -8295,7 +8313,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cz8ak",
+          "id": "b1b099c7vm",
           "day": "tue",
           "startMin": 870,
           "endMin": 900,
@@ -8304,7 +8322,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c868f",
+          "id": "b1b099e1gj",
           "day": "tue",
           "startMin": 900,
           "endMin": 1020,
@@ -8313,7 +8331,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ciqrk",
+          "id": "b1b09ao0we",
           "day": "tue",
           "startMin": 1020,
           "endMin": 1050,
@@ -8322,7 +8340,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cd9ay",
+          "id": "b1b09apk9j",
           "day": "tue",
           "startMin": 1050,
           "endMin": 1140,
@@ -8331,7 +8349,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c97cn",
+          "id": "b1b09aa8vd",
           "day": "tue",
           "startMin": 1140,
           "endMin": 1170,
@@ -8340,7 +8358,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c5sfc",
+          "id": "b1b09a9a2n",
           "day": "tue",
           "startMin": 1170,
           "endMin": 1290,
@@ -8349,16 +8367,16 @@
           "showTime": true
         },
         {
-          "id": "63b75c5s1l",
+          "id": "b1b09a9gje",
           "day": "tue",
           "startMin": 1290,
           "endMin": 1320,
-          "categoryId": "rest",
-          "label": "휴식",
+          "categoryId": "blocked",
+          "label": "이동",
           "showTime": true
         },
         {
-          "id": "63b75czu37",
+          "id": "b1b09agoaf",
           "day": "tue",
           "startMin": 1320,
           "endMin": 1380,
@@ -8367,7 +8385,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c0eu7",
+          "id": "b1b09ahaue",
           "day": "tue",
           "startMin": 1380,
           "endMin": 1500,
@@ -8376,7 +8394,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cj4oy",
+          "id": "b1b09abwzq",
           "day": "tue",
           "startMin": 1500,
           "endMin": 1560,
@@ -8385,16 +8403,25 @@
           "showTime": true
         },
         {
-          "id": "63b75cpdbv",
+          "id": "b1b09a6enj",
           "day": "wed",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75cl0zr",
+          "id": "b1b09a5q58",
+          "day": "wed",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b09agbuz",
           "day": "wed",
           "startMin": 510,
           "endMin": 540,
@@ -8403,7 +8430,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cket8",
+          "id": "b1b09apmji",
           "day": "wed",
           "startMin": 540,
           "endMin": 570,
@@ -8412,7 +8439,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cjoki",
+          "id": "b1b09atgx6",
           "day": "wed",
           "startMin": 570,
           "endMin": 600,
@@ -8421,7 +8448,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cnal9",
+          "id": "b1b09att7m",
           "day": "wed",
           "startMin": 600,
           "endMin": 720,
@@ -8430,16 +8457,16 @@
           "showTime": true
         },
         {
-          "id": "63b75cxa2b",
+          "id": "b1b09akjlf",
           "day": "wed",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75cmbnc",
+          "id": "b1b09af9b9",
           "day": "wed",
           "startMin": 750,
           "endMin": 870,
@@ -8448,7 +8475,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c28gk",
+          "id": "b1b09a7f6c",
           "day": "wed",
           "startMin": 870,
           "endMin": 900,
@@ -8457,7 +8484,7 @@
           "showTime": true
         },
         {
-          "id": "63b75czkxg",
+          "id": "b1b09a076y",
           "day": "wed",
           "startMin": 900,
           "endMin": 1020,
@@ -8466,7 +8493,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c51fb",
+          "id": "b1b09awver",
           "day": "wed",
           "startMin": 1020,
           "endMin": 1050,
@@ -8475,7 +8502,7 @@
           "showTime": true
         },
         {
-          "id": "63b75c4atj",
+          "id": "b1b09aqkfl",
           "day": "wed",
           "startMin": 1050,
           "endMin": 1140,
@@ -8484,7 +8511,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cb6s4",
+          "id": "b1b09ashl6",
           "day": "wed",
           "startMin": 1140,
           "endMin": 1170,
@@ -8493,7 +8520,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cfg81",
+          "id": "b1b09aq57u",
           "day": "wed",
           "startMin": 1170,
           "endMin": 1290,
@@ -8502,16 +8529,16 @@
           "showTime": true
         },
         {
-          "id": "63b75cp8h5",
+          "id": "b1b09ab75z",
           "day": "wed",
           "startMin": 1290,
           "endMin": 1320,
-          "categoryId": "rest",
-          "label": "휴식",
+          "categoryId": "blocked",
+          "label": "이동",
           "showTime": true
         },
         {
-          "id": "63b75c2m64",
+          "id": "b1b09a0dut",
           "day": "wed",
           "startMin": 1320,
           "endMin": 1380,
@@ -8520,7 +8547,7 @@
           "showTime": true
         },
         {
-          "id": "63b75coafs",
+          "id": "b1b09axt59",
           "day": "wed",
           "startMin": 1380,
           "endMin": 1500,
@@ -8529,7 +8556,7 @@
           "showTime": true
         },
         {
-          "id": "63b75cxidf",
+          "id": "b1b09auey7",
           "day": "wed",
           "startMin": 1500,
           "endMin": 1560,
@@ -8538,16 +8565,25 @@
           "showTime": true
         },
         {
-          "id": "63b75ci470",
+          "id": "b1b09au3se",
           "day": "thu",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75ccwpl",
+          "id": "b1b09aamgm",
+          "day": "thu",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b09ajpgo",
           "day": "thu",
           "startMin": 510,
           "endMin": 540,
@@ -8556,7 +8592,7 @@
           "showTime": true
         },
         {
-          "id": "63b75d59ao",
+          "id": "b1b09axier",
           "day": "thu",
           "startMin": 540,
           "endMin": 570,
@@ -8565,7 +8601,7 @@
           "showTime": true
         },
         {
-          "id": "63b75drwhg",
+          "id": "b1b09audh9",
           "day": "thu",
           "startMin": 570,
           "endMin": 600,
@@ -8574,7 +8610,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dz4bo",
+          "id": "b1b09acaqw",
           "day": "thu",
           "startMin": 600,
           "endMin": 720,
@@ -8583,16 +8619,16 @@
           "showTime": true
         },
         {
-          "id": "63b75dxpyb",
+          "id": "b1b09avomn",
           "day": "thu",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75dak25",
+          "id": "b1b09aw7b1",
           "day": "thu",
           "startMin": 750,
           "endMin": 870,
@@ -8601,7 +8637,7 @@
           "showTime": true
         },
         {
-          "id": "63b75do54c",
+          "id": "b1b09ar3iq",
           "day": "thu",
           "startMin": 870,
           "endMin": 900,
@@ -8610,7 +8646,7 @@
           "showTime": true
         },
         {
-          "id": "63b75do831",
+          "id": "b1b09ahy2y",
           "day": "thu",
           "startMin": 900,
           "endMin": 1020,
@@ -8619,7 +8655,7 @@
           "showTime": true
         },
         {
-          "id": "63b75de7vp",
+          "id": "b1b09amanv",
           "day": "thu",
           "startMin": 1020,
           "endMin": 1050,
@@ -8628,7 +8664,7 @@
           "showTime": true
         },
         {
-          "id": "63b75d8mux",
+          "id": "b1b09a5mr4",
           "day": "thu",
           "startMin": 1050,
           "endMin": 1110,
@@ -8637,7 +8673,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dmiab",
+          "id": "b1b09a34rk",
           "day": "thu",
           "startMin": 1110,
           "endMin": 1140,
@@ -8646,7 +8682,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dr850",
+          "id": "b1b09a3s5q",
           "day": "thu",
           "startMin": 1140,
           "endMin": 1200,
@@ -8655,7 +8691,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dqnf9",
+          "id": "b1b09athvo",
           "day": "thu",
           "startMin": 1200,
           "endMin": 1260,
@@ -8664,7 +8700,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dp913",
+          "id": "b1b09attl2",
           "day": "thu",
           "startMin": 1260,
           "endMin": 1290,
@@ -8673,7 +8709,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dvoj0",
+          "id": "b1b09a9vay",
           "day": "thu",
           "startMin": 1290,
           "endMin": 1320,
@@ -8682,7 +8718,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dxxwh",
+          "id": "b1b09awdt9",
           "day": "thu",
           "startMin": 1320,
           "endMin": 1380,
@@ -8691,7 +8727,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dhvkw",
+          "id": "b1b09ao3qj",
           "day": "thu",
           "startMin": 1380,
           "endMin": 1500,
@@ -8700,7 +8736,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dgiar",
+          "id": "b1b09air2a",
           "day": "thu",
           "startMin": 1500,
           "endMin": 1560,
@@ -8709,16 +8745,25 @@
           "showTime": true
         },
         {
-          "id": "63b75dp8kn",
+          "id": "b1b09alm5e",
           "day": "fri",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75db88b",
+          "id": "b1b09apsx9",
+          "day": "fri",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b09al4rz",
           "day": "fri",
           "startMin": 510,
           "endMin": 540,
@@ -8727,7 +8772,7 @@
           "showTime": true
         },
         {
-          "id": "63b75d8v7n",
+          "id": "b1b09a749z",
           "day": "fri",
           "startMin": 540,
           "endMin": 570,
@@ -8736,7 +8781,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dk3rm",
+          "id": "b1b09ark54",
           "day": "fri",
           "startMin": 570,
           "endMin": 600,
@@ -8745,7 +8790,7 @@
           "showTime": true
         },
         {
-          "id": "63b75docrx",
+          "id": "b1b09auv9t",
           "day": "fri",
           "startMin": 600,
           "endMin": 720,
@@ -8754,16 +8799,16 @@
           "showTime": true
         },
         {
-          "id": "63b75dye8g",
+          "id": "b1b09a8mru",
           "day": "fri",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75d2b6o",
+          "id": "b1b09ap9qa",
           "day": "fri",
           "startMin": 750,
           "endMin": 870,
@@ -8772,7 +8817,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dkjfg",
+          "id": "b1b09aexed",
           "day": "fri",
           "startMin": 870,
           "endMin": 900,
@@ -8781,7 +8826,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dpt1o",
+          "id": "b1b09aj7r0",
           "day": "fri",
           "startMin": 900,
           "endMin": 1020,
@@ -8790,7 +8835,7 @@
           "showTime": true
         },
         {
-          "id": "63b75dp3nx",
+          "id": "b1b09aqq2c",
           "day": "fri",
           "startMin": 1020,
           "endMin": 1050,
@@ -8799,7 +8844,7 @@
           "showTime": true
         },
         {
-          "id": "63b75epy6h",
+          "id": "b1b09at21j",
           "day": "fri",
           "startMin": 1050,
           "endMin": 1140,
@@ -8808,7 +8853,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ejq68",
+          "id": "b1b09aw6dm",
           "day": "fri",
           "startMin": 1140,
           "endMin": 1170,
@@ -8817,7 +8862,7 @@
           "showTime": true
         },
         {
-          "id": "63b75e40qv",
+          "id": "b1b09a4pwd",
           "day": "fri",
           "startMin": 1170,
           "endMin": 1290,
@@ -8826,16 +8871,16 @@
           "showTime": true
         },
         {
-          "id": "63b75ew3m4",
+          "id": "b1b09af6mi",
           "day": "fri",
           "startMin": 1290,
           "endMin": 1320,
-          "categoryId": "rest",
-          "label": "휴식",
+          "categoryId": "blocked",
+          "label": "이동",
           "showTime": true
         },
         {
-          "id": "63b75eatuu",
+          "id": "b1b09a2xvt",
           "day": "fri",
           "startMin": 1320,
           "endMin": 1380,
@@ -8844,7 +8889,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ess3e",
+          "id": "b1b09axrzh",
           "day": "fri",
           "startMin": 1380,
           "endMin": 1500,
@@ -8853,7 +8898,7 @@
           "showTime": true
         },
         {
-          "id": "63b75exsbe",
+          "id": "b1b09a7enu",
           "day": "fri",
           "startMin": 1500,
           "endMin": 1560,
@@ -8862,16 +8907,25 @@
           "showTime": true
         },
         {
-          "id": "63b75e45hs",
+          "id": "b1b09avceb",
           "day": "sat",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75esqwj",
+          "id": "b1b09aoe2w",
+          "day": "sat",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b09aoww9",
           "day": "sat",
           "startMin": 510,
           "endMin": 540,
@@ -8880,7 +8934,7 @@
           "showTime": true
         },
         {
-          "id": "63b75e7cxi",
+          "id": "b1b09a2v71",
           "day": "sat",
           "startMin": 540,
           "endMin": 570,
@@ -8889,7 +8943,7 @@
           "showTime": true
         },
         {
-          "id": "63b75e5sxb",
+          "id": "b1b09awqqe",
           "day": "sat",
           "startMin": 570,
           "endMin": 600,
@@ -8898,7 +8952,7 @@
           "showTime": true
         },
         {
-          "id": "63b75eck26",
+          "id": "b1b09awotc",
           "day": "sat",
           "startMin": 600,
           "endMin": 720,
@@ -8907,16 +8961,16 @@
           "showTime": true
         },
         {
-          "id": "63b75epo4e",
+          "id": "b1b09a5tia",
           "day": "sat",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75eq2xu",
+          "id": "b1b09ared2",
           "day": "sat",
           "startMin": 750,
           "endMin": 870,
@@ -8925,7 +8979,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ecbi8",
+          "id": "b1b09akmgt",
           "day": "sat",
           "startMin": 870,
           "endMin": 900,
@@ -8934,7 +8988,7 @@
           "showTime": true
         },
         {
-          "id": "63b75eswcv",
+          "id": "b1b09a00g5",
           "day": "sat",
           "startMin": 900,
           "endMin": 1020,
@@ -8943,7 +8997,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ev11e",
+          "id": "b1b09afzdb",
           "day": "sat",
           "startMin": 1020,
           "endMin": 1050,
@@ -8952,7 +9006,7 @@
           "showTime": true
         },
         {
-          "id": "63b75euaap",
+          "id": "b1b09amjx8",
           "day": "sat",
           "startMin": 1050,
           "endMin": 1140,
@@ -8961,7 +9015,7 @@
           "showTime": true
         },
         {
-          "id": "63b75ezpd3",
+          "id": "b1b09ab5bg",
           "day": "sat",
           "startMin": 1140,
           "endMin": 1170,
@@ -8970,7 +9024,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f3er5",
+          "id": "b1b09a48rq",
           "day": "sat",
           "startMin": 1170,
           "endMin": 1290,
@@ -8979,16 +9033,16 @@
           "showTime": true
         },
         {
-          "id": "63b75fvkpu",
+          "id": "b1b09adebp",
           "day": "sat",
           "startMin": 1290,
           "endMin": 1320,
-          "categoryId": "rest",
-          "label": "휴식",
+          "categoryId": "blocked",
+          "label": "이동",
           "showTime": true
         },
         {
-          "id": "63b75f1bme",
+          "id": "b1b09ax6od",
           "day": "sat",
           "startMin": 1320,
           "endMin": 1380,
@@ -8997,7 +9051,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f1o6r",
+          "id": "b1b09ab6su",
           "day": "sat",
           "startMin": 1380,
           "endMin": 1500,
@@ -9006,7 +9060,7 @@
           "showTime": true
         },
         {
-          "id": "63b75fmmb0",
+          "id": "b1b09a3zv2",
           "day": "sat",
           "startMin": 1500,
           "endMin": 1560,
@@ -9015,16 +9069,25 @@
           "showTime": true
         },
         {
-          "id": "63b75f0nlr",
+          "id": "b1b09aftck",
           "day": "sun",
           "startMin": 360,
-          "endMin": 510,
+          "endMin": 480,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
         },
         {
-          "id": "63b75fvys2",
+          "id": "b1b09a8wmd",
+          "day": "sun",
+          "startMin": 480,
+          "endMin": 510,
+          "categoryId": "blocked",
+          "label": "운동",
+          "showTime": true
+        },
+        {
+          "id": "b1b09agjix",
           "day": "sun",
           "startMin": 510,
           "endMin": 540,
@@ -9033,7 +9096,7 @@
           "showTime": true
         },
         {
-          "id": "63b75fz07h",
+          "id": "b1b09awxom",
           "day": "sun",
           "startMin": 540,
           "endMin": 570,
@@ -9042,7 +9105,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f0g3v",
+          "id": "b1b09ak9le",
           "day": "sun",
           "startMin": 570,
           "endMin": 600,
@@ -9051,7 +9114,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f9vb5",
+          "id": "b1b09avlq2",
           "day": "sun",
           "startMin": 600,
           "endMin": 720,
@@ -9060,16 +9123,16 @@
           "showTime": true
         },
         {
-          "id": "63b75fpi4o",
+          "id": "b1b09axf2q",
           "day": "sun",
           "startMin": 720,
           "endMin": 750,
-          "categoryId": "blocked",
-          "label": "이동",
+          "categoryId": "rest",
+          "label": "휴식",
           "showTime": true
         },
         {
-          "id": "63b75fz8au",
+          "id": "b1b09airxg",
           "day": "sun",
           "startMin": 750,
           "endMin": 870,
@@ -9078,7 +9141,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f2yku",
+          "id": "b1b09aqe2u",
           "day": "sun",
           "startMin": 870,
           "endMin": 900,
@@ -9087,7 +9150,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f9b4f",
+          "id": "b1b09azhqt",
           "day": "sun",
           "startMin": 900,
           "endMin": 1020,
@@ -9096,7 +9159,7 @@
           "showTime": true
         },
         {
-          "id": "63b75fd9zi",
+          "id": "b1b09anqvb",
           "day": "sun",
           "startMin": 1020,
           "endMin": 1050,
@@ -9105,7 +9168,7 @@
           "showTime": true
         },
         {
-          "id": "63b75f9ux1",
+          "id": "b1b09a0pwc",
           "day": "sun",
           "startMin": 1050,
           "endMin": 1140,
@@ -9114,7 +9177,7 @@
           "showTime": true
         },
         {
-          "id": "63b75fnzcn",
+          "id": "b1b09a43tc",
           "day": "sun",
           "startMin": 1140,
           "endMin": 1170,
@@ -9123,7 +9186,7 @@
           "showTime": true
         },
         {
-          "id": "63b75flijb",
+          "id": "b1b09a0gso",
           "day": "sun",
           "startMin": 1170,
           "endMin": 1290,
@@ -9132,16 +9195,16 @@
           "showTime": true
         },
         {
-          "id": "63b75fxgt3",
+          "id": "b1b09am2gp",
           "day": "sun",
           "startMin": 1290,
           "endMin": 1320,
-          "categoryId": "rest",
-          "label": "휴식",
+          "categoryId": "blocked",
+          "label": "이동",
           "showTime": true
         },
         {
-          "id": "63b75fs6b4",
+          "id": "b1b09auq0g",
           "day": "sun",
           "startMin": 1320,
           "endMin": 1380,
@@ -9150,7 +9213,7 @@
           "showTime": true
         },
         {
-          "id": "63b75fv5mn",
+          "id": "b1b09apaq3",
           "day": "sun",
           "startMin": 1380,
           "endMin": 1500,
@@ -9159,7 +9222,7 @@
           "showTime": true
         },
         {
-          "id": "63b75fqw9p",
+          "id": "b1b09aonu1",
           "day": "sun",
           "startMin": 1500,
           "endMin": 1560,
@@ -9189,5 +9252,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-30",
-  "lastModified": "2026-09-30T08:32:28.652Z"
+  "lastModified": "2026-09-30T09:43:03.403Z"
 }
