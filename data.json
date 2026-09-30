@@ -9026,7 +9026,7 @@
         {
           "id": "63b75fvys2",
           "day": "sun",
-          "startMin": 480,
+          "startMin": 510,
           "endMin": 540,
           "categoryId": "self",
           "label": "운동",
@@ -9189,5 +9189,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-30",
-  "lastModified": "2026-09-30T08:25:36.380Z"
+  "lastModified": "2026-09-30T08:25:39.960Z"
 }
