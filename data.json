@@ -8082,7 +8082,7 @@
           "id": "63b75bj9gc",
           "day": "mon",
           "startMin": 360,
-          "endMin": 480,
+          "endMin": 510,
           "categoryId": "blocked",
           "label": "잠",
           "showTime": true
@@ -9189,5 +9189,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-30",
-  "lastModified": "2026-09-30T08:25:39.960Z"
+  "lastModified": "2026-09-30T08:25:43.959Z"
 }
