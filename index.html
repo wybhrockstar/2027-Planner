@@ -4168,6 +4168,7 @@ function ttRenderBreakdown(events) {
   if (!el) return;
   const fmtH = m => { const h = Math.round(m / 60 * 10) / 10; return h + 'h'; };
   el.innerHTML = ttState.categories.map(c => {
+    if (!events.some(ev => ev.categoryId === c.id)) return '';
     const byName = {};
     events.filter(ev => ev.categoryId === c.id).forEach(ev => {
       const name = (ev.label || c.name).trim();
