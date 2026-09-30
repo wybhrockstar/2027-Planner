@@ -8090,7 +8090,7 @@
         {
           "id": "63b75bngt1",
           "day": "mon",
-          "startMin": 480,
+          "startMin": 510,
           "endMin": 540,
           "categoryId": "self",
           "label": "운동",
@@ -9189,5 +9189,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-09-30",
-  "lastModified": "2026-09-30T08:24:45.820Z"
+  "lastModified": "2026-09-30T08:25:11.856Z"
 }
