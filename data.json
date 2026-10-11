@@ -5307,6 +5307,11 @@
         "id": "mv39mihu",
         "text": "~14:30 쿠키넷",
         "done": false
+      },
+      {
+        "id": "mv39n598",
+        "text": "~16:30 암요파이널",
+        "done": false
       }
     ]
   },
@@ -9286,5 +9291,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-11",
-  "lastModified": "2026-10-11T03:30:28.002Z"
+  "lastModified": "2026-10-11T03:30:57.500Z"
 }
