@@ -5301,7 +5301,14 @@
         "_carriedFrom": "mqsbpwet"
       }
     ],
-    "2026-07-01": []
+    "2026-07-01": [],
+    "2026-10-11": [
+      {
+        "id": "mv39mihu",
+        "text": "~14:30 쿠키넷",
+        "done": false
+      }
+    ]
   },
   "dismissedTodoIds": [
     "mqoo9p18",
@@ -9279,5 +9286,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-11",
-  "lastModified": "2026-10-11T03:30:06.088Z"
+  "lastModified": "2026-10-11T03:30:28.002Z"
 }
