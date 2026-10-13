@@ -5358,6 +5358,26 @@
         "done": false,
         "_carriedFrom": "mv39oasn"
       }
+    ],
+    "2026-10-14": [
+      {
+        "id": "mv7c9sojvew618yyv",
+        "text": "~16:00 쿠키넷 F2",
+        "done": false,
+        "_carriedFrom": "mv39mihu"
+      },
+      {
+        "id": "mv7c9sojndej1twy2aq",
+        "text": "~18:00 암요 F1",
+        "done": false,
+        "_carriedFrom": "mv39n598"
+      },
+      {
+        "id": "mv7c9sojdztqvm3f90n",
+        "text": "18:30~21:30 미술 각론",
+        "done": false,
+        "_carriedFrom": "mv39oasn"
+      }
     ]
   },
   "dismissedTodoIds": [
@@ -9335,6 +9355,6 @@
     "음악",
     "체육"
   ],
-  "lastCarryOverDate": "2026-10-13",
-  "lastModified": "2026-10-13T01:19:59.536Z"
+  "lastCarryOverDate": "2026-10-14",
+  "lastModified": "2026-10-13T23:55:38.227Z"
 }
