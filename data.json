@@ -5142,6 +5142,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-10-14",
+      "wakeTime": "08:55",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -5359,26 +5368,7 @@
         "_carriedFrom": "mv39oasn"
       }
     ],
-    "2026-10-14": [
-      {
-        "id": "mv7c9sojvew618yyv",
-        "text": "~16:00 쿠키넷 F2",
-        "done": false,
-        "_carriedFrom": "mv39mihu"
-      },
-      {
-        "id": "mv7c9sojndej1twy2aq",
-        "text": "~18:00 암요 F1",
-        "done": false,
-        "_carriedFrom": "mv39n598"
-      },
-      {
-        "id": "mv7c9sojdztqvm3f90n",
-        "text": "18:30~21:30 미술 각론",
-        "done": false,
-        "_carriedFrom": "mv39oasn"
-      }
-    ]
+    "2026-10-14": []
   },
   "dismissedTodoIds": [
     "mqoo9p18",
@@ -5396,7 +5386,10 @@
     "mqsbprt7",
     "mqsboujm",
     "mqsbphbi",
-    "mqsbpwet"
+    "mqsbpwet",
+    "mv39mihu",
+    "mv39n598",
+    "mv39oasn"
   ],
   "examScores": [],
   "examStatus": [
@@ -9356,5 +9349,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-14",
-  "lastModified": "2026-10-13T23:55:38.227Z"
+  "lastModified": "2026-10-14T00:56:49.017Z"
 }
