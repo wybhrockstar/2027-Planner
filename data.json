@@ -5377,7 +5377,14 @@
         "_carriedFrom": "mv39oasn"
       }
     ],
-    "2026-10-14": []
+    "2026-10-14": [],
+    "2026-10-19": [
+      {
+        "id": "mverw5us",
+        "text": "늘봄 2회",
+        "done": false
+      }
+    ]
   },
   "dismissedTodoIds": [
     "mqoo9p18",
@@ -9358,5 +9365,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-19",
-  "lastModified": "2026-10-19T04:47:01.481Z"
+  "lastModified": "2026-10-19T04:47:19.204Z"
 }
