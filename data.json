@@ -5383,6 +5383,11 @@
         "id": "mverw5us",
         "text": "늘봄 2회",
         "done": false
+      },
+      {
+        "id": "mverx85z",
+        "text": "사회 도덕",
+        "done": false
       }
     ]
   },
@@ -9365,5 +9370,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-19",
-  "lastModified": "2026-10-19T04:47:19.204Z"
+  "lastModified": "2026-10-19T04:48:08.855Z"
 }
