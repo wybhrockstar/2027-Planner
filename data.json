@@ -5398,6 +5398,20 @@
         "text": "사회 도덕",
         "done": false
       }
+    ],
+    "2026-10-20": [
+      {
+        "id": "mvfxq1bc4zhlda2bxn3",
+        "text": "늘봄 2회",
+        "done": false,
+        "_carriedFrom": "mverw5us"
+      },
+      {
+        "id": "mvfxq1bc04f1gn3014ih",
+        "text": "사회 도덕",
+        "done": false,
+        "_carriedFrom": "mverx85z"
+      }
     ]
   },
   "dismissedTodoIds": [
@@ -9378,6 +9392,6 @@
     "음악",
     "체육"
   ],
-  "lastCarryOverDate": "2026-10-19",
-  "lastModified": "2026-10-19T04:48:19.261Z"
+  "lastCarryOverDate": "2026-10-20",
+  "lastModified": "2026-10-20T00:18:17.256Z"
 }
