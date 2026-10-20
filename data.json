@@ -5401,12 +5401,6 @@
     ],
     "2026-10-20": [
       {
-        "id": "mvfxq1bc4zhlda2bxn3",
-        "text": "늘봄 2회",
-        "done": true,
-        "_carriedFrom": "mverw5us"
-      },
-      {
         "id": "mvfxq1bc04f1gn3014ih",
         "text": "사회 도덕",
         "done": false,
@@ -5433,7 +5427,8 @@
     "mqsbpwet",
     "mv39mihu",
     "mv39n598",
-    "mv39oasn"
+    "mv39oasn",
+    "mverw5us"
   ],
   "examScores": [],
   "examStatus": [
@@ -9393,5 +9388,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-20",
-  "lastModified": "2026-10-20T00:18:20.264Z"
+  "lastModified": "2026-10-20T00:18:23.489Z"
 }
