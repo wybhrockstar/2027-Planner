@@ -5403,7 +5403,7 @@
       {
         "id": "mvfxq1bc4zhlda2bxn3",
         "text": "늘봄 2회",
-        "done": false,
+        "done": true,
         "_carriedFrom": "mverw5us"
       },
       {
@@ -9393,5 +9393,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-20",
-  "lastModified": "2026-10-20T00:18:17.256Z"
+  "lastModified": "2026-10-20T00:18:20.264Z"
 }
