@@ -5405,6 +5405,11 @@
         "text": "사회 도덕",
         "done": false,
         "_carriedFrom": "mverx85z"
+      },
+      {
+        "id": "mvfxqkpb",
+        "text": "엑시트 3",
+        "done": false
       }
     ]
   },
@@ -9388,5 +9393,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-20",
-  "lastModified": "2026-10-20T00:18:23.489Z"
+  "lastModified": "2026-10-20T00:18:42.384Z"
 }
