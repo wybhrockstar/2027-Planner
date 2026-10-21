@@ -5178,6 +5178,15 @@
       "kcal": 0,
       "memo": "",
       "studyResult": null
+    },
+    {
+      "date": "2026-10-21",
+      "wakeTime": "08:50",
+      "sleepTime": "",
+      "studyMin": 0,
+      "kcal": 0,
+      "memo": "",
+      "studyResult": null
     }
   ],
   "dailyTodos": {
@@ -5427,6 +5436,11 @@
         "text": "사회 도덕",
         "done": false,
         "_carriedFrom": "mverx85z"
+      },
+      {
+        "id": "mvhikjy3",
+        "text": "초임공 5",
+        "done": false
       }
     ]
   },
@@ -9411,5 +9425,5 @@
     "체육"
   ],
   "lastCarryOverDate": "2026-10-21",
-  "lastModified": "2026-10-21T02:49:35.167Z"
+  "lastModified": "2026-10-21T02:49:40.552Z"
 }
