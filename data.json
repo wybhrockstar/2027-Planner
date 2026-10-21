@@ -5420,6 +5420,20 @@
         "text": "엑시트 3",
         "done": false
       }
+    ],
+    "2026-10-21": [
+      {
+        "id": "mvhijyefnitw4za1dxk",
+        "text": "사회 도덕",
+        "done": false,
+        "_carriedFrom": "mverx85z"
+      },
+      {
+        "id": "mvhijyefliwrljonu8j",
+        "text": "엑시트 3",
+        "done": false,
+        "_carriedFrom": "mvfxqkpb"
+      }
     ]
   },
   "dismissedTodoIds": [
@@ -9401,6 +9415,6 @@
     "음악",
     "체육"
   ],
-  "lastCarryOverDate": "2026-10-20",
-  "lastModified": "2026-10-20T00:18:44.061Z"
+  "lastCarryOverDate": "2026-10-21",
+  "lastModified": "2026-10-21T02:49:11.655Z"
 }
